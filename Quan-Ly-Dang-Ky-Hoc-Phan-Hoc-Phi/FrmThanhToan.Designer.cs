@@ -1,6 +1,6 @@
 ﻿namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
-    partial class Form1
+    partial class FrmThanhToan
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FrmThanhToan
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1717, 864);
+            this.Name = "FrmThanhToan";
+            this.Text = "FrmThanhToan";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-
