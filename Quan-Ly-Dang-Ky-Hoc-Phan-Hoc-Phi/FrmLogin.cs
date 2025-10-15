@@ -21,5 +21,15 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             Application.Exit();
         }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
