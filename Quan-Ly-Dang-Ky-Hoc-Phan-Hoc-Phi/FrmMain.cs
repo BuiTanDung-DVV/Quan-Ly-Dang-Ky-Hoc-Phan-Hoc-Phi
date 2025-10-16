@@ -16,5 +16,15 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             InitializeComponent();
         }
+
+        private void sataPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void sataPictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

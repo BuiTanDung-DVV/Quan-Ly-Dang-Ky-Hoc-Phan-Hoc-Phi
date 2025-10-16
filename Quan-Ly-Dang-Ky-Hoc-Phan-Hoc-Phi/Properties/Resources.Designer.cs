@@ -73,6 +73,16 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _8675091_ic_fluent_person_circle_regular_icon {
+            get {
+                object obj = ResourceManager.GetObject("8675091_ic_fluent_person_circle_regular_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
