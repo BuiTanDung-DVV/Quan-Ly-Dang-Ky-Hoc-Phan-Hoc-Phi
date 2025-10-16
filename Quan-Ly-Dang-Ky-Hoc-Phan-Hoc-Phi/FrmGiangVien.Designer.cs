@@ -241,6 +241,7 @@
             this.Controls.Add(this.lblTenGV);
             this.Controls.Add(this.lblMaGV);
             this.Controls.Add(this.lblDanhMuc);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmGiangVien";
             this.Text = "FrmGiangVien";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

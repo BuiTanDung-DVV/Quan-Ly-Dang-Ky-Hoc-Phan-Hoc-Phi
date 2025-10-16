@@ -82,7 +82,7 @@
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 14.26415F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(1614, 494);
+            this.btnThoat.Location = new System.Drawing.Point(1380, 510);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(170, 80);
@@ -94,7 +94,7 @@
             // 
             this.btnXoa.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 14.26415F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(1614, 404);
+            this.btnXoa.Location = new System.Drawing.Point(1380, 413);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(170, 80);
@@ -106,7 +106,7 @@
             // 
             this.btnSua.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 14.26415F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(1614, 314);
+            this.btnSua.Location = new System.Drawing.Point(1380, 323);
             this.btnSua.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(170, 80);
@@ -118,7 +118,7 @@
             // 
             this.btnLuu.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 14.26415F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Location = new System.Drawing.Point(1614, 224);
+            this.btnLuu.Location = new System.Drawing.Point(1380, 223);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(170, 80);
@@ -130,7 +130,7 @@
             // 
             this.btnTaoMoi.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnTaoMoi.Font = new System.Drawing.Font("Times New Roman", 14.26415F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaoMoi.Location = new System.Drawing.Point(1614, 134);
+            this.btnTaoMoi.Location = new System.Drawing.Point(1380, 131);
             this.btnTaoMoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnTaoMoi.Name = "btnTaoMoi";
             this.btnTaoMoi.Size = new System.Drawing.Size(170, 80);
@@ -141,7 +141,7 @@
             // optNu
             // 
             this.optNu.AutoSize = true;
-            this.optNu.Location = new System.Drawing.Point(42, 168);
+            this.optNu.Location = new System.Drawing.Point(29, 89);
             this.optNu.Name = "optNu";
             this.optNu.Size = new System.Drawing.Size(75, 36);
             this.optNu.TabIndex = 0;
@@ -152,7 +152,7 @@
             // 
             this.optNam.AutoSize = true;
             this.optNam.Checked = true;
-            this.optNam.Location = new System.Drawing.Point(42, 90);
+            this.optNam.Location = new System.Drawing.Point(29, 41);
             this.optNam.Name = "optNam";
             this.optNam.Size = new System.Drawing.Size(98, 36);
             this.optNam.TabIndex = 0;
@@ -165,9 +165,9 @@
             this.groupBox1.Controls.Add(this.optNu);
             this.groupBox1.Controls.Add(this.optNam);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(1163, 134);
+            this.groupBox1.Location = new System.Drawing.Point(1086, 134);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(323, 302);
+            this.groupBox1.Size = new System.Drawing.Size(177, 138);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giới tính:";
@@ -346,7 +346,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1878, 1015);
+            this.ClientSize = new System.Drawing.Size(1651, 1007);
             this.Controls.Add(this.txtDate);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnThoat);
@@ -373,6 +373,7 @@
             this.Controls.Add(this.lblMaLop);
             this.Controls.Add(this.lblMaSV);
             this.Controls.Add(this.lblDanhMuc);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSinhVien";
             this.Text = "FrmSinhVien";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

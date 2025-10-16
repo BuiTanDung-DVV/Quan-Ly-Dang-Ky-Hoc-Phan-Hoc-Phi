@@ -12,6 +12,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
     public partial class FrmMain : Form
     {
+        FrmSinhVien SinhVien;
         public FrmMain()
         {
             InitializeComponent();
@@ -25,6 +26,20 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         private void sataPictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void sataButton2_Click(object sender, EventArgs e)
+        {
+            if (SinhVien == null || SinhVien.IsDisposed)
+            {
+                SinhVien = new FrmSinhVien();
+                SinhVien.MdiParent = this;
+                SinhVien.Show();
+            }
+            else
+            {
+                SinhVien.Activate();
+            }
         }
     }
 }

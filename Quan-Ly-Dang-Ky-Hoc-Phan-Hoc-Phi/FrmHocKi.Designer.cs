@@ -240,6 +240,7 @@
             this.Controls.Add(this.lblTenKi);
             this.Controls.Add(this.lblMaKi);
             this.Controls.Add(this.lblDanhMuc);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmHocKi";
             this.Text = "FrmHocKi";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
