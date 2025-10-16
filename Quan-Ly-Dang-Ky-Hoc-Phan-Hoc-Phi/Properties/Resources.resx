@@ -121,4 +121,10 @@
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NEU-cau_truc_toa_nha_the_ky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NEU-cau_truc_toa_nha_the_ky.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="8674683_ic_fluent_dismiss_regular_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\8674683_ic_fluent_dismiss_regular_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

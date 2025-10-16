@@ -32,6 +32,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="SATAUiFramework, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SATAUiFramework.1.1.3\lib\net40\SATAUiFramework.dll</HintPath>
@@ -189,6 +191,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NEU-cau_truc_toa_nha_the_ky.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8674683_ic_fluent_dismiss_regular_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

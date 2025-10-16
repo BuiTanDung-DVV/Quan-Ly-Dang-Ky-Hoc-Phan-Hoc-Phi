@@ -63,9 +63,29 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _8674683_ic_fluent_dismiss_regular_icon {
+            get {
+                object obj = ResourceManager.GetObject("8674683_ic_fluent_dismiss_regular_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NEU_cau_truc_toa_nha_the_ky {
+            get {
+                object obj = ResourceManager.GetObject("NEU-cau_truc_toa_nha_the_ky", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
