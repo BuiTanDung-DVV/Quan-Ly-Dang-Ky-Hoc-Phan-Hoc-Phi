@@ -16,7 +16,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            Application.Run(new FrmLogin());
         }
     }
 }

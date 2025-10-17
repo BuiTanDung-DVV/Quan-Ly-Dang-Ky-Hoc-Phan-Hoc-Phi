@@ -38,11 +38,11 @@
             this.txtMatKhau = new SATATextBox();
             this.txtDangNhap = new SATATextBox();
             this.lblNEU = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.ptbExit = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sataPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +54,7 @@
             this.lblMK.Location = new System.Drawing.Point(26, 230);
             this.lblMK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMK.Name = "lblMK";
-            this.lblMK.Size = new System.Drawing.Size(144, 32);
+            this.lblMK.Size = new System.Drawing.Size(98, 23);
             this.lblMK.TabIndex = 19;
             this.lblMK.Text = "Mật khẩu:";
             // 
@@ -65,7 +65,7 @@
             this.lblDN.Location = new System.Drawing.Point(26, 117);
             this.lblDN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDN.Name = "lblDN";
-            this.lblDN.Size = new System.Drawing.Size(208, 32);
+            this.lblDN.Size = new System.Drawing.Size(139, 23);
             this.lblDN.TabIndex = 20;
             this.lblDN.Text = "Tên đăng nhập:";
             // 
@@ -77,7 +77,7 @@
             this.lblDanhMuc.Location = new System.Drawing.Point(187, 36);
             this.lblDanhMuc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDanhMuc.Name = "lblDanhMuc";
-            this.lblDanhMuc.Size = new System.Drawing.Size(253, 51);
+            this.lblDanhMuc.Size = new System.Drawing.Size(173, 36);
             this.lblDanhMuc.TabIndex = 18;
             this.lblDanhMuc.Text = "ĐĂNG NHẬP";
             // 
@@ -159,10 +159,10 @@
             this.txtMatKhau.Location = new System.Drawing.Point(32, 265);
             this.txtMatKhau.Multiline = false;
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.PasswordChar = false;
+            this.txtMatKhau.PasswordChar = true;
             this.txtMatKhau.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtMatKhau.PlaceholderText = "Mật khẩu";
-            this.txtMatKhau.Size = new System.Drawing.Size(489, 60);
+            this.txtMatKhau.Size = new System.Drawing.Size(489, 47);
             this.txtMatKhau.TabIndex = 22;
             this.txtMatKhau.Texts = "";
             this.txtMatKhau.UnderlinedStyle = false;
@@ -182,7 +182,7 @@
             this.txtDangNhap.PasswordChar = false;
             this.txtDangNhap.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtDangNhap.PlaceholderText = "Tên đăng nhập";
-            this.txtDangNhap.Size = new System.Drawing.Size(489, 60);
+            this.txtDangNhap.Size = new System.Drawing.Size(489, 47);
             this.txtDangNhap.TabIndex = 22;
             this.txtDangNhap.Texts = "";
             this.txtDangNhap.UnderlinedStyle = false;
@@ -194,22 +194,21 @@
             this.lblNEU.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblNEU.Location = new System.Drawing.Point(1138, 177);
             this.lblNEU.Name = "lblNEU";
-            this.lblNEU.Size = new System.Drawing.Size(554, 54);
+            this.lblNEU.Size = new System.Drawing.Size(372, 37);
             this.lblNEU.TabIndex = 24;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
-            this.lblNEU.Click += new System.EventHandler(this.lblNEU_Click);
             // 
-            // pictureBox3
+            // ptbExit
             // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.Properties.Resources._8674683_ic_fluent_dismiss_regular_icon;
-            this.pictureBox3.Location = new System.Drawing.Point(1589, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(43, 29);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 26;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.ptbExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptbExit.Image = global::Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.Properties.Resources._8674683_ic_fluent_dismiss_regular_icon;
+            this.ptbExit.Location = new System.Drawing.Point(1589, 2);
+            this.ptbExit.Name = "ptbExit";
+            this.ptbExit.Size = new System.Drawing.Size(43, 29);
+            this.ptbExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptbExit.TabIndex = 26;
+            this.ptbExit.TabStop = false;
+            this.ptbExit.Click += new System.EventHandler(this.ptbExit_Click);
             // 
             // pictureBox2
             // 
@@ -233,12 +232,12 @@
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1631, 880);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.ptbExit);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblNEU);
             this.Controls.Add(this.pictureBox1);
@@ -250,7 +249,7 @@
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.sataPanel1.ResumeLayout(false);
             this.sataPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -270,6 +269,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblNEU;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox ptbExit;
     }
 }

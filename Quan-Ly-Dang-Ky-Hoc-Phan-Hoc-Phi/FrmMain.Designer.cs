@@ -40,7 +40,7 @@
             this.sataButton4 = new FrameworkTest.SATAButton();
             this.sataButton3 = new FrameworkTest.SATAButton();
             this.sataButton1 = new FrameworkTest.SATAButton();
-            this.sataButton2 = new FrameworkTest.SATAButton();
+            this.btnQLSV = new FrameworkTest.SATAButton();
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.sataPictureBox1 = new SATAUiFramework.Controls.SATAPictureBox();
             this.sataPanel2 = new SATAUiFramework.SATAPanel();
@@ -73,7 +73,7 @@
             this.panel1.Controls.Add(this.sataButton4);
             this.panel1.Controls.Add(this.sataButton3);
             this.panel1.Controls.Add(this.sataButton1);
-            this.panel1.Controls.Add(this.sataButton2);
+            this.panel1.Controls.Add(this.btnQLSV);
             this.panel1.Controls.Add(this.sataPanel1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -89,7 +89,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(20, 303);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 38);
+            this.label2.Size = new System.Drawing.Size(131, 26);
             this.label2.TabIndex = 3;
             this.label2.Text = "Chức năng";
             // 
@@ -359,44 +359,43 @@
             this.sataButton1.TextAutoCenter = true;
             this.sataButton1.TextOffset = new System.Drawing.Point(0, 0);
             // 
-            // sataButton2
+            // btnQLSV
             // 
-            this.sataButton2.ButtonText = "Quản lý sinh viên";
-            this.sataButton2.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.sataButton2.CheckedForeColor = System.Drawing.Color.White;
-            this.sataButton2.CheckedImageTint = System.Drawing.Color.White;
-            this.sataButton2.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.sataButton2.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.sataButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sataButton2.HoverBackground = System.Drawing.Color.Blue;
-            this.sataButton2.HoverForeColor = System.Drawing.Color.White;
-            this.sataButton2.HoverImage = null;
-            this.sataButton2.HoverImageTint = System.Drawing.Color.White;
-            this.sataButton2.HoverOutline = System.Drawing.Color.Empty;
-            this.sataButton2.Image = null;
-            this.sataButton2.ImageAutoCenter = true;
-            this.sataButton2.ImageExpand = new System.Drawing.Point(0, 0);
-            this.sataButton2.ImageOffset = new System.Drawing.Point(0, 0);
-            this.sataButton2.ImageTint = System.Drawing.Color.White;
-            this.sataButton2.IsToggleButton = false;
-            this.sataButton2.IsToggled = false;
-            this.sataButton2.Location = new System.Drawing.Point(27, 347);
-            this.sataButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.sataButton2.Name = "sataButton2";
-            this.sataButton2.NormalBackground = System.Drawing.Color.DodgerBlue;
-            this.sataButton2.NormalForeColor = System.Drawing.Color.White;
-            this.sataButton2.NormalOutline = System.Drawing.Color.Empty;
-            this.sataButton2.OutlineThickness = 2F;
-            this.sataButton2.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.sataButton2.PressedForeColor = System.Drawing.Color.White;
-            this.sataButton2.PressedImageTint = System.Drawing.Color.White;
-            this.sataButton2.PressedOutline = System.Drawing.Color.Empty;
-            this.sataButton2.Rounding = new System.Windows.Forms.Padding(25);
-            this.sataButton2.Size = new System.Drawing.Size(265, 51);
-            this.sataButton2.TabIndex = 2;
-            this.sataButton2.TextAutoCenter = true;
-            this.sataButton2.TextOffset = new System.Drawing.Point(0, 0);
-            this.sataButton2.Click += new System.EventHandler(this.sataButton2_Click);
+            this.btnQLSV.ButtonText = "Quản lý sinh viên";
+            this.btnQLSV.CheckedBackground = System.Drawing.Color.DodgerBlue;
+            this.btnQLSV.CheckedForeColor = System.Drawing.Color.White;
+            this.btnQLSV.CheckedImageTint = System.Drawing.Color.White;
+            this.btnQLSV.CheckedOutline = System.Drawing.Color.DodgerBlue;
+            this.btnQLSV.CustomDialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnQLSV.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLSV.HoverBackground = System.Drawing.Color.Blue;
+            this.btnQLSV.HoverForeColor = System.Drawing.Color.White;
+            this.btnQLSV.HoverImage = null;
+            this.btnQLSV.HoverImageTint = System.Drawing.Color.White;
+            this.btnQLSV.HoverOutline = System.Drawing.Color.Empty;
+            this.btnQLSV.Image = null;
+            this.btnQLSV.ImageAutoCenter = true;
+            this.btnQLSV.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnQLSV.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnQLSV.ImageTint = System.Drawing.Color.White;
+            this.btnQLSV.IsToggleButton = false;
+            this.btnQLSV.IsToggled = false;
+            this.btnQLSV.Location = new System.Drawing.Point(27, 347);
+            this.btnQLSV.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnQLSV.Name = "btnQLSV";
+            this.btnQLSV.NormalBackground = System.Drawing.Color.DodgerBlue;
+            this.btnQLSV.NormalForeColor = System.Drawing.Color.White;
+            this.btnQLSV.NormalOutline = System.Drawing.Color.Empty;
+            this.btnQLSV.OutlineThickness = 2F;
+            this.btnQLSV.PressedBackground = System.Drawing.Color.RoyalBlue;
+            this.btnQLSV.PressedForeColor = System.Drawing.Color.White;
+            this.btnQLSV.PressedImageTint = System.Drawing.Color.White;
+            this.btnQLSV.PressedOutline = System.Drawing.Color.Empty;
+            this.btnQLSV.Rounding = new System.Windows.Forms.Padding(25);
+            this.btnQLSV.Size = new System.Drawing.Size(265, 51);
+            this.btnQLSV.TabIndex = 2;
+            this.btnQLSV.TextAutoCenter = true;
+            this.btnQLSV.TextOffset = new System.Drawing.Point(0, 0);
             // 
             // sataPanel1
             // 
@@ -415,7 +414,6 @@
             this.sataPanel1.Name = "sataPanel1";
             this.sataPanel1.Size = new System.Drawing.Size(274, 112);
             this.sataPanel1.TabIndex = 1;
-            this.sataPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.sataPanel1_Paint);
             // 
             // sataPictureBox1
             // 
@@ -432,7 +430,6 @@
             this.sataPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.sataPictureBox1.TabIndex = 3;
             this.sataPictureBox1.TabStop = false;
-            this.sataPictureBox1.Click += new System.EventHandler(this.sataPictureBox1_Click);
             // 
             // sataPanel2
             // 
@@ -459,7 +456,7 @@
             this.lblName.ForeColor = System.Drawing.Color.White;
             this.lblName.Location = new System.Drawing.Point(25, 23);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(193, 23);
+            this.lblName.Size = new System.Drawing.Size(136, 17);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Nguyễn Hoàng Sơn";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -471,7 +468,7 @@
             this.lblMaSV.ForeColor = System.Drawing.Color.White;
             this.lblMaSV.Location = new System.Drawing.Point(63, 46);
             this.lblMaSV.Name = "lblMaSV";
-            this.lblMaSV.Size = new System.Drawing.Size(87, 23);
+            this.lblMaSV.Size = new System.Drawing.Size(64, 17);
             this.lblMaSV.TabIndex = 1;
             this.lblMaSV.Text = "1123630";
             // 
@@ -502,7 +499,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(6, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(583, 47);
+            this.label1.Size = new System.Drawing.Size(398, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
             // 
@@ -546,7 +543,7 @@
         private SATAUiFramework.Controls.SATAPictureBox sataPictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private FrameworkTest.SATAButton sataButton2;
+        private FrameworkTest.SATAButton btnQLSV;
         private FrameworkTest.SATAButton sataButton8;
         private FrameworkTest.SATAButton sataButton7;
         private FrameworkTest.SATAButton sataButton6;

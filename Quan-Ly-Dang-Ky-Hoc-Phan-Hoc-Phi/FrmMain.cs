@@ -1,44 +1,77 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
     public partial class FrmMain : Form
     {
-        FrmSinhVien SinhVien;
         public FrmMain()
         {
             InitializeComponent();
         }
 
-        private void sataPanel1_Paint(object sender, PaintEventArgs e)
+        private void FrmMain_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void sataPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sataButton2_Click(object sender, EventArgs e)
-        {
-            if (SinhVien == null || SinhVien.IsDisposed)
+            // Check if user is logged in
+            if (!UserSession.IsLoggedIn)
             {
-                SinhVien = new FrmSinhVien();
-                SinhVien.MdiParent = this;
-                SinhVien.Show();
+                MessageBox.Show("Bạn cần đăng nhập để sử dụng hệ thống!", "Thông báo", 
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Hide();
+                FrmLogin loginForm = new FrmLogin();
+                loginForm.ShowDialog();
+                return;
             }
-            else
+
+            // Setup UI based on user role
+            SetupUIByRole();
+            ShowWelcomeMessage();
+        }
+
+        private void SetupUIByRole()
+        {
+            // Example: Hide/Show menu items based on role
+            if (UserSession.IsStudent())
             {
-                SinhVien.Activate();
+                // Show only student-related functions
+                // Hide admin menus, etc.
+            }
+            else if (UserSession.IsLecturer())
+            {
+                // Show lecturer-related functions
+            }
+            else if (UserSession.IsAdmin())
+            {
+                // Show all administrative functions
+            }
+        }
+
+        private void ShowWelcomeMessage()
+        {
+            string welcomeMessage = $"Xin chào, {UserSession.Username}!";
+            
+            if (UserSession.IsStudent())
+                welcomeMessage += $" (Sinh viên - ID: {UserSession.LinkedStudentID})";
+            else if (UserSession.IsLecturer())
+                welcomeMessage += $" (Giảng viên - ID: {UserSession.LinkedLecturerID})";
+            else if (UserSession.IsAdmin())
+                welcomeMessage += " (Quản trị viên)";
+
+            // Display in a label or status bar
+            // lblWelcome.Text = welcomeMessage;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", 
+                                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+            if (result == DialogResult.Yes)
+            {
+                UserSession.EndSession();
+                this.Hide();
+                FrmLogin loginForm = new FrmLogin();
+                loginForm.Show();
             }
         }
     }
