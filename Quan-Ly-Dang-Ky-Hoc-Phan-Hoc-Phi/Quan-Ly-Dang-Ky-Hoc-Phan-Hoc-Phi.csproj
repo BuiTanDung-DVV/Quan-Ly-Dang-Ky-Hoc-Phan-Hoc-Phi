@@ -32,9 +32,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
+    <Reference Include="SATAUiFramework, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SATAUiFramework.1.1.3\lib\net40\SATAUiFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +54,117 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmDangKi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmDangKi.Designer.cs">
+      <DependentUpon>FrmDangKi.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmGiangVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGiangVien.Designer.cs">
+      <DependentUpon>FrmGiangVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHoaDon.Designer.cs">
+      <DependentUpon>FrmHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHocKi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHocKi.Designer.cs">
+      <DependentUpon>FrmHocKi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKhoaVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKhoaVien.Designer.cs">
+      <DependentUpon>FrmKhoaVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLopHocPhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLopHocPhan.Designer.cs">
+      <DependentUpon>FrmLopHocPhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMonHoc.Designer.cs">
+      <DependentUpon>FrmMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNganhHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNganhHoc.Designer.cs">
+      <DependentUpon>FrmNganhHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSinhVien.Designer.cs">
+      <DependentUpon>FrmSinhVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmThanhToan.Designer.cs">
+      <DependentUpon>FrmThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KETNOI_CSDL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDangKi.resx">
+      <DependentUpon>FrmDangKi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGiangVien.resx">
+      <DependentUpon>FrmGiangVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHoaDon.resx">
+      <DependentUpon>FrmHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHocKi.resx">
+      <DependentUpon>FrmHocKi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKhoaVien.resx">
+      <DependentUpon>FrmKhoaVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLopHocPhan.resx">
+      <DependentUpon>FrmLopHocPhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMonHoc.resx">
+      <DependentUpon>FrmMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNganhHoc.resx">
+      <DependentUpon>FrmNganhHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSinhVien.resx">
+      <DependentUpon>FrmSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmThanhToan.resx">
+      <DependentUpon>FrmThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +173,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +188,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NEU-cau_truc_toa_nha_the_ky.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8674683_ic_fluent_dismiss_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8675091_ic_fluent_person_circle_regular_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
