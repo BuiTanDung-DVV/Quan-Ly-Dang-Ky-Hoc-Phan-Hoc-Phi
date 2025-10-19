@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
-    public partial class FrmLogin : Form
+    public partial class FrmLogin : RoundedForm
     {
         public FrmLogin()
         {
@@ -22,69 +23,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             // Set focus to username textbox
             txtDangNhap.Focus();
-        }
-
-        private void btnDN_Click(object sender, EventArgs e)
-        {
-            // Validate input
-            if (string.IsNullOrWhiteSpace(txtDangNhap.Texts))
-            {
-                MessageBox.Show("Vui lòng nhập tên đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDangNhap.Focus();
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtMatKhau.Texts))
-            {
-                MessageBox.Show("Vui lòng nhập mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMatKhau.Focus();
-                return;
-            }
-
-            try
-            {
-                // Query to check user credentials (NO HASHING)
-                string sql = "SELECT UserID, Username, PasswordHash, Role, LinkedStudentID, LinkedLecturerID " +
-                           "FROM Users " +
-                           "WHERE Username = '" + txtDangNhap.Texts + "' AND PasswordHash = '" + txtMatKhau.Texts + "'";
-
-                DataTable dt = kn.Lay_DulieuBang(sql);
-
-                if (dt.Rows.Count > 0)
-                {
-                    // Login successful
-                    DataRow row = dt.Rows[0];
-                    
-                    // Start user session
-                    UserSession.StartSession(
-                        Convert.ToInt32(row["UserID"]),
-                        row["Username"].ToString(),
-                        row["Role"].ToString(),
-                        row["LinkedStudentID"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["LinkedStudentID"]),
-                        row["LinkedLecturerID"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["LinkedLecturerID"])
-                    );
-
-                    MessageBox.Show($"Đăng nhập thành công! Chào mừng {UserSession.Username}", "Thành công", 
-                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Hide login form and show main form
-                    this.Hide();
-                    FrmMain mainForm = new FrmMain();
-                    mainForm.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập", 
-                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtMatKhau.Texts = "";
-                    txtDangNhap.Focus();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Lỗi", 
-                              MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void ptbExit_Click(object sender, EventArgs e)
@@ -105,7 +43,70 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                btnDN_Click(sender, e);
+                btnDN_Click_1(sender, e);
+            }
+        }
+
+        private void btnDN_Click_1(object sender, EventArgs e)
+        {
+            // Validate input
+            if (string.IsNullOrWhiteSpace(txtDangNhap.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDangNhap.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtMatKhau.Text))
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMatKhau.Focus();
+                return;
+            }
+
+            try
+            {
+                // Query to check user credentials (NO HASHING)
+                string sql = "SELECT UserID, Username, PasswordHash, Role, LinkedStudentID, LinkedLecturerID " +
+                           "FROM Users " +
+                           "WHERE Username = '" + txtDangNhap.Text + "' AND PasswordHash = '" + txtMatKhau.Text + "'";
+
+                DataTable dt = kn.Lay_DulieuBang(sql);
+
+                if (dt.Rows.Count > 0)
+                {
+                    // Login successful
+                    DataRow row = dt.Rows[0];
+
+                    // Start user session
+                    UserSession.StartSession(
+                        Convert.ToInt32(row["UserID"]),
+                        row["Username"].ToString(),
+                        row["Role"].ToString(),
+                        row["LinkedStudentID"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["LinkedStudentID"]),
+                        row["LinkedLecturerID"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["LinkedLecturerID"])
+                    );
+
+                    MessageBox.Show($"Đăng nhập thành công! Chào mừng {UserSession.Username}", "Thành công",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Hide login form and show main form
+                    this.Hide();
+                    FrmMain mainForm = new FrmMain();
+                    mainForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtMatKhau.Text = "";
+                    txtDangNhap.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

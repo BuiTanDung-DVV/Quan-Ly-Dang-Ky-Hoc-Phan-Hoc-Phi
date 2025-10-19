@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : RoundedForm
     {
         public FrmMain()
         {
@@ -74,5 +74,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 loginForm.Show();
             }
         }
+
+
     }
 }

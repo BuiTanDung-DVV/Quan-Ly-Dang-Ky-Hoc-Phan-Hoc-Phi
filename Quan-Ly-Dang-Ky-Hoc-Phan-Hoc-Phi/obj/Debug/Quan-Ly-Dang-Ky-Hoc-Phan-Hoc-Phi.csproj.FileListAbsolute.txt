@@ -46,3 +46,6 @@ C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-.4DEB2DBB.Up2Date
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.pdb
+D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.Common.dll
+D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.dll
+D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.RoundedForm.resources

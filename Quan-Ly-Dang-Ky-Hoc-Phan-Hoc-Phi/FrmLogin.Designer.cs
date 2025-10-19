@@ -28,173 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
-            this.lblMK = new System.Windows.Forms.Label();
-            this.lblDN = new System.Windows.Forms.Label();
-            this.lblDanhMuc = new System.Windows.Forms.Label();
-            this.sataEllipseControl1 = new SATAUiFramework.Controls.SATAEllipseControl();
-            this.btnDN = new FrameworkTest.SATAButton();
-            this.sataPanel1 = new SATAUiFramework.SATAPanel();
-            this.txtMatKhau = new SATATextBox();
-            this.txtDangNhap = new SATATextBox();
             this.lblNEU = new System.Windows.Forms.Label();
             this.ptbExit = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.sataPanel1.SuspendLayout();
+            this.panelDN = new Sunny.UI.UIPanel();
+            this.btnDN = new Sunny.UI.UIButton();
+            this.txtMatKhau = new Sunny.UI.UITextBox();
+            this.txtDangNhap = new Sunny.UI.UITextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblDN = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelDN.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblMK
-            // 
-            this.lblMK.AutoSize = true;
-            this.lblMK.Font = new System.Drawing.Font("Times New Roman", 14.26415F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMK.Location = new System.Drawing.Point(26, 230);
-            this.lblMK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMK.Name = "lblMK";
-            this.lblMK.Size = new System.Drawing.Size(98, 23);
-            this.lblMK.TabIndex = 19;
-            this.lblMK.Text = "Mật khẩu:";
-            // 
-            // lblDN
-            // 
-            this.lblDN.AutoSize = true;
-            this.lblDN.Font = new System.Drawing.Font("Times New Roman", 14.26415F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDN.Location = new System.Drawing.Point(26, 117);
-            this.lblDN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDN.Name = "lblDN";
-            this.lblDN.Size = new System.Drawing.Size(139, 23);
-            this.lblDN.TabIndex = 20;
-            this.lblDN.Text = "Tên đăng nhập:";
-            // 
-            // lblDanhMuc
-            // 
-            this.lblDanhMuc.AutoSize = true;
-            this.lblDanhMuc.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDanhMuc.ForeColor = System.Drawing.Color.Red;
-            this.lblDanhMuc.Location = new System.Drawing.Point(187, 36);
-            this.lblDanhMuc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDanhMuc.Name = "lblDanhMuc";
-            this.lblDanhMuc.Size = new System.Drawing.Size(173, 36);
-            this.lblDanhMuc.TabIndex = 18;
-            this.lblDanhMuc.Text = "ĐĂNG NHẬP";
-            // 
-            // sataEllipseControl1
-            // 
-            this.sataEllipseControl1.CornerRadius = 35;
-            this.sataEllipseControl1.TargetControl = this;
-            // 
-            // btnDN
-            // 
-            this.btnDN.ButtonText = "Đăng nhập";
-            this.btnDN.CheckedBackground = System.Drawing.Color.DodgerBlue;
-            this.btnDN.CheckedForeColor = System.Drawing.Color.White;
-            this.btnDN.CheckedImageTint = System.Drawing.Color.White;
-            this.btnDN.CheckedOutline = System.Drawing.Color.DodgerBlue;
-            this.btnDN.CustomDialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnDN.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDN.HoverBackground = System.Drawing.Color.MediumBlue;
-            this.btnDN.HoverForeColor = System.Drawing.Color.White;
-            this.btnDN.HoverImage = null;
-            this.btnDN.HoverImageTint = System.Drawing.Color.White;
-            this.btnDN.HoverOutline = System.Drawing.Color.Empty;
-            this.btnDN.Image = null;
-            this.btnDN.ImageAutoCenter = true;
-            this.btnDN.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnDN.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnDN.ImageTint = System.Drawing.Color.White;
-            this.btnDN.IsToggleButton = false;
-            this.btnDN.IsToggled = false;
-            this.btnDN.Location = new System.Drawing.Point(32, 353);
-            this.btnDN.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.btnDN.Name = "btnDN";
-            this.btnDN.NormalBackground = System.Drawing.Color.DodgerBlue;
-            this.btnDN.NormalForeColor = System.Drawing.Color.White;
-            this.btnDN.NormalOutline = System.Drawing.Color.Empty;
-            this.btnDN.OutlineThickness = 2F;
-            this.btnDN.PressedBackground = System.Drawing.Color.RoyalBlue;
-            this.btnDN.PressedForeColor = System.Drawing.Color.White;
-            this.btnDN.PressedImageTint = System.Drawing.Color.White;
-            this.btnDN.PressedOutline = System.Drawing.Color.Empty;
-            this.btnDN.Rounding = new System.Windows.Forms.Padding(5);
-            this.btnDN.Size = new System.Drawing.Size(489, 49);
-            this.btnDN.TabIndex = 21;
-            this.btnDN.TextAutoCenter = true;
-            this.btnDN.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnDN.Click += new System.EventHandler(this.btnDN_Click);
-            // 
-            // sataPanel1
-            // 
-            this.sataPanel1.BackColor = System.Drawing.Color.White;
-            this.sataPanel1.BackColor2 = System.Drawing.Color.White;
-            this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius1.BottomLeft = 10;
-            borderRadius1.BottomRight = 10;
-            borderRadius1.TopLeft = 10;
-            borderRadius1.TopRight = 10;
-            this.sataPanel1.BorderRadius = borderRadius1;
-            this.sataPanel1.BorderThickness = 0;
-            this.sataPanel1.Controls.Add(this.txtMatKhau);
-            this.sataPanel1.Controls.Add(this.txtDangNhap);
-            this.sataPanel1.Controls.Add(this.lblDanhMuc);
-            this.sataPanel1.Controls.Add(this.btnDN);
-            this.sataPanel1.Controls.Add(this.lblDN);
-            this.sataPanel1.Controls.Add(this.lblMK);
-            this.sataPanel1.Location = new System.Drawing.Point(1032, 273);
-            this.sataPanel1.Name = "sataPanel1";
-            this.sataPanel1.Size = new System.Drawing.Size(541, 503);
-            this.sataPanel1.TabIndex = 22;
-            // 
-            // txtMatKhau
-            // 
-            this.txtMatKhau.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(79)))), ((int)(((byte)(165)))));
-            this.txtMatKhau.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(68)))), ((int)(((byte)(142)))));
-            this.txtMatKhau.BorderRadius = 5;
-            this.txtMatKhau.BorderSize = 3;
-            this.txtMatKhau.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatKhau.Icon = null;
-            this.txtMatKhau.IconSize = new System.Drawing.Size(20, 20);
-            this.txtMatKhau.Location = new System.Drawing.Point(32, 265);
-            this.txtMatKhau.Multiline = false;
-            this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.PasswordChar = true;
-            this.txtMatKhau.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtMatKhau.PlaceholderText = "Mật khẩu";
-            this.txtMatKhau.Size = new System.Drawing.Size(489, 47);
-            this.txtMatKhau.TabIndex = 22;
-            this.txtMatKhau.Texts = "";
-            this.txtMatKhau.UnderlinedStyle = false;
-            // 
-            // txtDangNhap
-            // 
-            this.txtDangNhap.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(79)))), ((int)(((byte)(165)))));
-            this.txtDangNhap.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(68)))), ((int)(((byte)(142)))));
-            this.txtDangNhap.BorderRadius = 5;
-            this.txtDangNhap.BorderSize = 3;
-            this.txtDangNhap.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDangNhap.Icon = null;
-            this.txtDangNhap.IconSize = new System.Drawing.Size(20, 20);
-            this.txtDangNhap.Location = new System.Drawing.Point(32, 152);
-            this.txtDangNhap.Multiline = false;
-            this.txtDangNhap.Name = "txtDangNhap";
-            this.txtDangNhap.PasswordChar = false;
-            this.txtDangNhap.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtDangNhap.PlaceholderText = "Tên đăng nhập";
-            this.txtDangNhap.Size = new System.Drawing.Size(489, 47);
-            this.txtDangNhap.TabIndex = 22;
-            this.txtDangNhap.Texts = "";
-            this.txtDangNhap.UnderlinedStyle = false;
             // 
             // lblNEU
             // 
             this.lblNEU.AutoSize = true;
-            this.lblNEU.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNEU.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNEU.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblNEU.Location = new System.Drawing.Point(1138, 177);
+            this.lblNEU.Location = new System.Drawing.Point(1124, 177);
             this.lblNEU.Name = "lblNEU";
-            this.lblNEU.Size = new System.Drawing.Size(372, 37);
+            this.lblNEU.Size = new System.Drawing.Size(602, 45);
             this.lblNEU.TabIndex = 24;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
             // 
@@ -230,45 +88,146 @@
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
+            // panelDN
+            // 
+            this.panelDN.Controls.Add(this.btnDN);
+            this.panelDN.Controls.Add(this.txtMatKhau);
+            this.panelDN.Controls.Add(this.txtDangNhap);
+            this.panelDN.Controls.Add(this.label1);
+            this.panelDN.Controls.Add(this.label2);
+            this.panelDN.Controls.Add(this.lblDN);
+            this.panelDN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.panelDN.Location = new System.Drawing.Point(1097, 285);
+            this.panelDN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelDN.MinimumSize = new System.Drawing.Size(1, 1);
+            this.panelDN.Name = "panelDN";
+            this.panelDN.Radius = 30;
+            this.panelDN.RectDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.panelDN.Size = new System.Drawing.Size(455, 447);
+            this.panelDN.TabIndex = 28;
+            this.panelDN.Text = null;
+            this.panelDN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnDN
+            // 
+            this.btnDN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.btnDN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDN.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDN.Location = new System.Drawing.Point(37, 347);
+            this.btnDN.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDN.Name = "btnDN";
+            this.btnDN.Radius = 30;
+            this.btnDN.Size = new System.Drawing.Size(394, 58);
+            this.btnDN.TabIndex = 5;
+            this.btnDN.Text = "Đăng nhập";
+            this.btnDN.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDN.Click += new System.EventHandler(this.btnDN_Click_1);
+            // 
+            // txtMatKhau
+            // 
+            this.txtMatKhau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.txtMatKhau.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMatKhau.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatKhau.Location = new System.Drawing.Point(37, 266);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMatKhau.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.Padding = new System.Windows.Forms.Padding(5);
+            this.txtMatKhau.PasswordChar = '*';
+            this.txtMatKhau.Radius = 30;
+            this.txtMatKhau.ShowText = false;
+            this.txtMatKhau.Size = new System.Drawing.Size(395, 55);
+            this.txtMatKhau.TabIndex = 4;
+            this.txtMatKhau.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtMatKhau.Watermark = "Mật khẩu";
+            // 
+            // txtDangNhap
+            // 
+            this.txtDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.txtDangNhap.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDangNhap.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDangNhap.Location = new System.Drawing.Point(37, 146);
+            this.txtDangNhap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDangNhap.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtDangNhap.Name = "txtDangNhap";
+            this.txtDangNhap.Padding = new System.Windows.Forms.Padding(5);
+            this.txtDangNhap.Radius = 30;
+            this.txtDangNhap.ShowText = false;
+            this.txtDangNhap.Size = new System.Drawing.Size(395, 55);
+            this.txtDangNhap.TabIndex = 3;
+            this.txtDangNhap.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtDangNhap.Watermark = "Tên đăng nhập";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(31, 229);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 33);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Mật khẩu ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(31, 109);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(178, 33);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Tên đăng nhập";
+            // 
+            // lblDN
+            // 
+            this.lblDN.AutoSize = true;
+            this.lblDN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.lblDN.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDN.ForeColor = System.Drawing.Color.Red;
+            this.lblDN.Location = new System.Drawing.Point(29, 24);
+            this.lblDN.Name = "lblDN";
+            this.lblDN.Size = new System.Drawing.Size(262, 45);
+            this.lblDN.TabIndex = 1;
+            this.lblDN.Text = "ĐĂNG NHẬP";
+            // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1631, 880);
+            this.Controls.Add(this.panelDN);
             this.Controls.Add(this.ptbExit);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblNEU);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.sataPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmLogin_Load);
-            this.sataPanel1.ResumeLayout(false);
-            this.sataPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelDN.ResumeLayout(false);
+            this.panelDN.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblMK;
-        private System.Windows.Forms.Label lblDN;
-        private System.Windows.Forms.Label lblDanhMuc;
-        private SATAUiFramework.Controls.SATAEllipseControl sataEllipseControl1;
-        private FrameworkTest.SATAButton btnDN;
-        private SATAUiFramework.SATAPanel sataPanel1;
-        private SATATextBox txtDangNhap;
-        private SATATextBox txtMatKhau;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblNEU;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox ptbExit;
+        private Sunny.UI.UIPanel panelDN;
+        private Sunny.UI.UIButton btnDN;
+        private Sunny.UI.UITextBox txtMatKhau;
+        private Sunny.UI.UITextBox txtDangNhap;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblDN;
     }
 }
