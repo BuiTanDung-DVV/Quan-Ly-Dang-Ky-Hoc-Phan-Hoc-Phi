@@ -21,7 +21,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            // Set focus to username textbox
             txtDangNhap.Focus();
         }
 
@@ -30,7 +29,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             Application.Exit();
         }
 
-        // Optional: Add Enter key press events for better user experience
         private void txtDangNhap_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -49,7 +47,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnDN_Click_1(object sender, EventArgs e)
         {
-            // Validate input
             if (string.IsNullOrWhiteSpace(txtDangNhap.Text))
             {
                 MessageBox.Show("Vui lòng nhập tên đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -66,7 +63,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
             try
             {
-                // Query to check user credentials (NO HASHING)
                 string sql = "SELECT UserID, Username, PasswordHash, Role, LinkedStudentID, LinkedLecturerID " +
                            "FROM Users " +
                            "WHERE Username = '" + txtDangNhap.Text + "' AND PasswordHash = '" + txtMatKhau.Text + "'";
@@ -75,10 +71,8 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
                 if (dt.Rows.Count > 0)
                 {
-                    // Login successful
                     DataRow row = dt.Rows[0];
 
-                    // Start user session
                     UserSession.StartSession(
                         Convert.ToInt32(row["UserID"]),
                         row["Username"].ToString(),
@@ -90,7 +84,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                     MessageBox.Show($"Đăng nhập thành công! Chào mừng {UserSession.Username}", "Thành công",
                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Hide login form and show main form
                     this.Hide();
                     FrmMain mainForm = new FrmMain();
                     mainForm.Show();

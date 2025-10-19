@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
@@ -33,17 +33,20 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         public static bool IsAdmin()
         {
-            return Role?.ToLower() == "admin";
+            string role = Role?.ToLower().Trim();
+            return role == "admin" || role == "quản trị" || role == "quantri";
         }
 
         public static bool IsStudent()
         {
-            return Role?.ToLower() == "student";
+            string role = Role?.ToLower().Trim();
+            return role == "student" || role == "sinh viên" || role == "sinhvien";
         }
 
         public static bool IsLecturer()
         {
-            return Role?.ToLower() == "lecturer";
+            string role = Role?.ToLower().Trim();
+            return role == "lecturer" || role == "giảng viên" || role == "giangvien";
         }
     }
 }

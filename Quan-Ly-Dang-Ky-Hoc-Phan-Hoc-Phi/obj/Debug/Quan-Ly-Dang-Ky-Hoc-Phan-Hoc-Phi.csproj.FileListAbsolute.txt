@@ -24,7 +24,6 @@ D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe.config
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.pdb
-C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SATAUiFramework.dll
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj.AssemblyReference.cache
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe.config
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmDangKi.resources
@@ -49,3 +48,7 @@ D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.dll
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.RoundedForm.resources
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmLichSuDK.resources
+C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.Common.dll
+C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.dll
+C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmLichSuDK.resources
+C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.RoundedForm.resources

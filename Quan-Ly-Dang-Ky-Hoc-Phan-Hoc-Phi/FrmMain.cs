@@ -24,7 +24,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            // Check if user is logged in
             if (!UserSession.IsLoggedIn)
             {
                 MessageBox.Show("Bạn cần đăng nhập để sử dụng hệ thống!", "Thông báo", 
@@ -34,56 +33,137 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 loginForm.ShowDialog();
                 return;
             }
-
-            // Setup UI based on user role
             SetupUIByRole();
             ShowWelcomeMessage();
         }
 
         private void SetupUIByRole()
         {
-            // Example: Hide/Show menu items based on role
+            HideAllButtons();
+
             if (UserSession.IsStudent())
             {
-                // Show only student-related functions
-                // Hide admin menus, etc.
+                // Sinh viên: Chỉ hiển thị các chức năng liên quan đến sinh viên
+                btnDK.Visible = true;          // Đăng ký tín chỉ
+                btnHoaDon.Visible = true;      // Xem hóa đơn
+                btnThanhToan.Visible = true;   // Thanh toán
+                btnLichSuDK.Visible = true;    // Lịch sử đăng ký
+                
+                lblChucNang.Text = "Chức năng sinh viên";
+                MessageBox.Show("Đã hiển thị chức năng sinh viên", "Debug");
             }
             else if (UserSession.IsLecturer())
             {
-                // Show lecturer-related functions
+                // Giảng viên: Chỉ hiển thị các chức năng liên quan đến giảng viên
+                btnQLLHP.Visible = true;       // Quản lý lớp học phần (lớp mình dạy)
+                btnDK.Visible = true;          // Xem đăng ký của sinh viên
+                
+                lblChucNang.Text = "Chức năng giảng viên";
+                MessageBox.Show("Đã hiển thị chức năng giảng viên", "Debug");
             }
             else if (UserSession.IsAdmin())
             {
-                // Show all administrative functions
+                // Admin: Hiển thị tất cả chức năng
+                ShowAllButtons();
+                
+                lblChucNang.Text = "Chức năng quản trị";
+                MessageBox.Show("Đã hiển thị tất cả chức năng admin", "Debug");
             }
+            else
+            {
+                MessageBox.Show($"Role không được nhận diện: '{UserSession.Role}'", "Debug Error");
+            }
+        }
+
+        private void HideAllButtons()
+        {
+            btnDK.Visible = false;
+            btnQLSV.Visible = false;
+            btnQLGV.Visible = false;
+            btnQLLHP.Visible = false;
+            btnQLHK.Visible = false;
+            btnQLNH.Visible = false;
+            btnQLMH.Visible = false;
+            btnQLKV.Visible = false;
+            btnHoaDon.Visible = false;
+            btnThanhToan.Visible = false;
+            btnLichSuDK.Visible = false;
+        }
+
+        private void ShowAllButtons()
+        {
+            btnDK.Visible = true;
+            btnQLSV.Visible = true;
+            btnQLGV.Visible = true;
+            btnQLLHP.Visible = true;
+            btnQLHK.Visible = true;
+            btnQLNH.Visible = true;
+            btnQLMH.Visible = true;
+            btnQLKV.Visible = true;
+            btnHoaDon.Visible = true;
+            btnThanhToan.Visible = true;
+            btnLichSuDK.Visible = true;
         }
 
         private void ShowWelcomeMessage()
         {
-            string welcomeMessage = $"Xin chào, {UserSession.Username}!";
-            
-            if (UserSession.IsStudent())
-                welcomeMessage += $" (Sinh viên - ID: {UserSession.LinkedStudentID})";
-            else if (UserSession.IsLecturer())
-                welcomeMessage += $" (Giảng viên - ID: {UserSession.LinkedLecturerID})";
-            else if (UserSession.IsAdmin())
-                welcomeMessage += " (Quản trị viên)";
-
-            // Display in a label or status bar
-            // lblWelcome.Text = welcomeMessage;
+            try
+            {
+                if (UserSession.IsStudent())
+                {
+                    lblName.Text = GetStudentName(UserSession.LinkedStudentID);
+                    lblMa.Text = UserSession.LinkedStudentID?.ToString() ?? "N/A";
+                }
+                else if (UserSession.IsLecturer())
+                {
+                    lblName.Text = GetLecturerName(UserSession.LinkedLecturerID);
+                    lblMa.Text = UserSession.LinkedLecturerID?.ToString() ?? "N/A";
+                }
+                else if (UserSession.IsAdmin())
+                {
+                    lblName.Text = UserSession.Username;
+                    lblMa.Text = "ADMIN";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi hiển thị thông tin: {ex.Message}", "Error");
+                lblName.Text = UserSession.Username;
+                lblMa.Text = UserSession.Role;
+            }
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private string GetStudentName(int? studentId)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", 
-                                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (studentId == null) return UserSession.Username;
             
-            if (result == DialogResult.Yes)
+            try
             {
-                UserSession.EndSession();
-                this.Hide();
-                FrmLogin loginForm = new FrmLogin();
-                loginForm.Show();
+                KETNOI_CSDL kn = new KETNOI_CSDL();
+                string sql = $"SELECT FullName FROM Students WHERE StudentID = {studentId}";
+                var dt = kn.Lay_DulieuBang(sql);
+                return dt.Rows.Count > 0 ? dt.Rows[0]["FullName"].ToString() : UserSession.Username;
+            }
+            catch
+            {
+                return UserSession.Username;
+            }
+        }
+
+        private string GetLecturerName(int? lecturerId)
+        {
+            if (lecturerId == null) return UserSession.Username;
+            
+            try
+            {
+                KETNOI_CSDL kn = new KETNOI_CSDL();
+                string sql = $"SELECT FullName FROM Lecturers WHERE LecturerID = {lecturerId}";
+                var dt = kn.Lay_DulieuBang(sql);
+                return dt.Rows.Count > 0 ? dt.Rows[0]["FullName"].ToString() : UserSession.Username;
+            }
+            catch
+            {
+                return UserSession.Username;
             }
         }
 
@@ -260,6 +340,21 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             else
             {
                 LichSuDK.Activate();
+            }
+        }
+
+        private void ptbExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                UserSession.EndSession();
+                this.Hide();
+                FrmLogin loginForm = new FrmLogin();
+                loginForm.Show();
+                this.Close();
             }
         }
     }
