@@ -1,7 +1,6 @@
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe.config
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.pdb
-D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SATAUiFramework.dll
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj.AssemblyReference.cache
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmDangKi.resources
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmGiangVien.resources
@@ -49,3 +48,4 @@ C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.Common.dll
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.dll
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.RoundedForm.resources
+D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmLichSuDK.resources
