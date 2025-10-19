@@ -194,6 +194,85 @@ VALUES
 ('gv_hoa', '123456', N'Giảng viên', NULL, 1),
 ('admin', 'admin123', N'Quản trị', NULL, NULL);
 
+-- View hiển thị thông tin hóa đơn chi tiết
+CREATE VIEW vw_InvoiceDetails AS
+SELECT 
+    i.InvoiceID,
+    i.StudentID,
+    s.StudentCode,
+    s.FullName AS StudentName,
+    s.Email AS StudentEmail,
+    at.Code AS TermCode,
+    at.Name AS TermName,
+    i.TotalAmount,
+    i.CreatedDate,
+    i.IsPaid,
+    ISNULL(SUM(p.AmountPaid), 0) AS PaidAmount,
+    i.TotalAmount - ISNULL(SUM(p.AmountPaid), 0) AS RemainingAmount,
+    CASE 
+        WHEN i.IsPaid = 1 THEN N'Đã thanh toán'
+        WHEN ISNULL(SUM(p.AmountPaid), 0) > 0 THEN N'Thanh toán một phần'
+        ELSE N'Chưa thanh toán'
+    END AS PaymentStatus
+FROM Invoices i
+JOIN Students s ON i.StudentID = s.StudentID
+JOIN AcademicTerms at ON i.TermID = at.TermID
+LEFT JOIN Payments p ON i.InvoiceID = p.InvoiceID
+GROUP BY i.InvoiceID, i.StudentID, s.StudentCode, s.FullName, s.Email,
+         at.Code, at.Name, i.TotalAmount, i.CreatedDate, i.IsPaid;
+
+-- View hiển thị chi tiết từng môn trong hóa đơn
+CREATE VIEW vw_InvoiceDetailBreakdown AS
+SELECT 
+    i.InvoiceID,
+    s.StudentCode,
+    s.FullName AS StudentName,
+    c.Code AS CourseCode,
+    c.Name AS CourseName,
+    c.Credits,
+    c.TuitionPerCredit,
+    id.Amount,
+    cs.Schedule,
+    cs.Room,
+    l.FullName AS LecturerName,
+    at.Name AS TermName
+FROM Invoices i
+JOIN Students s ON i.StudentID = s.StudentID
+JOIN AcademicTerms at ON i.TermID = at.TermID  
+JOIN InvoiceDetails id ON i.InvoiceID = id.InvoiceID
+JOIN ClassSections cs ON id.SectionID = cs.SectionID
+JOIN Courses c ON cs.CourseID = c.CourseID
+JOIN Lecturers l ON cs.LecturerID = l.LecturerID;
+
+-- View thống kê thanh toán theo học kỳ
+CREATE VIEW vw_PaymentStatsByTerm AS
+SELECT 
+    at.TermID,
+    at.Name AS TermName,
+    COUNT(DISTINCT i.InvoiceID) AS TotalInvoices,
+    SUM(i.TotalAmount) AS TotalAmount,
+    SUM(CASE WHEN i.IsPaid = 1 THEN i.TotalAmount ELSE 0 END) AS PaidAmount,
+    SUM(CASE WHEN i.IsPaid = 0 THEN i.TotalAmount ELSE 0 END) AS UnpaidAmount,
+    COUNT(CASE WHEN i.IsPaid = 1 THEN 1 END) AS PaidInvoices,
+    COUNT(CASE WHEN i.IsPaid = 0 THEN 1 END) AS UnpaidInvoices
+FROM AcademicTerms at
+LEFT JOIN Invoices i ON at.TermID = i.TermID
+GROUP BY at.TermID, at.Name;
+
+-- View thống kê theo sinh viên
+CREATE VIEW vw_StudentPaymentSummary AS
+SELECT 
+    s.StudentID,
+    s.StudentCode,
+    s.FullName,
+    COUNT(i.InvoiceID) AS TotalInvoices,
+    SUM(i.TotalAmount) AS TotalAmount,
+    SUM(CASE WHEN i.IsPaid = 1 THEN i.TotalAmount ELSE 0 END) AS PaidAmount,
+    SUM(CASE WHEN i.IsPaid = 0 THEN i.TotalAmount ELSE 0 END) AS UnpaidAmount
+FROM Students s
+LEFT JOIN Invoices i ON s.StudentID = i.StudentID
+GROUP BY s.StudentID, s.StudentCode, s.FullName;
+
 SELECT * FROM Departments;
 SELECT * FROM Lecturers;
 SELECT * FROM Students;        
@@ -203,3 +282,59 @@ SELECT * FROM Enrollments;
 SELECT * FROM Invoices;
 SELECT * FROM Payments;
 SELECT * FROM Users;
+
+SELECT * FROM vw_InvoiceDetails;
+SELECT * FROM vw_InvoiceDetailBreakdown;
+SELECT * FROM vw_PaymentStatsByTerm;
+SELECT * FROM vw_StudentPaymentSummary;
+
+-- Function tính tổng học phí của sinh viên trong một học kỳ
+CREATE FUNCTION fn_CalculateStudentTuition(@StudentID INT, @TermID INT)
+RETURNS DECIMAL(12,2)
+AS
+BEGIN
+    DECLARE @TotalAmount DECIMAL(12,2) = 0;
+    
+    SELECT @TotalAmount = SUM(c.Credits * c.TuitionPerCredit)
+    FROM Enrollments e
+    JOIN ClassSections cs ON e.SectionID = cs.SectionID
+    JOIN Courses c ON cs.CourseID = c.CourseID
+    WHERE e.StudentID = @StudentID 
+        AND cs.TermID = @TermID
+        AND e.Status IN (N'Đang học', N'Đã duyệt');
+    
+    RETURN ISNULL(@TotalAmount, 0);
+END;
+
+-- Function tính số tiền đã thanh toán của hóa đơn
+CREATE FUNCTION fn_GetPaidAmount(@InvoiceID INT)
+RETURNS DECIMAL(12,2)
+AS
+BEGIN
+    DECLARE @PaidAmount DECIMAL(12,2) = 0;
+    
+    SELECT @PaidAmount = SUM(AmountPaid)
+    FROM Payments
+    WHERE InvoiceID = @InvoiceID;
+    
+    RETURN ISNULL(@PaidAmount, 0);
+END;
+
+-- Function tạo số hóa đơn tự động
+CREATE FUNCTION fn_GenerateInvoiceNumber(@StudentID INT)
+RETURNS NVARCHAR(50)
+AS
+BEGIN
+    DECLARE @InvoiceNumber NVARCHAR(50);
+    DECLARE @Counter INT;
+    
+    -- Lấy số thứ tự trong tháng
+    SELECT @Counter = COUNT(*) + 1
+    FROM Invoices
+    WHERE MONTH(CreatedDate) = MONTH(GETDATE())
+        AND YEAR(CreatedDate) = YEAR(GETDATE());
+    
+    SET @InvoiceNumber = 'HD' + FORMAT(GETDATE(), 'yyyyMM') + FORMAT(@Counter, '0000');
+    
+    RETURN @InvoiceNumber;
+END;
