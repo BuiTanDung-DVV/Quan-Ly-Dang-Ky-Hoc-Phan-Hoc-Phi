@@ -3,128 +3,127 @@ USE QLDKHP;
 
 -- 1. BẢNG KHOA
 CREATE TABLE Departments (
-    DeptID      INT IDENTITY(1,1) PRIMARY KEY,
-    Code        VARCHAR(20) UNIQUE NOT NULL,
-    Name        NVARCHAR(100) NOT NULL,
-    Office      NVARCHAR(100)
+    DeptID INT IDENTITY(1,1) PRIMARY KEY,
+    Code VARCHAR(20) UNIQUE NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    Office NVARCHAR(100)
 );
 
 -- 2. BẢNG GIẢNG VIÊN
 CREATE TABLE Lecturers (
-    LecturerID      INT IDENTITY(1,1) PRIMARY KEY,
-    LecturerCode    VARCHAR(20) UNIQUE NOT NULL,
-    FullName        NVARCHAR(100) NOT NULL,
-    Email           VARCHAR(100),
-    DeptID          INT FOREIGN KEY REFERENCES Departments(DeptID)
+    LecturerID INT IDENTITY(1,1) PRIMARY KEY,
+    LecturerCode VARCHAR(20) UNIQUE NOT NULL,
+    FullName NVARCHAR(100) NOT NULL,
+    Email VARCHAR(100),
+    DeptID INT FOREIGN KEY REFERENCES Departments(DeptID)
 );
 
 -- 3. BẢNG NGÀNH HỌC
 CREATE TABLE Majors (
-    MajorID     INT IDENTITY(1,1) PRIMARY KEY,
-    Code        VARCHAR(20) UNIQUE NOT NULL,
-    Name        NVARCHAR(100) NOT NULL,
-    DeptID      INT FOREIGN KEY REFERENCES Departments(DeptID)
+    MajorID INT IDENTITY(1,1) PRIMARY KEY,
+    Code VARCHAR(20) UNIQUE NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    DeptID INT FOREIGN KEY REFERENCES Departments(DeptID)
 );
 
 -- 4. BẢNG SINH VIÊN
 CREATE TABLE Students (
-    StudentID       INT IDENTITY(1,1) PRIMARY KEY,
-    StudentCode     VARCHAR(20) UNIQUE NOT NULL,
-    FullName        NVARCHAR(100) NOT NULL,
-    Gender          NVARCHAR(10),
-    DateOfBirth     DATE,
-    Email           VARCHAR(100),
-    Phone           VARCHAR(15),
-    Address         NVARCHAR(255),
-    DeptID          INT FOREIGN KEY REFERENCES Departments(DeptID),
-    AdmissionYear   INT,
-    Status          NVARCHAR(50) DEFAULT N'Đang học'
+    StudentID INT IDENTITY(1,1) PRIMARY KEY,
+    StudentCode VARCHAR(20) UNIQUE NOT NULL,
+    FullName NVARCHAR(100) NOT NULL,
+    Gender NVARCHAR(10),
+    DateOfBirth DATE,
+    Email VARCHAR(100),
+    Phone VARCHAR(15),
+    Address NVARCHAR(255),
+    DeptID INT FOREIGN KEY REFERENCES Departments(DeptID),
+    AdmissionYear INT,
+    Status NVARCHAR(50) DEFAULT N'Đang học'
 );
 
 -- 5. BẢNG KỲ HỌC
 CREATE TABLE AcademicTerms (
-    TermID          INT IDENTITY(1,1) PRIMARY KEY,
-    Code            VARCHAR(20) UNIQUE NOT NULL,
-    Name            NVARCHAR(100) NOT NULL,
-    StartDate       DATE NOT NULL,
-    EndDate         DATE NOT NULL,
-    IsCurrent       BIT DEFAULT 0
+    TermID INT IDENTITY(1,1) PRIMARY KEY,
+    Code VARCHAR(20) UNIQUE NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
+    IsCurrent BIT DEFAULT 0
 );
 
 -- 6. BẢNG MÔN HỌC
 CREATE TABLE Courses (
-    CourseID        INT IDENTITY(1,1) PRIMARY KEY,
-    Code            VARCHAR(20) UNIQUE NOT NULL,
-    Name            NVARCHAR(100) NOT NULL,
-    Credits         INT NOT NULL,
+    CourseID INT IDENTITY(1,1) PRIMARY KEY,
+    Code VARCHAR(20) UNIQUE NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    Credits INT NOT NULL,
     TuitionPerCredit DECIMAL(10,2) NOT NULL,
-    DeptID          INT FOREIGN KEY REFERENCES Departments(DeptID)
+    DeptID INT FOREIGN KEY REFERENCES Departments(DeptID)
 );
 
 -- 7. BẢNG LỚP HỌC PHẦN
 CREATE TABLE ClassSections (
-    SectionID       INT IDENTITY(1,1) PRIMARY KEY,
-    CourseID        INT FOREIGN KEY REFERENCES Courses(CourseID),
-    TermID          INT FOREIGN KEY REFERENCES AcademicTerms(TermID),
-    LecturerID      INT FOREIGN KEY REFERENCES Lecturers(LecturerID),
-    Schedule        NVARCHAR(100),
-    Room            NVARCHAR(50),
-    MaxStudents     INT DEFAULT 60
+    SectionID INT IDENTITY(1,1) PRIMARY KEY,
+    CourseID INT FOREIGN KEY REFERENCES Courses(CourseID),
+    TermID INT FOREIGN KEY REFERENCES AcademicTerms(TermID),
+    LecturerID INT FOREIGN KEY REFERENCES Lecturers(LecturerID),
+    Schedule NVARCHAR(100),
+    Room NVARCHAR(50),
+    MaxStudents INT DEFAULT 60
 );
 
 -- 8. BẢNG ĐĂNG KÝ HỌC
 CREATE TABLE Enrollments (
-    EnrollmentID    INT IDENTITY(1,1) PRIMARY KEY,
-    StudentID       INT FOREIGN KEY REFERENCES Students(StudentID),
-    SectionID       INT FOREIGN KEY REFERENCES ClassSections(SectionID),
-    RegisterDate    DATE DEFAULT GETDATE(),
-    Status          NVARCHAR(50) DEFAULT N'Đang học'
+    EnrollmentID INT IDENTITY(1,1) PRIMARY KEY,
+    StudentID INT FOREIGN KEY REFERENCES Students(StudentID),
+    SectionID INT FOREIGN KEY REFERENCES ClassSections(SectionID),
+    RegisterDate DATE DEFAULT GETDATE(),
+    Status NVARCHAR(50) DEFAULT N'Đang học'
 );
 
 -- 9. BẢNG HÓA ĐƠN HỌC PHÍ
 CREATE TABLE Invoices (
-    InvoiceID       INT IDENTITY(1,1) PRIMARY KEY,
-    StudentID       INT FOREIGN KEY REFERENCES Students(StudentID),
-    TermID          INT FOREIGN KEY REFERENCES AcademicTerms(TermID),
-    TotalAmount     DECIMAL(12,2) NOT NULL,
-    CreatedDate     DATETIME DEFAULT GETDATE(),
-    IsPaid          BIT DEFAULT 0
+    InvoiceID INT IDENTITY(1,1) PRIMARY KEY,
+    StudentID INT FOREIGN KEY REFERENCES Students(StudentID),
+    TermID INT FOREIGN KEY REFERENCES AcademicTerms(TermID),
+    TotalAmount DECIMAL(12,2) NOT NULL,
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    IsPaid BIT DEFAULT 0
 );
 
 -- 10. BẢNG CHI TIẾT HÓA ĐƠN
 CREATE TABLE InvoiceDetails (
     InvoiceDetailID INT IDENTITY(1,1) PRIMARY KEY,
-    InvoiceID       INT FOREIGN KEY REFERENCES Invoices(InvoiceID),
-    SectionID       INT FOREIGN KEY REFERENCES ClassSections(SectionID),
-    Amount          DECIMAL(12,2) NOT NULL
+    InvoiceID INT FOREIGN KEY REFERENCES Invoices(InvoiceID),
+    SectionID INT FOREIGN KEY REFERENCES ClassSections(SectionID),
+    Amount DECIMAL(12,2) NOT NULL
 );
 
 -- 11. BẢNG THANH TOÁN
 CREATE TABLE Payments (
-    PaymentID       INT IDENTITY(1,1) PRIMARY KEY,
-    InvoiceID       INT FOREIGN KEY REFERENCES Invoices(InvoiceID),
-    PaymentDate     DATETIME DEFAULT GETDATE(),
-    AmountPaid      DECIMAL(12,2) NOT NULL,
-    Method          NVARCHAR(50),
-    Note            NVARCHAR(255)
+    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
+    InvoiceID INT FOREIGN KEY REFERENCES Invoices(InvoiceID),
+    PaymentDate DATETIME DEFAULT GETDATE(),
+    AmountPaid DECIMAL(12,2) NOT NULL,
+    Method NVARCHAR(50),
+    Note NVARCHAR(255)
 );
 
 -- 12. BẢNG NGƯỜI DÙNG HỆ THỐNG
 CREATE TABLE Users (
-    UserID          INT IDENTITY(1,1) PRIMARY KEY,
-    Username        VARCHAR(50) UNIQUE NOT NULL,
-    PasswordHash    VARCHAR(255) NOT NULL,
-    Role            NVARCHAR(50),
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
+    Username VARCHAR(50) UNIQUE NOT NULL,
+    PasswordHash VARCHAR(255) NOT NULL,
+    Role NVARCHAR(50),
     LinkedStudentID INT NULL FOREIGN KEY REFERENCES Students(StudentID),
     LinkedLecturerID INT NULL FOREIGN KEY REFERENCES Lecturers(LecturerID)
 );
-
 
 INSERT INTO Departments (Code, Name, Office)
 VALUES 
 ('CNTT', N'Công nghệ thông tin', N'Tòa A1-101'),
 ('QTKD', N'Quản trị kinh doanh', N'Tòa B2-202'),
-('NNA',  N'Ngôn ngữ Anh', N'Tòa C3-303');
+('NNA', N'Ngôn ngữ Anh', N'Tòa C3-303');
 
 INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID)
 VALUES
@@ -194,147 +193,237 @@ VALUES
 ('gv_hoa', '123456', N'Giảng viên', NULL, 1),
 ('admin', 'admin123', N'Quản trị', NULL, NULL);
 
--- View hiển thị thông tin hóa đơn chi tiết
-CREATE VIEW vw_InvoiceDetails AS
-SELECT 
-    i.InvoiceID,
-    i.StudentID,
-    s.StudentCode,
-    s.FullName AS StudentName,
-    s.Email AS StudentEmail,
-    at.Code AS TermCode,
-    at.Name AS TermName,
-    i.TotalAmount,
-    i.CreatedDate,
-    i.IsPaid,
-    ISNULL(SUM(p.AmountPaid), 0) AS PaidAmount,
-    i.TotalAmount - ISNULL(SUM(p.AmountPaid), 0) AS RemainingAmount,
-    CASE 
-        WHEN i.IsPaid = 1 THEN N'Đã thanh toán'
-        WHEN ISNULL(SUM(p.AmountPaid), 0) > 0 THEN N'Thanh toán một phần'
-        ELSE N'Chưa thanh toán'
-    END AS PaymentStatus
-FROM Invoices i
-JOIN Students s ON i.StudentID = s.StudentID
-JOIN AcademicTerms at ON i.TermID = at.TermID
-LEFT JOIN Payments p ON i.InvoiceID = p.InvoiceID
-GROUP BY i.InvoiceID, i.StudentID, s.StudentCode, s.FullName, s.Email,
-         at.Code, at.Name, i.TotalAmount, i.CreatedDate, i.IsPaid;
 
--- View hiển thị chi tiết từng môn trong hóa đơn
-CREATE VIEW vw_InvoiceDetailBreakdown AS
-SELECT 
-    i.InvoiceID,
-    s.StudentCode,
-    s.FullName AS StudentName,
-    c.Code AS CourseCode,
-    c.Name AS CourseName,
-    c.Credits,
-    c.TuitionPerCredit,
-    id.Amount,
-    cs.Schedule,
-    cs.Room,
-    l.FullName AS LecturerName,
-    at.Name AS TermName
-FROM Invoices i
-JOIN Students s ON i.StudentID = s.StudentID
-JOIN AcademicTerms at ON i.TermID = at.TermID  
-JOIN InvoiceDetails id ON i.InvoiceID = id.InvoiceID
-JOIN ClassSections cs ON id.SectionID = cs.SectionID
-JOIN Courses c ON cs.CourseID = c.CourseID
-JOIN Lecturers l ON cs.LecturerID = l.LecturerID;
+-- STORED PROCEDURES TÌM KIẾM SINH VIÊN
+CREATE OR ALTER PROC TKTTSinhVien @StudentCode VARCHAR(20)
+AS
+BEGIN
+    SELECT StudentID, StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status
+    FROM Students WHERE StudentCode = @StudentCode
+END;
 
--- View thống kê thanh toán theo học kỳ
-CREATE VIEW vw_PaymentStatsByTerm AS
-SELECT 
-    at.TermID,
-    at.Name AS TermName,
-    COUNT(DISTINCT i.InvoiceID) AS TotalInvoices,
-    SUM(i.TotalAmount) AS TotalAmount,
-    SUM(CASE WHEN i.IsPaid = 1 THEN i.TotalAmount ELSE 0 END) AS PaidAmount,
-    SUM(CASE WHEN i.IsPaid = 0 THEN i.TotalAmount ELSE 0 END) AS UnpaidAmount,
-    COUNT(CASE WHEN i.IsPaid = 1 THEN 1 END) AS PaidInvoices,
-    COUNT(CASE WHEN i.IsPaid = 0 THEN 1 END) AS UnpaidInvoices
-FROM AcademicTerms at
-LEFT JOIN Invoices i ON at.TermID = i.TermID
-GROUP BY at.TermID, at.Name;
+EXECUTE TKTTSinhVien 'SV001'
 
--- View thống kê theo sinh viên
-CREATE VIEW vw_StudentPaymentSummary AS
-SELECT 
-    s.StudentID,
-    s.StudentCode,
-    s.FullName,
-    COUNT(i.InvoiceID) AS TotalInvoices,
-    SUM(i.TotalAmount) AS TotalAmount,
-    SUM(CASE WHEN i.IsPaid = 1 THEN i.TotalAmount ELSE 0 END) AS PaidAmount,
-    SUM(CASE WHEN i.IsPaid = 0 THEN i.TotalAmount ELSE 0 END) AS UnpaidAmount
-FROM Students s
-LEFT JOIN Invoices i ON s.StudentID = i.StudentID
-GROUP BY s.StudentID, s.StudentCode, s.FullName;
+CREATE OR ALTER PROC TKTTSinhVien1 @FullName NVARCHAR(100)
+AS
+BEGIN
+    SELECT StudentID, StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status
+    FROM Students WHERE FullName = @FullName
+END;
 
+EXECUTE TKTTSinhVien1 N'Nguyễn Thị Mai'
+
+CREATE OR ALTER PROC TKTTSinhVien2 @DeptID INT
+AS
+BEGIN
+    SELECT StudentID, StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status
+    FROM Students WHERE DeptID = @DeptID
+END;
+
+EXECUTE TKTTSinhVien2 1
+
+CREATE OR ALTER PROC TKTTSinhVien3 @AdmissionYear INT
+AS
+BEGIN
+    SELECT StudentID, StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status
+    FROM Students WHERE AdmissionYear = @AdmissionYear
+END;
+
+EXECUTE TKTTSinhVien3 2021
+
+
+-- STORED PROCEDURES TÌM KIẾM MÔN HỌC
+
+CREATE OR ALTER PROC TKTTMonHoc @CourseCode VARCHAR(20)
+AS
+BEGIN
+    SELECT CourseID, Code, Name, Credits, TuitionPerCredit, DeptID
+    FROM Courses WHERE Code = @CourseCode
+END;
+
+EXECUTE TKTTMonHoc 'CT101'
+
+CREATE OR ALTER PROC TKTTMonHoc1 @CourseName NVARCHAR(100)
+AS
+BEGIN
+    SELECT CourseID, Code, Name, Credits, TuitionPerCredit, DeptID
+    FROM Courses WHERE Name = @CourseName
+END;
+
+EXECUTE TKTTMonHoc1 N'Lập trình cơ bản'
+
+CREATE OR ALTER PROC TKTTMonHoc2 @DeptID INT
+AS
+BEGIN
+    SELECT CourseID, Code, Name, Credits, TuitionPerCredit, DeptID
+    FROM Courses WHERE DeptID = @DeptID
+END;
+
+EXECUTE TKTTMonHoc2 1
+
+
+-- STORED PROCEDURES TÌM KIẾM HÓA ĐƠN
+CREATE OR ALTER PROC TKTTHoaDon @InvoiceID INT
+AS
+BEGIN
+    SELECT InvoiceID, StudentID, TermID, TotalAmount, CreatedDate, IsPaid
+    FROM Invoices WHERE InvoiceID = @InvoiceID
+END;
+
+EXECUTE TKTTHoaDon 1
+
+CREATE OR ALTER PROC TKTTHoaDon1 @StudentID INT
+AS
+BEGIN
+    SELECT InvoiceID, StudentID, TermID, TotalAmount, CreatedDate, IsPaid
+    FROM Invoices WHERE StudentID = @StudentID
+END;
+
+EXECUTE TKTTHoaDon1 1
+
+CREATE OR ALTER PROC TKTTHoaDon2 @TermID INT
+AS
+BEGIN
+    SELECT InvoiceID, StudentID, TermID, TotalAmount, CreatedDate, IsPaid
+    FROM Invoices WHERE TermID = @TermID
+END;
+
+EXECUTE TKTTHoaDon2 2
+
+CREATE OR ALTER PROC TKTTHoaDon3 @IsPaid BIT
+AS
+BEGIN
+    SELECT InvoiceID, StudentID, TermID, TotalAmount, CreatedDate, IsPaid
+    FROM Invoices WHERE IsPaid = @IsPaid
+END;
+
+EXECUTE TKTTHoaDon3 0
+
+
+-- STORED PROCEDURES THÊM, SỬA, XÓA SINH VIÊN
+CREATE PROCEDURE ThemSinhVien
+    @StudentCode VARCHAR(20),
+    @FullName NVARCHAR(100),
+    @Gender NVARCHAR(10),
+    @DateOfBirth DATE,
+    @Email VARCHAR(100),
+    @Phone VARCHAR(15),
+    @Address NVARCHAR(255),
+    @DeptID INT,
+    @AdmissionYear INT,
+    @Status NVARCHAR(50) = N'Đang học'
+AS
+BEGIN
+    INSERT INTO Students (StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status)
+    VALUES (@StudentCode, @FullName, @Gender, @DateOfBirth, @Email, @Phone, @Address, @DeptID, @AdmissionYear, @Status)
+END
+
+CREATE PROCEDURE SuaSinhVien
+    @StudentID INT,
+    @StudentCode VARCHAR(20),
+    @FullName NVARCHAR(100),
+    @Gender NVARCHAR(10),
+    @DateOfBirth DATE,
+    @Email VARCHAR(100),
+    @Phone VARCHAR(15),
+    @Address NVARCHAR(255),
+    @DeptID INT,
+    @AdmissionYear INT,
+    @Status NVARCHAR(50)
+AS
+BEGIN
+    UPDATE Students 
+    SET StudentCode = @StudentCode, FullName = @FullName, Gender = @Gender,
+        DateOfBirth = @DateOfBirth, Email = @Email, Phone = @Phone,
+        Address = @Address, DeptID = @DeptID, AdmissionYear = @AdmissionYear, Status = @Status
+    WHERE StudentID = @StudentID
+END
+
+CREATE PROCEDURE XoaSinhVien
+    @StudentID INT
+AS
+BEGIN
+    DELETE FROM Students WHERE StudentID = @StudentID
+END
+
+
+-- STORED PROCEDURES THÊM, SỬA, XÓA MÔN HỌC
+CREATE PROCEDURE ThemMonHoc
+    @Code VARCHAR(20),
+    @Name NVARCHAR(100),
+    @Credits INT,
+    @TuitionPerCredit DECIMAL(10,2),
+    @DeptID INT
+AS
+BEGIN
+    INSERT INTO Courses (Code, Name, Credits, TuitionPerCredit, DeptID)
+    VALUES (@Code, @Name, @Credits, @TuitionPerCredit, @DeptID)
+END
+
+CREATE PROCEDURE SuaMonHoc
+    @CourseID INT,
+    @Code VARCHAR(20),
+    @Name NVARCHAR(100),
+    @Credits INT,
+    @TuitionPerCredit DECIMAL(10,2),
+    @DeptID INT
+AS
+BEGIN
+    UPDATE Courses 
+    SET Code = @Code, Name = @Name, Credits = @Credits,
+        TuitionPerCredit = @TuitionPerCredit, DeptID = @DeptID
+    WHERE CourseID = @CourseID
+END
+
+CREATE PROCEDURE XoaMonHoc
+    @CourseID INT
+AS
+BEGIN
+    DELETE FROM Courses WHERE CourseID = @CourseID
+END
+
+
+-- STORED PROCEDURES THÊM, SỬA, XÓA HÓA ĐƠN
+CREATE PROCEDURE ThemHoaDon
+    @StudentID INT,
+    @TermID INT,
+    @TotalAmount DECIMAL(12,2),
+    @IsPaid BIT = 0
+AS
+BEGIN
+    INSERT INTO Invoices (StudentID, TermID, TotalAmount, IsPaid)
+    VALUES (@StudentID, @TermID, @TotalAmount, @IsPaid)
+END
+
+CREATE PROCEDURE SuaHoaDon
+    @InvoiceID INT,
+    @StudentID INT,
+    @TermID INT,
+    @TotalAmount DECIMAL(12,2),
+    @IsPaid BIT
+AS
+BEGIN
+    UPDATE Invoices 
+    SET StudentID = @StudentID, TermID = @TermID, 
+        TotalAmount = @TotalAmount, IsPaid = @IsPaid
+    WHERE InvoiceID = @InvoiceID
+END
+
+CREATE PROCEDURE XoaHoaDon
+    @InvoiceID INT
+AS
+BEGIN
+    DELETE FROM Invoices WHERE InvoiceID = @InvoiceID
+END
+
+
+-- XEM DỮ LIỆU
 SELECT * FROM Departments;
 SELECT * FROM Lecturers;
-SELECT * FROM Students;        
+SELECT * FROM Students;
 SELECT * FROM Courses;
 SELECT * FROM ClassSections;
 SELECT * FROM Enrollments;
 SELECT * FROM Invoices;
 SELECT * FROM Payments;
 SELECT * FROM Users;
-
-SELECT * FROM vw_InvoiceDetails;
-SELECT * FROM vw_InvoiceDetailBreakdown;
-SELECT * FROM vw_PaymentStatsByTerm;
-SELECT * FROM vw_StudentPaymentSummary;
-
--- Function tính tổng học phí của sinh viên trong một học kỳ
-CREATE FUNCTION fn_CalculateStudentTuition(@StudentID INT, @TermID INT)
-RETURNS DECIMAL(12,2)
-AS
-BEGIN
-    DECLARE @TotalAmount DECIMAL(12,2) = 0;
-    
-    SELECT @TotalAmount = SUM(c.Credits * c.TuitionPerCredit)
-    FROM Enrollments e
-    JOIN ClassSections cs ON e.SectionID = cs.SectionID
-    JOIN Courses c ON cs.CourseID = c.CourseID
-    WHERE e.StudentID = @StudentID 
-        AND cs.TermID = @TermID
-        AND e.Status IN (N'Đang học', N'Đã duyệt');
-    
-    RETURN ISNULL(@TotalAmount, 0);
-END;
-
--- Function tính số tiền đã thanh toán của hóa đơn
-CREATE FUNCTION fn_GetPaidAmount(@InvoiceID INT)
-RETURNS DECIMAL(12,2)
-AS
-BEGIN
-    DECLARE @PaidAmount DECIMAL(12,2) = 0;
-    
-    SELECT @PaidAmount = SUM(AmountPaid)
-    FROM Payments
-    WHERE InvoiceID = @InvoiceID;
-    
-    RETURN ISNULL(@PaidAmount, 0);
-END;
-
--- Function tạo số hóa đơn tự động
-CREATE FUNCTION fn_GenerateInvoiceNumber(@StudentID INT)
-RETURNS NVARCHAR(50)
-AS
-BEGIN
-    DECLARE @InvoiceNumber NVARCHAR(50);
-    DECLARE @Counter INT;
-    
-    -- Lấy số thứ tự trong tháng
-    SELECT @Counter = COUNT(*) + 1
-    FROM Invoices
-    WHERE MONTH(CreatedDate) = MONTH(GETDATE())
-        AND YEAR(CreatedDate) = YEAR(GETDATE());
-    
-    SET @InvoiceNumber = 'HD' + FORMAT(GETDATE(), 'yyyyMM') + FORMAT(@Counter, '0000');
-    
-    RETURN @InvoiceNumber;
-END;
