@@ -52,7 +52,7 @@
             this.lblNEU.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblNEU.Location = new System.Drawing.Point(1124, 177);
             this.lblNEU.Name = "lblNEU";
-            this.lblNEU.Size = new System.Drawing.Size(409, 31);
+            this.lblNEU.Size = new System.Drawing.Size(513, 38);
             this.lblNEU.TabIndex = 24;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
             // 
@@ -165,7 +165,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(31, 229);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 21);
+            this.label1.Size = new System.Drawing.Size(110, 27);
             this.label1.TabIndex = 2;
             this.label1.Text = "Mật khẩu ";
             // 
@@ -176,7 +176,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(31, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 21);
+            this.label2.Size = new System.Drawing.Size(154, 27);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tên đăng nhập";
             // 
@@ -188,13 +188,13 @@
             this.lblDN.ForeColor = System.Drawing.Color.Red;
             this.lblDN.Location = new System.Drawing.Point(29, 24);
             this.lblDN.Name = "lblDN";
-            this.lblDN.Size = new System.Drawing.Size(178, 31);
+            this.lblDN.Size = new System.Drawing.Size(222, 38);
             this.lblDN.TabIndex = 1;
             this.lblDN.Text = "ĐĂNG NHẬP";
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
