@@ -11,11 +11,15 @@ using System.Data.SqlClient;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
-    public partial class FrmLogin : RoundedForm
+    public partial class FrmLogin : Form
     {
         public FrmLogin()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = true;
         }
         KETNOI_CSDL kn = new KETNOI_CSDL();
 

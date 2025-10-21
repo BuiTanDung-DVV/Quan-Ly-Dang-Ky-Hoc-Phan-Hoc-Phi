@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
-    public partial class FrmMain : RoundedForm
+    public partial class FrmMain : Form
     {
         FrmSinhVien SinhVien;
         FrmKhoaVien KhoaVien;
@@ -14,8 +14,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         FrmLopHocPhan LopHocPhan;
         FrmDangKi DangKi;
         FrmThanhToan ThanhToan;
-        FrmHoaDon HoaDon;
-        FrmLichSuDK LichSuDK;
 
         public FrmMain()
         {
@@ -45,9 +43,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             {
                 // Sinh viên: Chỉ hiển thị các chức năng liên quan đến sinh viên
                 btnDK.Visible = true;          // Đăng ký tín chỉ
-                btnHoaDon.Visible = true;      // Xem hóa đơn
                 btnThanhToan.Visible = true;   // Thanh toán
-                btnLichSuDK.Visible = true;    // Lịch sử đăng ký
                 
                 lblChucNang.Text = "Chức năng sinh viên";
                 MessageBox.Show("Đã hiển thị chức năng sinh viên", "Debug");
@@ -63,9 +59,10 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
             else if (UserSession.IsAdmin())
             {
-                // Admin: Hiển thị tất cả chức năng
-                ShowAllButtons();
                 
+                ShowAllButtons();
+                btnDK.Visible = false;
+                btnThanhToan.Visible = false;
                 lblChucNang.Text = "Chức năng quản trị";
                 MessageBox.Show("Đã hiển thị tất cả chức năng admin", "Debug");
             }
@@ -85,9 +82,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             btnQLNH.Visible = false;
             btnQLMH.Visible = false;
             btnQLKV.Visible = false;
-            btnHoaDon.Visible = false;
             btnThanhToan.Visible = false;
-            btnLichSuDK.Visible = false;
         }
 
         private void ShowAllButtons()
@@ -100,9 +95,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             btnQLNH.Visible = true;
             btnQLMH.Visible = true;
             btnQLKV.Visible = true;
-            btnHoaDon.Visible = true;
             btnThanhToan.Visible = true;
-            btnLichSuDK.Visible = true;
         }
 
         private void ShowWelcomeMessage()
@@ -295,22 +288,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
         }
 
-        private void btnHoaDon_Click(object sender, EventArgs e)
-        {
-            btnHoaDon.Selected = true;
-            if (HoaDon == null || HoaDon.IsDisposed)
-            {
-                HoaDon = new FrmHoaDon();
-                HoaDon.MdiParent = this;
-                HoaDon.Dock = DockStyle.Fill;
-                HoaDon.Show();
-            }
-            else
-            {
-                HoaDon.Activate();
-            }
-        }
-
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             btnThanhToan.Selected = true;
@@ -324,22 +301,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             else
             {
                 ThanhToan.Activate();
-            }
-        }
-
-        private void btnLichSuDK_Click(object sender, EventArgs e)
-        {
-            btnLichSuDK.Selected = true;
-            if (LichSuDK == null || LichSuDK.IsDisposed)
-            {
-                LichSuDK = new FrmLichSuDK();
-                LichSuDK.MdiParent = this;
-                LichSuDK.Dock = DockStyle.Fill;
-                LichSuDK.Show();
-            }
-            else
-            {
-                LichSuDK.Activate();
             }
         }
 

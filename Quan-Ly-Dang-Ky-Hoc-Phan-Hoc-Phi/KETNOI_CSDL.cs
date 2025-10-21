@@ -19,7 +19,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         //Data Source=THE-CHOSEN-ONE;Initial Catalog=QLDKHP;Integrated Security=True
         public void KetNoi_Dulieu()
         {
-            string strKetNoi = @"Data Source=LAPTOP-54RR747S\HSON;Initial Catalog=QLDKHP;Integrated Security=True";
+            string strKetNoi = @"Data Source=THE-CHOSEN-ONE;Initial Catalog=QLDKHP;Integrated Security=True";
             cnn = new SqlConnection(strKetNoi);
             cnn.Open();
         }

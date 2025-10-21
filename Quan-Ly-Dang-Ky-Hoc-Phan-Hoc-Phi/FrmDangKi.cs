@@ -25,12 +25,16 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         private void FrmDangKi_Load(object sender, EventArgs e)
         {
             LoadStudentInfo();
+            SetupDataGridViews();
             LoadTerms();
             LoadDepartments();
-            SetupDataGridViews();
-            LoadAvailableClasses();
-            LoadRegisteredClasses();
-            CalculateTotals();
+            
+            // DELAY để đảm bảo tất cả đã setup xong
+            this.BeginInvoke(new Action(() => {
+                LoadAvailableClasses();
+                LoadRegisteredClasses();
+                CalculateTotals();
+            }));
         }
 
         #region Setup Methods
@@ -99,7 +103,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 string sql = "SELECT DeptID, Name FROM Departments ORDER BY Name";
                 DataTable dt = kn.Lay_DulieuBang(sql);
                 
-                // Thêm option "Tất cả"
                 DataRow newRow = dt.NewRow();
                 newRow["DeptID"] = 0;
                 newRow["Name"] = "-- Tất cả khoa --";
@@ -158,6 +161,11 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         #region Data Loading Methods
         private void LoadAvailableClasses()
         {
+            if (dgvLopHocPhan.Columns.Count == 0)
+            {
+                return;
+            }
+    
             if (cboHocKy.SelectedValue == null) return;
             
             selectedTermID = Convert.ToInt32(cboHocKy.SelectedValue);
@@ -189,20 +197,18 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                     ) enrolled ON cs.SectionID = enrolled.SectionID
                     WHERE cs.TermID = {selectedTermID}";
 
-                // Filter by department
+
                 if (cboKhoa.SelectedValue != null && Convert.ToInt32(cboKhoa.SelectedValue) > 0)
                 {
                     sql += $" AND c.DeptID = {cboKhoa.SelectedValue}";
                 }
 
-                // Filter by search text
                 if (!string.IsNullOrEmpty(txtTimKiem.Text.Trim()))
                 {
                     string searchText = txtTimKiem.Text.Trim();
                     sql += $" AND (c.Code LIKE '%{searchText}%' OR c.Name LIKE N'%{searchText}%')";
                 }
 
-                // Exclude already registered classes
                 sql += $@" AND cs.SectionID NOT IN (
                     SELECT SectionID FROM Enrollments 
                     WHERE StudentID = {currentStudentID} 
@@ -250,6 +256,11 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void LoadRegisteredClasses()
         {
+            if (dgvDaDangKy.Columns.Count == 0)
+            {
+                return;
+            }
+    
             if (selectedTermID == 0) return;
 
             try
@@ -311,7 +322,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 }
             }
 
-            // Calculate tuition from registered courses
             try
             {
                 string sql = $@"
@@ -506,9 +516,10 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
             catch (Exception ex)
             {
-                // Log error nhưng không hiển thị cho user
+          
                 System.Diagnostics.Debug.WriteLine("Error creating invoice: " + ex.Message);
             }
         }
+
     }
 }

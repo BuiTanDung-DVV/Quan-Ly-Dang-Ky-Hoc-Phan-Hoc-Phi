@@ -47,7 +47,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblChucNang = new System.Windows.Forms.Label();
             this.uiPanel2 = new Sunny.UI.UIPanel();
-            this.ptbExit = new System.Windows.Forms.PictureBox();
             this.lblNEU = new System.Windows.Forms.Label();
             this.uiPanel1.SuspendLayout();
             this.uiPanel3.SuspendLayout();
@@ -55,7 +54,6 @@
             this.panelChucNang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.uiPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).BeginInit();
             this.SuspendLayout();
             // 
             // uiPanel1
@@ -136,7 +134,7 @@
             this.lblMa.ForeColor = System.Drawing.Color.White;
             this.lblMa.Location = new System.Drawing.Point(61, 63);
             this.lblMa.Name = "lblMa";
-            this.lblMa.Size = new System.Drawing.Size(89, 22);
+            this.lblMa.Size = new System.Drawing.Size(72, 19);
             this.lblMa.TabIndex = 7;
             this.lblMa.Text = "11236030";
             // 
@@ -148,7 +146,7 @@
             this.lblName.ForeColor = System.Drawing.Color.White;
             this.lblName.Location = new System.Drawing.Point(33, 38);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(161, 22);
+            this.lblName.Size = new System.Drawing.Size(128, 19);
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Nguyễn Hoàng Sơn";
             // 
@@ -341,14 +339,13 @@
             this.lblChucNang.ForeColor = System.Drawing.Color.White;
             this.lblChucNang.Location = new System.Drawing.Point(5, 296);
             this.lblChucNang.Name = "lblChucNang";
-            this.lblChucNang.Size = new System.Drawing.Size(141, 31);
+            this.lblChucNang.Size = new System.Drawing.Size(115, 25);
             this.lblChucNang.TabIndex = 3;
             this.lblChucNang.Text = "Chức năng";
             // 
             // uiPanel2
             // 
             this.uiPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
-            this.uiPanel2.Controls.Add(this.ptbExit);
             this.uiPanel2.Controls.Add(this.lblNEU);
             this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
@@ -363,26 +360,14 @@
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ptbExit
-            // 
-            this.ptbExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptbExit.Image = global::Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.Properties.Resources._8674683_ic_fluent_dismiss_regular_icon;
-            this.ptbExit.Location = new System.Drawing.Point(1306, 12);
-            this.ptbExit.Name = "ptbExit";
-            this.ptbExit.Size = new System.Drawing.Size(43, 29);
-            this.ptbExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptbExit.TabIndex = 27;
-            this.ptbExit.TabStop = false;
-            this.ptbExit.Click += new System.EventHandler(this.ptbExit_Click);
-            // 
             // lblNEU
             // 
             this.lblNEU.AutoSize = true;
             this.lblNEU.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNEU.ForeColor = System.Drawing.Color.White;
-            this.lblNEU.Location = new System.Drawing.Point(3, 8);
+            this.lblNEU.Location = new System.Drawing.Point(467, 12);
             this.lblNEU.Name = "lblNEU";
-            this.lblNEU.Size = new System.Drawing.Size(513, 38);
+            this.lblNEU.Size = new System.Drawing.Size(409, 31);
             this.lblNEU.TabIndex = 0;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
             // 
@@ -408,7 +393,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.uiPanel2.ResumeLayout(false);
             this.uiPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -434,6 +418,5 @@
         private Sunny.UI.UIButton btnQLSV;
         private System.Windows.Forms.Label lblChucNang;
         private Sunny.UI.UIButton btnThanhToan;
-        private System.Windows.Forms.PictureBox ptbExit;
     }
 }

@@ -82,12 +82,6 @@
     <Compile Include="FrmKhoaVien.Designer.cs">
       <DependentUpon>FrmKhoaVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmLichSuDK.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLichSuDK.Designer.cs">
-      <DependentUpon>FrmLichSuDK.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,12 +132,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLDKHPDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="RoundedForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoundedForm.Designer.cs">
-      <DependentUpon>RoundedForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserSession.cs" />
     <EmbeddedResource Include="FrmDangKi.resx">
       <DependentUpon>FrmDangKi.cs</DependentUpon>
@@ -156,9 +144,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKhoaVien.resx">
       <DependentUpon>FrmKhoaVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmLichSuDK.resx">
-      <DependentUpon>FrmLichSuDK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -191,9 +176,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RoundedForm.resx">
-      <DependentUpon>RoundedForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
