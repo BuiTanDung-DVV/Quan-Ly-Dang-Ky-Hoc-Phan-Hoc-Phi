@@ -404,12 +404,15 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             {
                 try
                 {
-                    // Sử dụng trigger sẽ tự động kiểm tra sĩ số và tạo hóa đơn
-                    string sql = $@"
+                    // Bước 1: Thêm enrollment
+                    string insertSql = $@"
                         INSERT INTO Enrollments (StudentID, SectionID, RegisterDate, Status)
                         VALUES ({currentStudentID}, {sectionID}, GETDATE(), N'Đang học')";
 
-                    kn.ThucThiSQL(sql);
+                    kn.ThucThiSQL(insertSql);
+
+                    // Bước 2: Tạo hoặc cập nhật Invoice
+                    CreateOrUpdateInvoice();
 
                     MessageBox.Show("Đăng ký thành công!", "Thông báo", 
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -420,10 +423,71 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 }
                 catch (Exception ex)
                 {
-                    // Trigger sẽ throw error nếu vi phạm business rules
                     MessageBox.Show("Lỗi đăng ký: " + ex.Message, "Lỗi", 
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void CreateOrUpdateInvoice()
+        {
+            if (selectedTermID == 0 || currentStudentID == 0) return;
+    
+            try
+            {
+                // Tính tổng học phí
+                string calculateSql = $@"
+                    SELECT ISNULL(SUM(c.Credits * c.TuitionPerCredit), 0) as TotalAmount
+                    FROM Enrollments e
+                    JOIN ClassSections cs ON e.SectionID = cs.SectionID
+                    JOIN Courses c ON cs.CourseID = c.CourseID
+                    WHERE e.StudentID = {currentStudentID} 
+                        AND cs.TermID = {selectedTermID}
+                        AND e.Status IN (N'Đang học', N'Đã duyệt')";
+
+                DataTable dt = kn.Lay_DulieuBang(calculateSql);
+                decimal totalAmount = 0;
+                
+                if (dt.Rows.Count > 0)
+                {
+                    totalAmount = Convert.ToDecimal(dt.Rows[0]["TotalAmount"]);
+                }
+
+                // Kiểm tra xem đã có invoice chưa
+                string checkSql = $@"
+                    SELECT COUNT(*) FROM Invoices 
+                    WHERE StudentID = {currentStudentID} AND TermID = {selectedTermID}";
+                
+                DataTable checkDt = kn.Lay_DulieuBang(checkSql);
+                bool invoiceExists = Convert.ToInt32(checkDt.Rows[0][0]) > 0;
+
+                if (invoiceExists)
+                {
+                    // Cập nhật invoice có sẵn
+                    string updateSql = $@"
+                        UPDATE Invoices 
+                        SET TotalAmount = {totalAmount},
+                            DueDate = DATEADD(MONTH, 1, GETDATE()),
+                            Status = N'Chưa thanh toán'
+                        WHERE StudentID = {currentStudentID} AND TermID = {selectedTermID}";
+                    
+                    kn.ThucThiSQL(updateSql);
+                }
+                else if (totalAmount > 0)
+                {
+                    // Tạo invoice mới chỉ khi có học phí
+                    string insertSql = $@"
+                        INSERT INTO Invoices (StudentID, TermID, IssueDate, DueDate, TotalAmount, Status)
+                        VALUES ({currentStudentID}, {selectedTermID}, GETDATE(), 
+                                DATEADD(MONTH, 1, GETDATE()), {totalAmount}, N'Chưa thanh toán')";
+                    
+                    kn.ThucThiSQL(insertSql);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error creating/updating invoice: " + ex.Message);
+                // Không throw lại exception để không làm gián đoạn quá trình đăng ký
             }
         }
 
