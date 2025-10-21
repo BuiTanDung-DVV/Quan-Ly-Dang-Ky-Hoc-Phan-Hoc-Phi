@@ -386,15 +386,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
             int sectionID = Convert.ToInt32(dgvLopHocPhan.CurrentRow.Cells["SectionID"].Value);
             string courseName = dgvLopHocPhan.CurrentRow.Cells["CourseName"].Value.ToString();
-            int maxStudents = Convert.ToInt32(dgvLopHocPhan.CurrentRow.Cells["MaxStudents"].Value);
-            int currentStudents = Convert.ToInt32(dgvLopHocPhan.CurrentRow.Cells["CurrentStudents"].Value);
-
-            if (currentStudents >= maxStudents)
-            {
-                MessageBox.Show("Lớp học phần này đã đủ số lượng sinh viên!", "Thông báo", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             DialogResult result = MessageBox.Show($"Bạn có chắc chắn muốn đăng ký lớp '{courseName}'?", 
                 "Xác nhận đăng ký", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -403,6 +394,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             {
                 try
                 {
+                    // Sử dụng trigger sẽ tự động kiểm tra sĩ số và tạo hóa đơn
                     string sql = $@"
                         INSERT INTO Enrollments (StudentID, SectionID, RegisterDate, Status)
                         VALUES ({currentStudentID}, {sectionID}, GETDATE(), N'Đang học')";
@@ -418,6 +410,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 }
                 catch (Exception ex)
                 {
+                    // Trigger sẽ throw error nếu vi phạm business rules
                     MessageBox.Show("Lỗi đăng ký: " + ex.Message, "Lỗi", 
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -491,5 +484,31 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
         }
         #endregion
+
+        private void CreateInvoiceIfNeeded()
+        {
+            if (selectedTermID == 0 || currentStudentID == 0) return;
+            
+            try
+            {
+                // Kiểm tra xem đã có hóa đơn chưa
+                string checkSql = $@"
+                    SELECT COUNT(*) FROM Invoices 
+                    WHERE StudentID = {currentStudentID} AND TermID = {selectedTermID}";
+        
+                DataTable dt = kn.Lay_DulieuBang(checkSql);
+                if (Convert.ToInt32(dt.Rows[0][0]) == 0)
+                {
+                    // Chưa có hóa đơn, tạo mới
+                    string createSql = $"EXEC sp_CreateInvoiceForTerm {currentStudentID}, {selectedTermID}";
+                    kn.ThucThiSQL(createSql);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error nhưng không hiển thị cho user
+                System.Diagnostics.Debug.WriteLine("Error creating invoice: " + ex.Message);
+            }
+        }
     }
 }

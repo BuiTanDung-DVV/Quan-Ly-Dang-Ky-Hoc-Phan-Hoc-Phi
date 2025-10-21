@@ -427,3 +427,254 @@ SELECT * FROM Enrollments;
 SELECT * FROM Invoices;
 SELECT * FROM Payments;
 SELECT * FROM Users;
+
+
+-- TRIGGER TỰ ĐỘNG TẠO/CẬP NHẬT HÓA ĐƠN KHI ĐĂNG KÝ
+CREATE OR ALTER TRIGGER tr_CreateOrUpdateInvoice
+ON Enrollments
+AFTER INSERT, DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- Xử lý khi thêm đăng ký mới
+    IF EXISTS(SELECT * FROM inserted)
+    BEGIN
+        DECLARE @StudentID INT, @TermID INT, @SectionID INT;
+        
+        DECLARE enrollment_cursor CURSOR FOR
+        SELECT i.StudentID, cs.TermID, i.SectionID
+        FROM inserted i
+        JOIN ClassSections cs ON i.SectionID = cs.SectionID;
+        
+        OPEN enrollment_cursor;
+        FETCH NEXT FROM enrollment_cursor INTO @StudentID, @TermID, @SectionID;
+        
+        WHILE @@FETCH_STATUS = 0
+        BEGIN
+            DECLARE @InvoiceID INT;
+            DECLARE @Amount DECIMAL(12,2);
+            
+            -- Tính tiền môn học
+            SELECT @Amount = c.Credits * c.TuitionPerCredit
+            FROM ClassSections cs
+            JOIN Courses c ON cs.CourseID = c.CourseID
+            WHERE cs.SectionID = @SectionID;
+            
+            -- Kiểm tra xem đã có hóa đơn cho học kỳ này chưa
+            SELECT @InvoiceID = InvoiceID 
+            FROM Invoices 
+            WHERE StudentID = @StudentID AND TermID = @TermID;
+            
+            IF @InvoiceID IS NULL
+            BEGIN
+                -- Tạo hóa đơn mới
+                INSERT INTO Invoices (StudentID, TermID, TotalAmount, IsPaid)
+                VALUES (@StudentID, @TermID, @Amount, 0);
+                
+                SET @InvoiceID = SCOPE_IDENTITY();
+            END
+            ELSE
+            BEGIN
+                -- Cập nhật tổng tiền
+                UPDATE Invoices 
+                SET TotalAmount = TotalAmount + @Amount 
+                WHERE InvoiceID = @InvoiceID;
+            END
+            
+            -- Thêm chi tiết hóa đơn
+            INSERT INTO InvoiceDetails (InvoiceID, SectionID, Amount)
+            VALUES (@InvoiceID, @SectionID, @Amount);
+            
+            FETCH NEXT FROM enrollment_cursor INTO @StudentID, @TermID, @SectionID;
+        END
+        
+        CLOSE enrollment_cursor;
+        DEALLOCATE enrollment_cursor;
+    END
+    
+    -- Xử lý khi hủy đăng ký
+    IF EXISTS(SELECT * FROM deleted)
+    BEGIN
+        DECLARE @DelStudentID INT, @DelTermID INT, @DelSectionID INT;
+        
+        DECLARE delete_cursor CURSOR FOR
+        SELECT d.StudentID, cs.TermID, d.SectionID
+        FROM deleted d
+        JOIN ClassSections cs ON d.SectionID = cs.SectionID;
+        
+        OPEN delete_cursor;
+        FETCH NEXT FROM delete_cursor INTO @DelStudentID, @DelTermID, @DelSectionID;
+        
+        WHILE @@FETCH_STATUS = 0
+        BEGIN
+            DECLARE @DelInvoiceID INT;
+            DECLARE @DelAmount DECIMAL(12,2);
+            
+            -- Lấy thông tin hóa đơn
+            SELECT @DelInvoiceID = InvoiceID 
+            FROM Invoices 
+            WHERE StudentID = @DelStudentID AND TermID = @DelTermID;
+            
+            -- Lấy số tiền cần trừ
+            SELECT @DelAmount = Amount 
+            FROM InvoiceDetails 
+            WHERE InvoiceID = @DelInvoiceID AND SectionID = @DelSectionID;
+            
+            -- Xóa chi tiết hóa đơn
+            DELETE FROM InvoiceDetails 
+            WHERE InvoiceID = @DelInvoiceID AND SectionID = @DelSectionID;
+            
+            -- Cập nhật tổng tiền
+            UPDATE Invoices 
+            SET TotalAmount = TotalAmount - @DelAmount 
+            WHERE InvoiceID = @DelInvoiceID;
+            
+            -- Xóa hóa đơn nếu không còn môn nào
+            IF NOT EXISTS(SELECT 1 FROM InvoiceDetails WHERE InvoiceID = @DelInvoiceID)
+            BEGIN
+                DELETE FROM Invoices WHERE InvoiceID = @DelInvoiceID;
+            END
+            
+            FETCH NEXT FROM delete_cursor INTO @DelStudentID, @DelTermID, @DelSectionID;
+        END
+        
+        CLOSE delete_cursor;
+        DEALLOCATE delete_cursor;
+    END
+END;
+
+--TRIGGER KIỂM TRA SỈ SỐ LỚP
+CREATE OR ALTER TRIGGER tr_CheckClassCapacity
+ON Enrollments
+INSTEAD OF INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    DECLARE @StudentID INT, @SectionID INT;
+    DECLARE @MaxStudents INT, @CurrentStudents INT;
+    
+    DECLARE capacity_cursor CURSOR FOR
+    SELECT StudentID, SectionID FROM inserted;
+    
+    OPEN capacity_cursor;
+    FETCH NEXT FROM capacity_cursor INTO @StudentID, @SectionID;
+    
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Lấy sĩ số tối đa
+        SELECT @MaxStudents = MaxStudents 
+        FROM ClassSections 
+        WHERE SectionID = @SectionID;
+        
+        -- Đếm số sinh viên hiện tại
+        SELECT @CurrentStudents = COUNT(*) 
+        FROM Enrollments 
+        WHERE SectionID = @SectionID 
+            AND Status IN (N'Đang học', N'Đã duyệt');
+        
+        -- Kiểm tra đã đăng ký chưa
+        IF EXISTS(SELECT 1 FROM Enrollments 
+                  WHERE StudentID = @StudentID AND SectionID = @SectionID)
+        BEGIN
+            RAISERROR(N'Sinh viên đã đăng ký lớp học phần này!', 16, 1);
+            RETURN;
+        END
+        
+        -- Kiểm tra sĩ số
+        IF @CurrentStudents >= @MaxStudents
+        BEGIN
+            RAISERROR(N'Lớp học phần đã đầy!', 16, 1);
+            RETURN;
+        END
+        
+        -- Thêm đăng ký hợp lệ
+        INSERT INTO Enrollments (StudentID, SectionID, RegisterDate, Status)
+        SELECT StudentID, SectionID, RegisterDate, Status
+        FROM inserted
+        WHERE StudentID = @StudentID AND SectionID = @SectionID;
+        
+        FETCH NEXT FROM capacity_cursor INTO @StudentID, @SectionID;
+    END
+    
+    CLOSE capacity_cursor;
+    DEALLOCATE capacity_cursor;
+END;
+
+--FUNCTION TÍNH TỔNG HỌC PHÍ CỦA SINH VIÊN TRONG HỌC KỲ
+CREATE OR ALTER FUNCTION fn_GetStudentTuitionByTerm(@StudentID INT, @TermID INT)
+RETURNS DECIMAL(12,2)
+AS
+BEGIN
+    DECLARE @TotalTuition DECIMAL(12,2) = 0;
+    
+    SELECT @TotalTuition = SUM(c.Credits * c.TuitionPerCredit)
+    FROM Enrollments e
+    JOIN ClassSections cs ON e.SectionID = cs.SectionID
+    JOIN Courses c ON cs.CourseID = c.CourseID
+    WHERE e.StudentID = @StudentID 
+        AND cs.TermID = @TermID
+        AND e.Status IN (N'Đang học', N'Đã duyệt');
+    
+    RETURN ISNULL(@TotalTuition, 0);
+END;
+
+--STORED PROCEDURE TẠO HÓA ĐƠN CHO HỌC KỲ
+CREATE OR ALTER PROCEDURE sp_CreateInvoiceForTerm
+    @StudentID INT,
+    @TermID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    DECLARE @InvoiceID INT;
+    DECLARE @TotalAmount DECIMAL(12,2);
+    
+    -- Kiểm tra đã có hóa đơn chưa
+    IF EXISTS(SELECT 1 FROM Invoices WHERE StudentID = @StudentID AND TermID = @TermID)
+    BEGIN
+        PRINT N'Đã có hóa đơn cho học kỳ này';
+        RETURN;
+    END
+    
+    -- Tính tổng học phí
+    SET @TotalAmount = dbo.fn_GetStudentTuitionByTerm(@StudentID, @TermID);
+    
+    IF @TotalAmount = 0
+    BEGIN
+        PRINT N'Sinh viên chưa đăng ký môn học nào';
+        RETURN;
+    END
+    
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Tạo hóa đơn
+        INSERT INTO Invoices (StudentID, TermID, TotalAmount, IsPaid)
+        VALUES (@StudentID, @TermID, @TotalAmount, 0);
+        
+        SET @InvoiceID = SCOPE_IDENTITY();
+        
+        -- Tạo chi tiết hóa đơn
+        INSERT INTO InvoiceDetails (InvoiceID, SectionID, Amount)
+        SELECT 
+            @InvoiceID,
+            cs.SectionID,
+            c.Credits * c.TuitionPerCredit
+        FROM Enrollments e
+        JOIN ClassSections cs ON e.SectionID = cs.SectionID
+        JOIN Courses c ON cs.CourseID = c.CourseID
+        WHERE e.StudentID = @StudentID 
+            AND cs.TermID = @TermID
+            AND e.Status IN (N'Đang học', N'Đã duyệt');
+        
+        COMMIT TRANSACTION;
+        
+        PRINT N'Tạo hóa đơn thành công';
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
