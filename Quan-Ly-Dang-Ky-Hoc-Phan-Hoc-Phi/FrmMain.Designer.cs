@@ -35,14 +35,12 @@
             this.lblMa = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.panelChucNang = new Sunny.UI.UIFlowLayoutPanel();
-            this.btnLichSuDK = new Sunny.UI.UIButton();
             this.btnQLMH = new Sunny.UI.UIButton();
             this.btnQLKV = new Sunny.UI.UIButton();
             this.btnDK = new Sunny.UI.UIButton();
             this.btnQLHK = new Sunny.UI.UIButton();
             this.btnQLNH = new Sunny.UI.UIButton();
             this.btnThanhToan = new Sunny.UI.UIButton();
-            this.btnHoaDon = new Sunny.UI.UIButton();
             this.btnQLLHP = new Sunny.UI.UIButton();
             this.btnQLGV = new Sunny.UI.UIButton();
             this.btnQLSV = new Sunny.UI.UIButton();
@@ -76,7 +74,7 @@
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.Radius = 30;
             this.uiPanel1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPanel1.Size = new System.Drawing.Size(270, 880);
+            this.uiPanel1.Size = new System.Drawing.Size(270, 804);
             this.uiPanel1.TabIndex = 6;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -138,7 +136,7 @@
             this.lblMa.ForeColor = System.Drawing.Color.White;
             this.lblMa.Location = new System.Drawing.Point(61, 63);
             this.lblMa.Name = "lblMa";
-            this.lblMa.Size = new System.Drawing.Size(72, 19);
+            this.lblMa.Size = new System.Drawing.Size(89, 22);
             this.lblMa.TabIndex = 7;
             this.lblMa.Text = "11236030";
             // 
@@ -150,21 +148,19 @@
             this.lblName.ForeColor = System.Drawing.Color.White;
             this.lblName.Location = new System.Drawing.Point(33, 38);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(128, 19);
+            this.lblName.Size = new System.Drawing.Size(161, 22);
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Nguyễn Hoàng Sơn";
             // 
             // panelChucNang
             // 
             this.panelChucNang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
-            this.panelChucNang.Controls.Add(this.btnLichSuDK);
             this.panelChucNang.Controls.Add(this.btnQLMH);
             this.panelChucNang.Controls.Add(this.btnQLKV);
             this.panelChucNang.Controls.Add(this.btnDK);
             this.panelChucNang.Controls.Add(this.btnQLHK);
             this.panelChucNang.Controls.Add(this.btnQLNH);
             this.panelChucNang.Controls.Add(this.btnThanhToan);
-            this.panelChucNang.Controls.Add(this.btnHoaDon);
             this.panelChucNang.Controls.Add(this.btnQLLHP);
             this.panelChucNang.Controls.Add(this.btnQLGV);
             this.panelChucNang.Controls.Add(this.btnQLSV);
@@ -182,28 +178,12 @@
             this.panelChucNang.Text = "uiFlowLayoutPanel1";
             this.panelChucNang.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnLichSuDK
-            // 
-            this.btnLichSuDK.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLichSuDK.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnLichSuDK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLichSuDK.Location = new System.Drawing.Point(8, 495);
-            this.btnLichSuDK.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnLichSuDK.Name = "btnLichSuDK";
-            this.btnLichSuDK.Radius = 30;
-            this.btnLichSuDK.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnLichSuDK.Size = new System.Drawing.Size(255, 43);
-            this.btnLichSuDK.TabIndex = 10;
-            this.btnLichSuDK.Text = "Lịch sử đăng kí";
-            this.btnLichSuDK.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnLichSuDK.Click += new System.EventHandler(this.btnLichSuDK_Click);
-            // 
             // btnQLMH
             // 
             this.btnQLMH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQLMH.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnQLMH.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLMH.Location = new System.Drawing.Point(8, 397);
+            this.btnQLMH.Location = new System.Drawing.Point(8, 349);
             this.btnQLMH.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnQLMH.Name = "btnQLMH";
             this.btnQLMH.Radius = 30;
@@ -219,7 +199,7 @@
             this.btnQLKV.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQLKV.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnQLKV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLKV.Location = new System.Drawing.Point(8, 446);
+            this.btnQLKV.Location = new System.Drawing.Point(8, 398);
             this.btnQLKV.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnQLKV.Name = "btnQLKV";
             this.btnQLKV.Radius = 30;
@@ -251,7 +231,7 @@
             this.btnQLHK.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQLHK.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnQLHK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLHK.Location = new System.Drawing.Point(8, 348);
+            this.btnQLHK.Location = new System.Drawing.Point(8, 300);
             this.btnQLHK.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnQLHK.Name = "btnQLHK";
             this.btnQLHK.Radius = 30;
@@ -267,7 +247,7 @@
             this.btnQLNH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQLNH.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnQLNH.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLNH.Location = new System.Drawing.Point(8, 299);
+            this.btnQLNH.Location = new System.Drawing.Point(8, 251);
             this.btnQLNH.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnQLNH.Name = "btnQLNH";
             this.btnQLNH.Radius = 30;
@@ -283,7 +263,7 @@
             this.btnThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThanhToan.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnThanhToan.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhToan.Location = new System.Drawing.Point(8, 103);
+            this.btnThanhToan.Location = new System.Drawing.Point(8, 55);
             this.btnThanhToan.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Radius = 30;
@@ -294,28 +274,12 @@
             this.btnThanhToan.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
-            // btnHoaDon
-            // 
-            this.btnHoaDon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHoaDon.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnHoaDon.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHoaDon.Location = new System.Drawing.Point(8, 54);
-            this.btnHoaDon.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Radius = 30;
-            this.btnHoaDon.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnHoaDon.Size = new System.Drawing.Size(255, 43);
-            this.btnHoaDon.TabIndex = 10;
-            this.btnHoaDon.Text = "Hóa đơn";
-            this.btnHoaDon.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnHoaDon.Click += new System.EventHandler(this.btnHoaDon_Click);
-            // 
             // btnQLLHP
             // 
             this.btnQLLHP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQLLHP.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnQLLHP.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLLHP.Location = new System.Drawing.Point(8, 250);
+            this.btnQLLHP.Location = new System.Drawing.Point(8, 202);
             this.btnQLLHP.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnQLLHP.Name = "btnQLLHP";
             this.btnQLLHP.Radius = 30;
@@ -331,7 +295,7 @@
             this.btnQLGV.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQLGV.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnQLGV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLGV.Location = new System.Drawing.Point(8, 201);
+            this.btnQLGV.Location = new System.Drawing.Point(8, 153);
             this.btnQLGV.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnQLGV.Name = "btnQLGV";
             this.btnQLGV.Radius = 30;
@@ -347,7 +311,7 @@
             this.btnQLSV.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQLSV.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnQLSV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLSV.Location = new System.Drawing.Point(8, 152);
+            this.btnQLSV.Location = new System.Drawing.Point(8, 104);
             this.btnQLSV.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnQLSV.Name = "btnQLSV";
             this.btnQLSV.Radius = 30;
@@ -377,7 +341,7 @@
             this.lblChucNang.ForeColor = System.Drawing.Color.White;
             this.lblChucNang.Location = new System.Drawing.Point(5, 296);
             this.lblChucNang.Name = "lblChucNang";
-            this.lblChucNang.Size = new System.Drawing.Size(115, 25);
+            this.lblChucNang.Size = new System.Drawing.Size(141, 31);
             this.lblChucNang.TabIndex = 3;
             this.lblChucNang.Text = "Chức năng";
             // 
@@ -418,7 +382,7 @@
             this.lblNEU.ForeColor = System.Drawing.Color.White;
             this.lblNEU.Location = new System.Drawing.Point(3, 8);
             this.lblNEU.Name = "lblNEU";
-            this.lblNEU.Size = new System.Drawing.Size(409, 31);
+            this.lblNEU.Size = new System.Drawing.Size(513, 38);
             this.lblNEU.TabIndex = 0;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
             // 
@@ -426,7 +390,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1631, 880);
+            this.ClientSize = new System.Drawing.Size(1631, 804);
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiPanel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -469,9 +433,7 @@
         private Sunny.UI.UIButton btnQLKV;
         private Sunny.UI.UIButton btnQLSV;
         private System.Windows.Forms.Label lblChucNang;
-        private Sunny.UI.UIButton btnHoaDon;
         private Sunny.UI.UIButton btnThanhToan;
-        private Sunny.UI.UIButton btnLichSuDK;
         private System.Windows.Forms.PictureBox ptbExit;
     }
 }
