@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|c:\\users\\tandu\\source\\repos\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmthanhtoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmthanhtoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmdangki.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmdangki.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|c:\\users\\tandu\\source\\repos\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmdangki.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmdangki.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|c:\\users\\tandu\\source\\repos\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmdangki.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmdangki.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|c:\\users\\tandu\\source\\repos\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmdangki.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmdangki.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,19 +46,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmThanhToan.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs",
-              "ToolTip": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs [Design]",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs [Design]",
+              "DocumentIndex": 2,
+              "Title": "FrmDangKi.cs",
+              "DocumentMoniker": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.cs",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.cs",
+              "ToolTip": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.cs",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAMwG8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T09:17:12.417Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-21T09:38:05.428Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FrmDangKi.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.Designer.cs",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.Designer.cs",
+              "ToolTip": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.Designer.cs",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.Designer.cs",
+              "ViewState": "AgIAAMUAAAAAAAAAAAAAANwAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T09:32:19.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "FrmDangKi.cs [Design]",
               "DocumentMoniker": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.cs",
               "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmDangKi.cs",
@@ -66,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FrmLogin.cs [Design]",
               "DocumentMoniker": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLogin.cs",
               "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLogin.cs",
@@ -77,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "FrmSinhVien.cs [Design]",
               "DocumentMoniker": "C:\\Users\\tandu\\source\\repos\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs",
               "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs",
