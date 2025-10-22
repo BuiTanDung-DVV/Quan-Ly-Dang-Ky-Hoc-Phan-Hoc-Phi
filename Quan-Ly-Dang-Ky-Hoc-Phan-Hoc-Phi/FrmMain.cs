@@ -14,6 +14,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         FrmLopHocPhan LopHocPhan;
         FrmDangKi DangKi;
         FrmThanhToan ThanhToan;
+        FrmDanhSachDangKi DSDVDK;
 
         public FrmMain()
         {
@@ -46,16 +47,14 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 btnThanhToan.Visible = true;   // Thanh toán
                 
                 lblChucNang.Text = "Chức năng sinh viên";
-                MessageBox.Show("Đã hiển thị chức năng sinh viên", "Debug");
             }
             else if (UserSession.IsLecturer())
             {
                 // Giảng viên: Chỉ hiển thị các chức năng liên quan đến giảng viên
                 btnQLLHP.Visible = true;       // Quản lý lớp học phần (lớp mình dạy)
-                btnDK.Visible = true;          // Xem đăng ký của sinh viên
+                btnDSSVDK.Visible = true;          // Xem đăng ký của sinh viên
                 
                 lblChucNang.Text = "Chức năng giảng viên";
-                MessageBox.Show("Đã hiển thị chức năng giảng viên", "Debug");
             }
             else if (UserSession.IsAdmin())
             {
@@ -63,8 +62,9 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 ShowAllButtons();
                 btnDK.Visible = false;
                 btnThanhToan.Visible = false;
+                btnDSSVDK.Visible = false;
+
                 lblChucNang.Text = "Chức năng quản trị";
-                MessageBox.Show("Đã hiển thị tất cả chức năng admin", "Debug");
             }
             else
             {
@@ -83,6 +83,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             btnQLMH.Visible = false;
             btnQLKV.Visible = false;
             btnThanhToan.Visible = false;
+            btnDSSVDK.Visible = false;
         }
 
         private void ShowAllButtons()
@@ -96,6 +97,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             btnQLMH.Visible = true;
             btnQLKV.Visible = true;
             btnThanhToan.Visible = true;
+            btnDSSVDK.Visible = true;
         }
 
         private void ShowWelcomeMessage()
@@ -304,10 +306,10 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
         }
 
-        private void ptbExit_Click(object sender, EventArgs e)
+        private void btnDangXuat_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
-                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -316,6 +318,22 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 FrmLogin loginForm = new FrmLogin();
                 loginForm.Show();
                 this.Close();
+            }
+        }
+
+        private void btnDSDVDK_Click(object sender, EventArgs e)
+        {
+            btnDSSVDK.Selected = true;
+            if (DSDVDK == null || DSDVDK.IsDisposed)
+            {
+                DSDVDK = new FrmDanhSachDangKi();
+                DSDVDK.MdiParent = this;
+                DSDVDK.Dock = DockStyle.Fill;
+                DSDVDK.Show();
+            }
+            else
+            {
+                DSDVDK.Activate();
             }
         }
     }

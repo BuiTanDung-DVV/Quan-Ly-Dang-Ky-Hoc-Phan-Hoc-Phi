@@ -47,7 +47,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblChucNang = new System.Windows.Forms.Label();
             this.uiPanel2 = new Sunny.UI.UIPanel();
+            this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblNEU = new System.Windows.Forms.Label();
+            this.btnDSSVDK = new Sunny.UI.UIButton();
             this.uiPanel1.SuspendLayout();
             this.uiPanel3.SuspendLayout();
             this.uiPanel4.SuspendLayout();
@@ -153,6 +155,7 @@
             // panelChucNang
             // 
             this.panelChucNang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
+            this.panelChucNang.Controls.Add(this.btnDSSVDK);
             this.panelChucNang.Controls.Add(this.btnQLMH);
             this.panelChucNang.Controls.Add(this.btnQLKV);
             this.panelChucNang.Controls.Add(this.btnDK);
@@ -346,6 +349,7 @@
             // uiPanel2
             // 
             this.uiPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
+            this.uiPanel2.Controls.Add(this.btnDangXuat);
             this.uiPanel2.Controls.Add(this.lblNEU);
             this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
@@ -360,6 +364,17 @@
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.BackColor = System.Drawing.Color.White;
+            this.btnDangXuat.Location = new System.Drawing.Point(1093, 12);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(95, 33);
+            this.btnDangXuat.TabIndex = 1;
+            this.btnDangXuat.Text = "Đăng xuất";
+            this.btnDangXuat.UseVisualStyleBackColor = false;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
             // lblNEU
             // 
             this.lblNEU.AutoSize = true;
@@ -370,6 +385,22 @@
             this.lblNEU.Size = new System.Drawing.Size(409, 31);
             this.lblNEU.TabIndex = 0;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
+            // 
+            // btnDSSVDK
+            // 
+            this.btnDSSVDK.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDSSVDK.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnDSSVDK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSSVDK.Location = new System.Drawing.Point(10, 447);
+            this.btnDSSVDK.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDSSVDK.Name = "btnDSSVDK";
+            this.btnDSSVDK.Radius = 30;
+            this.btnDSSVDK.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnDSSVDK.Size = new System.Drawing.Size(255, 43);
+            this.btnDSSVDK.TabIndex = 11;
+            this.btnDSSVDK.Text = "Danh sách sinh viên đăng kí";
+            this.btnDSSVDK.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnDSSVDK.Click += new System.EventHandler(this.btnDSDVDK_Click);
             // 
             // FrmMain
             // 
@@ -418,5 +449,7 @@
         private Sunny.UI.UIButton btnQLSV;
         private System.Windows.Forms.Label lblChucNang;
         private Sunny.UI.UIButton btnThanhToan;
+        private System.Windows.Forms.Button btnDangXuat;
+        private Sunny.UI.UIButton btnDSSVDK;
     }
 }

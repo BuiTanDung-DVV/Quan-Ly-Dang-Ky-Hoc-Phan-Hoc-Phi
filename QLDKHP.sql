@@ -1,4 +1,11 @@
-﻿CREATE DATABASE QLDKHP;
+﻿-- XÓA VÀ TẠO LẠI DATABASE
+USE master;
+IF EXISTS (SELECT name FROM sys.databases WHERE name = 'QLDKHP')
+BEGIN
+    ALTER DATABASE QLDKHP SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE QLDKHP;
+END
+CREATE DATABASE QLDKHP;
 USE QLDKHP;
 
 -- 1. BẢNG KHOA
@@ -64,6 +71,7 @@ CREATE TABLE Courses (
 -- 7. BẢNG LỚP HỌC PHẦN
 CREATE TABLE ClassSections (
     SectionID INT IDENTITY(1,1) PRIMARY KEY,
+    SectionCode VARCHAR(20) UNIQUE NOT NULL,
     CourseID INT FOREIGN KEY REFERENCES Courses(CourseID),
     TermID INT FOREIGN KEY REFERENCES AcademicTerms(TermID),
     LecturerID INT FOREIGN KEY REFERENCES Lecturers(LecturerID),
@@ -81,13 +89,15 @@ CREATE TABLE Enrollments (
     Status NVARCHAR(50) DEFAULT N'Đang học'
 );
 
--- 9. BẢNG HÓA ĐƠN HỌC PHÍ
+-- 9. BẢNG HÓA ĐƠN HỌC PHÍ (CẬP NHẬT)
 CREATE TABLE Invoices (
     InvoiceID INT IDENTITY(1,1) PRIMARY KEY,
     StudentID INT FOREIGN KEY REFERENCES Students(StudentID),
     TermID INT FOREIGN KEY REFERENCES AcademicTerms(TermID),
-    TotalAmount DECIMAL(12,2) NOT NULL,
+    TotalAmount DECIMAL(12,2) NOT NULL DEFAULT 0,
     CreatedDate DATETIME DEFAULT GETDATE(),
+    DueDate DATETIME NULL,
+    Status NVARCHAR(50) DEFAULT N'Chưa thanh toán',
     IsPaid BIT DEFAULT 0
 );
 
@@ -119,90 +129,379 @@ CREATE TABLE Users (
     LinkedLecturerID INT NULL FOREIGN KEY REFERENCES Lecturers(LecturerID)
 );
 
-INSERT INTO Departments (Code, Name, Office)
-VALUES 
+-- 13. BẢNG LOG THAY ĐỔI HÓA ĐƠN
+CREATE TABLE InvoiceChangeLogs (
+    LogID INT IDENTITY(1,1) PRIMARY KEY,
+    StudentID INT,
+    TermID INT,
+    OldAmount DECIMAL(12,2),
+    NewAmount DECIMAL(12,2),
+    Action NVARCHAR(50),
+    ChangeDate DATETIME DEFAULT GETDATE(),
+    ChangedBy NVARCHAR(100)
+);
+
+-- THÊM CONSTRAINT
+ALTER TABLE ClassSections 
+ADD CONSTRAINT UK_ClassSections_Schedule_Room_Term 
+UNIQUE (TermID, Schedule, Room);
+
+-- CHÈN DỮ LIỆU MẪU
+INSERT INTO Departments (Code, Name, Office) VALUES 
 ('CNTT', N'Công nghệ thông tin', N'Tòa A1-101'),
 ('QTKD', N'Quản trị kinh doanh', N'Tòa B2-202'),
 ('NNA', N'Ngôn ngữ Anh', N'Tòa C3-303');
 
-INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID)
-VALUES
+INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID) VALUES
 ('GV001', N'Nguyễn Văn Hòa', 'hoa.nguyen@univ.edu.vn', 1),
 ('GV002', N'Trần Thị Hạnh', 'hanh.tran@univ.edu.vn', 2),
 ('GV003', N'Lê Minh Tâm', 'tam.le@univ.edu.vn', 3);
 
-INSERT INTO Majors (Code, Name, DeptID)
-VALUES
-('CNPM', N'Công nghệ phần mềm', 1),
-('QTKD', N'Quản trị kinh doanh tổng hợp', 2),
-('TAUD', N'Tiếng Anh ứng dụng', 3);
-
-INSERT INTO Students (StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear)
-VALUES
+INSERT INTO Students (StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear) VALUES
 ('SV001', N'Nguyễn Thị Mai', N'Nữ', '2003-04-12', 'mai.nguyen@stu.edu.vn', '0901234567', N'Hà Nội', 1, 2021),
 ('SV002', N'Phạm Minh Đức', N'Nam', '2002-11-30', 'duc.pham@stu.edu.vn', '0907654321', N'Hải Phòng', 2, 2020),
 ('SV003', N'Lê Ngọc Anh', N'Nữ', '2003-08-20', 'anh.le@stu.edu.vn', '0989123456', N'Đà Nẵng', 3, 2021);
 
-INSERT INTO AcademicTerms (Code, Name, StartDate, EndDate, IsCurrent)
-VALUES
+INSERT INTO AcademicTerms (Code, Name, StartDate, EndDate, IsCurrent) VALUES
 ('HK231', N'Học kỳ 1 - Năm học 2023-2024', '2023-09-01', '2024-01-15', 0),
 ('HK232', N'Học kỳ 2 - Năm học 2023-2024', '2024-02-15', '2024-06-30', 1);
 
-INSERT INTO Courses (Code, Name, Credits, TuitionPerCredit, DeptID)
-VALUES
+INSERT INTO Courses (Code, Name, Credits, TuitionPerCredit, DeptID) VALUES
 ('CT101', N'Lập trình cơ bản', 3, 450000, 1),
 ('CT201', N'Cơ sở dữ liệu', 3, 450000, 1),
 ('QT101', N'Nguyên lý quản trị', 3, 420000, 2),
 ('EN101', N'Tiếng Anh giao tiếp 1', 2, 400000, 3);
 
-INSERT INTO ClassSections (CourseID, TermID, LecturerID, Schedule, Room, MaxStudents)
-VALUES
-(1, 2, 1, N'Thứ 2 - Tiết 1,2,3', N'A1-201', 60),
-(2, 2, 1, N'Thứ 4 - Tiết 1,2,3', N'A1-202', 60),
-(3, 2, 2, N'Thứ 3 - Tiết 2,3,4', N'B2-101', 60),
-(4, 2, 3, N'Thứ 5 - Tiết 1,2', N'C3-201', 50);
+INSERT INTO ClassSections (SectionCode, CourseID, TermID, LecturerID, Schedule, Room, MaxStudents) VALUES
+('CT101-L01', 1, 2, 1, N'Thứ 2 - Tiết 1,2,3', N'A1-201', 60),
+('CT101-L02', 1, 2, 3, N'Thứ 4 - Tiết 4,5,6', N'A1-203', 60),
+('CT201-L01', 2, 2, 1, N'Thứ 4 - Tiết 1,2,3', N'A1-202', 60),
+('QT101-L01', 3, 2, 2, N'Thứ 3 - Tiết 2,3,4', N'B2-101', 60),
+('EN101-L01', 4, 2, 3, N'Thứ 5 - Tiết 1,2', N'C3-201', 50),
+('EN101-L02', 4, 2, 3, N'Thứ 6 - Tiết 3,4', N'C3-202', 50);
 
-INSERT INTO Enrollments (StudentID, SectionID, RegisterDate, Status)
-VALUES
-(1, 1, GETDATE(), N'Đang học'),
-(1, 2, GETDATE(), N'Đang học'),
-(2, 3, GETDATE(), N'Đang học'),
-(3, 4, GETDATE(), N'Đang học');
-
-INSERT INTO Invoices (StudentID, TermID, TotalAmount, CreatedDate, IsPaid)
-VALUES
-(1, 2, 2700000, GETDATE(), 0),
-(2, 2, 1260000, GETDATE(), 1),
-(3, 2, 800000, GETDATE(), 0);
-
-INSERT INTO InvoiceDetails (InvoiceID, SectionID, Amount)
-VALUES
-(1, 1, 1350000),
-(1, 2, 1350000),
-(2, 3, 1260000),
-(3, 4, 800000);
-
-INSERT INTO Payments (InvoiceID, PaymentDate, AmountPaid, Method, Note)
-VALUES
-(2, GETDATE(), 1260000, N'Chuyển khoản', N'Đã thanh toán đủ kỳ này');
-
-INSERT INTO Users (Username, PasswordHash, Role, LinkedStudentID, LinkedLecturerID)
-VALUES
+INSERT INTO Users (Username, PasswordHash, Role, LinkedStudentID, LinkedLecturerID) VALUES
 ('sv_mai', '123456', N'Sinh viên', 1, NULL),
 ('sv_duc', '123456', N'Sinh viên', 2, NULL),
 ('gv_hoa', '123456', N'Giảng viên', NULL, 1),
 ('admin', 'admin123', N'Quản trị', NULL, NULL);
 
+-- ==================================================================
+-- TRIGGER TỰ ĐỘNG CẬP NHẬT HÓA ĐƠN (HOÀN CHỈNH)
+-- ==================================================================
+CREATE OR ALTER TRIGGER tr_AutoUpdateInvoice
+ON Enrollments
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- Tạo bảng tạm để lưu các StudentID và TermID cần cập nhật
+    CREATE TABLE #StudentsToUpdate (
+        StudentID INT,
+        TermID INT
+    );
+    
+    -- Thu thập thông tin từ các bản ghi được INSERT/UPDATE
+    IF EXISTS(SELECT * FROM inserted)
+    BEGIN
+        INSERT INTO #StudentsToUpdate (StudentID, TermID)
+        SELECT DISTINCT i.StudentID, cs.TermID
+        FROM inserted i
+        INNER JOIN ClassSections cs ON i.SectionID = cs.SectionID;
+    END
+    
+    -- Thu thập thông tin từ các bản ghi được DELETE
+    IF EXISTS(SELECT * FROM deleted)
+    BEGIN
+        INSERT INTO #StudentsToUpdate (StudentID, TermID)
+        SELECT DISTINCT d.StudentID, cs.TermID
+        FROM deleted d
+        INNER JOIN ClassSections cs ON d.SectionID = cs.SectionID
+        WHERE NOT EXISTS (
+            SELECT 1 FROM #StudentsToUpdate stu 
+            WHERE stu.StudentID = d.StudentID AND stu.TermID = cs.TermID
+        );
+    END
+    
+    -- Cập nhật hóa đơn cho từng StudentID, TermID
+    DECLARE @StudentID INT, @TermID INT;
+    DECLARE update_cursor CURSOR FOR
+    SELECT DISTINCT StudentID, TermID FROM #StudentsToUpdate;
+    
+    OPEN update_cursor;
+    FETCH NEXT FROM update_cursor INTO @StudentID, @TermID;
+    
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        DECLARE @CalculatedAmount DECIMAL(12,2) = 0;
+        DECLARE @InvoiceID INT = NULL;
+        DECLARE @ExistingPaidAmount DECIMAL(12,2) = 0;
+        DECLARE @OldAmount DECIMAL(12,2) = 0;
+        
+        -- Tính tổng học phí hiện tại từ các môn đã đăng ký (trạng thái hợp lệ)
+        SELECT @CalculatedAmount = ISNULL(SUM(c.Credits * c.TuitionPerCredit), 0)
+        FROM Enrollments e
+        INNER JOIN ClassSections cs ON e.SectionID = cs.SectionID
+        INNER JOIN Courses c ON cs.CourseID = c.CourseID
+        WHERE e.StudentID = @StudentID 
+            AND cs.TermID = @TermID
+            AND e.Status IN (N'Đang học', N'Đã duyệt');
+        
+        -- Kiểm tra xem đã có hóa đơn chưa
+        SELECT @InvoiceID = InvoiceID, @OldAmount = TotalAmount
+        FROM Invoices 
+        WHERE StudentID = @StudentID AND TermID = @TermID;
+        
+        -- Lấy tổng số tiền đã thanh toán (nếu có)
+        IF @InvoiceID IS NOT NULL
+        BEGIN
+            SELECT @ExistingPaidAmount = ISNULL(SUM(AmountPaid), 0)
+            FROM Payments 
+            WHERE InvoiceID = @InvoiceID;
+        END
+        
+        -- Xử lý theo tình huống
+        IF @CalculatedAmount > 0
+        BEGIN
+            IF @InvoiceID IS NULL
+            BEGIN
+                -- Tạo hóa đơn mới
+                INSERT INTO Invoices (StudentID, TermID, TotalAmount, CreatedDate, DueDate, Status, IsPaid)
+                VALUES (@StudentID, @TermID, @CalculatedAmount, GETDATE(), 
+                        DATEADD(MONTH, 1, GETDATE()),
+                        CASE WHEN @CalculatedAmount <= @ExistingPaidAmount THEN N'Đã thanh toán' ELSE N'Chưa thanh toán' END,
+                        CASE WHEN @CalculatedAmount <= @ExistingPaidAmount THEN 1 ELSE 0 END);
+                
+                SET @InvoiceID = SCOPE_IDENTITY();
+                
+                -- Log thay đổi
+                INSERT INTO InvoiceChangeLogs (StudentID, TermID, OldAmount, NewAmount, Action, ChangedBy)
+                VALUES (@StudentID, @TermID, 0, @CalculatedAmount, 'CREATE', 'SYSTEM_TRIGGER');
+                
+                -- Tạo chi tiết hóa đơn
+                INSERT INTO InvoiceDetails (InvoiceID, SectionID, Amount)
+                SELECT 
+                    @InvoiceID,
+                    cs.SectionID,
+                    c.Credits * c.TuitionPerCredit
+                FROM Enrollments e
+                INNER JOIN ClassSections cs ON e.SectionID = cs.SectionID
+                INNER JOIN Courses c ON cs.CourseID = c.CourseID
+                WHERE e.StudentID = @StudentID 
+                    AND cs.TermID = @TermID
+                    AND e.Status IN (N'Đang học', N'Đã duyệt');
+            END
+            ELSE
+            BEGIN
+                -- Cập nhật hóa đơn hiện tại chỉ khi có thay đổi
+                IF ABS(@CalculatedAmount - @OldAmount) > 0.01
+                BEGIN
+                    UPDATE Invoices 
+                    SET TotalAmount = @CalculatedAmount,
+                        Status = CASE 
+                            WHEN @CalculatedAmount <= @ExistingPaidAmount THEN N'Đã thanh toán'
+                            WHEN @ExistingPaidAmount > 0 THEN N'Thanh toán một phần'
+                            ELSE N'Chưa thanh toán'
+                        END,
+                        IsPaid = CASE WHEN @CalculatedAmount <= @ExistingPaidAmount THEN 1 ELSE 0 END,
+                        DueDate = CASE WHEN @CalculatedAmount > @ExistingPaidAmount THEN DATEADD(MONTH, 1, GETDATE()) ELSE DueDate END
+                    WHERE InvoiceID = @InvoiceID;
+                    
+                    -- Log thay đổi
+                    INSERT INTO InvoiceChangeLogs (StudentID, TermID, OldAmount, NewAmount, Action, ChangedBy)
+                    VALUES (@StudentID, @TermID, @OldAmount, @CalculatedAmount, 'UPDATE', 'SYSTEM_TRIGGER');
+                    
+                    -- Xóa chi tiết cũ và tạo lại
+                    DELETE FROM InvoiceDetails WHERE InvoiceID = @InvoiceID;
+                    
+                    -- Tạo chi tiết hóa đơn mới
+                    INSERT INTO InvoiceDetails (InvoiceID, SectionID, Amount)
+                    SELECT 
+                        @InvoiceID,
+                        cs.SectionID,
+                        c.Credits * c.TuitionPerCredit
+                    FROM Enrollments e
+                    INNER JOIN ClassSections cs ON e.SectionID = cs.SectionID
+                    INNER JOIN Courses c ON cs.CourseID = c.CourseID
+                    WHERE e.StudentID = @StudentID 
+                        AND cs.TermID = @TermID
+                        AND e.Status IN (N'Đang học', N'Đã duyệt');
+                END
+            END
+        END
+        ELSE
+        BEGIN
+            -- Không còn môn học nào, xử lý hóa đơn
+            IF @InvoiceID IS NOT NULL
+            BEGIN
+                IF @ExistingPaidAmount > 0
+                BEGIN
+                    -- Có tiền đã thanh toán, chỉ cập nhật amount về 0
+                    UPDATE Invoices 
+                    SET TotalAmount = 0, 
+                        Status = N'Đã thanh toán', 
+                        IsPaid = 1
+                    WHERE InvoiceID = @InvoiceID;
+                    
+                    -- Log thay đổi
+                    INSERT INTO InvoiceChangeLogs (StudentID, TermID, OldAmount, NewAmount, Action, ChangedBy)
+                    VALUES (@StudentID, @TermID, @OldAmount, 0, 'UPDATE_TO_ZERO', 'SYSTEM_TRIGGER');
+                    
+                    -- Xóa chi tiết
+                    DELETE FROM InvoiceDetails WHERE InvoiceID = @InvoiceID;
+                END
+                ELSE
+                BEGIN
+                    -- Log thay đổi trước khi xóa
+                    INSERT INTO InvoiceChangeLogs (StudentID, TermID, OldAmount, NewAmount, Action, ChangedBy)
+                    VALUES (@StudentID, @TermID, @OldAmount, 0, 'DELETE', 'SYSTEM_TRIGGER');
+                    
+                    -- Chưa có thanh toán, xóa hóa đơn hoàn toàn
+                    DELETE FROM InvoiceDetails WHERE InvoiceID = @InvoiceID;
+                    DELETE FROM Invoices WHERE InvoiceID = @InvoiceID;
+                END
+            END
+        END
+        
+        FETCH NEXT FROM update_cursor INTO @StudentID, @TermID;
+    END
+    
+    CLOSE update_cursor;
+    DEALLOCATE update_cursor;
+    DROP TABLE #StudentsToUpdate;
+END;
 
--- STORED PROCEDURES TÌM KIẾM SINH VIÊN
+-- ==================================================================
+-- TRIGGER KIỂM TRA SỈ SỐ VÀ VALIDATE
+-- ==================================================================
+CREATE OR ALTER TRIGGER tr_ValidateEnrollment
+ON Enrollments
+INSTEAD OF INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    DECLARE @StudentID INT, @SectionID INT, @RegisterDate DATE, @Status NVARCHAR(50);
+    DECLARE @MaxStudents INT, @CurrentStudents INT;
+    DECLARE @CourseName NVARCHAR(100), @StudentName NVARCHAR(100);
+    
+    DECLARE enrollment_cursor CURSOR FOR
+    SELECT StudentID, SectionID, ISNULL(RegisterDate, GETDATE()), ISNULL(Status, N'Đang học') FROM inserted;
+    
+    OPEN enrollment_cursor;
+    FETCH NEXT FROM enrollment_cursor INTO @StudentID, @SectionID, @RegisterDate, @Status;
+    
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Lấy thông tin cho thông báo lỗi
+        SELECT @CourseName = c.Name
+        FROM ClassSections cs
+        INNER JOIN Courses c ON cs.CourseID = c.CourseID
+        WHERE cs.SectionID = @SectionID;
+        
+        SELECT @StudentName = FullName FROM Students WHERE StudentID = @StudentID;
+        
+        -- Kiểm tra đã đăng ký chưa
+        IF EXISTS(SELECT 1 FROM Enrollments 
+                  WHERE StudentID = @StudentID 
+                    AND SectionID = @SectionID
+                    AND Status IN (N'Đang học', N'Đã duyệt'))
+        BEGIN
+            DECLARE @ErrorMsg1 NVARCHAR(500) = N'Sinh viên "' + @StudentName + N'" đã đăng ký môn "' + @CourseName + N'" rồi!';
+            RAISERROR(@ErrorMsg1, 16, 1);
+            RETURN;
+        END
+        
+        -- Lấy sĩ số tối đa
+        SELECT @MaxStudents = MaxStudents 
+        FROM ClassSections 
+        WHERE SectionID = @SectionID;
+        
+        -- Đếm số sinh viên hiện tại
+        SELECT @CurrentStudents = COUNT(*) 
+        FROM Enrollments 
+        WHERE SectionID = @SectionID 
+            AND Status IN (N'Đang học', N'Đã duyệt');
+        
+        -- Kiểm tra sĩ số
+        IF @CurrentStudents >= @MaxStudents
+        BEGIN
+            DECLARE @ErrorMsg2 NVARCHAR(500) = N'Lớp học phần "' + @CourseName + N'" đã đầy! (' + 
+                CAST(@CurrentStudents AS NVARCHAR(10)) + N'/' + CAST(@MaxStudents AS NVARCHAR(10)) + N')';
+            RAISERROR(@ErrorMsg2, 16, 1);
+            RETURN;
+        END
+        
+        -- Kiểm tra trùng lịch học
+        IF EXISTS(
+            SELECT 1 
+            FROM Enrollments e1
+            INNER JOIN ClassSections cs1 ON e1.SectionID = cs1.SectionID
+            INNER JOIN ClassSections cs2 ON cs2.SectionID = @SectionID
+            WHERE e1.StudentID = @StudentID
+                AND e1.Status IN (N'Đang học', N'Đã duyệt')
+                AND cs1.TermID = cs2.TermID
+                AND cs1.Schedule = cs2.Schedule
+        )
+        BEGIN
+            DECLARE @ErrorMsg3 NVARCHAR(500) = N'Sinh viên "' + @StudentName + N'" đã có lịch học trùng với môn "' + @CourseName + N'"!';
+            RAISERROR(@ErrorMsg3, 16, 1);
+            RETURN;
+        END
+        
+        -- Thêm đăng ký hợp lệ
+        INSERT INTO Enrollments (StudentID, SectionID, RegisterDate, Status)
+        VALUES (@StudentID, @SectionID, @RegisterDate, @Status);
+        
+        FETCH NEXT FROM enrollment_cursor INTO @StudentID, @SectionID, @RegisterDate, @Status;
+    END
+    
+    CLOSE enrollment_cursor;
+    DEALLOCATE enrollment_cursor;
+END;
+
+-- ==================================================================
+-- VIEW THÔNG TIN THANH TOÁN TỔNG QUAN
+-- ==================================================================
+CREATE OR ALTER VIEW vw_PaymentOverview AS
+SELECT 
+    s.StudentID,
+    s.StudentCode,
+    s.FullName as StudentName,
+    t.TermID,
+    t.Name as TermName,
+    i.InvoiceID,
+    i.TotalAmount,
+    ISNULL(payments.PaidAmount, 0) as PaidAmount,
+    i.TotalAmount - ISNULL(payments.PaidAmount, 0) as RemainingAmount,
+    CASE 
+        WHEN i.TotalAmount - ISNULL(payments.PaidAmount, 0) <= 0 THEN N'✅ Đã thanh toán'
+        WHEN ISNULL(payments.PaidAmount, 0) > 0 THEN N'⚠️ Thanh toán một phần'
+        ELSE N'❌ Chưa thanh toán'
+    END as PaymentStatus,
+    i.CreatedDate,
+    i.Status,
+    i.IsPaid,
+    i.DueDate
+FROM Students s
+INNER JOIN Invoices i ON s.StudentID = i.StudentID
+INNER JOIN AcademicTerms t ON i.TermID = t.TermID
+LEFT JOIN (
+    SELECT InvoiceID, SUM(AmountPaid) as PaidAmount
+    FROM Payments
+    GROUP BY InvoiceID
+) payments ON i.InvoiceID = payments.InvoiceID;
+
+-- ==================================================================
+-- STORED PROCEDURES TÌM KIẾM
+-- ==================================================================
 CREATE OR ALTER PROC TKTTSinhVien @StudentCode VARCHAR(20)
 AS
 BEGIN
     SELECT StudentID, StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status
     FROM Students WHERE StudentCode = @StudentCode
 END;
-
-EXECUTE TKTTSinhVien 'SV001'
 
 CREATE OR ALTER PROC TKTTSinhVien1 @FullName NVARCHAR(100)
 AS
@@ -211,16 +510,12 @@ BEGIN
     FROM Students WHERE FullName = @FullName
 END;
 
-EXECUTE TKTTSinhVien1 N'Nguyễn Thị Mai'
-
 CREATE OR ALTER PROC TKTTSinhVien2 @DeptID INT
 AS
 BEGIN
     SELECT StudentID, StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status
     FROM Students WHERE DeptID = @DeptID
 END;
-
-EXECUTE TKTTSinhVien2 1
 
 CREATE OR ALTER PROC TKTTSinhVien3 @AdmissionYear INT
 AS
@@ -229,19 +524,12 @@ BEGIN
     FROM Students WHERE AdmissionYear = @AdmissionYear
 END;
 
-EXECUTE TKTTSinhVien3 2021
-
-
--- STORED PROCEDURES TÌM KIẾM MÔN HỌC
-
 CREATE OR ALTER PROC TKTTMonHoc @CourseCode VARCHAR(20)
 AS
 BEGIN
     SELECT CourseID, Code, Name, Credits, TuitionPerCredit, DeptID
     FROM Courses WHERE Code = @CourseCode
 END;
-
-EXECUTE TKTTMonHoc 'CT101'
 
 CREATE OR ALTER PROC TKTTMonHoc1 @CourseName NVARCHAR(100)
 AS
@@ -250,8 +538,6 @@ BEGIN
     FROM Courses WHERE Name = @CourseName
 END;
 
-EXECUTE TKTTMonHoc1 N'Lập trình cơ bản'
-
 CREATE OR ALTER PROC TKTTMonHoc2 @DeptID INT
 AS
 BEGIN
@@ -259,49 +545,10 @@ BEGIN
     FROM Courses WHERE DeptID = @DeptID
 END;
 
-EXECUTE TKTTMonHoc2 1
-
-
--- STORED PROCEDURES TÌM KIẾM HÓA ĐƠN
-CREATE OR ALTER PROC TKTTHoaDon @InvoiceID INT
-AS
-BEGIN
-    SELECT InvoiceID, StudentID, TermID, TotalAmount, CreatedDate, IsPaid
-    FROM Invoices WHERE InvoiceID = @InvoiceID
-END;
-
-EXECUTE TKTTHoaDon 1
-
-CREATE OR ALTER PROC TKTTHoaDon1 @StudentID INT
-AS
-BEGIN
-    SELECT InvoiceID, StudentID, TermID, TotalAmount, CreatedDate, IsPaid
-    FROM Invoices WHERE StudentID = @StudentID
-END;
-
-EXECUTE TKTTHoaDon1 1
-
-CREATE OR ALTER PROC TKTTHoaDon2 @TermID INT
-AS
-BEGIN
-    SELECT InvoiceID, StudentID, TermID, TotalAmount, CreatedDate, IsPaid
-    FROM Invoices WHERE TermID = @TermID
-END;
-
-EXECUTE TKTTHoaDon2 2
-
-CREATE OR ALTER PROC TKTTHoaDon3 @IsPaid BIT
-AS
-BEGIN
-    SELECT InvoiceID, StudentID, TermID, TotalAmount, CreatedDate, IsPaid
-    FROM Invoices WHERE IsPaid = @IsPaid
-END;
-
-EXECUTE TKTTHoaDon3 0
-
-
--- STORED PROCEDURES THÊM, SỬA, XÓA SINH VIÊN
-CREATE PROCEDURE ThemSinhVien
+-- ==================================================================
+-- STORED PROCEDURES QUẢN LÝ DỮ LIỆU
+-- ==================================================================
+CREATE OR ALTER PROCEDURE ThemSinhVien
     @StudentCode VARCHAR(20),
     @FullName NVARCHAR(100),
     @Gender NVARCHAR(10),
@@ -316,9 +563,9 @@ AS
 BEGIN
     INSERT INTO Students (StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status)
     VALUES (@StudentCode, @FullName, @Gender, @DateOfBirth, @Email, @Phone, @Address, @DeptID, @AdmissionYear, @Status)
-END
+END;
 
-CREATE PROCEDURE SuaSinhVien
+CREATE OR ALTER PROCEDURE SuaSinhVien
     @StudentID INT,
     @StudentCode VARCHAR(20),
     @FullName NVARCHAR(100),
@@ -337,18 +584,16 @@ BEGIN
         DateOfBirth = @DateOfBirth, Email = @Email, Phone = @Phone,
         Address = @Address, DeptID = @DeptID, AdmissionYear = @AdmissionYear, Status = @Status
     WHERE StudentID = @StudentID
-END
+END;
 
-CREATE PROCEDURE XoaSinhVien
+CREATE OR ALTER PROCEDURE XoaSinhVien
     @StudentID INT
 AS
 BEGIN
     DELETE FROM Students WHERE StudentID = @StudentID
-END
+END;
 
-
--- STORED PROCEDURES THÊM, SỬA, XÓA MÔN HỌC
-CREATE PROCEDURE ThemMonHoc
+CREATE OR ALTER PROCEDURE ThemMonHoc
     @Code VARCHAR(20),
     @Name NVARCHAR(100),
     @Credits INT,
@@ -360,7 +605,7 @@ BEGIN
     VALUES (@Code, @Name, @Credits, @TuitionPerCredit, @DeptID)
 END
 
-CREATE PROCEDURE SuaMonHoc
+CREATE OR ALTER PROCEDURE SuaMonHoc
     @CourseID INT,
     @Code VARCHAR(20),
     @Name NVARCHAR(100),
@@ -375,16 +620,15 @@ BEGIN
     WHERE CourseID = @CourseID
 END
 
-CREATE PROCEDURE XoaMonHoc
+CREATE OR ALTER PROCEDURE XoaMonHoc
     @CourseID INT
 AS
 BEGIN
     DELETE FROM Courses WHERE CourseID = @CourseID
 END
 
-
--- STORED PROCEDURES THÊM, SỬA, XÓA HÓA ĐƠN
-CREATE PROCEDURE ThemHoaDon
+-- LOG HÓA ĐƠN
+CREATE OR ALTER PROCEDURE ThemHoaDon
     @StudentID INT,
     @TermID INT,
     @TotalAmount DECIMAL(12,2),
@@ -395,7 +639,7 @@ BEGIN
     VALUES (@StudentID, @TermID, @TotalAmount, @IsPaid)
 END
 
-CREATE PROCEDURE SuaHoaDon
+CREATE OR ALTER PROCEDURE SuaHoaDon
     @InvoiceID INT,
     @StudentID INT,
     @TermID INT,
@@ -409,13 +653,12 @@ BEGIN
     WHERE InvoiceID = @InvoiceID
 END
 
-CREATE PROCEDURE XoaHoaDon
+CREATE OR ALTER PROCEDURE XoaHoaDon
     @InvoiceID INT
 AS
 BEGIN
     DELETE FROM Invoices WHERE InvoiceID = @InvoiceID
 END
-
 
 -- XEM DỮ LIỆU
 SELECT * FROM Departments;
@@ -427,254 +670,33 @@ SELECT * FROM Enrollments;
 SELECT * FROM Invoices;
 SELECT * FROM Payments;
 SELECT * FROM Users;
+SELECT * FROM InvoiceChangeLogs;
 
 
--- TRIGGER TỰ ĐỘNG TẠO/CẬP NHẬT HÓA ĐƠN KHI ĐĂNG KÝ
-CREATE OR ALTER TRIGGER tr_CreateOrUpdateInvoice
-ON Enrollments
-AFTER INSERT, DELETE
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Xử lý khi thêm đăng ký mới
-    IF EXISTS(SELECT * FROM inserted)
-    BEGIN
-        DECLARE @StudentID INT, @TermID INT, @SectionID INT;
-        
-        DECLARE enrollment_cursor CURSOR FOR
-        SELECT i.StudentID, cs.TermID, i.SectionID
-        FROM inserted i
-        JOIN ClassSections cs ON i.SectionID = cs.SectionID;
-        
-        OPEN enrollment_cursor;
-        FETCH NEXT FROM enrollment_cursor INTO @StudentID, @TermID, @SectionID;
-        
-        WHILE @@FETCH_STATUS = 0
-        BEGIN
-            DECLARE @InvoiceID INT;
-            DECLARE @Amount DECIMAL(12,2);
-            
-            -- Tính tiền môn học
-            SELECT @Amount = c.Credits * c.TuitionPerCredit
-            FROM ClassSections cs
-            JOIN Courses c ON cs.CourseID = c.CourseID
-            WHERE cs.SectionID = @SectionID;
-            
-            -- Kiểm tra xem đã có hóa đơn cho học kỳ này chưa
-            SELECT @InvoiceID = InvoiceID 
-            FROM Invoices 
-            WHERE StudentID = @StudentID AND TermID = @TermID;
-            
-            IF @InvoiceID IS NULL
-            BEGIN
-                -- Tạo hóa đơn mới
-                INSERT INTO Invoices (StudentID, TermID, TotalAmount, IsPaid)
-                VALUES (@StudentID, @TermID, @Amount, 0);
-                
-                SET @InvoiceID = SCOPE_IDENTITY();
-            END
-            ELSE
-            BEGIN
-                -- Cập nhật tổng tiền
-                UPDATE Invoices 
-                SET TotalAmount = TotalAmount + @Amount 
-                WHERE InvoiceID = @InvoiceID;
-            END
-            
-            -- Thêm chi tiết hóa đơn
-            INSERT INTO InvoiceDetails (InvoiceID, SectionID, Amount)
-            VALUES (@InvoiceID, @SectionID, @Amount);
-            
-            FETCH NEXT FROM enrollment_cursor INTO @StudentID, @TermID, @SectionID;
-        END
-        
-        CLOSE enrollment_cursor;
-        DEALLOCATE enrollment_cursor;
-    END
-    
-    -- Xử lý khi hủy đăng ký
-    IF EXISTS(SELECT * FROM deleted)
-    BEGIN
-        DECLARE @DelStudentID INT, @DelTermID INT, @DelSectionID INT;
-        
-        DECLARE delete_cursor CURSOR FOR
-        SELECT d.StudentID, cs.TermID, d.SectionID
-        FROM deleted d
-        JOIN ClassSections cs ON d.SectionID = cs.SectionID;
-        
-        OPEN delete_cursor;
-        FETCH NEXT FROM delete_cursor INTO @DelStudentID, @DelTermID, @DelSectionID;
-        
-        WHILE @@FETCH_STATUS = 0
-        BEGIN
-            DECLARE @DelInvoiceID INT;
-            DECLARE @DelAmount DECIMAL(12,2);
-            
-            -- Lấy thông tin hóa đơn
-            SELECT @DelInvoiceID = InvoiceID 
-            FROM Invoices 
-            WHERE StudentID = @DelStudentID AND TermID = @DelTermID;
-            
-            -- Lấy số tiền cần trừ
-            SELECT @DelAmount = Amount 
-            FROM InvoiceDetails 
-            WHERE InvoiceID = @DelInvoiceID AND SectionID = @DelSectionID;
-            
-            -- Xóa chi tiết hóa đơn
-            DELETE FROM InvoiceDetails 
-            WHERE InvoiceID = @DelInvoiceID AND SectionID = @DelSectionID;
-            
-            -- Cập nhật tổng tiền
-            UPDATE Invoices 
-            SET TotalAmount = TotalAmount - @DelAmount 
-            WHERE InvoiceID = @DelInvoiceID;
-            
-            -- Xóa hóa đơn nếu không còn môn nào
-            IF NOT EXISTS(SELECT 1 FROM InvoiceDetails WHERE InvoiceID = @DelInvoiceID)
-            BEGIN
-                DELETE FROM Invoices WHERE InvoiceID = @DelInvoiceID;
-            END
-            
-            FETCH NEXT FROM delete_cursor INTO @DelStudentID, @DelTermID, @DelSectionID;
-        END
-        
-        CLOSE delete_cursor;
-        DEALLOCATE delete_cursor;
-    END
-END;
+-- ==================================================================
+-- TEST DỮ LIỆU VÀ TRIGGER
+-- ==================================================================
 
---TRIGGER KIỂM TRA SỈ SỐ LỚP
-CREATE OR ALTER TRIGGER tr_CheckClassCapacity
-ON Enrollments
-INSTEAD OF INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    DECLARE @StudentID INT, @SectionID INT;
-    DECLARE @MaxStudents INT, @CurrentStudents INT;
-    
-    DECLARE capacity_cursor CURSOR FOR
-    SELECT StudentID, SectionID FROM inserted;
-    
-    OPEN capacity_cursor;
-    FETCH NEXT FROM capacity_cursor INTO @StudentID, @SectionID;
-    
-    WHILE @@FETCH_STATUS = 0
-    BEGIN
-        -- Lấy sĩ số tối đa
-        SELECT @MaxStudents = MaxStudents 
-        FROM ClassSections 
-        WHERE SectionID = @SectionID;
-        
-        -- Đếm số sinh viên hiện tại
-        SELECT @CurrentStudents = COUNT(*) 
-        FROM Enrollments 
-        WHERE SectionID = @SectionID 
-            AND Status IN (N'Đang học', N'Đã duyệt');
-        
-        -- Kiểm tra đã đăng ký chưa
-        IF EXISTS(SELECT 1 FROM Enrollments 
-                  WHERE StudentID = @StudentID AND SectionID = @SectionID)
-        BEGIN
-            RAISERROR(N'Sinh viên đã đăng ký lớp học phần này!', 16, 1);
-            RETURN;
-        END
-        
-        -- Kiểm tra sĩ số
-        IF @CurrentStudents >= @MaxStudents
-        BEGIN
-            RAISERROR(N'Lớp học phần đã đầy!', 16, 1);
-            RETURN;
-        END
-        
-        -- Thêm đăng ký hợp lệ
-        INSERT INTO Enrollments (StudentID, SectionID, RegisterDate, Status)
-        SELECT StudentID, SectionID, RegisterDate, Status
-        FROM inserted
-        WHERE StudentID = @StudentID AND SectionID = @SectionID;
-        
-        FETCH NEXT FROM capacity_cursor INTO @StudentID, @SectionID;
-    END
-    
-    CLOSE capacity_cursor;
-    DEALLOCATE capacity_cursor;
-END;
+-- Test đăng ký sinh viên
+PRINT N'=== TEST ĐĂNG KÝ SINH VIÊN ===';
+INSERT INTO Enrollments (StudentID, SectionID, RegisterDate, Status)
+VALUES
+(1, 1, GETDATE(), N'Đang học'),  -- SV001 - CT101-L01
+(1, 3, GETDATE(), N'Đang học'),  -- SV001 - CT201-L01
+(2, 4, GETDATE(), N'Đang học'),  -- SV002 - QT101-L01
+(3, 5, GETDATE(), N'Đang học');  -- SV003 - EN101-L01
 
---FUNCTION TÍNH TỔNG HỌC PHÍ CỦA SINH VIÊN TRONG HỌC KỲ
-CREATE OR ALTER FUNCTION fn_GetStudentTuitionByTerm(@StudentID INT, @TermID INT)
-RETURNS DECIMAL(12,2)
-AS
-BEGIN
-    DECLARE @TotalTuition DECIMAL(12,2) = 0;
-    
-    SELECT @TotalTuition = SUM(c.Credits * c.TuitionPerCredit)
-    FROM Enrollments e
-    JOIN ClassSections cs ON e.SectionID = cs.SectionID
-    JOIN Courses c ON cs.CourseID = c.CourseID
-    WHERE e.StudentID = @StudentID 
-        AND cs.TermID = @TermID
-        AND e.Status IN (N'Đang học', N'Đã duyệt');
-    
-    RETURN ISNULL(@TotalTuition, 0);
-END;
+-- Thêm 1 payment cho test
+INSERT INTO Payments (InvoiceID, PaymentDate, AmountPaid, Method, Note)
+SELECT TOP 1 InvoiceID, GETDATE(), 500000, N'Tiền mặt', N'Thanh toán một phần'
+FROM Invoices WHERE StudentID = 1;
 
---STORED PROCEDURE TẠO HÓA ĐƠN CHO HỌC KỲ
-CREATE OR ALTER PROCEDURE sp_CreateInvoiceForTerm
-    @StudentID INT,
-    @TermID INT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    DECLARE @InvoiceID INT;
-    DECLARE @TotalAmount DECIMAL(12,2);
-    
-    -- Kiểm tra đã có hóa đơn chưa
-    IF EXISTS(SELECT 1 FROM Invoices WHERE StudentID = @StudentID AND TermID = @TermID)
-    BEGIN
-        PRINT N'Đã có hóa đơn cho học kỳ này';
-        RETURN;
-    END
-    
-    -- Tính tổng học phí
-    SET @TotalAmount = dbo.fn_GetStudentTuitionByTerm(@StudentID, @TermID);
-    
-    IF @TotalAmount = 0
-    BEGIN
-        PRINT N'Sinh viên chưa đăng ký môn học nào';
-        RETURN;
-    END
-    
-    BEGIN TRY
-        BEGIN TRANSACTION;
-        
-        -- Tạo hóa đơn
-        INSERT INTO Invoices (StudentID, TermID, TotalAmount, IsPaid)
-        VALUES (@StudentID, @TermID, @TotalAmount, 0);
-        
-        SET @InvoiceID = SCOPE_IDENTITY();
-        
-        -- Tạo chi tiết hóa đơn
-        INSERT INTO InvoiceDetails (InvoiceID, SectionID, Amount)
-        SELECT 
-            @InvoiceID,
-            cs.SectionID,
-            c.Credits * c.TuitionPerCredit
-        FROM Enrollments e
-        JOIN ClassSections cs ON e.SectionID = cs.SectionID
-        JOIN Courses c ON cs.CourseID = c.CourseID
-        WHERE e.StudentID = @StudentID 
-            AND cs.TermID = @TermID
-            AND e.Status IN (N'Đang học', N'Đã duyệt');
-        
-        COMMIT TRANSACTION;
-        
-        PRINT N'Tạo hóa đơn thành công';
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        THROW;
-    END CATCH
-END;
+-- Kiểm tra kết quả
+PRINT N'=== KẾT QUẢ KIỂM TRA ===';
+SELECT 'INVOICES' as TableName, * FROM Invoices;
+SELECT 'INVOICE_DETAILS' as TableName, * FROM InvoiceDetails;
+SELECT 'PAYMENTS' as TableName, * FROM Payments;
+SELECT 'PAYMENT_OVERVIEW' as TableName, * FROM vw_PaymentOverview;
+SELECT 'CHANGE_LOGS' as TableName, * FROM InvoiceChangeLogs;
+
+PRINT N'=== TRIGGER HOẠT ĐỘNG THÀNH CÔNG ===';

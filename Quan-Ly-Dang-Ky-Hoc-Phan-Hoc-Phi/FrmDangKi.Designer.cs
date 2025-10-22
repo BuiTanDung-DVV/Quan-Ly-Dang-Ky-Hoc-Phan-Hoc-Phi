@@ -3,8 +3,6 @@
     partial class FrmDangKi
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel pnlFilter;
         private System.Windows.Forms.ComboBox cboHocKy;
         private System.Windows.Forms.ComboBox cboKhoa;
@@ -34,8 +32,6 @@
 
         private void InitializeComponent()
         {
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.pnlFilter = new System.Windows.Forms.Panel();
             this.cboHocKy = new System.Windows.Forms.ComboBox();
             this.cboKhoa = new System.Windows.Forms.ComboBox();
@@ -53,35 +49,16 @@
             this.btnDangKy = new System.Windows.Forms.Button();
             this.btnHuyDangKy = new System.Windows.Forms.Button();
             this.btnXemLichHoc = new System.Windows.Forms.Button();
-            this.pnlTop.SuspendLayout();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.pnlTop = new System.Windows.Forms.Panel();
             this.pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLopHocPhan)).BeginInit();
             this.pnlRight.SuspendLayout();
             this.gbThongTin.SuspendLayout();
             this.gbDaDangKy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDaDangKy)).BeginInit();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlTop
-            // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
-            this.pnlTop.Controls.Add(this.lblTitle);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1200, 50);
-            this.pnlTop.TabIndex = 3;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(490, 12);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(195, 30);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "ĐĂNG KÝ TÍN CHỈ";
             // 
             // pnlFilter
             // 
@@ -293,6 +270,28 @@
             this.btnXemLichHoc.UseVisualStyleBackColor = false;
             this.btnXemLichHoc.Click += new System.EventHandler(this.btnXemLichHoc_Click);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.White;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblTitle.Location = new System.Drawing.Point(490, 12);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(197, 30);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "ĐĂNG KÝ TÍN CHỈ";
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.Azure;
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1200, 50);
+            this.pnlTop.TabIndex = 3;
+            // 
             // FrmDangKi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -307,8 +306,6 @@
             this.Name = "FrmDangKi";
             this.Text = "Đăng ký tín chỉ";
             this.Load += new System.EventHandler(this.FrmDangKi_Load);
-            this.pnlTop.ResumeLayout(false);
-            this.pnlTop.PerformLayout();
             this.pnlFilter.ResumeLayout(false);
             this.pnlFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLopHocPhan)).EndInit();
@@ -316,7 +313,13 @@
             this.gbThongTin.ResumeLayout(false);
             this.gbDaDangKy.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDaDangKy)).EndInit();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
+
         }
+
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel pnlTop;
     }
 }
