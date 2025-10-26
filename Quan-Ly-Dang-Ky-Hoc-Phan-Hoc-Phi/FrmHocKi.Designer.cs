@@ -47,6 +47,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            this.Load += new System.EventHandler(this.FrmHocKi_Load);
             // 
             // dataGridView1
             // 

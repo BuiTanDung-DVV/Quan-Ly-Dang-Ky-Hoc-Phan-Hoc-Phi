@@ -46,6 +46,8 @@
             this.lblMaGV = new System.Windows.Forms.Label();
             this.lblDanhMuc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Load += new System.EventHandler(this.FrmGiangVien_Load);
+
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -58,6 +60,8 @@
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(855, 227);
             this.dataGridView1.TabIndex = 28;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+
             // 
             // btnThoat
             // 
