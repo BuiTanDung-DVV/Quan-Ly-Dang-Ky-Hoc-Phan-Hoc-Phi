@@ -2,129 +2,56 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
     public partial class FrmHocKi : Form
     {
         KETNOI_CSDL kn = new KETNOI_CSDL();
-        string sql;
-        DataTable dtTerms;
 
         public FrmHocKi()
         {
             InitializeComponent();
         }
 
+        public void Bang_HocKi()
+        {
+            DataTable dta = new DataTable();
+            dta = kn.Lay_DulieuBang("SELECT * FROM AcademicTerms");
+            dataKQ.DataSource = dta;
+        }
+
         private void FrmHocKi_Load(object sender, EventArgs e)
         {
-            LoadHocKi();
+            Bang_HocKi();
         }
 
-        private void LoadHocKi()
+        private void btnToaMoi_Click(object sender, EventArgs e)
         {
-            sql = "SELECT TermID AS [Mã Kỳ], Code AS [Mã Học Kỳ], Name AS [Tên Học Kỳ], StartDate AS [Ngày Bắt Đầu], EndDate AS [Ngày Kết Thúc], IsCurrent AS [Đang Hiện Hành] FROM AcademicTerms";
-            DataTable dt = kn.Lay_DulieuBang(sql);
-            dataGridView1.DataSource = dt;
-            // 🔹 Làm đẹp DataGridView
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 60, 120);
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.DefaultCellStyle.BackColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(230, 240, 250);
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            FrmHocKi_ChinhSua f1 = new FrmHocKi_ChinhSua();
+            f1.ShowDialog();
+            Bang_HocKi();
         }
 
-        private void btnTaoMoi_Click(object sender, EventArgs e)
+        private void btnSua1_Click(object sender, EventArgs e)
         {
-            txtMaLop.Clear();      // Code
-            txtTenLop.Clear();     // Name
-            txtGhiChu.Clear();     // IsCurrent
-            txtDate1.Value = DateTime.Now;
-            dateTimePicker1.Value = DateTime.Now;
-            txtMaLop.Focus();
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            try
+            // 1. Kiểm tra xem đã chọn dòng nào chưa
+            if (dataKQ.CurrentRow != null)
             {
-                bool isCurrent = txtGhiChu.Text.Trim() == "1" || txtGhiChu.Text.Trim().ToLower() == "true";
+                // 2. Lấy ID (MaMonHoc) từ dòng đang chọn
+                int idHocKi = Convert.ToInt32(dataKQ.CurrentRow.Cells["TermID"].Value);
 
-                sql = $"INSERT INTO AcademicTerms (Code, Name, StartDate, EndDate, IsCurrent) " +
-                      $"VALUES ('{txtMaLop.Text}', N'{txtTenLop.Text}', " +
-                      $"'{txtDate1.Value:yyyy-MM-dd}', '{dateTimePicker1.Value:yyyy-MM-dd}', '{(isCurrent ? 1 : 0)}')";
+                // 3. Mở Form chỉnh sửa và "gửi" ID qua
+                FrmHocKi_ChinhSua f1 = new FrmHocKi_ChinhSua(idHocKi);
+                f1.ShowDialog();
 
-                kn.ThucThiSQL(sql);
-                MessageBox.Show("Đã thêm kì học mới!");
-                LoadHocKi();
+                // 4. Tải lại lưới sau khi Form chỉnh sửa đóng
+                Bang_HocKi();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Lỗi khi lưu: " + ex.Message);
-            }
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                bool isCurrent = txtGhiChu.Text.Trim() == "1" || txtGhiChu.Text.Trim().ToLower() == "true";
-
-                sql = $"UPDATE AcademicTerms SET " +
-                      $"Name = N'{txtTenLop.Text}', " +
-                      $"StartDate = '{txtDate1.Value:yyyy-MM-dd}', " +
-                      $"EndDate = '{dateTimePicker1.Value:yyyy-MM-dd}', " +
-                      $"IsCurrent = '{(isCurrent ? 1 : 0)}' " +
-                      $"WHERE Code = '{txtMaLop.Text}'";
-
-                kn.ThucThiSQL(sql);
-                MessageBox.Show("Đã cập nhật kì học!");
-                LoadHocKi();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi sửa: " + ex.Message);
-            }
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                sql = $"DELETE FROM AcademicTerms WHERE Code = '{txtMaLop.Text}'";
-                kn.ThucThiSQL(sql);
-                MessageBox.Show("Đã xóa kì học!");
-                LoadHocKi();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi xóa: " + ex.Message);
-            }
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = e.RowIndex;
-            if (i >= 0)
-            {
-                txtMaLop.Text = dataGridView1.Rows[i].Cells["Code"].Value.ToString();
-                txtTenLop.Text = dataGridView1.Rows[i].Cells["Name"].Value.ToString();
-                txtDate1.Value = Convert.ToDateTime(dataGridView1.Rows[i].Cells["StartDate"].Value);
-                dateTimePicker1.Value = Convert.ToDateTime(dataGridView1.Rows[i].Cells["EndDate"].Value);
-                txtGhiChu.Text = (bool)dataGridView1.Rows[i].Cells["IsCurrent"].Value ? "1" : "0";
+                MessageBox.Show("Vui lòng chọn một môn học để sửa!");
             }
         }
     }

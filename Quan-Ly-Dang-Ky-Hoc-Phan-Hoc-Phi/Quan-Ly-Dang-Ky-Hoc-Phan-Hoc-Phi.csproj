@@ -88,11 +88,23 @@
     <Compile Include="FrmHocKi.Designer.cs">
       <DependentUpon>FrmHocKi.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmHocKi_ChinhSua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHocKi_ChinhSua.Designer.cs">
+      <DependentUpon>FrmHocKi_ChinhSua.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKhoaVien.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmKhoaVien.Designer.cs">
       <DependentUpon>FrmKhoaVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKhoaVien_ChinhSua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKhoaVien_ChinhSua.Designer.cs">
+      <DependentUpon>FrmKhoaVien_ChinhSua.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -178,8 +190,14 @@
     <EmbeddedResource Include="FrmHocKi.resx">
       <DependentUpon>FrmHocKi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmHocKi_ChinhSua.resx">
+      <DependentUpon>FrmHocKi_ChinhSua.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKhoaVien.resx">
       <DependentUpon>FrmKhoaVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKhoaVien_ChinhSua.resx">
+      <DependentUpon>FrmKhoaVien_ChinhSua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
