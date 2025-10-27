@@ -53,11 +53,11 @@
             // 
             this.txtId.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtId.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(226, 104);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtId.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtId.Location = new System.Drawing.Point(286, 94);
+            this.txtId.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.txtId.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtId.Name = "txtId";
-            this.txtId.Padding = new System.Windows.Forms.Padding(5);
+            this.txtId.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtId.Radius = 30;
             this.txtId.ShowText = false;
             this.txtId.Size = new System.Drawing.Size(539, 46);
@@ -69,8 +69,9 @@
             // 
             this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.Location = new System.Drawing.Point(408, 590);
-            this.btnHuy.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnHuy.Location = new System.Drawing.Point(437, 643);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnHuy.MinimumSize = new System.Drawing.Size(2, 2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Radius = 30;
             this.btnHuy.Size = new System.Drawing.Size(239, 49);
@@ -83,8 +84,9 @@
             // 
             this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Location = new System.Drawing.Point(62, 590);
-            this.btnLuu.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnLuu.Location = new System.Drawing.Point(77, 643);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnLuu.MinimumSize = new System.Drawing.Size(2, 2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Radius = 30;
             this.btnLuu.Size = new System.Drawing.Size(239, 49);
@@ -97,11 +99,11 @@
             // 
             this.txtMaLop.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaLop.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLop.Location = new System.Drawing.Point(226, 158);
-            this.txtMaLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMaLop.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtMaLop.Location = new System.Drawing.Point(286, 156);
+            this.txtMaLop.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.txtMaLop.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Padding = new System.Windows.Forms.Padding(5);
+            this.txtMaLop.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtMaLop.Radius = 30;
             this.txtMaLop.ShowText = false;
             this.txtMaLop.Size = new System.Drawing.Size(539, 46);
@@ -113,7 +115,8 @@
             // 
             this.lblHK.AutoSize = true;
             this.lblHK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHK.Location = new System.Drawing.Point(25, 283);
+            this.lblHK.Location = new System.Drawing.Point(23, 293);
+            this.lblHK.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblHK.Name = "lblHK";
             this.lblHK.Size = new System.Drawing.Size(89, 33);
             this.lblHK.TabIndex = 36;
@@ -123,7 +126,8 @@
             // 
             this.lblGV.AutoSize = true;
             this.lblGV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGV.Location = new System.Drawing.Point(25, 339);
+            this.lblGV.Location = new System.Drawing.Point(23, 355);
+            this.lblGV.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblGV.Name = "lblGV";
             this.lblGV.Size = new System.Drawing.Size(134, 33);
             this.lblGV.TabIndex = 35;
@@ -133,7 +137,8 @@
             // 
             this.lblLich.AutoSize = true;
             this.lblLich.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLich.Location = new System.Drawing.Point(25, 395);
+            this.lblLich.Location = new System.Drawing.Point(23, 417);
+            this.lblLich.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblLich.Name = "lblLich";
             this.lblLich.Size = new System.Drawing.Size(112, 33);
             this.lblLich.TabIndex = 34;
@@ -143,7 +148,8 @@
             // 
             this.lblMon.AutoSize = true;
             this.lblMon.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMon.Location = new System.Drawing.Point(25, 227);
+            this.lblMon.Location = new System.Drawing.Point(23, 231);
+            this.lblMon.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMon.Name = "lblMon";
             this.lblMon.Size = new System.Drawing.Size(115, 33);
             this.lblMon.TabIndex = 33;
@@ -154,7 +160,8 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(307, 23);
+            this.label1.Location = new System.Drawing.Point(280, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(257, 36);
             this.label1.TabIndex = 37;
@@ -164,7 +171,8 @@
             // 
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(25, 117);
+            this.lblID.Location = new System.Drawing.Point(23, 107);
+            this.lblID.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(43, 33);
             this.lblID.TabIndex = 38;
@@ -174,7 +182,8 @@
             // 
             this.lblMaLop.AutoSize = true;
             this.lblMaLop.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaLop.Location = new System.Drawing.Point(25, 171);
+            this.lblMaLop.Location = new System.Drawing.Point(23, 169);
+            this.lblMaLop.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMaLop.Name = "lblMaLop";
             this.lblMaLop.Size = new System.Drawing.Size(204, 33);
             this.lblMaLop.TabIndex = 39;
@@ -187,11 +196,11 @@
             this.cboHK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboHK.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.cboHK.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.cboHK.Location = new System.Drawing.Point(226, 270);
-            this.cboHK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cboHK.MinimumSize = new System.Drawing.Size(63, 0);
+            this.cboHK.Location = new System.Drawing.Point(286, 280);
+            this.cboHK.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.cboHK.MinimumSize = new System.Drawing.Size(105, 0);
             this.cboHK.Name = "cboHK";
-            this.cboHK.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.cboHK.Padding = new System.Windows.Forms.Padding(0, 0, 50, 3);
             this.cboHK.Radius = 30;
             this.cboHK.Size = new System.Drawing.Size(539, 46);
             this.cboHK.SymbolSize = 24;
@@ -206,11 +215,11 @@
             this.cboGV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboGV.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.cboGV.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.cboGV.Location = new System.Drawing.Point(226, 326);
-            this.cboGV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cboGV.MinimumSize = new System.Drawing.Size(63, 0);
+            this.cboGV.Location = new System.Drawing.Point(286, 342);
+            this.cboGV.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.cboGV.MinimumSize = new System.Drawing.Size(105, 0);
             this.cboGV.Name = "cboGV";
-            this.cboGV.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.cboGV.Padding = new System.Windows.Forms.Padding(0, 0, 50, 3);
             this.cboGV.Radius = 30;
             this.cboGV.Size = new System.Drawing.Size(539, 46);
             this.cboGV.SymbolSize = 24;
@@ -222,11 +231,11 @@
             // 
             this.txtLich.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtLich.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLich.Location = new System.Drawing.Point(226, 382);
-            this.txtLich.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLich.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtLich.Location = new System.Drawing.Point(286, 404);
+            this.txtLich.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.txtLich.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtLich.Name = "txtLich";
-            this.txtLich.Padding = new System.Windows.Forms.Padding(5);
+            this.txtLich.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtLich.Radius = 30;
             this.txtLich.ShowText = false;
             this.txtLich.Size = new System.Drawing.Size(539, 46);
@@ -238,11 +247,11 @@
             // 
             this.txtRoom.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRoom.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoom.Location = new System.Drawing.Point(226, 438);
-            this.txtRoom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtRoom.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtRoom.Location = new System.Drawing.Point(286, 466);
+            this.txtRoom.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.txtRoom.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtRoom.Name = "txtRoom";
-            this.txtRoom.Padding = new System.Windows.Forms.Padding(5);
+            this.txtRoom.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtRoom.Radius = 30;
             this.txtRoom.ShowText = false;
             this.txtRoom.Size = new System.Drawing.Size(539, 46);
@@ -254,11 +263,11 @@
             // 
             this.txtMaxSt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaxSt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaxSt.Location = new System.Drawing.Point(226, 494);
-            this.txtMaxSt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMaxSt.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtMaxSt.Location = new System.Drawing.Point(286, 528);
+            this.txtMaxSt.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.txtMaxSt.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtMaxSt.Name = "txtMaxSt";
-            this.txtMaxSt.Padding = new System.Windows.Forms.Padding(5);
+            this.txtMaxSt.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtMaxSt.Radius = 30;
             this.txtMaxSt.ShowText = false;
             this.txtMaxSt.Size = new System.Drawing.Size(539, 46);
@@ -270,7 +279,8 @@
             // 
             this.lblRoom.AutoSize = true;
             this.lblRoom.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoom.Location = new System.Drawing.Point(25, 451);
+            this.lblRoom.Location = new System.Drawing.Point(23, 479);
+            this.lblRoom.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(86, 33);
             this.lblRoom.TabIndex = 34;
@@ -280,7 +290,8 @@
             // 
             this.lblMaxSt.AutoSize = true;
             this.lblMaxSt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaxSt.Location = new System.Drawing.Point(25, 507);
+            this.lblMaxSt.Location = new System.Drawing.Point(23, 541);
+            this.lblMaxSt.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMaxSt.Name = "lblMaxSt";
             this.lblMaxSt.Size = new System.Drawing.Size(152, 33);
             this.lblMaxSt.TabIndex = 34;
@@ -293,11 +304,11 @@
             this.cboMonHoc.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMonHoc.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.cboMonHoc.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.cboMonHoc.Location = new System.Drawing.Point(226, 214);
-            this.cboMonHoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cboMonHoc.MinimumSize = new System.Drawing.Size(63, 0);
+            this.cboMonHoc.Location = new System.Drawing.Point(286, 218);
+            this.cboMonHoc.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.cboMonHoc.MinimumSize = new System.Drawing.Size(105, 0);
             this.cboMonHoc.Name = "cboMonHoc";
-            this.cboMonHoc.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.cboMonHoc.Padding = new System.Windows.Forms.Padding(0, 0, 50, 3);
             this.cboMonHoc.Radius = 30;
             this.cboMonHoc.Size = new System.Drawing.Size(539, 46);
             this.cboMonHoc.SymbolSize = 24;
@@ -307,10 +318,10 @@
             // 
             // FrmLopHocPhan_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(834, 672);
+            this.ClientSize = new System.Drawing.Size(877, 754);
             this.Controls.Add(this.cboMonHoc);
             this.Controls.Add(this.txtMaxSt);
             this.Controls.Add(this.txtRoom);
@@ -330,7 +341,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblMaLop);
+            this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "FrmLopHocPhan_ChinhSua";
             this.Text = "FrmLopHocPhan_ChinhSua";
             this.Load += new System.EventHandler(this.FrmLopHocPhan_ChinhSua_Load);

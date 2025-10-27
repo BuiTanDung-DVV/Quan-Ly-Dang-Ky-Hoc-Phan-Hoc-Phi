@@ -93,7 +93,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
             try 
             {
-                string sql = "SELECT * FROM ClassSections WHERE SectionID = @SectionID";
+                string sql = "SELECT * FROM ClassSections WHERE SectionID = " + _idLopHocPhan;
                 SqlCommand cmd = new SqlCommand(sql, kn.cnn);
                 SqlDataReader doc_dl = cmd.ExecuteReader();
                 if (doc_dl.Read())
@@ -149,7 +149,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 else
                 {
                     kn.ThucThiSQL(
-                        "INSERT INTO Sections (SectionCode, CourseID, TermID, LecturerID, Schedule, Room, MaxStudents) " +
+                        "INSERT INTO ClassSections (SectionCode, CourseID, TermID, LecturerID, Schedule, Room, MaxStudents) " +
                         "VALUES ('" + txtMaLop.Text + "', "
                                + cboMonHoc.SelectedValue + ", "
                                + cboHK.SelectedValue + ", "
@@ -165,7 +165,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             else
             {
                 // Cập nhật môn học
-                string sql_Sua = "UPDATE Sections SET " +
+                string sql_Sua = "UPDATE ClassSections SET " +
                                  "SectionCode = '" + txtMaLop.Text + "', " +
                                  "CourseID = " + cboMonHoc.SelectedValue + ", " +
                                  "TermID = " + cboHK.SelectedValue + ", " +

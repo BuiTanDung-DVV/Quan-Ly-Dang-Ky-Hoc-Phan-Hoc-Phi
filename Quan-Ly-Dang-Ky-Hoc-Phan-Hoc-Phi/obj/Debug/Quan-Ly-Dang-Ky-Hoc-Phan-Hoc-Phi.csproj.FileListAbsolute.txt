@@ -77,3 +77,4 @@ D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\
 D:\project\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmMonHoc_ChinhSua.resources
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmNganhHoc_ChinhSua.resources
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmLopHocPhan_ChinhSua.resources
+D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmGiangVien_ChinhSua.resources
