@@ -35,6 +35,7 @@
             this.lblMa = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.panelChucNang = new Sunny.UI.UIFlowLayoutPanel();
+            this.btnDSSVDK = new Sunny.UI.UIButton();
             this.btnQLMH = new Sunny.UI.UIButton();
             this.btnQLKV = new Sunny.UI.UIButton();
             this.btnDK = new Sunny.UI.UIButton();
@@ -49,7 +50,6 @@
             this.uiPanel2 = new Sunny.UI.UIPanel();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblNEU = new System.Windows.Forms.Label();
-            this.btnDSSVDK = new Sunny.UI.UIButton();
             this.uiPanel1.SuspendLayout();
             this.uiPanel3.SuspendLayout();
             this.uiPanel4.SuspendLayout();
@@ -136,7 +136,7 @@
             this.lblMa.ForeColor = System.Drawing.Color.White;
             this.lblMa.Location = new System.Drawing.Point(61, 63);
             this.lblMa.Name = "lblMa";
-            this.lblMa.Size = new System.Drawing.Size(72, 19);
+            this.lblMa.Size = new System.Drawing.Size(107, 27);
             this.lblMa.TabIndex = 7;
             this.lblMa.Text = "11236030";
             // 
@@ -148,7 +148,7 @@
             this.lblName.ForeColor = System.Drawing.Color.White;
             this.lblName.Location = new System.Drawing.Point(33, 38);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(128, 19);
+            this.lblName.Size = new System.Drawing.Size(199, 27);
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Nguyễn Hoàng Sơn";
             // 
@@ -178,6 +178,22 @@
             this.panelChucNang.TabIndex = 5;
             this.panelChucNang.Text = "uiFlowLayoutPanel1";
             this.panelChucNang.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnDSSVDK
+            // 
+            this.btnDSSVDK.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDSSVDK.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnDSSVDK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSSVDK.Location = new System.Drawing.Point(10, 447);
+            this.btnDSSVDK.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDSSVDK.Name = "btnDSSVDK";
+            this.btnDSSVDK.Radius = 30;
+            this.btnDSSVDK.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnDSSVDK.Size = new System.Drawing.Size(255, 43);
+            this.btnDSSVDK.TabIndex = 11;
+            this.btnDSSVDK.Text = "Danh sách sinh viên đăng kí";
+            this.btnDSSVDK.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnDSSVDK.Click += new System.EventHandler(this.btnDSDVDK_Click);
             // 
             // btnQLMH
             // 
@@ -342,7 +358,7 @@
             this.lblChucNang.ForeColor = System.Drawing.Color.White;
             this.lblChucNang.Location = new System.Drawing.Point(5, 296);
             this.lblChucNang.Name = "lblChucNang";
-            this.lblChucNang.Size = new System.Drawing.Size(115, 25);
+            this.lblChucNang.Size = new System.Drawing.Size(165, 36);
             this.lblChucNang.TabIndex = 3;
             this.lblChucNang.Text = "Chức năng";
             // 
@@ -367,7 +383,7 @@
             // btnDangXuat
             // 
             this.btnDangXuat.BackColor = System.Drawing.Color.White;
-            this.btnDangXuat.Location = new System.Drawing.Point(1093, 12);
+            this.btnDangXuat.Location = new System.Drawing.Point(1191, 12);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(95, 33);
             this.btnDangXuat.TabIndex = 1;
@@ -382,25 +398,9 @@
             this.lblNEU.ForeColor = System.Drawing.Color.White;
             this.lblNEU.Location = new System.Drawing.Point(467, 12);
             this.lblNEU.Name = "lblNEU";
-            this.lblNEU.Size = new System.Drawing.Size(409, 31);
+            this.lblNEU.Size = new System.Drawing.Size(602, 45);
             this.lblNEU.TabIndex = 0;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
-            // 
-            // btnDSSVDK
-            // 
-            this.btnDSSVDK.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDSSVDK.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnDSSVDK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSSVDK.Location = new System.Drawing.Point(10, 447);
-            this.btnDSSVDK.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnDSSVDK.Name = "btnDSSVDK";
-            this.btnDSSVDK.Radius = 30;
-            this.btnDSSVDK.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnDSSVDK.Size = new System.Drawing.Size(255, 43);
-            this.btnDSSVDK.TabIndex = 11;
-            this.btnDSSVDK.Text = "Danh sách sinh viên đăng kí";
-            this.btnDSSVDK.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnDSSVDK.Click += new System.EventHandler(this.btnDSDVDK_Click);
             // 
             // FrmMain
             // 
@@ -411,8 +411,10 @@
             this.Controls.Add(this.uiPanel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.uiPanel1.ResumeLayout(false);

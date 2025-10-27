@@ -50,7 +50,7 @@
             
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // lblDanhMuc
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(327, 561);
@@ -59,7 +59,6 @@
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(934, 284);
             this.dataGridView1.TabIndex = 28;
-            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // btnThoat
             // 
@@ -72,7 +71,6 @@
             this.btnThoat.TabIndex = 23;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
-            btnThoat.Click += btnThoat_Click;
             // 
             // btnXoa
             // 
@@ -85,7 +83,6 @@
             this.btnXoa.TabIndex = 24;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
-            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
@@ -98,7 +95,6 @@
             this.btnSua.TabIndex = 25;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
-            btnSua.Click += btnSua_Click;
             // 
             // btnLuu
             // 
@@ -111,7 +107,6 @@
             this.btnLuu.TabIndex = 26;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = false;
-            btnLuu.Click += btnLuu_Click;
             // 
             // btnTaoMoi
             // 
@@ -124,7 +119,6 @@
             this.btnTaoMoi.TabIndex = 27;
             this.btnTaoMoi.Text = "Tạo Mới";
             this.btnTaoMoi.UseVisualStyleBackColor = false;
-            btnTaoMoi.Click += btnTaoMoi_Click;
             // 
             // cboKhoaVien
             // 
@@ -207,6 +201,7 @@
             this.lblTenMon.Size = new System.Drawing.Size(255, 37);
             this.lblTenMon.TabIndex = 13;
             this.lblTenMon.Text = "TÊN MÔN HỌC:";
+            this.lblTenMon.Click += new System.EventHandler(this.lblTenMon_Click);
             // 
             // lblMaMon
             // 
