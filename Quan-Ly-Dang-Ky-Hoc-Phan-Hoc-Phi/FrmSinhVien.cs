@@ -507,7 +507,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
             else
             {
-                this.Close();
+                Application.Exit();
             } 
         }
       

@@ -43,6 +43,14 @@
             this.lblDanhMuc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            this.Load += new System.EventHandler(this.FrmNganh_Load);
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+
+
             // 
             // dataGridView1
             // 

@@ -144,7 +144,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         // 🔹 Nút THOÁT
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
     }
 }
