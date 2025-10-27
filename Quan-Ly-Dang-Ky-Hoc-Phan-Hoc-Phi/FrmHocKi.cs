@@ -112,7 +112,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
