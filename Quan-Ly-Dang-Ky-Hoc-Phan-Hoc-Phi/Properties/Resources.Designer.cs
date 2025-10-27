@@ -63,6 +63,16 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3994424_cancel_close_delete_reject_remove_icon {
+            get {
+                object obj = ResourceManager.GetObject("3994424_cancel_close_delete_reject_remove_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _8674683_ic_fluent_dismiss_regular_icon {
             get {
                 object obj = ResourceManager.GetObject("8674683_ic_fluent_dismiss_regular_icon", resourceCulture);

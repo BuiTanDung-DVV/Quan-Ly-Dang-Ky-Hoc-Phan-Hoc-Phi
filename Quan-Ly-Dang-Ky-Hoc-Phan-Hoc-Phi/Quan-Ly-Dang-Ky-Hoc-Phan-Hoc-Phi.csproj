@@ -112,6 +112,12 @@
     <Compile Include="FrmMonHoc.Designer.cs">
       <DependentUpon>FrmMonHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMonHoc_ChinhSua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMonHoc_ChinhSua.Designer.cs">
+      <DependentUpon>FrmMonHoc_ChinhSua.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNganhHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMonHoc.resx">
       <DependentUpon>FrmMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMonHoc_ChinhSua.resx">
+      <DependentUpon>FrmMonHoc_ChinhSua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNganhHoc.resx">
       <DependentUpon>FrmNganhHoc.cs</DependentUpon>
@@ -221,6 +230,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\8675091_ic_fluent_person_circle_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3994424_cancel_close_delete_reject_remove_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

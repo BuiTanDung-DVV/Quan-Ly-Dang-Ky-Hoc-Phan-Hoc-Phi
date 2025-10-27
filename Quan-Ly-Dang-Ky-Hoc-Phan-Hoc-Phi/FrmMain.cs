@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
