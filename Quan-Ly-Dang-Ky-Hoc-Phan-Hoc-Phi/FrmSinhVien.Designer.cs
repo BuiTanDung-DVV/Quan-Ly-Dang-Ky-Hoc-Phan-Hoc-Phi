@@ -393,7 +393,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmSinhVien";
             this.Text = "FrmSinhVien";
-            this.Load += new System.EventHandler(this.FrmSinhVien_Load_1);
+            this.Load += new System.EventHandler(this.FrmSinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

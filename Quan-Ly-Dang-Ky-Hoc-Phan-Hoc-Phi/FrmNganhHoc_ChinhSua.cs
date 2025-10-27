@@ -9,13 +9,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
-    public partial class FrmMonHoc_ChinhSua : Form
+    public partial class FrmNganhHoc_ChinhSua : Form
     {
-        private int? _idMonHoc;
+        private int? _idNganhHoc;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
@@ -29,29 +28,30 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         public int CornerRadius { get; set; } = 30; // bán kính bo góc mặc định
 
         KETNOI_CSDL kn = new KETNOI_CSDL();
-        public FrmMonHoc_ChinhSua()
+        public FrmNganhHoc_ChinhSua()
         {
             InitializeComponent();
-            _idMonHoc = null;
+            _idNganhHoc = null;
 
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
 
-            this.label1.Text = "Thêm Mới Môn Học";
+            this.label1.Text = "Thêm Mới Ngành Học";
             this.txtId.Enabled = false;
         }
-        public FrmMonHoc_ChinhSua(int idMonHoc)
+
+        public FrmNganhHoc_ChinhSua(int idNganhHoc)
         {
             InitializeComponent();
-            _idMonHoc = idMonHoc;
+            _idNganhHoc = idNganhHoc;
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
 
-            this.label1.Text = "Chỉnh Sửa Môn Học";
+            this.label1.Text = "Chỉnh Sửa Ngành Học";
             this.txtId.Enabled = false;
-            this.txtMaMon.Enabled = false;
+            this.txtMaNganh.Enabled = false;
         }
         protected override void OnResize(EventArgs e)
         {
@@ -68,13 +68,18 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             cboKhoaVien.ValueMember = "DeptID";
         }
 
+        private void FrmNganhHoc_ChinhSua_Load(object sender, EventArgs e)
+        {
+            Bang_KhoaVien();
+            Load_DuLieuCanSua();
+        }
         private void Load_DuLieuCanSua()
         {
-            if (_idMonHoc == null) return;
+            if (_idNganhHoc == null) return;
 
             try
             {
-                string sql = "SELECT * FROM Courses WHERE CourseID = " + _idMonHoc.Value;
+                string sql = "SELECT * FROM Majors WHERE MajorID = " + _idNganhHoc.Value;
 
                 SqlCommand cmd = new SqlCommand(sql, kn.cnn);
                 SqlDataReader doc_dl = cmd.ExecuteReader();
@@ -82,12 +87,10 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 if (doc_dl.Read() == true)
                 {
                     // 7. Đổ dữ liệu vào TextBox
-                    txtId.Text = doc_dl["CourseID"].ToString();
-                    txtMaMon.Text = doc_dl["Code"].ToString();
-                    txtTenMon.Text = doc_dl["Name"].ToString();
-                    txtSoTC.Text = doc_dl["Credits"].ToString();
-                    txtHocPhi.Text = doc_dl["TuitionPerCredit"].ToString();
-                    cboKhoaVien.SelectedValue = doc_dl["DeptID"]; 
+                    txtId.Text = doc_dl["MajorID"].ToString();
+                    txtMaNganh.Text = doc_dl["Code"].ToString();
+                    txtTenNganh.Text = doc_dl["Name"].ToString();
+                    cboKhoaVien.SelectedValue = doc_dl["DeptID"];
                 }
                 else
                 {
@@ -106,7 +109,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         }
 
-
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -114,39 +116,35 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (_idMonHoc == null)
+            if (_idNganhHoc == null)
             {
                 // Thêm mới môn học
-                string strKtra = "Select Code from Courses where Code='" + txtMaMon.Text + "'";
+                string strKtra = "Select Code from Majors where Code='" + txtMaNganh.Text + "'";
                 SqlCommand cmd = new SqlCommand(strKtra, kn.cnn);
                 SqlDataReader doc_dl = cmd.ExecuteReader();
 
                 if (doc_dl.Read() == true)
                 {
                     MessageBox.Show("Mã đã tồn tại, vui lòng nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMaMon.Focus();
+                    txtMaNganh.Focus();
                 }
                 else
                 {
-                    kn.ThucThiSQL("INSERT INTO Courses (Code, Name, Credits, TuitionPerCredit, DeptID) VALUES ('" + txtMaMon.Text + "',N'" + txtTenMon.Text + "'," + txtSoTC.Text + "," + txtHocPhi.Text + "," + cboKhoaVien.SelectedValue + ")");
+                    kn.ThucThiSQL("INSERT INTO Majors (Code, Name, DeptID) VALUES ('" + txtMaNganh.Text + "',N'" + txtTenNganh.Text + "'," + cboKhoaVien.SelectedValue + ")");
                     MessageBox.Show("Lưu dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
-                this.Close();
+    
             }
             else
             {
                 // Cập nhật môn học
-                string sql_Sua = "UPDATE Courses SET Name=N'" + txtTenMon.Text + "', Credits=" + txtSoTC.Text + ", TuitionPerCredit=" + txtHocPhi.Text + ", DeptID=" + cboKhoaVien.SelectedValue + " WHERE CourseID=" + _idMonHoc.Value;
+                string sql_Sua = "UPDATE Majors SET Name=N'" + txtTenNganh.Text + "', DeptID=" + cboKhoaVien.SelectedValue + " WHERE MajorID=" + _idNganhHoc.Value;
                 kn.ThucThiSQL(sql_Sua);
                 MessageBox.Show("Cập nhật môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
-        }
 
-        private void FrmMonHoc_ChinhSua_Load(object sender, EventArgs e)
-        {
-            Bang_KhoaVien();
-            Load_DuLieuCanSua();
         }
     }
 }

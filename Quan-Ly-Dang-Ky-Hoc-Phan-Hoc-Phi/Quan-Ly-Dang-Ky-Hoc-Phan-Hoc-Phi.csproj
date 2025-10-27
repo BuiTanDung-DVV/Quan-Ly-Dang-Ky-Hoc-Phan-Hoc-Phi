@@ -100,6 +100,12 @@
     <Compile Include="FrmLopHocPhan.Designer.cs">
       <DependentUpon>FrmLopHocPhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLopHocPhan_ChinhSua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLopHocPhan_ChinhSua.Designer.cs">
+      <DependentUpon>FrmLopHocPhan_ChinhSua.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,12 @@
     </Compile>
     <Compile Include="FrmNganhHoc.Designer.cs">
       <DependentUpon>FrmNganhHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNganhHoc_ChinhSua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNganhHoc_ChinhSua.Designer.cs">
+      <DependentUpon>FrmNganhHoc_ChinhSua.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSinhVien.cs">
       <SubType>Form</SubType>
@@ -166,6 +178,9 @@
     <EmbeddedResource Include="FrmLopHocPhan.resx">
       <DependentUpon>FrmLopHocPhan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLopHocPhan_ChinhSua.resx">
+      <DependentUpon>FrmLopHocPhan_ChinhSua.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNganhHoc.resx">
       <DependentUpon>FrmNganhHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNganhHoc_ChinhSua.resx">
+      <DependentUpon>FrmNganhHoc_ChinhSua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSinhVien.resx">
       <DependentUpon>FrmSinhVien.cs</DependentUpon>

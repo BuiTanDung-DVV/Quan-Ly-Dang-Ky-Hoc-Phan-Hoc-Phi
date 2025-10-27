@@ -614,9 +614,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             FrmSinhVien_Load(this, e);
         }
 
-        private void FrmSinhVien_Load_1(object sender, EventArgs e)
-        {
 
-        }
     }
 }
