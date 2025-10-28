@@ -160,6 +160,12 @@
     <Compile Include="FrmSinhVien.Designer.cs">
       <DependentUpon>FrmSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSinhVien_ChinhSua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSinhVien_ChinhSua.Designer.cs">
+      <DependentUpon>FrmSinhVien_ChinhSua.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmThanhToan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSinhVien.resx">
       <DependentUpon>FrmSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSinhVien_ChinhSua.resx">
+      <DependentUpon>FrmSinhVien_ChinhSua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmThanhToan.resx">
       <DependentUpon>FrmThanhToan.cs</DependentUpon>
