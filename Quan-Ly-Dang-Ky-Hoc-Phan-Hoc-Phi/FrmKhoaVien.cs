@@ -52,5 +52,65 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 MessageBox.Show("Vui lòng chọn một khoa viện để sửa!");
             }
         }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string tuKhoa = txtTimKiem.Text.Trim();
+
+            if (string.IsNullOrEmpty(tuKhoa))
+            {
+                // Nếu không nhập gì thì hiển thị toàn bộ danh sách
+                Bang_KhoaVien();
+            }
+            else
+            {
+                // Tìm kiếm trong bảng Lecturers theo tên hoặc mã giảng viên
+                string sql = "SELECT * FROM Departments WHERE Name LIKE N'%" + tuKhoa + "%' OR Code LIKE '%" + tuKhoa + "%'";
+
+                DataTable dta = kn.Lay_DulieuBang(sql);
+                dataKQ.DataSource = dta;
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem người dùng đã chọn dòng nào chưa
+            if (dataKQ.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn khoa/viện cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy mã khoa/viện từ dòng được chọn
+            string maKhoaVien = dataKQ.CurrentRow.Cells["Code"].Value.ToString();
+
+            // Xác nhận trước khi xóa
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc muốn xóa khoa/viện này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // Tạo câu lệnh SQL để xóa
+                    string sql = "DELETE FROM Departments WHERE Code = '" + maKhoaVien + "'";
+                    kn.ThucThiSQL(sql); // Hàm thực thi lệnh SQL (không trả dữ liệu)
+
+                    // Cập nhật lại bảng dữ liệu
+                    Bang_KhoaVien();
+
+                    MessageBox.Show("Xóa khoa/viện thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }
