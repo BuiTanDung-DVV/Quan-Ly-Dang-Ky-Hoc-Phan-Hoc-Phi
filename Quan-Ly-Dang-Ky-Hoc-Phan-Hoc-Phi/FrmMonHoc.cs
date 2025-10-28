@@ -73,5 +73,65 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 MessageBox.Show("Vui lòng chọn một môn học để sửa!");
             }
         }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string tuKhoa = txtTimKiem.Text.Trim();
+
+            if (string.IsNullOrEmpty(tuKhoa))
+            {
+                // Nếu không nhập gì thì hiển thị toàn bộ danh sách
+                Bang_MonHoc();
+            }
+            else
+            {
+                // Tìm kiếm trong bảng Lecturers theo tên hoặc mã giảng viên
+                string sql = "SELECT * FROM Courses WHERE Name LIKE N'%" + tuKhoa + "%' OR Code LIKE '%" + tuKhoa + "%'";
+
+                DataTable dta = kn.Lay_DulieuBang(sql);
+                dataKQ.DataSource = dta;
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem người dùng đã chọn dòng nào chưa
+            if (dataKQ.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn môn học cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy mã môn học từ dòng được chọn
+            string maMon = dataKQ.CurrentRow.Cells["CourseID"].Value.ToString();
+
+            // Xác nhận trước khi xóa
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc muốn xóa môn học này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // Tạo câu lệnh SQL để xóa môn học
+                    string sql = "DELETE FROM Courses WHERE CourseID = '" + maMon + "'";
+                    kn.ThucThiSQL(sql); // Gọi hàm thực thi SQL (hàm này trong lớp 'kn' của bạn)
+
+                    // Cập nhật lại DataGridView sau khi xóa
+                    Bang_MonHoc();
+
+                    MessageBox.Show("Xóa môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }
