@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
@@ -86,33 +87,90 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             // Lấy mã học kỳ từ dòng được chọn
             string maHocKy = dataKQ.CurrentRow.Cells["Code"].Value.ToString();
 
-            // Xác nhận trước khi xóa
-            DialogResult result = MessageBox.Show(
-                "Bạn có chắc muốn xóa học kỳ này không?",
-                "Xác nhận xóa",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
+            try
             {
-                try
-                {
-                    // Tạo câu lệnh SQL để xóa học kỳ
-                    string sql = "DELETE FROM AcademicTerms WHERE Code = '" + maHocKy + "'";
-                    kn.ThucThiSQL(sql); // Hàm thực thi SQL (không trả dữ liệu)
+                // ✅ Bước 1: Lấy TermID từ Code để dùng cho kiểm tra
+                string sqlGetID = $"SELECT TermID FROM AcademicTerms WHERE Code = '{maHocKy}'";
+                DataTable dtTerm = kn.Lay_DulieuBang(sqlGetID);
 
-                    // Cập nhật lại bảng học kỳ
-                    Bang_HocKi();
+                if (dtTerm.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy học kỳ trong cơ sở dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string termID = dtTerm.Rows[0]["TermID"].ToString();
+
+                // ✅ Bước 2: Kiểm tra bảng nào đang tham chiếu đến AcademicTerms.TermID
+                string sqlCheckFK = @"
+            SELECT 
+                fk_tab.name AS ReferencingTable
+            FROM sys.foreign_keys fk
+            INNER JOIN sys.foreign_key_columns fkc ON fkc.constraint_object_id = fk.object_id
+            INNER JOIN sys.tables fk_tab ON fk_tab.object_id = fk.parent_object_id
+            INNER JOIN sys.tables pk_tab ON pk_tab.object_id = fk.referenced_object_id
+            INNER JOIN sys.columns fk_col ON fkc.parent_object_id = fk_col.object_id AND fkc.parent_column_id = fk_col.column_id
+            INNER JOIN sys.columns pk_col ON fkc.referenced_object_id = pk_col.object_id AND fkc.referenced_column_id = pk_col.column_id
+            WHERE pk_tab.name = 'AcademicTerms' AND pk_col.name = 'TermID';
+        ";
+
+                DataTable fkTables = kn.Lay_DulieuBang(sqlCheckFK);
+                List<string> bangLienQuan = new List<string>();
+
+                // ✅ Bước 3: Kiểm tra từng bảng có dữ liệu liên quan không
+                foreach (DataRow row in fkTables.Rows)
+                {
+                    string tableName = row["ReferencingTable"].ToString();
+                    string sqlCount = $"SELECT COUNT(*) FROM {tableName} WHERE TermID = {termID}";
+                    DataTable dtCount = kn.Lay_DulieuBang(sqlCount);
+
+                    if (dtCount.Rows.Count > 0 && Convert.ToInt32(dtCount.Rows[0][0]) > 0)
+                    {
+                        bangLienQuan.Add(tableName);
+                    }
+                }
+
+                // ✅ Bước 4: Nếu có bảng liên quan → cảnh báo người dùng
+                if (bangLienQuan.Count > 0)
+                {
+                    string danhSachBang = string.Join(", ", bangLienQuan);
+                    DialogResult confirmFK = MessageBox.Show(
+                        $"Học kỳ này đang được tham chiếu trong các bảng sau: {danhSachBang}.\n" +
+                        "Nếu bạn xóa, dữ liệu trong các bảng này có thể bị lỗi hoặc mất liên kết.\n\n" +
+                        "Bạn có chắc chắn muốn tiếp tục xóa không?",
+                        "Cảnh báo ràng buộc khóa ngoại",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (confirmFK == DialogResult.No)
+                        return;
+                }
+
+                // ✅ Bước 5: Xác nhận lần cuối
+                DialogResult result = MessageBox.Show(
+                    "Bạn có chắc muốn xóa học kỳ này không?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    string sqlDelete = $"DELETE FROM AcademicTerms WHERE TermID = {termID}";
+                    kn.ThucThiSQL(sqlDelete);
+
+                    Bang_HocKi(); // Cập nhật lại DataGridView
 
                     MessageBox.Show("Xóa học kỳ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
     }
 }

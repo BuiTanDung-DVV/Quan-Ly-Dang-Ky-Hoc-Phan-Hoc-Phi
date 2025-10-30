@@ -84,41 +84,80 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem người dùng đã chọn dòng nào chưa
             if (dataKQ.CurrentRow == null)
             {
                 MessageBox.Show("Vui lòng chọn ngành học cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Lấy mã ngành học từ dòng được chọn
             string maNganh = dataKQ.CurrentRow.Cells["MajorID"].Value.ToString();
 
-            // Xác nhận trước khi xóa
-            DialogResult result = MessageBox.Show(
-                "Bạn có chắc muốn xóa ngành học này không?",
-                "Xác nhận xóa",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
+            try
             {
-                try
+                // ✅ Bước 1: Tìm các bảng có foreign key tham chiếu đến Majors(MajorID)
+                string sqlCheckFK = @"
+            SELECT 
+                fk_tab.name AS ReferencingTable
+            FROM sys.foreign_keys fk
+            INNER JOIN sys.foreign_key_columns fkc ON fkc.constraint_object_id = fk.object_id
+            INNER JOIN sys.tables fk_tab ON fk_tab.object_id = fk.parent_object_id
+            INNER JOIN sys.tables pk_tab ON pk_tab.object_id = fk.referenced_object_id
+            INNER JOIN sys.columns fk_col ON fkc.parent_object_id = fk_col.object_id AND fkc.parent_column_id = fk_col.column_id
+            INNER JOIN sys.columns pk_col ON fkc.referenced_object_id = pk_col.object_id AND fkc.referenced_column_id = pk_col.column_id
+            WHERE pk_tab.name = 'Majors' AND pk_col.name = 'MajorID';
+        ";
+
+                DataTable fkTables = kn.Lay_DulieuBang(sqlCheckFK);
+                List<string> bangLienQuan = new List<string>();
+
+                foreach (DataRow row in fkTables.Rows)
                 {
-                    // Câu lệnh SQL để xóa
-                    string sql = "DELETE FROM Majors WHERE MajorID = '" + maNganh + "'";
-                    kn.ThucThiSQL(sql); // Hàm thực thi câu lệnh SQL (không trả dữ liệu)
+                    string tableName = row["ReferencingTable"].ToString();
+                    string sqlCount = $"SELECT COUNT(*) FROM {tableName} WHERE MajorID = {maNganh}";
+                    DataTable dtCount = kn.Lay_DulieuBang(sqlCount);
 
-                    // Cập nhật lại bảng ngành học
+                    if (dtCount.Rows.Count > 0 && Convert.ToInt32(dtCount.Rows[0][0]) > 0)
+                    {
+                        bangLienQuan.Add(tableName);
+                    }
+                }
+
+                // ✅ Bước 2: Nếu có bảng liên quan, hỏi xác nhận
+                if (bangLienQuan.Count > 0)
+                {
+                    string danhSachBang = string.Join(", ", bangLienQuan);
+                    DialogResult confirmFK = MessageBox.Show(
+                        $"Ngành học này đang được tham chiếu trong các bảng sau: {danhSachBang}.\n" +
+                        "Nếu xóa, dữ liệu liên quan trong các bảng này có thể gây lỗi hoặc mất liên kết.\n\n" +
+                        "Bạn có chắc chắn muốn tiếp tục xóa không?",
+                        "Cảnh báo",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (confirmFK == DialogResult.No)
+                        return;
+                }
+
+                // ✅ Bước 3: Xác nhận xóa
+                DialogResult confirmDelete = MessageBox.Show(
+                    "Bạn có chắc muốn xóa ngành học này không?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    string sqlDelete = $"DELETE FROM Majors WHERE MajorID = {maNganh}";
+                    kn.ThucThiSQL(sqlDelete);
                     Bang_NganhHoc();
-
                     MessageBox.Show("Xóa ngành học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
