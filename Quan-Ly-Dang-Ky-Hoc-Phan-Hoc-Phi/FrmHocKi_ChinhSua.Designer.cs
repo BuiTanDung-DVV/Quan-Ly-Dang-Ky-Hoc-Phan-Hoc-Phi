@@ -36,7 +36,6 @@
             this.lblDate1 = new System.Windows.Forms.Label();
             this.lblDate2 = new System.Windows.Forms.Label();
             this.lblTenHK = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblMaHK = new System.Windows.Forms.Label();
             this.txtDate1 = new Sunny.UI.UIDatePicker();
@@ -44,7 +43,10 @@
             this.optHienHanh = new Sunny.UI.UIRadioButton();
             this.optKetThuc = new Sunny.UI.UIRadioButton();
             this.isCurrent = new Sunny.UI.UIRadioButtonGroup();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.isCurrent.SuspendLayout();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtId
@@ -128,7 +130,7 @@
             this.lblDate1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate1.Location = new System.Drawing.Point(35, 291);
             this.lblDate1.Name = "lblDate1";
-            this.lblDate1.Size = new System.Drawing.Size(101, 33);
+            this.lblDate1.Size = new System.Drawing.Size(87, 27);
             this.lblDate1.TabIndex = 36;
             this.lblDate1.Text = "Bắt đầu";
             // 
@@ -138,7 +140,7 @@
             this.lblDate2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate2.Location = new System.Drawing.Point(35, 347);
             this.lblDate2.Name = "lblDate2";
-            this.lblDate2.Size = new System.Drawing.Size(109, 33);
+            this.lblDate2.Size = new System.Drawing.Size(95, 27);
             this.lblDate2.TabIndex = 35;
             this.lblDate2.Text = "Kết thúc";
             // 
@@ -148,20 +150,9 @@
             this.lblTenHK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenHK.Location = new System.Drawing.Point(35, 235);
             this.lblTenHK.Name = "lblTenHK";
-            this.lblTenHK.Size = new System.Drawing.Size(133, 33);
+            this.lblTenHK.Size = new System.Drawing.Size(114, 27);
             this.lblTenHK.TabIndex = 33;
             this.lblTenHK.Text = "Tên kì học";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(483, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 36);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Thêm Kì học";
             // 
             // lblID
             // 
@@ -169,7 +160,7 @@
             this.lblID.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(35, 125);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(43, 33);
+            this.lblID.Size = new System.Drawing.Size(37, 27);
             this.lblID.TabIndex = 38;
             this.lblID.Text = "ID";
             // 
@@ -179,7 +170,7 @@
             this.lblMaHK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaHK.Location = new System.Drawing.Point(35, 179);
             this.lblMaHK.Name = "lblMaHK";
-            this.lblMaHK.Size = new System.Drawing.Size(128, 33);
+            this.lblMaHK.Size = new System.Drawing.Size(109, 27);
             this.lblMaHK.TabIndex = 39;
             this.lblMaHK.Text = "Mã kì học";
             // 
@@ -199,6 +190,7 @@
             this.txtDate1.SymbolNormal = 61555;
             this.txtDate1.SymbolSize = 24;
             this.txtDate1.TabIndex = 48;
+            this.txtDate1.Text = "2025-10-27";
             this.txtDate1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtDate1.Value = new System.DateTime(2025, 10, 27, 21, 47, 14, 637);
             this.txtDate1.Watermark = "";
@@ -219,6 +211,7 @@
             this.txtDate2.SymbolNormal = 61555;
             this.txtDate2.SymbolSize = 24;
             this.txtDate2.TabIndex = 49;
+            this.txtDate2.Text = "2025-10-27";
             this.txtDate2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtDate2.Value = new System.DateTime(2025, 10, 27, 21, 48, 56, 724);
             this.txtDate2.Watermark = "";
@@ -260,12 +253,34 @@
             this.isCurrent.Text = "Trạng thái";
             this.isCurrent.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.Controls.Add(this.label1);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1063, 50);
+            this.pnlTop.TabIndex = 51;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(453, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(193, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "THÊM KÌ HỌC";
+            // 
             // FrmHocKi_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(1063, 516);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.isCurrent);
             this.Controls.Add(this.txtDate2);
             this.Controls.Add(this.txtDate1);
@@ -277,16 +292,17 @@
             this.Controls.Add(this.lblDate1);
             this.Controls.Add(this.lblDate2);
             this.Controls.Add(this.lblTenHK);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblMaHK);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmHocKi_ChinhSua";
             this.Text = "FrmHocKi_ChinhSua";
             this.Load += new System.EventHandler(this.FrmHocKi_ChinhSua_Load);
             this.isCurrent.ResumeLayout(false);
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,7 +318,6 @@
         private System.Windows.Forms.Label lblDate1;
         private System.Windows.Forms.Label lblDate2;
         private System.Windows.Forms.Label lblTenHK;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblMaHK;
         private Sunny.UI.UIDatePicker txtDate1;
@@ -310,5 +325,7 @@
         private Sunny.UI.UIRadioButton optHienHanh;
         private Sunny.UI.UIRadioButton optKetThuc;
         private Sunny.UI.UIRadioButtonGroup isCurrent;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Label label1;
     }
 }

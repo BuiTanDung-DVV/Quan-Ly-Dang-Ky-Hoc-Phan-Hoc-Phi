@@ -16,5 +16,10 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             InitializeComponent();
         }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

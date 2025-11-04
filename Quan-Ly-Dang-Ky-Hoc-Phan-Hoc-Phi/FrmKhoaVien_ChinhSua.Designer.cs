@@ -36,9 +36,11 @@
             this.txtMaKhoa = new Sunny.UI.UITextBox();
             this.lbl = new System.Windows.Forms.Label();
             this.lblTenKhoa = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblMaKhoa = new System.Windows.Forms.Label();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtId
@@ -139,7 +141,7 @@
             this.lbl.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl.Location = new System.Drawing.Point(36, 275);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(96, 33);
+            this.lbl.Size = new System.Drawing.Size(81, 27);
             this.lbl.TabIndex = 36;
             this.lbl.Text = "Địa chỉ";
             // 
@@ -149,20 +151,9 @@
             this.lblTenKhoa.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenKhoa.Location = new System.Drawing.Point(36, 219);
             this.lblTenKhoa.Name = "lblTenKhoa";
-            this.lblTenKhoa.Size = new System.Drawing.Size(123, 33);
+            this.lblTenKhoa.Size = new System.Drawing.Size(107, 27);
             this.lblTenKhoa.TabIndex = 33;
             this.lblTenKhoa.Text = "Tên Khoa";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(318, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 36);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Thêm khoa/viện";
             // 
             // lblID
             // 
@@ -170,7 +161,7 @@
             this.lblID.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(36, 109);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(43, 33);
+            this.lblID.Size = new System.Drawing.Size(37, 27);
             this.lblID.TabIndex = 38;
             this.lblID.Text = "ID";
             // 
@@ -180,16 +171,38 @@
             this.lblMaKhoa.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaKhoa.Location = new System.Drawing.Point(36, 163);
             this.lblMaKhoa.Name = "lblMaKhoa";
-            this.lblMaKhoa.Size = new System.Drawing.Size(118, 33);
+            this.lblMaKhoa.Size = new System.Drawing.Size(102, 27);
             this.lblMaKhoa.TabIndex = 39;
             this.lblMaKhoa.Text = "Mã Khoa";
             // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.Controls.Add(this.label1);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(834, 50);
+            this.pnlTop.TabIndex = 52;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(279, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(260, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "THÊM KHOA/ VIỆN";
+            // 
             // FrmKhoaVien_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(834, 541);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnLuu);
@@ -198,15 +211,16 @@
             this.Controls.Add(this.txtMaKhoa);
             this.Controls.Add(this.lbl);
             this.Controls.Add(this.lblTenKhoa);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblMaKhoa);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmKhoaVien_ChinhSua";
             this.Text = "FrmKhoaVien_ChinhSua";
             this.Load += new System.EventHandler(this.FrmKhoaVien_ChinhSua_Load);
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,8 +236,9 @@
         private Sunny.UI.UITextBox txtMaKhoa;
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.Label lblTenKhoa;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblMaKhoa;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Label label1;
     }
 }

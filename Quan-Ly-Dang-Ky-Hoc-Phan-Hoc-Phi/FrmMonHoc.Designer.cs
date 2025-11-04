@@ -39,15 +39,17 @@
             this.btnTimKiem = new Sunny.UI.UIButton();
             this.txtTimKiem = new Sunny.UI.UITextBox();
             this.dataKQ = new Sunny.UI.UIDataGridView();
+            this.pnlTop = new System.Windows.Forms.Panel();
             this.lblDanhMuc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataKQ)).BeginInit();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnXoa
             // 
             this.btnXoa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(681, 654);
+            this.btnXoa.Location = new System.Drawing.Point(690, 506);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnXoa.Name = "btnXoa";
@@ -62,7 +64,7 @@
             // 
             this.btnSua.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(353, 654);
+            this.btnSua.Location = new System.Drawing.Point(362, 506);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSua.Name = "btnSua";
@@ -77,7 +79,7 @@
             // 
             this.btnToaMoi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnToaMoi.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToaMoi.Location = new System.Drawing.Point(51, 654);
+            this.btnToaMoi.Location = new System.Drawing.Point(60, 506);
             this.btnToaMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnToaMoi.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnToaMoi.Name = "btnToaMoi";
@@ -163,40 +165,52 @@
             this.dataKQ.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataKQ.RowTemplate.Height = 28;
             this.dataKQ.SelectedIndex = -1;
-            this.dataKQ.Size = new System.Drawing.Size(1353, 462);
+            this.dataKQ.Size = new System.Drawing.Size(965, 323);
             this.dataKQ.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dataKQ.TabIndex = 20;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.Controls.Add(this.lblDanhMuc);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1030, 50);
+            this.pnlTop.TabIndex = 55;
             // 
             // lblDanhMuc
             // 
             this.lblDanhMuc.AutoSize = true;
-            this.lblDanhMuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDanhMuc.Location = new System.Drawing.Point(585, 34);
+            this.lblDanhMuc.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblDanhMuc.ForeColor = System.Drawing.Color.White;
+            this.lblDanhMuc.Location = new System.Drawing.Point(422, 9);
             this.lblDanhMuc.Name = "lblDanhMuc";
-            this.lblDanhMuc.Size = new System.Drawing.Size(232, 31);
-            this.lblDanhMuc.TabIndex = 19;
-            this.lblDanhMuc.Text = "Quản lý Môn học";
+            this.lblDanhMuc.Size = new System.Drawing.Size(272, 37);
+            this.lblDanhMuc.TabIndex = 0;
+            this.lblDanhMuc.Text = "QUẢN LÝ MÔN HỌC";
             // 
             // FrmMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 753);
+            this.ClientSize = new System.Drawing.Size(1030, 574);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnToaMoi);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.dataKQ);
-            this.Controls.Add(this.lblDanhMuc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmMonHoc";
             this.Text = "FrmMonHoc";
             this.Load += new System.EventHandler(this.FrmMonHoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataKQ)).EndInit();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -208,6 +222,7 @@
         private Sunny.UI.UIButton btnTimKiem;
         private Sunny.UI.UITextBox txtTimKiem;
         private Sunny.UI.UIDataGridView dataKQ;
+        private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Label lblDanhMuc;
     }
 }

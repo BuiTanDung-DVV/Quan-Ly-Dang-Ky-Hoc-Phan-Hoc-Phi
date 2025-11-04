@@ -36,7 +36,6 @@
             this.lblGV = new System.Windows.Forms.Label();
             this.lblLich = new System.Windows.Forms.Label();
             this.lblMon = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblMaLop = new System.Windows.Forms.Label();
             this.cboHK = new Sunny.UI.UIComboBox();
@@ -47,6 +46,9 @@
             this.lblRoom = new System.Windows.Forms.Label();
             this.lblMaxSt = new System.Windows.Forms.Label();
             this.cboMonHoc = new Sunny.UI.UIComboBox();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtId
@@ -57,7 +59,7 @@
             this.txtId.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.txtId.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtId.Name = "txtId";
-            this.txtId.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txtId.Padding = new System.Windows.Forms.Padding(8);
             this.txtId.Radius = 30;
             this.txtId.ShowText = false;
             this.txtId.Size = new System.Drawing.Size(539, 46);
@@ -70,7 +72,7 @@
             this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.Location = new System.Drawing.Point(437, 643);
-            this.btnHuy.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(5);
             this.btnHuy.MinimumSize = new System.Drawing.Size(2, 2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Radius = 30;
@@ -85,7 +87,7 @@
             this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.Location = new System.Drawing.Point(77, 643);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(5);
             this.btnLuu.MinimumSize = new System.Drawing.Size(2, 2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Radius = 30;
@@ -103,7 +105,7 @@
             this.txtMaLop.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.txtMaLop.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txtMaLop.Padding = new System.Windows.Forms.Padding(8);
             this.txtMaLop.Radius = 30;
             this.txtMaLop.ShowText = false;
             this.txtMaLop.Size = new System.Drawing.Size(539, 46);
@@ -118,7 +120,7 @@
             this.lblHK.Location = new System.Drawing.Point(23, 293);
             this.lblHK.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblHK.Name = "lblHK";
-            this.lblHK.Size = new System.Drawing.Size(89, 33);
+            this.lblHK.Size = new System.Drawing.Size(76, 27);
             this.lblHK.TabIndex = 36;
             this.lblHK.Text = "Học kì";
             // 
@@ -129,7 +131,7 @@
             this.lblGV.Location = new System.Drawing.Point(23, 355);
             this.lblGV.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblGV.Name = "lblGV";
-            this.lblGV.Size = new System.Drawing.Size(134, 33);
+            this.lblGV.Size = new System.Drawing.Size(116, 27);
             this.lblGV.TabIndex = 35;
             this.lblGV.Text = "Giảng viên";
             // 
@@ -140,7 +142,7 @@
             this.lblLich.Location = new System.Drawing.Point(23, 417);
             this.lblLich.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblLich.Name = "lblLich";
-            this.lblLich.Size = new System.Drawing.Size(112, 33);
+            this.lblLich.Size = new System.Drawing.Size(97, 27);
             this.lblLich.TabIndex = 34;
             this.lblLich.Text = "Lịch học";
             // 
@@ -151,21 +153,9 @@
             this.lblMon.Location = new System.Drawing.Point(23, 231);
             this.lblMon.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMon.Name = "lblMon";
-            this.lblMon.Size = new System.Drawing.Size(115, 33);
+            this.lblMon.Size = new System.Drawing.Size(98, 27);
             this.lblMon.TabIndex = 33;
             this.lblMon.Text = "Môn học";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(280, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 36);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Thêm lớp học phần";
             // 
             // lblID
             // 
@@ -174,7 +164,7 @@
             this.lblID.Location = new System.Drawing.Point(23, 107);
             this.lblID.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(43, 33);
+            this.lblID.Size = new System.Drawing.Size(37, 27);
             this.lblID.TabIndex = 38;
             this.lblID.Text = "ID";
             // 
@@ -185,7 +175,7 @@
             this.lblMaLop.Location = new System.Drawing.Point(23, 169);
             this.lblMaLop.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMaLop.Name = "lblMaLop";
-            this.lblMaLop.Size = new System.Drawing.Size(204, 33);
+            this.lblMaLop.Size = new System.Drawing.Size(175, 27);
             this.lblMaLop.TabIndex = 39;
             this.lblMaLop.Text = "Mã lớp học phần";
             // 
@@ -235,7 +225,7 @@
             this.txtLich.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.txtLich.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtLich.Name = "txtLich";
-            this.txtLich.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txtLich.Padding = new System.Windows.Forms.Padding(8);
             this.txtLich.Radius = 30;
             this.txtLich.ShowText = false;
             this.txtLich.Size = new System.Drawing.Size(539, 46);
@@ -251,7 +241,7 @@
             this.txtRoom.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.txtRoom.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtRoom.Name = "txtRoom";
-            this.txtRoom.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txtRoom.Padding = new System.Windows.Forms.Padding(8);
             this.txtRoom.Radius = 30;
             this.txtRoom.ShowText = false;
             this.txtRoom.Size = new System.Drawing.Size(539, 46);
@@ -267,7 +257,7 @@
             this.txtMaxSt.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.txtMaxSt.MinimumSize = new System.Drawing.Size(2, 26);
             this.txtMaxSt.Name = "txtMaxSt";
-            this.txtMaxSt.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txtMaxSt.Padding = new System.Windows.Forms.Padding(8);
             this.txtMaxSt.Radius = 30;
             this.txtMaxSt.ShowText = false;
             this.txtMaxSt.Size = new System.Drawing.Size(539, 46);
@@ -282,7 +272,7 @@
             this.lblRoom.Location = new System.Drawing.Point(23, 479);
             this.lblRoom.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblRoom.Name = "lblRoom";
-            this.lblRoom.Size = new System.Drawing.Size(86, 33);
+            this.lblRoom.Size = new System.Drawing.Size(73, 27);
             this.lblRoom.TabIndex = 34;
             this.lblRoom.Text = "Phòng";
             // 
@@ -293,7 +283,7 @@
             this.lblMaxSt.Location = new System.Drawing.Point(23, 541);
             this.lblMaxSt.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMaxSt.Name = "lblMaxSt";
-            this.lblMaxSt.Size = new System.Drawing.Size(152, 33);
+            this.lblMaxSt.Size = new System.Drawing.Size(128, 27);
             this.lblMaxSt.TabIndex = 34;
             this.lblMaxSt.Text = "Số sinh viên";
             // 
@@ -316,12 +306,34 @@
             this.cboMonHoc.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.cboMonHoc.Watermark = "Nhập môn học";
             // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.Controls.Add(this.label1);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(877, 50);
+            this.pnlTop.TabIndex = 54;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(304, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(303, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "THÊM LỚP HỌC PHẦN";
+            // 
             // FrmLopHocPhan_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(877, 754);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.cboMonHoc);
             this.Controls.Add(this.txtMaxSt);
             this.Controls.Add(this.txtRoom);
@@ -338,15 +350,16 @@
             this.Controls.Add(this.lblRoom);
             this.Controls.Add(this.lblLich);
             this.Controls.Add(this.lblMon);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblMaLop);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmLopHocPhan_ChinhSua";
             this.Text = "FrmLopHocPhan_ChinhSua";
             this.Load += new System.EventHandler(this.FrmLopHocPhan_ChinhSua_Load);
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,7 +375,6 @@
         private System.Windows.Forms.Label lblGV;
         private System.Windows.Forms.Label lblLich;
         private System.Windows.Forms.Label lblMon;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblMaLop;
         private Sunny.UI.UIComboBox cboHK;
@@ -373,5 +385,7 @@
         private System.Windows.Forms.Label lblRoom;
         private System.Windows.Forms.Label lblMaxSt;
         private Sunny.UI.UIComboBox cboMonHoc;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Label label1;
     }
 }

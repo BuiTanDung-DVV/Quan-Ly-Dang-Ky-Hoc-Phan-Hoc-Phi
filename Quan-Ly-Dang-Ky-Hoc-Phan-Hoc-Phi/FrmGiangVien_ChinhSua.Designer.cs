@@ -38,9 +38,11 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblKhoaVien = new System.Windows.Forms.Label();
             this.lblTenGV = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblMaGV = new System.Windows.Forms.Label();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtId
@@ -63,7 +65,7 @@
             // 
             this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.Location = new System.Drawing.Point(419, 464);
+            this.btnHuy.Location = new System.Drawing.Point(480, 450);
             this.btnHuy.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Radius = 30;
@@ -77,7 +79,7 @@
             // 
             this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Location = new System.Drawing.Point(74, 464);
+            this.btnLuu.Location = new System.Drawing.Point(135, 450);
             this.btnLuu.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Radius = 30;
@@ -161,7 +163,7 @@
             this.lblEmail.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.Location = new System.Drawing.Point(41, 280);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(80, 33);
+            this.lblEmail.Size = new System.Drawing.Size(68, 27);
             this.lblEmail.TabIndex = 36;
             this.lblEmail.Text = "Email";
             // 
@@ -171,7 +173,7 @@
             this.lblKhoaVien.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKhoaVien.Location = new System.Drawing.Point(41, 336);
             this.lblKhoaVien.Name = "lblKhoaVien";
-            this.lblKhoaVien.Size = new System.Drawing.Size(127, 33);
+            this.lblKhoaVien.Size = new System.Drawing.Size(111, 27);
             this.lblKhoaVien.TabIndex = 34;
             this.lblKhoaVien.Text = "Khoa viện";
             // 
@@ -181,20 +183,9 @@
             this.lblTenGV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenGV.Location = new System.Drawing.Point(41, 224);
             this.lblTenGV.Name = "lblTenGV";
-            this.lblTenGV.Size = new System.Drawing.Size(159, 33);
+            this.lblTenGV.Size = new System.Drawing.Size(138, 27);
             this.lblTenGV.TabIndex = 33;
             this.lblTenGV.Text = "Tên môn học";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(323, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 36);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Thêm Mới Giảng Viên";
             // 
             // lblID
             // 
@@ -202,7 +193,7 @@
             this.lblID.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(41, 114);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(43, 33);
+            this.lblID.Size = new System.Drawing.Size(37, 27);
             this.lblID.TabIndex = 38;
             this.lblID.Text = "ID";
             // 
@@ -212,16 +203,39 @@
             this.lblMaGV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaGV.Location = new System.Drawing.Point(41, 168);
             this.lblMaGV.Name = "lblMaGV";
-            this.lblMaGV.Size = new System.Drawing.Size(172, 33);
+            this.lblMaGV.Size = new System.Drawing.Size(148, 27);
             this.lblMaGV.TabIndex = 39;
             this.lblMaGV.Text = "Mã giảng viên";
             // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.Controls.Add(this.label1);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(834, 50);
+            this.pnlTop.TabIndex = 48;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(271, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(320, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "THÊM MỚI GIẢNG VIÊN";
+            this.label1.Click += new System.EventHandler(this.lblDanhMuc_Click);
+            // 
             // FrmGiangVien_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(834, 541);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnLuu);
@@ -232,7 +246,6 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblKhoaVien);
             this.Controls.Add(this.lblTenGV);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblMaGV);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -241,6 +254,8 @@
             this.Name = "FrmGiangVien_ChinhSua";
             this.Text = "FrmGiangVien_ChinhSua";
             this.Load += new System.EventHandler(this.FrmGiangVien_ChinhSua_Load);
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,8 +273,9 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblKhoaVien;
         private System.Windows.Forms.Label lblTenGV;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblMaGV;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -77,7 +77,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(450, 12);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(320, 30);
+            this.lblTitle.Size = new System.Drawing.Size(446, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "DANH SÁCH SINH VIÊN ĐĂNG KÝ";
             // 
@@ -99,7 +99,7 @@
             this.lblHocKy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHocKy.Location = new System.Drawing.Point(15, 15);
             this.lblHocKy.Name = "lblHocKy";
-            this.lblHocKy.Size = new System.Drawing.Size(57, 19);
+            this.lblHocKy.Size = new System.Drawing.Size(70, 23);
             this.lblHocKy.TabIndex = 0;
             this.lblHocKy.Text = "Học kỳ:";
             // 
@@ -109,7 +109,7 @@
             this.cboHocKy.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboHocKy.Location = new System.Drawing.Point(85, 12);
             this.cboHocKy.Name = "cboHocKy";
-            this.cboHocKy.Size = new System.Drawing.Size(250, 25);
+            this.cboHocKy.Size = new System.Drawing.Size(250, 31);
             this.cboHocKy.TabIndex = 1;
             this.cboHocKy.SelectedIndexChanged += new System.EventHandler(this.cboHocKy_SelectedIndexChanged);
             // 
@@ -224,17 +224,17 @@
             this.dgvMonHoc.BackgroundColor = System.Drawing.Color.White;
             this.dgvMonHoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMonHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMonHoc.ColumnHeadersHeight = 35;
             this.dgvMonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMonHoc.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dgvMonHoc.Location = new System.Drawing.Point(8, 28);
+            this.dgvMonHoc.Location = new System.Drawing.Point(8, 33);
             this.dgvMonHoc.MultiSelect = false;
             this.dgvMonHoc.Name = "dgvMonHoc";
             this.dgvMonHoc.ReadOnly = true;
             this.dgvMonHoc.RowHeadersVisible = false;
+            this.dgvMonHoc.RowHeadersWidth = 51;
             this.dgvMonHoc.RowTemplate.Height = 28;
             this.dgvMonHoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMonHoc.Size = new System.Drawing.Size(1184, 184);
+            this.dgvMonHoc.Size = new System.Drawing.Size(1184, 179);
             this.dgvMonHoc.TabIndex = 0;
             this.dgvMonHoc.SelectionChanged += new System.EventHandler(this.dgvMonHoc_SelectionChanged);
             // 
@@ -259,17 +259,17 @@
             this.dgvSinhVien.BackgroundColor = System.Drawing.Color.White;
             this.dgvSinhVien.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSinhVien.ColumnHeadersHeight = 35;
             this.dgvSinhVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSinhVien.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dgvSinhVien.Location = new System.Drawing.Point(8, 28);
+            this.dgvSinhVien.Location = new System.Drawing.Point(8, 33);
             this.dgvSinhVien.MultiSelect = false;
             this.dgvSinhVien.Name = "dgvSinhVien";
             this.dgvSinhVien.ReadOnly = true;
             this.dgvSinhVien.RowHeadersVisible = false;
+            this.dgvSinhVien.RowHeadersWidth = 51;
             this.dgvSinhVien.RowTemplate.Height = 28;
             this.dgvSinhVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSinhVien.Size = new System.Drawing.Size(1184, 270);
+            this.dgvSinhVien.Size = new System.Drawing.Size(1184, 265);
             this.dgvSinhVien.TabIndex = 0;
             // 
             // FrmDanhSachDangKi
@@ -300,6 +300,7 @@
             this.gbSinhVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }

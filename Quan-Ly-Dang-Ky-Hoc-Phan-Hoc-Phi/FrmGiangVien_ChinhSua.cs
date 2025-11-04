@@ -151,5 +151,15 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 this.Close();
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDanhMuc_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

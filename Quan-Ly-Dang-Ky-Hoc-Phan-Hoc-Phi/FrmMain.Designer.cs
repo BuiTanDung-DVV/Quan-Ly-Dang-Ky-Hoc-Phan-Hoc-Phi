@@ -74,7 +74,7 @@
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.Radius = 30;
             this.uiPanel1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPanel1.Size = new System.Drawing.Size(270, 804);
+            this.uiPanel1.Size = new System.Drawing.Size(270, 750);
             this.uiPanel1.TabIndex = 6;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,7 +136,7 @@
             this.lblMa.ForeColor = System.Drawing.Color.White;
             this.lblMa.Location = new System.Drawing.Point(61, 63);
             this.lblMa.Name = "lblMa";
-            this.lblMa.Size = new System.Drawing.Size(107, 27);
+            this.lblMa.Size = new System.Drawing.Size(89, 22);
             this.lblMa.TabIndex = 7;
             this.lblMa.Text = "11236030";
             // 
@@ -148,7 +148,7 @@
             this.lblName.ForeColor = System.Drawing.Color.White;
             this.lblName.Location = new System.Drawing.Point(33, 38);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(199, 27);
+            this.lblName.Size = new System.Drawing.Size(161, 22);
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Nguyễn Hoàng Sơn";
             // 
@@ -358,7 +358,7 @@
             this.lblChucNang.ForeColor = System.Drawing.Color.White;
             this.lblChucNang.Location = new System.Drawing.Point(5, 296);
             this.lblChucNang.Name = "lblChucNang";
-            this.lblChucNang.Size = new System.Drawing.Size(165, 36);
+            this.lblChucNang.Size = new System.Drawing.Size(141, 31);
             this.lblChucNang.TabIndex = 3;
             this.lblChucNang.Text = "Chức năng";
             // 
@@ -375,7 +375,7 @@
             this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel2.Name = "uiPanel2";
-            this.uiPanel2.Size = new System.Drawing.Size(1361, 55);
+            this.uiPanel2.Size = new System.Drawing.Size(1230, 55);
             this.uiPanel2.TabIndex = 8;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -383,9 +383,9 @@
             // btnDangXuat
             // 
             this.btnDangXuat.BackColor = System.Drawing.Color.White;
-            this.btnDangXuat.Location = new System.Drawing.Point(1191, 12);
+            this.btnDangXuat.Location = new System.Drawing.Point(1073, 12);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(95, 33);
+            this.btnDangXuat.Size = new System.Drawing.Size(123, 33);
             this.btnDangXuat.TabIndex = 1;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.UseVisualStyleBackColor = false;
@@ -396,9 +396,9 @@
             this.lblNEU.AutoSize = true;
             this.lblNEU.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNEU.ForeColor = System.Drawing.Color.White;
-            this.lblNEU.Location = new System.Drawing.Point(467, 12);
+            this.lblNEU.Location = new System.Drawing.Point(300, 7);
             this.lblNEU.Name = "lblNEU";
-            this.lblNEU.Size = new System.Drawing.Size(602, 45);
+            this.lblNEU.Size = new System.Drawing.Size(513, 38);
             this.lblNEU.TabIndex = 0;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
             // 
@@ -406,7 +406,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1631, 804);
+            this.ClientSize = new System.Drawing.Size(1500, 750);
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiPanel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
