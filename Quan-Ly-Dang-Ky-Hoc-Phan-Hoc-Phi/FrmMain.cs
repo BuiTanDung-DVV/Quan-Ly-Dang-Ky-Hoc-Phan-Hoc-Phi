@@ -337,5 +337,11 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 DSDVDK.Activate();
             }
         }
+
+        private void btnEditPass_Click(object sender, EventArgs e)
+        {
+            FrmEditPassword frm = new FrmEditPassword(UserSession.UserID); // truyền mã user hoặc Username nếu cần
+            frm.ShowDialog();
+        }
     }
 }

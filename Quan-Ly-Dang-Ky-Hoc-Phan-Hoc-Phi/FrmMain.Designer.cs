@@ -46,10 +46,11 @@
             this.btnQLGV = new Sunny.UI.UIButton();
             this.btnQLSV = new Sunny.UI.UIButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblChucNang = new System.Windows.Forms.Label();
             this.uiPanel2 = new Sunny.UI.UIPanel();
+            this.btnEditPass = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblNEU = new System.Windows.Forms.Label();
+            this.lblChucNang = new System.Windows.Forms.Label();
             this.uiPanel1.SuspendLayout();
             this.uiPanel3.SuspendLayout();
             this.uiPanel4.SuspendLayout();
@@ -350,21 +351,10 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // lblChucNang
-            // 
-            this.lblChucNang.AutoSize = true;
-            this.lblChucNang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
-            this.lblChucNang.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChucNang.ForeColor = System.Drawing.Color.White;
-            this.lblChucNang.Location = new System.Drawing.Point(5, 296);
-            this.lblChucNang.Name = "lblChucNang";
-            this.lblChucNang.Size = new System.Drawing.Size(141, 31);
-            this.lblChucNang.TabIndex = 3;
-            this.lblChucNang.Text = "Chức năng";
-            // 
             // uiPanel2
             // 
             this.uiPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
+            this.uiPanel2.Controls.Add(this.btnEditPass);
             this.uiPanel2.Controls.Add(this.btnDangXuat);
             this.uiPanel2.Controls.Add(this.lblNEU);
             this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -379,6 +369,17 @@
             this.uiPanel2.TabIndex = 8;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnEditPass
+            // 
+            this.btnEditPass.BackColor = System.Drawing.Color.White;
+            this.btnEditPass.Location = new System.Drawing.Point(890, 12);
+            this.btnEditPass.Name = "btnEditPass";
+            this.btnEditPass.Size = new System.Drawing.Size(177, 33);
+            this.btnEditPass.TabIndex = 1;
+            this.btnEditPass.Text = "Sửa mật khẩu";
+            this.btnEditPass.UseVisualStyleBackColor = false;
+            this.btnEditPass.Click += new System.EventHandler(this.btnEditPass_Click);
             // 
             // btnDangXuat
             // 
@@ -401,6 +402,18 @@
             this.lblNEU.Size = new System.Drawing.Size(513, 38);
             this.lblNEU.TabIndex = 0;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
+            // 
+            // lblChucNang
+            // 
+            this.lblChucNang.AutoSize = true;
+            this.lblChucNang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(96)))), ((int)(((byte)(167)))));
+            this.lblChucNang.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChucNang.ForeColor = System.Drawing.Color.White;
+            this.lblChucNang.Location = new System.Drawing.Point(5, 296);
+            this.lblChucNang.Name = "lblChucNang";
+            this.lblChucNang.Size = new System.Drawing.Size(141, 31);
+            this.lblChucNang.TabIndex = 3;
+            this.lblChucNang.Text = "Chức năng";
             // 
             // FrmMain
             // 
@@ -449,9 +462,10 @@
         private Sunny.UI.UIButton btnQLMH;
         private Sunny.UI.UIButton btnQLKV;
         private Sunny.UI.UIButton btnQLSV;
-        private System.Windows.Forms.Label lblChucNang;
         private Sunny.UI.UIButton btnThanhToan;
         private System.Windows.Forms.Button btnDangXuat;
         private Sunny.UI.UIButton btnDSSVDK;
+        private System.Windows.Forms.Button btnEditPass;
+        private System.Windows.Forms.Label lblChucNang;
     }
 }

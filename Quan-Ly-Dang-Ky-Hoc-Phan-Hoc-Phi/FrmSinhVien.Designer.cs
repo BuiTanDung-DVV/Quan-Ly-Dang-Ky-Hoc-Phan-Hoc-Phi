@@ -73,6 +73,7 @@
             this.btnSua.TabIndex = 36;
             this.btnSua.Text = "Sửa";
             this.btnSua.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnToaMoi
             // 
