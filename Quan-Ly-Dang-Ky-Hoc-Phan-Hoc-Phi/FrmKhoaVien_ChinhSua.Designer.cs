@@ -141,7 +141,7 @@
             this.lbl.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl.Location = new System.Drawing.Point(36, 275);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(81, 27);
+            this.lbl.Size = new System.Drawing.Size(65, 21);
             this.lbl.TabIndex = 36;
             this.lbl.Text = "Địa chỉ";
             // 
@@ -151,7 +151,7 @@
             this.lblTenKhoa.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenKhoa.Location = new System.Drawing.Point(36, 219);
             this.lblTenKhoa.Name = "lblTenKhoa";
-            this.lblTenKhoa.Size = new System.Drawing.Size(107, 27);
+            this.lblTenKhoa.Size = new System.Drawing.Size(84, 21);
             this.lblTenKhoa.TabIndex = 33;
             this.lblTenKhoa.Text = "Tên Khoa";
             // 
@@ -161,7 +161,7 @@
             this.lblID.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(36, 109);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(37, 27);
+            this.lblID.Size = new System.Drawing.Size(29, 21);
             this.lblID.TabIndex = 38;
             this.lblID.Text = "ID";
             // 
@@ -171,13 +171,13 @@
             this.lblMaKhoa.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaKhoa.Location = new System.Drawing.Point(36, 163);
             this.lblMaKhoa.Name = "lblMaKhoa";
-            this.lblMaKhoa.Size = new System.Drawing.Size(102, 27);
+            this.lblMaKhoa.Size = new System.Drawing.Size(79, 21);
             this.lblMaKhoa.TabIndex = 39;
             this.lblMaKhoa.Text = "Mã Khoa";
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(79)))), ((int)(((byte)(147)))));
             this.pnlTop.Controls.Add(this.label1);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
@@ -187,18 +187,22 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(279, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 37);
+            this.label1.Size = new System.Drawing.Size(212, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "THÊM KHOA/ VIỆN";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmKhoaVien_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(834, 541);

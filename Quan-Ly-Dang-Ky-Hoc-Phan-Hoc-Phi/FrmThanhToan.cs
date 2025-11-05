@@ -14,7 +14,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
     {
         private KETNOI_CSDL kn = new KETNOI_CSDL();
         private int currentStudentID = 0;
-        private int selectedInvoiceID = 0;
 
         public FrmThanhToan()
         {
@@ -23,7 +22,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void FrmThanhToan_Load(object sender, EventArgs e)
         {
-            // Thiết lập font chính xác cho ComboBox ngay từ đầu
+            // Thiết lập font cho ComboBox
             SetupComboBoxFonts();
             LoadStudentInfo();
             SetupDataGridView();

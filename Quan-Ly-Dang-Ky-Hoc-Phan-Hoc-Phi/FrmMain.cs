@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
@@ -16,10 +17,12 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         FrmDangKi DangKi;
         FrmThanhToan ThanhToan;
         FrmDanhSachDangKi DSDVDK;
+        FrmDoiMK QuenMK;
 
         public FrmMain()
         {
             InitializeComponent();
+         
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -34,7 +37,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 return;
             }
             SetupUIByRole();
-            ShowWelcomeMessage();
+            SelectFirstButtonByRole();
         }
 
         private void SetupUIByRole()
@@ -46,6 +49,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 // Sinh viên: Chỉ hiển thị các chức năng liên quan đến sinh viên
                 btnDK.Visible = true;          // Đăng ký tín chỉ
                 btnThanhToan.Visible = true;   // Thanh toán
+                btnQuenMK.Visible = true;      // Đổi mật khẩu
                 
                 lblChucNang.Text = "Chức năng sinh viên";
             }
@@ -53,23 +57,59 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             {
                 // Giảng viên: Chỉ hiển thị các chức năng liên quan đến giảng viên
                 btnQLLHP.Visible = true;       // Quản lý lớp học phần (lớp mình dạy)
-                btnDSSVDK.Visible = true;          // Xem đăng ký của sinh viên
+                btnDSSVDK.Visible = true;      // Xem đăng ký của sinh viên
+                btnQuenMK.Visible = true;      // Đổi mật khẩu
                 
                 lblChucNang.Text = "Chức năng giảng viên";
             }
             else if (UserSession.IsAdmin())
             {
-                
                 ShowAllButtons();
-                btnDK.Visible = false;
-                btnThanhToan.Visible = false;
-                btnDSSVDK.Visible = false;
+                btnDK.Visible = false;         // Admin không cần đăng ký
+                btnThanhToan.Visible = false;  // Admin không cần thanh toán
+                btnDSSVDK.Visible = false;     // Admin không cần xem danh sách SV ĐK
 
                 lblChucNang.Text = "Chức năng quản trị";
             }
             else
             {
                 MessageBox.Show($"Role không được nhận diện: '{UserSession.Role}'", "Debug Error");
+            }
+        }
+
+        // THÊM PHƯƠNG THỨC MỚI - Tự động chọn form đầu tiên theo role
+        private void SelectFirstButtonByRole()
+        {
+            try
+            {
+                if (UserSession.IsStudent())
+                {
+                    // Sinh viên: Mở form Đăng ký tín chỉ đầu tiên
+                    if (btnDK.Visible)
+                    {
+                        btnDK_Click(btnDK, EventArgs.Empty);
+                    }
+                }
+                else if (UserSession.IsLecturer())
+                {
+                    // Giảng viên: Mở form Quản lý lớp học phần đầu tiên
+                    if (btnQLLHP.Visible)
+                    {
+                        btnQLLHP_Click(btnQLLHP, EventArgs.Empty);
+                    }
+                }
+                else if (UserSession.IsAdmin())
+                {
+                    // Admin: Mở form Quản lý sinh viên đầu tiên
+                    if (btnQLSV.Visible)
+                    {
+                        btnQLSV_Click(btnQLSV, EventArgs.Empty);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi mở form đầu tiên: {ex.Message}");
             }
         }
 
@@ -85,6 +125,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             btnQLKV.Visible = false;
             btnThanhToan.Visible = false;
             btnDSSVDK.Visible = false;
+            btnQuenMK.Visible = false;
         }
 
         private void ShowAllButtons()
@@ -99,34 +140,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             btnQLKV.Visible = true;
             btnThanhToan.Visible = true;
             btnDSSVDK.Visible = true;
-        }
-
-        private void ShowWelcomeMessage()
-        {
-            try
-            {
-                if (UserSession.IsStudent())
-                {
-                    lblName.Text = GetStudentName(UserSession.LinkedStudentID);
-                    lblMa.Text = UserSession.LinkedStudentID?.ToString() ?? "N/A";
-                }
-                else if (UserSession.IsLecturer())
-                {
-                    lblName.Text = GetLecturerName(UserSession.LinkedLecturerID);
-                    lblMa.Text = UserSession.LinkedLecturerID?.ToString() ?? "N/A";
-                }
-                else if (UserSession.IsAdmin())
-                {
-                    lblName.Text = UserSession.Username;
-                    lblMa.Text = "ADMIN";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi hiển thị thông tin: {ex.Message}", "Error");
-                lblName.Text = UserSession.Username;
-                lblMa.Text = UserSession.Role;
-            }
+            btnQuenMK.Visible = true;
         }
 
         private string GetStudentName(int? studentId)
@@ -163,8 +177,24 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
         }
 
+        private void ResetButtonSelections()
+        {
+            btnDK.Selected = false;
+            btnQLSV.Selected = false;
+            btnQLGV.Selected = false;
+            btnQLLHP.Selected = false;
+            btnQLHK.Selected = false;
+            btnQLNH.Selected = false;
+            btnQLMH.Selected = false;
+            btnQLKV.Selected = false;
+            btnThanhToan.Selected = false;
+            btnDSSVDK.Selected = false;
+            btnQuenMK.Selected = false;
+        }
+
         private void btnQLSV_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnQLSV.Selected = true;
             if (SinhVien == null || SinhVien.IsDisposed)
             {
@@ -176,11 +206,12 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             else
             {
                 SinhVien.Activate();
-            }
+            }   
         }
 
         private void btnQLKV_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnQLKV.Selected = true;
             if (KhoaVien == null || KhoaVien.IsDisposed)
             {
@@ -197,6 +228,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnQLMH_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnQLMH.Selected = true;
             if (MonHoc == null || MonHoc.IsDisposed)
             {
@@ -213,6 +245,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnQLNH_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnQLNH.Selected = true;
             if (NganhHoc == null || NganhHoc.IsDisposed)
             {
@@ -229,6 +262,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnQLHK_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnQLHK.Selected = true;
             if (HocKi == null || HocKi.IsDisposed)
             {
@@ -245,6 +279,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnQLGV_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnQLGV.Selected = true;
             if (GiangVien == null || GiangVien.IsDisposed)
             {
@@ -261,6 +296,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnQLLHP_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnQLLHP.Selected = true;
             if (LopHocPhan == null || LopHocPhan.IsDisposed)
             {
@@ -277,6 +313,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnDK_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnDK.Selected = true;
             if (DangKi == null || DangKi.IsDisposed)
             {
@@ -293,6 +330,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnThanhToan.Selected = true;
             if (ThanhToan == null || ThanhToan.IsDisposed)
             {
@@ -324,6 +362,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
         private void btnDSDVDK_Click(object sender, EventArgs e)
         {
+            ResetButtonSelections();
             btnDSSVDK.Selected = true;
             if (DSDVDK == null || DSDVDK.IsDisposed)
             {
@@ -335,6 +374,23 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             else
             {
                 DSDVDK.Activate();
+            }
+        }
+
+        private void btnQuenMK_Click(object sender, EventArgs e)
+        {
+            ResetButtonSelections();
+            btnQuenMK.Selected = true;
+            if (QuenMK == null || QuenMK.IsDisposed)
+            {
+                QuenMK = new FrmDoiMK();
+                QuenMK.MdiParent = this;
+                QuenMK.Dock = DockStyle.Fill;
+                QuenMK.Show();
+            }
+            else
+            {
+                QuenMK.Activate();
             }
         }
     }

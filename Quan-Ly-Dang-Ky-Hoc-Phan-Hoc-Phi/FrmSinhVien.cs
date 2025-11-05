@@ -14,8 +14,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
     public partial class FrmSinhVien : Form
     {
         private KETNOI_CSDL kn = new KETNOI_CSDL();
-        private bool isEditing = false;
-        private int currentStudentID = 0;
 
         public FrmSinhVien()
         {

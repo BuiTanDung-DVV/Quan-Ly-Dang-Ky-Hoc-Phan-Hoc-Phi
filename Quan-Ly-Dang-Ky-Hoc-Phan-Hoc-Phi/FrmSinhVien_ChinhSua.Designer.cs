@@ -209,7 +209,7 @@
             this.lblDate1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate1.Location = new System.Drawing.Point(30, 309);
             this.lblDate1.Name = "lblDate1";
-            this.lblDate1.Size = new System.Drawing.Size(87, 27);
+            this.lblDate1.Size = new System.Drawing.Size(67, 21);
             this.lblDate1.TabIndex = 53;
             this.lblDate1.Text = "Bắt đầu";
             // 
@@ -219,7 +219,7 @@
             this.lblDate2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate2.Location = new System.Drawing.Point(30, 365);
             this.lblDate2.Name = "lblDate2";
-            this.lblDate2.Size = new System.Drawing.Size(95, 27);
+            this.lblDate2.Size = new System.Drawing.Size(73, 21);
             this.lblDate2.TabIndex = 52;
             this.lblDate2.Text = "Kết thúc";
             // 
@@ -229,7 +229,7 @@
             this.lblTenHK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenHK.Location = new System.Drawing.Point(30, 253);
             this.lblTenHK.Name = "lblTenHK";
-            this.lblTenHK.Size = new System.Drawing.Size(114, 27);
+            this.lblTenHK.Size = new System.Drawing.Size(92, 21);
             this.lblTenHK.TabIndex = 51;
             this.lblTenHK.Text = "Tên kì học";
             // 
@@ -239,7 +239,7 @@
             this.lblID.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(30, 143);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(37, 27);
+            this.lblID.Size = new System.Drawing.Size(29, 21);
             this.lblID.TabIndex = 55;
             this.lblID.Text = "ID";
             // 
@@ -249,13 +249,13 @@
             this.lblMaHK.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaHK.Location = new System.Drawing.Point(30, 197);
             this.lblMaHK.Name = "lblMaHK";
-            this.lblMaHK.Size = new System.Drawing.Size(109, 27);
+            this.lblMaHK.Size = new System.Drawing.Size(87, 21);
             this.lblMaHK.TabIndex = 56;
             this.lblMaHK.Text = "Mã kì học";
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(79)))), ((int)(((byte)(147)))));
             this.pnlTop.Controls.Add(this.label1);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
@@ -265,18 +265,22 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(364, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 37);
+            this.label1.Size = new System.Drawing.Size(192, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "THÊM SINH VIÊN";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmSinhVien_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(1063, 516);

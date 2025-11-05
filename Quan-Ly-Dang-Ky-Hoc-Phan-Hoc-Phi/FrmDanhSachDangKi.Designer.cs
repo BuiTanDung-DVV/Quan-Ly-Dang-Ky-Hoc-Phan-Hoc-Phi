@@ -62,24 +62,29 @@
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(79)))), ((int)(((byte)(147)))));
             this.pnlTop.Controls.Add(this.lblTitle);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1200, 50);
             this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
             // 
+            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(450, 12);
+            this.lblTitle.Location = new System.Drawing.Point(343, 11);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(446, 37);
+            this.lblTitle.Size = new System.Drawing.Size(361, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "DANH SÁCH SINH VIÊN ĐĂNG KÝ";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlFilter
             // 
@@ -89,6 +94,7 @@
             this.pnlFilter.Controls.Add(this.btnLamMoi);
             this.pnlFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFilter.Location = new System.Drawing.Point(0, 50);
+            this.pnlFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFilter.Name = "pnlFilter";
             this.pnlFilter.Size = new System.Drawing.Size(1200, 50);
             this.pnlFilter.TabIndex = 1;
@@ -99,7 +105,7 @@
             this.lblHocKy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHocKy.Location = new System.Drawing.Point(15, 15);
             this.lblHocKy.Name = "lblHocKy";
-            this.lblHocKy.Size = new System.Drawing.Size(70, 23);
+            this.lblHocKy.Size = new System.Drawing.Size(60, 19);
             this.lblHocKy.TabIndex = 0;
             this.lblHocKy.Text = "Học kỳ:";
             // 
@@ -108,8 +114,9 @@
             this.cboHocKy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboHocKy.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboHocKy.Location = new System.Drawing.Point(85, 12);
+            this.cboHocKy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboHocKy.Name = "cboHocKy";
-            this.cboHocKy.Size = new System.Drawing.Size(250, 31);
+            this.cboHocKy.Size = new System.Drawing.Size(249, 25);
             this.cboHocKy.TabIndex = 1;
             this.cboHocKy.SelectedIndexChanged += new System.EventHandler(this.cboHocKy_SelectedIndexChanged);
             // 
@@ -119,7 +126,8 @@
             this.btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnLamMoi.ForeColor = System.Drawing.Color.White;
-            this.btnLamMoi.Location = new System.Drawing.Point(350, 12);
+            this.btnLamMoi.Location = new System.Drawing.Point(349, 12);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(80, 28);
             this.btnLamMoi.TabIndex = 2;
@@ -137,6 +145,7 @@
             this.pnlThongTin.Controls.Add(this.btnExportExcel);
             this.pnlThongTin.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlThongTin.Location = new System.Drawing.Point(0, 100);
+            this.pnlThongTin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlThongTin.Name = "pnlThongTin";
             this.pnlThongTin.Size = new System.Drawing.Size(1200, 70);
             this.pnlThongTin.TabIndex = 2;
@@ -145,7 +154,7 @@
             // 
             this.lblGiangVien.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblGiangVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.lblGiangVien.Location = new System.Drawing.Point(15, 8);
+            this.lblGiangVien.Location = new System.Drawing.Point(15, 7);
             this.lblGiangVien.Name = "lblGiangVien";
             this.lblGiangVien.Size = new System.Drawing.Size(700, 22);
             this.lblGiangVien.TabIndex = 0;
@@ -155,9 +164,9 @@
             // 
             this.lblMonDangChon.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblMonDangChon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.lblMonDangChon.Location = new System.Drawing.Point(15, 35);
+            this.lblMonDangChon.Location = new System.Drawing.Point(15, 34);
             this.lblMonDangChon.Name = "lblMonDangChon";
-            this.lblMonDangChon.Size = new System.Drawing.Size(450, 22);
+            this.lblMonDangChon.Size = new System.Drawing.Size(451, 22);
             this.lblMonDangChon.TabIndex = 1;
             this.lblMonDangChon.Text = "Môn đang chọn: Chưa chọn môn nào";
             // 
@@ -165,7 +174,7 @@
             // 
             this.lblTongSinhVien.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblTongSinhVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.lblTongSinhVien.Location = new System.Drawing.Point(480, 35);
+            this.lblTongSinhVien.Location = new System.Drawing.Point(480, 34);
             this.lblTongSinhVien.Name = "lblTongSinhVien";
             this.lblTongSinhVien.Size = new System.Drawing.Size(200, 22);
             this.lblTongSinhVien.TabIndex = 2;
@@ -177,7 +186,8 @@
             this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportExcel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnExportExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExportExcel.Location = new System.Drawing.Point(1050, 20);
+            this.btnExportExcel.Location = new System.Drawing.Point(1051, 20);
+            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Size = new System.Drawing.Size(120, 32);
             this.btnExportExcel.TabIndex = 3;
@@ -189,6 +199,7 @@
             // 
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer.Location = new System.Drawing.Point(0, 170);
+            this.splitContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer.Name = "splitContainer";
             this.splitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -200,7 +211,7 @@
             // 
             this.splitContainer.Panel2.Controls.Add(this.gbSinhVien);
             this.splitContainer.Size = new System.Drawing.Size(1200, 530);
-            this.splitContainer.SplitterDistance = 220;
+            this.splitContainer.SplitterDistance = 219;
             this.splitContainer.TabIndex = 3;
             // 
             // gbMonHoc
@@ -210,9 +221,10 @@
             this.gbMonHoc.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.gbMonHoc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.gbMonHoc.Location = new System.Drawing.Point(0, 0);
+            this.gbMonHoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMonHoc.Name = "gbMonHoc";
-            this.gbMonHoc.Padding = new System.Windows.Forms.Padding(8);
-            this.gbMonHoc.Size = new System.Drawing.Size(1200, 220);
+            this.gbMonHoc.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.gbMonHoc.Size = new System.Drawing.Size(1200, 219);
             this.gbMonHoc.TabIndex = 0;
             this.gbMonHoc.TabStop = false;
             this.gbMonHoc.Text = "Danh sách lớp học phần đang giảng dạy";
@@ -226,7 +238,8 @@
             this.dgvMonHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMonHoc.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dgvMonHoc.Location = new System.Drawing.Point(8, 33);
+            this.dgvMonHoc.Location = new System.Drawing.Point(8, 27);
+            this.dgvMonHoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvMonHoc.MultiSelect = false;
             this.dgvMonHoc.Name = "dgvMonHoc";
             this.dgvMonHoc.ReadOnly = true;
@@ -234,7 +247,7 @@
             this.dgvMonHoc.RowHeadersWidth = 51;
             this.dgvMonHoc.RowTemplate.Height = 28;
             this.dgvMonHoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMonHoc.Size = new System.Drawing.Size(1184, 179);
+            this.dgvMonHoc.Size = new System.Drawing.Size(1184, 185);
             this.dgvMonHoc.TabIndex = 0;
             this.dgvMonHoc.SelectionChanged += new System.EventHandler(this.dgvMonHoc_SelectionChanged);
             // 
@@ -245,9 +258,10 @@
             this.gbSinhVien.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.gbSinhVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.gbSinhVien.Location = new System.Drawing.Point(0, 0);
+            this.gbSinhVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbSinhVien.Name = "gbSinhVien";
-            this.gbSinhVien.Padding = new System.Windows.Forms.Padding(8);
-            this.gbSinhVien.Size = new System.Drawing.Size(1200, 306);
+            this.gbSinhVien.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.gbSinhVien.Size = new System.Drawing.Size(1200, 307);
             this.gbSinhVien.TabIndex = 0;
             this.gbSinhVien.TabStop = false;
             this.gbSinhVien.Text = "Danh sách sinh viên đăng ký";
@@ -261,7 +275,8 @@
             this.dgvSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSinhVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSinhVien.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dgvSinhVien.Location = new System.Drawing.Point(8, 33);
+            this.dgvSinhVien.Location = new System.Drawing.Point(8, 27);
+            this.dgvSinhVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSinhVien.MultiSelect = false;
             this.dgvSinhVien.Name = "dgvSinhVien";
             this.dgvSinhVien.ReadOnly = true;
@@ -269,7 +284,7 @@
             this.dgvSinhVien.RowHeadersWidth = 51;
             this.dgvSinhVien.RowTemplate.Height = 28;
             this.dgvSinhVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSinhVien.Size = new System.Drawing.Size(1184, 265);
+            this.dgvSinhVien.Size = new System.Drawing.Size(1184, 273);
             this.dgvSinhVien.TabIndex = 0;
             // 
             // FrmDanhSachDangKi
@@ -283,6 +298,7 @@
             this.Controls.Add(this.pnlFilter);
             this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmDanhSachDangKi";
             this.Text = "Danh sách sinh viên đăng ký";
             this.Load += new System.EventHandler(this.FrmDanhSachDangKi_Load);

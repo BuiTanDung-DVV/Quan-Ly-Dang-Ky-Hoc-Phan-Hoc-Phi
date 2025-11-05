@@ -53,7 +53,7 @@
             this.lblSoTin.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSoTin.Location = new System.Drawing.Point(12, 280);
             this.lblSoTin.Name = "lblSoTin";
-            this.lblSoTin.Size = new System.Drawing.Size(102, 27);
+            this.lblSoTin.Size = new System.Drawing.Size(85, 21);
             this.lblSoTin.TabIndex = 23;
             this.lblSoTin.Text = "Số tín chỉ";
             // 
@@ -63,7 +63,7 @@
             this.lblHocPhi.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHocPhi.Location = new System.Drawing.Point(12, 336);
             this.lblHocPhi.Name = "lblHocPhi";
-            this.lblHocPhi.Size = new System.Drawing.Size(88, 27);
+            this.lblHocPhi.Size = new System.Drawing.Size(72, 21);
             this.lblHocPhi.TabIndex = 22;
             this.lblHocPhi.Text = "Học phí";
             // 
@@ -73,7 +73,7 @@
             this.lblKhoaVien.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKhoaVien.Location = new System.Drawing.Point(12, 392);
             this.lblKhoaVien.Name = "lblKhoaVien";
-            this.lblKhoaVien.Size = new System.Drawing.Size(111, 27);
+            this.lblKhoaVien.Size = new System.Drawing.Size(85, 21);
             this.lblKhoaVien.TabIndex = 21;
             this.lblKhoaVien.Text = "Khoa viện";
             // 
@@ -83,7 +83,7 @@
             this.lblTenMon.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenMon.Location = new System.Drawing.Point(12, 224);
             this.lblTenMon.Name = "lblTenMon";
-            this.lblTenMon.Size = new System.Drawing.Size(138, 27);
+            this.lblTenMon.Size = new System.Drawing.Size(110, 21);
             this.lblTenMon.TabIndex = 20;
             this.lblTenMon.Text = "Tên môn học";
             // 
@@ -93,7 +93,7 @@
             this.lblMaMon.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaMon.Location = new System.Drawing.Point(12, 168);
             this.lblMaMon.Name = "lblMaMon";
-            this.lblMaMon.Size = new System.Drawing.Size(133, 27);
+            this.lblMaMon.Size = new System.Drawing.Size(105, 21);
             this.lblMaMon.TabIndex = 24;
             this.lblMaMon.Text = "Mã môn học";
             // 
@@ -215,7 +215,7 @@
             this.lblID.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(12, 114);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(37, 27);
+            this.lblID.Size = new System.Drawing.Size(29, 21);
             this.lblID.TabIndex = 24;
             this.lblID.Text = "ID";
             // 
@@ -237,7 +237,7 @@
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(79)))), ((int)(((byte)(147)))));
             this.pnlTop.Controls.Add(this.label1);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
@@ -247,18 +247,22 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(304, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 37);
+            this.label1.Size = new System.Drawing.Size(191, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "THÊM MÔN HỌC";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmMonHoc_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(834, 541);

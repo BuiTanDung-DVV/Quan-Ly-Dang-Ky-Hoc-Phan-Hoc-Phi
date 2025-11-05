@@ -48,10 +48,10 @@
             this.txtId.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtId.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(208, 89);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.MinimumSize = new System.Drawing.Size(1, 13);
             this.txtId.Name = "txtId";
-            this.txtId.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Padding = new System.Windows.Forms.Padding(4);
             this.txtId.Radius = 30;
             this.txtId.ShowText = false;
             this.txtId.Size = new System.Drawing.Size(479, 37);
@@ -98,7 +98,7 @@
             this.cboKhoaVien.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.cboKhoaVien.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.cboKhoaVien.Location = new System.Drawing.Point(208, 222);
-            this.cboKhoaVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboKhoaVien.Margin = new System.Windows.Forms.Padding(4);
             this.cboKhoaVien.MinimumSize = new System.Drawing.Size(56, 0);
             this.cboKhoaVien.Name = "cboKhoaVien";
             this.cboKhoaVien.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
@@ -114,10 +114,10 @@
             this.txtTenNganh.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTenNganh.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenNganh.Location = new System.Drawing.Point(208, 177);
-            this.txtTenNganh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenNganh.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenNganh.MinimumSize = new System.Drawing.Size(1, 13);
             this.txtTenNganh.Name = "txtTenNganh";
-            this.txtTenNganh.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenNganh.Padding = new System.Windows.Forms.Padding(4);
             this.txtTenNganh.Radius = 30;
             this.txtTenNganh.ShowText = false;
             this.txtTenNganh.Size = new System.Drawing.Size(479, 37);
@@ -130,10 +130,10 @@
             this.txtMaNganh.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaNganh.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaNganh.Location = new System.Drawing.Point(208, 132);
-            this.txtMaNganh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaNganh.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaNganh.MinimumSize = new System.Drawing.Size(1, 13);
             this.txtMaNganh.Name = "txtMaNganh";
-            this.txtMaNganh.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaNganh.Padding = new System.Windows.Forms.Padding(4);
             this.txtMaNganh.Radius = 30;
             this.txtMaNganh.ShowText = false;
             this.txtMaNganh.Size = new System.Drawing.Size(479, 37);
@@ -147,7 +147,7 @@
             this.lblKhoaVien.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKhoaVien.Location = new System.Drawing.Point(29, 232);
             this.lblKhoaVien.Name = "lblKhoaVien";
-            this.lblKhoaVien.Size = new System.Drawing.Size(111, 27);
+            this.lblKhoaVien.Size = new System.Drawing.Size(85, 21);
             this.lblKhoaVien.TabIndex = 34;
             this.lblKhoaVien.Text = "Khoa viện";
             // 
@@ -157,7 +157,7 @@
             this.lblTenNganh.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenNganh.Location = new System.Drawing.Point(29, 187);
             this.lblTenNganh.Name = "lblTenNganh";
-            this.lblTenNganh.Size = new System.Drawing.Size(154, 27);
+            this.lblTenNganh.Size = new System.Drawing.Size(121, 21);
             this.lblTenNganh.TabIndex = 33;
             this.lblTenNganh.Text = "Tên ngành học";
             // 
@@ -167,7 +167,7 @@
             this.lblID.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(29, 99);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(37, 27);
+            this.lblID.Size = new System.Drawing.Size(29, 21);
             this.lblID.TabIndex = 38;
             this.lblID.Text = "ID";
             // 
@@ -177,13 +177,13 @@
             this.lblMaNganh.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaNganh.Location = new System.Drawing.Point(29, 142);
             this.lblMaNganh.Name = "lblMaNganh";
-            this.lblMaNganh.Size = new System.Drawing.Size(149, 27);
+            this.lblMaNganh.Size = new System.Drawing.Size(116, 21);
             this.lblMaNganh.TabIndex = 39;
             this.lblMaNganh.Text = "Mã ngành học";
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(79)))), ((int)(((byte)(147)))));
             this.pnlTop.Controls.Add(this.label1);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
@@ -193,14 +193,18 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(229, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(267, 37);
+            this.label1.Size = new System.Drawing.Size(218, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "THÊM NGÀNH HỌC";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmNganhHoc_ChinhSua
             // 
