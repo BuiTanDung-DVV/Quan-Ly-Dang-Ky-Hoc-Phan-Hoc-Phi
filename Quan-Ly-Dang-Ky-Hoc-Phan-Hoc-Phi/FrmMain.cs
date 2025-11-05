@@ -22,7 +22,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         public FrmMain()
         {
             InitializeComponent();
-         
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -36,8 +35,66 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 loginForm.ShowDialog();
                 return;
             }
+            
             SetupUIByRole();
+            ShowWelcomeMessage(); // Hiển thị thông tin người dùng
             SelectFirstButtonByRole();
+        }
+
+        // Hiển thị thông tin người dùng
+        private void ShowWelcomeMessage()
+        {
+            try
+            {
+                if (UserSession.IsStudent())
+                {
+                    lblName.Text = GetStudentName(UserSession.LinkedStudentID);
+                    lblMa.Text = UserSession.LinkedStudentID?.ToString() ?? "N/A";
+                }
+                else if (UserSession.IsLecturer())
+                {
+                    lblName.Text = GetLecturerName(UserSession.LinkedLecturerID);
+                    lblMa.Text = UserSession.LinkedLecturerID?.ToString() ?? "N/A";
+                }
+                else if (UserSession.IsAdmin())
+                {
+                    lblName.Text = UserSession.Username;
+                    lblMa.Text = "ADMIN";
+                }
+
+                UpdateAvatarDisplay(); // Cập nhật avatar theo role
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi hiển thị thông tin: {ex.Message}", "Error");
+                // Fallback to username if error
+                lblName.Text = UserSession.Username;
+                lblMa.Text = UserSession.Role;
+            }
+        }
+
+        // Cập nhật avatar theo role
+        private void UpdateAvatarDisplay()
+        {
+            if (uiAvatar1 != null)
+            {
+                if (UserSession.IsStudent())
+                {
+                    uiAvatar1.Text = "👨‍🎓"; // Icon sinh viên
+                }
+                else if (UserSession.IsLecturer())
+                {
+                    uiAvatar1.Text = "👨‍🏫"; // Icon giảng viên
+                }
+                else if (UserSession.IsAdmin())
+                {
+                    uiAvatar1.Text = "👑"; // Icon admin
+                }
+                else
+                {
+                    uiAvatar1.Text = "👤"; // Icon mặc định
+                }
+            }
         }
 
         private void SetupUIByRole()
