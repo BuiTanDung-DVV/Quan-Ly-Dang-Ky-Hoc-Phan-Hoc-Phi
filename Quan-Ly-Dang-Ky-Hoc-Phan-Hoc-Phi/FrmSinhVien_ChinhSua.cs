@@ -245,7 +245,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                     }
                     doc_dl.Close();
 
-                    // ✅ FIX: Thêm sinh viên và lấy ID trong 1 lệnh
+                    // Thêm sinh viên và lấy ID trong 1 lệnh
                     string sqlWithIdentity = $"INSERT INTO Students (StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear, Status) " +
                                            $"VALUES (N'{txtStudentCode.Text}', N'{txtFullName.Text}', N'{cboGender.Text}', " +
                                            $"'{dtpDateOfBirth.Value:yyyy-MM-dd}', N'{txtEmail.Text}', N'{txtPhone.Text}', " +
