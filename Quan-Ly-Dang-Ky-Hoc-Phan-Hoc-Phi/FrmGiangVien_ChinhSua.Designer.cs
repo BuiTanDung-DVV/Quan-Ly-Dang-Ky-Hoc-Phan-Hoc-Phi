@@ -185,7 +185,7 @@
             this.lblTenGV.Name = "lblTenGV";
             this.lblTenGV.Size = new System.Drawing.Size(110, 21);
             this.lblTenGV.TabIndex = 33;
-            this.lblTenGV.Text = "Tên môn học";
+            this.lblTenGV.Text = "Tên Giảng viên";
             // 
             // lblID
             // 
