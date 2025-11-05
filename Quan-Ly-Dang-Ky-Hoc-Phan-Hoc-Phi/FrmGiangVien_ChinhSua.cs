@@ -117,7 +117,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             if (_idGiangVien == null)
             {
-                // Thêm mới môn học
+                // Thêm mới giảng viên
                 string strKtra = "Select LecturerCode from Lecturers where LecturerCode='" + txtMaGV.Text + "'";
                 SqlCommand cmd = new SqlCommand(strKtra, kn.cnn);
                 SqlDataReader doc_dl = cmd.ExecuteReader();
@@ -129,17 +129,42 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 }
                 else
                 {
+                    doc_dl.Close();
+                    // 1. Thêm mới giảng viên
                     kn.ThucThiSQL(
                         "INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID) " +
                         "VALUES ('" + txtMaGV.Text + "', N'" + txtTenGV.Text + "', '" + txtEmail.Text + "', " + cboKhoaVien.SelectedValue + ")"
                     );
-                    MessageBox.Show("Lưu dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // 2. Lấy LecturerID vừa thêm (bạn lấy theo mã giảng viên)
+                    string sqlGetId = "SELECT LecturerID FROM Lecturers WHERE LecturerCode = '" + txtMaGV.Text + "'";
+                    if (kn.cnn.State != ConnectionState.Open)
+                        kn.cnn.Open();
+                    SqlCommand cmdGetId = new SqlCommand(sqlGetId, kn.cnn);
+                    object oid = cmdGetId.ExecuteScalar();
+                    int idGiangVienMoi = -1;
+                    if (oid != null)
+                    {
+                        idGiangVienMoi = Convert.ToInt32(oid);
+
+                        // 3. Thêm user mới cho giảng viên
+                        string username = txtMaGV.Text.Trim();
+                        string password = txtMaGV.Text.Trim(); // Mật khẩu plain (nếu muốn hash thì gọi hàm hash)
+                        string hashPassword = password;
+
+                        string sqlInsertUser = "INSERT INTO Users (Username, PasswordHash, Role, LinkedLecturerID) " +
+                                               "VALUES ('" + username + "', '" + hashPassword + "', N'Giảng viên', " + idGiangVienMoi + ")";
+                        kn.ThucThiSQL(sqlInsertUser);
+                    }
+
+                    MessageBox.Show("Lưu dữ liệu thành công. Đã tạo tài khoản user cho giảng viên. \nTài khoản: " + txtMaGV.Text + " | Mật khẩu: " + txtMaGV.Text,
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 this.Close();
             }
             else
             {
-                // Cập nhật môn học
+                // Cập nhật giảng viên (KHÔNG cập nhật lại user)
                 string sql_Sua = "UPDATE Lecturers SET " +
                                  "LecturerCode = '" + txtMaGV.Text + "', " +
                                  "FullName = N'" + txtTenGV.Text + "', " +
@@ -147,7 +172,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                                  "DeptID = " + cboKhoaVien.SelectedValue + " " +
                                  "WHERE LecturerID = " + _idGiangVien.Value;
                 kn.ThucThiSQL(sql_Sua);
-                MessageBox.Show("Cập nhật môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cập nhật giảng viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
