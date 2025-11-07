@@ -18,20 +18,11 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         public FrmSinhVien()
         {
             InitializeComponent();
-            SetupForm();
+            // XÓA HOÀN TOÀN SetupForm() call
         }
 
-        private void SetupForm()
-        {
-            // Thiết lập form
-            this.Text = "Quản lý Sinh viên";
-
-            // Thiết lập DataGridView nếu có
-            if (dataKQ != null)
-            {
-                SetupDataGridView();
-            }
-        }
+        // XÓA HOÀN TOÀN method SetupForm()
+        // private void SetupForm() { ... } - ĐÃ XÓA
 
         private void SetupDataGridView()
         {
@@ -122,40 +113,88 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             {
                 if (dataKQ.Columns.Count > 0)
                 {
-                    // Thiết lập độ rộng cho các cột
-                    var columnWidths = new Dictionary<string, int>
+                    // ENABLE COLUMN RESIZING
+                    dataKQ.AllowUserToResizeColumns = true;
+                    dataKQ.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+
+                    // Thiết lập độ rộng ban đầu tối ưu
+                    var columnConfig = new Dictionary<string, (int width, DataGridViewAutoSizeColumnMode mode, int minWidth)>
                     {
-                        ["Mã SV"] = 100,
-                        ["Họ và tên"] = 180,
-                        ["Giới tính"] = 80,
-                        ["Ngày sinh"] = 100,
-                        ["Email"] = 200,
-                        ["Điện thoại"] = 120,
-                        ["Địa chỉ"] = 250,
-                        ["Khoa/Viện"] = 150,
-                        ["Năm nhập học"] = 100,
-                        ["Trạng thái"] = 100
+                        ["Mã SV"] = (75, DataGridViewAutoSizeColumnMode.None, 50),
+                        ["Họ và tên"] = (150, DataGridViewAutoSizeColumnMode.None, 70),
+                        ["Giới tính"] = (60, DataGridViewAutoSizeColumnMode.None, 30),
+                        ["Ngày sinh"] = (120, DataGridViewAutoSizeColumnMode.None, 80),
+                        ["Email"] = (150, DataGridViewAutoSizeColumnMode.None, 100),
+                        ["Điện thoại"] = (105, DataGridViewAutoSizeColumnMode.None, 90),
+                        ["Địa chỉ"] = (100, DataGridViewAutoSizeColumnMode.None, 30),
+                        ["Khoa/Viện"] = (125, DataGridViewAutoSizeColumnMode.None, 100),
+                        ["Năm nhập học"] = (85, DataGridViewAutoSizeColumnMode.None, 50),
+                        ["Trạng thái"] = (85, DataGridViewAutoSizeColumnMode.None, 50)
                     };
 
                     foreach (DataGridViewColumn column in dataKQ.Columns)
                     {
-                        if (columnWidths.ContainsKey(column.Name))
+                        if (columnConfig.ContainsKey(column.Name))
                         {
-                            column.Width = columnWidths[column.Name];
+                            var config = columnConfig[column.Name];
+
+                            column.Width = config.width;
+                            column.AutoSizeMode = config.mode;
+                            column.MinimumWidth = config.minWidth;
+                            column.Resizable = DataGridViewTriState.True;
                         }
 
-                        // Căn giữa cho một số cột
+                        // Căn giữa cho các cột phù hợp
                         if (column.Name == "Giới tính" || column.Name == "Ngày sinh" ||
-                            column.Name == "Năm nhập học" || column.Name == "Trạng thái")
+                            column.Name == "Năm nhập học" || column.Name == "Trạng thái" || column.Name == "Mã SV")
                         {
                             column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                         }
                     }
+
+                    // Thêm context menu cho columns (bonus)
+                    AddColumnContextMenu();
                 }
             }
             catch (Exception ex)
             {
                 ShowMessage($"Lỗi thiết lập cột: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+
+        private void AddColumnContextMenu()
+        {
+            try
+            {
+                ContextMenuStrip columnMenu = new ContextMenuStrip();
+
+                ToolStripMenuItem autoFitItem = new ToolStripMenuItem("🔧 Tự động điều chỉnh độ rộng");
+                autoFitItem.Click += (s, e) => {
+                    foreach (DataGridViewColumn col in dataKQ.Columns)
+                    {
+                        if (col.Visible && col.Name != "StudentID")
+                        {
+                            col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        }
+                    }
+                };
+
+                ToolStripMenuItem resetItem = new ToolStripMenuItem("↺ Khôi phục kích thước mặc định");
+                resetItem.Click += (s, e) => ConfigureColumnWidths();
+
+                columnMenu.Items.Add(autoFitItem);
+                columnMenu.Items.Add(resetItem);
+
+                dataKQ.ColumnHeaderMouseClick += (s, e) => {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        columnMenu.Show(dataKQ, dataKQ.PointToClient(Cursor.Position));
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error adding context menu: {ex.Message}");
             }
         }
 
@@ -215,9 +254,13 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                     kn.KetNoi_Dulieu();
                 }
 
+                if (dataKQ != null)
+                {
+                    SetupDataGridView();
+                }
+
                 Bang_SinhVien();
 
-                // Focus vào textbox tìm kiếm nếu có
                 if (txtTimKiem != null)
                 {
                     txtTimKiem.Focus();

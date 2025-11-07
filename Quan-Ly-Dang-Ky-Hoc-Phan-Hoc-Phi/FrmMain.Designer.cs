@@ -183,7 +183,7 @@
             this.panelChucNang.Name = "panelChucNang";
             this.panelChucNang.Padding = new System.Windows.Forms.Padding(2);
             this.panelChucNang.ShowText = false;
-            this.panelChucNang.Size = new System.Drawing.Size(270, 545);
+            this.panelChucNang.Size = new System.Drawing.Size(270, 395);
             this.panelChucNang.TabIndex = 5;
             this.panelChucNang.Text = "uiFlowLayoutPanel1";
             this.panelChucNang.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -479,7 +479,7 @@
             this.uiPanel2.Name = "uiPanel2";
             this.uiPanel2.Radius = 0;
             this.uiPanel2.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.uiPanel2.Size = new System.Drawing.Size(1304, 70);
+            this.uiPanel2.Size = new System.Drawing.Size(1220, 70);
             this.uiPanel2.TabIndex = 8;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -492,7 +492,7 @@
             this.btnDangXuat.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btnDangXuat.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.btnDangXuat.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnDangXuat.Location = new System.Drawing.Point(1046, 17);
+            this.btnDangXuat.Location = new System.Drawing.Point(968, 17);
             this.btnDangXuat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Radius = 6;
@@ -515,9 +515,9 @@
             this.lblNEU.BackColor = System.Drawing.Color.Transparent;
             this.lblNEU.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblNEU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(79)))), ((int)(((byte)(147)))));
-            this.lblNEU.Location = new System.Drawing.Point(0, 15);
+            this.lblNEU.Location = new System.Drawing.Point(354, 17);
             this.lblNEU.Name = "lblNEU";
-            this.lblNEU.Size = new System.Drawing.Size(1320, 40);
+            this.lblNEU.Size = new System.Drawing.Size(355, 40);
             this.lblNEU.TabIndex = 0;
             this.lblNEU.Text = "ĐẠI HỌC KINH TẾ QUỐC DÂN";
             this.lblNEU.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -527,7 +527,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScrollMinSize = new System.Drawing.Size(1500, 900);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1584, 888);
+            this.ClientSize = new System.Drawing.Size(1402, 735);
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -535,7 +535,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(1200, 600);
+            this.MinimumSize = new System.Drawing.Size(1000, 500);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hệ thống quản lý đăng ký học phần";

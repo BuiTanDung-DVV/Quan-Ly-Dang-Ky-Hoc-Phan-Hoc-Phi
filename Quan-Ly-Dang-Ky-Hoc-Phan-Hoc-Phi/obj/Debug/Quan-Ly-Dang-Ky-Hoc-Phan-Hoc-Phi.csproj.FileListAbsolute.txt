@@ -22,7 +22,6 @@ D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe.config
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.Common.dll
 D:\github\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.dll
-C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe
 D:\project\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe.config
 D:\project\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe
 D:\project\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.pdb
@@ -64,6 +63,8 @@ D:\project\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj
 D:\project\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmNganhHoc_ChinhSua.resources
 D:\project\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmSinhVien_ChinhSua.resources
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe.config
+C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe
+C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.pdb
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.Common.dll
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\SunnyUI.dll
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj.AssemblyReference.cache
@@ -83,6 +84,7 @@ C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmMonHoc_ChinhSua.resources
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmNganhHoc.resources
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmNganhHoc_ChinhSua.resources
+C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmDoiMK.resources
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmSinhVien.resources
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmSinhVien_ChinhSua.resources
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmThanhToan.resources
@@ -92,6 +94,4 @@ C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-.4DEB2DBB.Up2Date
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.pdb
-C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\bin\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.pdb
-C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmDoiMK.resources
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe.config
