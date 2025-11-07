@@ -152,6 +152,169 @@ INSERT INTO Departments (Code, Name, Office) VALUES
 ('QTKD', N'Quản trị kinh doanh', N'Tòa B2-202'),
 ('NNA', N'Ngôn ngữ Anh', N'Tòa C3-303');
 
+-- THÊM 20 dòng dữ liệu cho bảng Departments
+INSERT INTO Departments (Code, Name, Office) VALUES
+('CNTT', N'Công nghệ thông tin', N'Tòa A1-101'),
+('QTKD', N'Quản trị kinh doanh', N'Tòa B2-202'),
+('NNA', N'Ngôn ngữ Anh', N'Tòa C3-303'),
+('KT', N'Kế toán', N'A1-105'),
+('TCKT', N'Tài chính-Kế toán', N'A1-106'),
+('SP', N'Sư phạm', N'B2-204'),
+('Luật', N'Luật', N'B2-205'),
+('KHMT', N'Khoa học máy tính', N'A1-107'),
+('MKT', N'Marketing', N'B2-206'),
+('QTNH', N'Quản trị nhà hàng', N'B2-207'),
+('QTKS', N'Quản trị khách sạn', N'B2-208'),
+('GDTC', N'Giáo dục thể chất', N'C3-304'),
+('ĐT', N'Điện tử', N'A1-108'),
+('CNDL', N'Công nghệ điện lạnh', N'A1-109'),
+('KNN', N'Kỹ năng nghề nghiệp', N'C3-305'),
+('QLGD', N'Quản lý giáo dục', N'C3-306'),
+('PTTH', N'Phát thanh truyền hình', N'B2-209'),
+('TQ', N'Tiếng Trung', N'C3-307'),
+('VH', N'Văn học', N'C3-308'),
+('LS', N'Lịch sử', N'C3-309');
+
+-- THÊM 20 dòng dữ liệu cho bảng Lecturers 
+-- (DeptID từ 1 đến 5, điều chỉnh cho hợp lý với Departments đã thêm)
+INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID) VALUES
+('GV001', N'Nguyễn Văn Hòa', 'hoa.nguyen@univ.edu.vn', 1),
+('GV002', N'Trần Thị Hạnh', 'hanh.tran@univ.edu.vn', 2),
+('GV003', N'Lê Minh Tâm', 'tam.le@univ.edu.vn', 3),
+('GV004', N'Phạm Thanh Hà', 'ha.pham@univ.edu.vn', 4),
+('GV005', N'Vũ Văn An', 'an.vu@univ.edu.vn', 2),
+('GV006', N'Phan Minh Tuấn', 'tuan.phan@univ.edu.vn', 1),
+('GV007', N'Nguyễn Quốc Bình', 'binh.nguyen@univ.edu.vn', 3),
+('GV008', N'Lê Công Dũng', 'dung.le@univ.edu.vn', 2),
+('GV009', N'Bùi Thị Thu', 'thu.bui@univ.edu.vn', 4),
+('GV010', N'Hồ Văn Sơn', 'son.ho@univ.edu.vn', 1),
+('GV011', N'Đặng Minh Châu', 'chau.dang@univ.edu.vn', 2),
+('GV012', N'Ngô Thị Hạnh', 'hanh.ngo@univ.edu.vn', 3),
+('GV013', N'Hoàng Văn Lực', 'luc.hoang@univ.edu.vn', 4),
+('GV014', N'Lý Thị Mai', 'mai.ly@univ.edu.vn', 1),
+('GV015', N'Phạm Văn Thảo', 'thao.pham@univ.edu.vn', 3),
+('GV016', N'Nguyễn Minh Tùng', 'tung.nguyen@univ.edu.vn', 2),
+('GV017', N'Lê Quốc Tuấn', 'tuan.le@univ.edu.vn', 5),
+('GV018', N'Bùi Thị Hoa', 'hoa.bui@univ.edu.vn', 5),
+('GV019', N'Phan Quốc Vũ', 'vu.phan@univ.edu.vn', 3),
+('GV020', N'Trịnh Thị Lan', 'lan.trinh@univ.edu.vn', 2);
+
+-- THÊM 20 dòng dữ liệu cho bảng Majors 
+-- (DeptID từ 1 đến 5)
+INSERT INTO Majors (Code, Name, DeptID) VALUES
+('CNTT01', N'Kỹ thuật phần mềm', 1),
+('CNTT02', N'Hệ thống thông tin', 1),
+('CNTT03', N'Mạng máy tính', 1),
+('CNTT04', N'Trí tuệ nhân tạo', 1),
+('QTKD01', N'Quản trị Marketing', 2),
+('QTKD02', N'Quản trị Nhân sự', 2),
+('QTKD03', N'Kinh doanh quốc tế', 2),
+('QTKD04', N'Quản trị dự án', 2),
+('NNA01', N'Tiếng Anh thương mại', 3),
+('NNA02', N'Tiếng Anh du lịch', 3),
+('NNA03', N'Ngôn ngữ Anh Biên phiên dịch', 3),
+('NNA04', N'Giảng dạy tiếng Anh', 3),
+('KT01', N'Kế toán doanh nghiệp', 4),
+('KT02', N'Kế toán tài chính', 4),
+('KT03', N'Kiểm toán', 4),
+('KT04', N'Kế toán quản trị', 4),
+('TCKT01', N'Tài chính doanh nghiệp', 5),
+('TCKT02', N'Tài chính ngân hàng', 5),
+('TCKT03', N'Tài chính công', 5),
+('TCKT04', N'Đầu tư tài chính', 5);
+
+-- Thêm 20 dòng vào bảng AcademicTerms
+INSERT INTO AcademicTerms (Code, Name, StartDate, EndDate, IsCurrent) VALUES
+('HK2021A', N'Học kỳ 1 - Năm học 2021-2022', '2021-09-01', '2022-01-15', 0),
+('HK2021B', N'Học kỳ 2 - Năm học 2021-2022', '2022-02-10', '2022-07-01', 0),
+('HK2022A', N'Học kỳ 1 - Năm học 2022-2023', '2022-09-01', '2023-01-15', 0),
+('HK2022B', N'Học kỳ 2 - Năm học 2022-2023', '2023-02-10', '2023-07-01', 0),
+('HK2023A', N'Học kỳ 1 - Năm học 2023-2024', '2023-09-01', '2024-01-15', 0),
+('HK2023B', N'Học kỳ 2 - Năm học 2023-2024', '2024-02-10', '2024-07-01', 1),
+('HK2024A', N'Học kỳ 1 - Năm học 2024-2025', '2024-09-01', '2025-01-15', 0),
+('HK2024B', N'Học kỳ 2 - Năm học 2024-2025', '2025-02-10', '2025-07-01', 0),
+('HE2022A', N'Học kỳ hè 2022', '2022-06-01', '2022-08-01', 0),
+('HE2023A', N'Học kỳ hè 2023', '2023-06-01', '2023-08-01', 0),
+('HE2024A', N'Học kỳ hè 2024', '2024-06-01', '2024-08-01', 0),
+('HK2025A', N'Học kỳ 1 - Năm học 2025-2026', '2025-09-01', '2026-01-15', 0),
+('HK2025B', N'Học kỳ 2 - Năm học 2025-2026', '2026-02-10', '2026-07-01', 0),
+('HK2026A', N'Học kỳ 1 - Năm học 2026-2027', '2026-09-01', '2027-01-15', 0),
+('HK2026B', N'Học kỳ 2 - Năm học 2026-2027', '2027-02-10', '2027-07-01', 0),
+('HK2027A', N'Học kỳ 1 - Năm học 2027-2028', '2027-09-01', '2028-01-15', 0),
+('HK2027B', N'Học kỳ 2 - Năm học 2027-2028', '2028-02-10', '2028-07-01', 0),
+('HK2028A', N'Học kỳ 1 - Năm học 2028-2029', '2028-09-01', '2029-01-15', 0),
+('HK2028B', N'Học kỳ 2 - Năm học 2028-2029', '2029-02-10', '2029-07-01', 0),
+('HE2026A', N'Học kỳ hè 2026', '2026-06-01', '2026-08-01', 0);
+
+-- Thêm 20 dòng vào bảng Courses (DeptID chọn các giá trị hợp lệ từ bảng Department, tuỳ thuộc số lượng DeptID đã tạo, giả sử từ 1 đến 5)
+INSERT INTO Courses (Code, Name, Credits, TuitionPerCredit, DeptID) VALUES
+('CT101', N'Lập trình cơ bản', 3, 450000, 1),
+('CT102', N'Nhập môn CNTT', 2, 400000, 1),
+('CT103', N'Toán rời rạc', 3, 420000, 1),
+('CT104', N'Kỹ thuật lập trình', 3, 450000, 1),
+('CT105', N'Mạng máy tính', 3, 460000, 1),
+('QTKD101', N'Cơ sở quản trị', 3, 420000, 2),
+('QTKD102', N'Quản trị tài chính', 3, 430000, 2),
+('QTKD103', N'Quản trị nhân sự', 3, 420000, 2),
+('QTKD104', N'Quản trị chiến lược', 3, 440000, 2),
+('QTKD105', N'Marketing căn bản', 3, 420000, 2),
+('EN101', N'Tiếng Anh giao tiếp 1', 2, 400000, 3),
+('EN102', N'Tiếng Anh giao tiếp 2', 2, 400000, 3),
+('EN103', N'Ngữ pháp tiếng Anh', 2, 400000, 3),
+('EN104', N'Viết tiếng Anh', 2, 400000, 3),
+('KT101', N'Kế toán căn bản', 3, 410000, 4),
+('KT102', N'Kế toán tài chính', 3, 420000, 4),
+('KT103', N'Kiểm toán', 3, 410000, 4),
+('TCKT101', N'Tài chính căn bản', 2, 400000, 5),
+('TCKT102', N'Tài chính ngân hàng', 3, 420000, 5),
+('TCKT103', N'Tài chính doanh nghiệp', 3, 420000, 5);
+
+-- Thêm 20 dòng vào bảng ClassSections (CourseID từ 1 đến 20, TermID từ 1 đến 20, LecturerID từ 1 đến 20)
+INSERT INTO ClassSections (SectionCode, CourseID, TermID, LecturerID, Schedule, Room, MaxStudents) VALUES
+('CT101-L01', 1, 1, 1, N'Thứ 2 - Tiết 1,2,3', N'A1-201', 60),
+('CT102-L01', 2, 2, 2, N'Thứ 3 - Tiết 1,2,3', N'A1-202', 60),
+('CT103-L01', 3, 3, 3, N'Thứ 4 - Tiết 1,2,3', N'A1-203', 60),
+('CT104-L01', 4, 4, 4, N'Thứ 5 - Tiết 1,2,3', N'A1-204', 60),
+('CT105-L01', 5, 5, 5, N'Thứ 6 - Tiết 1,2,3', N'A1-205', 60),
+('QTKD101-L01', 6, 6, 6, N'Thứ 7 - Tiết 1,2,3', N'B2-201', 60),
+('QTKD102-L01', 7, 7, 7, N'Thứ 2 - Tiết 4,5,6', N'B2-202', 60),
+('QTKD103-L01', 8, 8, 8, N'Thứ 3 - Tiết 4,5,6', N'B2-203', 60),
+('QTKD104-L01', 9, 9, 9, N'Thứ 4 - Tiết 4,5,6', N'B2-204', 60),
+('QTKD105-L01', 10, 10, 10, N'Thứ 5 - Tiết 4,5,6', N'B2-205', 60),
+('EN101-L01', 11, 11, 11, N'Thứ 2 - Tiết 7,8', N'C3-201', 50),
+('EN102-L01', 12, 12, 12, N'Thứ 3 - Tiết 7,8', N'C3-202', 50),
+('EN103-L01', 13, 13, 13, N'Thứ 4 - Tiết 7,8', N'C3-203', 50),
+('EN104-L01', 14, 14, 14, N'Thứ 5 - Tiết 7,8', N'C3-204', 50),
+('KT101-L01', 15, 15, 15, N'Thứ 6 - Tiết 7,8', N'A1-206', 60),
+('KT102-L01', 16, 16, 16, N'Thứ 7 - Tiết 4,5,6', N'A1-207', 60),
+('KT103-L01', 17, 17, 17, N'Thứ 3 - Tiết 1,2,3', N'A1-208', 60),
+('TCKT101-L01', 18, 18, 18, N'Thứ 2 - Tiết 1,2,3', N'A1-209', 60),
+('TCKT102-L01', 19, 19, 19, N'Thứ 4 - Tiết 4,5,6', N'A1-210', 60),
+('TCKT103-L01', 20, 20, 20, N'Thứ 5 - Tiết 1,2,3', N'A1-211', 60);
+
+-- Thêm 20 dòng vào bảng Users (liên kết student hoặc lecturer hoặc để null với role 'admin')
+INSERT INTO Users (Username, PasswordHash, Role, LinkedStudentID, LinkedLecturerID) VALUES
+('user001', 'pw001', N'Sinh viên', 1, NULL),
+('user002', 'pw002', N'Sinh viên', 2, NULL),
+('user003', 'pw003', N'Sinh viên', 3, NULL),
+('user004', 'pw004', N'Sinh viên', 4, NULL),
+('user005', 'pw005', N'Sinh viên', 5, NULL),
+('user006', 'pw006', N'Sinh viên', 6, NULL),
+('user007', 'pw007', N'Sinh viên', 7, NULL),
+('user008', 'pw008', N'Sinh viên', 8, NULL),
+('user009', 'pw009', N'Sinh viên', 9, NULL),
+('user010', 'pw010', N'Sinh viên', 10, NULL),
+('gv001', 'pw011', N'Giảng viên', NULL, 1),
+('gv002', 'pw012', N'Giảng viên', NULL, 2),
+('gv003', 'pw013', N'Giảng viên', NULL, 3),
+('gv004', 'pw014', N'Giảng viên', NULL, 4),
+('gv005', 'pw015', N'Giảng viên', NULL, 5),
+('gv006', 'pw016', N'Giảng viên', NULL, 6),
+('gv007', 'pw017', N'Giảng viên', NULL, 7),
+('gv008', 'pw018', N'Giảng viên', NULL, 8),
+('admin01', 'adminpw01', N'Quản trị', NULL, NULL),
+('admin02', 'adminpw02', N'Quản trị', NULL, NULL);
+
 INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID) VALUES
 ('GV001', N'Nguyễn Văn Hòa', 'hoa.nguyen@univ.edu.vn', 1),
 ('GV002', N'Trần Thị Hạnh', 'hanh.tran@univ.edu.vn', 2),
