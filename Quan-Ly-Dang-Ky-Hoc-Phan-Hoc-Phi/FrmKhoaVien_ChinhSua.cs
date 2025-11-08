@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
@@ -25,32 +20,45 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             int nWidthEllipse,
             int nHeightEllipse);
 
-        public int CornerRadius { get; set; } = 30; // bán kính bo góc mặc định
-
+        public int CornerRadius { get; set; } = 15;
         KETNOI_CSDL kn = new KETNOI_CSDL();
+
+        // Constructor thêm mới
         public FrmKhoaVien_ChinhSua()
         {
             InitializeComponent();
             _idKhoaVien = null;
-
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
-
-            this.label1.Text = "Thêm Mới Khoa Viên";
-            this.txtId.Enabled = false;
+            InitializeForm();
+            this.label1.Text = "🏫 THÊM MỚI KHOA/VIỆN";
+            this.txtDeptID.Enabled = false;
         }
 
+        // Constructor chỉnh sửa
         public FrmKhoaVien_ChinhSua(int idKhoaVien)
         {
             InitializeComponent();
             _idKhoaVien = idKhoaVien;
+            InitializeForm();
+            this.label1.Text = "✏️ CHỈNH SỬA KHOA/VIỆN";
+            this.txtDeptID.Enabled = false;
+            this.txtCode.Enabled = false;
+        }
+
+        private void InitializeForm()
+        {
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
-            this.label1.Text = "Chỉnh Sửa Khoa Viên";
-            this.txtId.Enabled = false;
-            this.txtMaKhoa.Enabled = false;
+
+            try
+            {
+                if (kn.cnn == null || kn.cnn.State != ConnectionState.Open)
+                    kn.KetNoi_Dulieu();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi kết nối cơ sở dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected override void OnResize(EventArgs e)
@@ -65,93 +73,157 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
             try
             {
+                if (kn.cnn.State != ConnectionState.Open)
+                    kn.KetNoi_Dulieu();
+
                 string sql = "SELECT * FROM Departments WHERE DeptID = " + _idKhoaVien.Value;
+                SqlCommand cmd = new SqlCommand(sql, kn.cnn);
+                SqlDataReader doc_dl = cmd.ExecuteReader();
 
-                // SỬA Ở ĐÂY: Dùng hàm Lay_DulieuBang
-                DataTable dta = kn.Lay_DulieuBang(sql);
-
-                if (dta.Rows.Count > 0)
+                if (doc_dl.Read())
                 {
-                    // Lấy dòng dữ liệu đầu tiên
-                    DataRow doc_dl = dta.Rows[0];
-
-                    // 7. Đổ dữ liệu vào TextBox
-                    txtId.Text = doc_dl["DeptID"].ToString();
-                    txtMaKhoa.Text = doc_dl["Code"].ToString();
-                    txtTenKhoa.Text = doc_dl["Name"].ToString();
-                    txtDiaChi.Text = doc_dl["Office"].ToString();
+                    txtDeptID.Text = doc_dl["DeptID"].ToString();
+                    txtCode.Text = doc_dl["Code"].ToString();
+                    txtName.Text = doc_dl["Name"].ToString();
+                    txtOffice.Text = doc_dl["Office"].ToString();
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy dữ liệu cho khoa/viện này!");
+                    MessageBox.Show("Không tìm thấy dữ liệu cho khoa/viện này!", "Thông báo",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.Close();
                 }
-
-                // Không cần doc_dl.Close() hay kn.cnn.Close() nữa
-                // vì hàm Lay_DulieuBang đã tự quản lý
+                doc_dl.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không thể tải dữ liệu. Lỗi: " + ex.Message);
+                MessageBox.Show($"Không thể tải dữ liệu. Lỗi: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
-        }
-        private void FrmKhoaVien_ChinhSua_Load(object sender, EventArgs e)
-        {
-            Load_DuLieuCanSua();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn hủy bỏ thay đổi?",
+                                                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txtCode.Text))
+            {
+                MessageBox.Show("Vui lòng nhập mã khoa/viện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCode.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên khoa/viện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            try // Bọc tất cả trong try...catch
+            if (!ValidateInput()) return;
+
+            try
+            {
+                if (_idKhoaVien == null) // Thêm mới
+                {
+                    // Kiểm tra trùng mã khoa/viện
+                    if (kn.cnn.State != ConnectionState.Open)
+                        kn.KetNoi_Dulieu();
+
+                    string strKtra = "SELECT Code FROM Departments WHERE Code=N'" + txtCode.Text + "'";
+                    SqlCommand cmd = new SqlCommand(strKtra, kn.cnn);
+                    SqlDataReader doc_dl = cmd.ExecuteReader();
+                    if (doc_dl.Read())
+                    {
+                        MessageBox.Show("Mã khoa/viện đã tồn tại, vui lòng nhập mã khác!", "Thông báo",
+                                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtCode.Focus();
+                        doc_dl.Close();
+                        return;
+                    }
+                    doc_dl.Close();
+
+                    // Thêm mới
+                    string sqlInsert = $"INSERT INTO Departments (Code, Name, Office) " +
+                                       $"VALUES (N'{txtCode.Text}', N'{txtName.Text}', N'{txtOffice.Text}')";
+                    kn.ThucThiSQL(sqlInsert);
+
+                    MessageBox.Show("Thêm mới khoa/viện thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else // Cập nhật
+                {
+                    string sql_update = $"UPDATE Departments SET Name=N'{txtName.Text}', " +
+                                      $"Office=N'{txtOffice.Text}' WHERE DeptID={_idKhoaVien.Value}";
+
+                    kn.ThucThiSQL(sql_update);
+                    MessageBox.Show("Cập nhật thông tin khoa/viện thành công!", "Thông báo",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (kn.cnn != null && kn.cnn.State == ConnectionState.Open)
+                {
+                    kn.NgatKetNoi();
+                }
+            }
+        }
+
+        private void FrmKhoaVien_ChinhSua_Load(object sender, EventArgs e)
+        {
+            try
             {
                 if (_idKhoaVien == null)
                 {
-                    // Thêm mới
-                    string strKtra = "Select Code from Departments where Code='" + txtMaKhoa.Text + "'";
-
-                    // SỬA Ở ĐÂY: Dùng Lay_DulieuBang để kiểm tra
-                    DataTable dtaCheck = kn.Lay_DulieuBang(strKtra);
-
-                    if (dtaCheck.Rows.Count > 0) // Kiểm tra xem có dòng nào trả về không
-                    {
-                        MessageBox.Show("Mã đã tồn tại, vui lòng nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtMaKhoa.Focus();
-                        // Không đóng form ở đây
-                    }
-                    else
-                    {
-                        // Mã không trùng, tiến hành Thêm mới
-                        kn.ThucThiSQL(
-                            "INSERT INTO Departments (Code, Name, Office) " +
-                            "VALUES ('" + txtMaKhoa.Text + "', N'" + txtTenKhoa.Text + "', N'" + txtDiaChi.Text + "')"
-                        );
-                        MessageBox.Show("Lưu dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close(); // Chỉ đóng form sau khi lưu thành công
-                    }
+                    txtCode.Focus();
                 }
                 else
                 {
-                    // Cập nhật (Phần này của bạn đã dùng kn.ThucThiSQL đúng)
-                    // (Tôi cũng bỏ phần cập nhật "Code" vì txtMaKhoa đang bị disable)
-                    string sql_Sua = "UPDATE Departments SET " +
-                                     "Name = N'" + txtTenKhoa.Text + "', " +
-                                     "Office = N'" + txtDiaChi.Text + "' " +
-                                     "WHERE DeptID = " + _idKhoaVien.Value;
-                    kn.ThucThiSQL(sql_Sua);
-                    MessageBox.Show("Cập nhật khoa/viện thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    Load_DuLieuCanSua();
+                    txtName.Focus();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi khi lưu: " + ex.Message);
+                MessageBox.Show($"Lỗi khởi tạo form: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Xử lý phím tắt
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                btnHuy_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.S))
+            {
+                btnLuu_Click(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

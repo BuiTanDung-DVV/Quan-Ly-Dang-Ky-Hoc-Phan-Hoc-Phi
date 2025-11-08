@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
     public partial class FrmGiangVien_ChinhSua : Form
@@ -24,32 +20,47 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             int nWidthEllipse,
             int nHeightEllipse);
 
-        public int CornerRadius { get; set; } = 30; // bán kính bo góc mặc định
-
+        public int CornerRadius { get; set; } = 15;
         KETNOI_CSDL kn = new KETNOI_CSDL();
+
+        // Constructor thêm mới
         public FrmGiangVien_ChinhSua()
         {
             InitializeComponent();
             _idGiangVien = null;
-
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
-
-            this.label1.Text = "Thêm Mới Giảng Viên";
-            this.txtId.Enabled = false;
+            InitializeForm();
+            this.label1.Text = "👨‍🏫 THÊM MỚI GIẢNG VIÊN";
+            this.txtLecturerID.Enabled = false;
         }
 
+        // Constructor chỉnh sửa
         public FrmGiangVien_ChinhSua(int idGiangVien)
         {
             InitializeComponent();
             _idGiangVien = idGiangVien;
+            InitializeForm();
+            this.label1.Text = "✏️ CHỈNH SỬA GIẢNG VIÊN";
+            this.txtLecturerID.Enabled = false;
+            this.txtLecturerCode.Enabled = false;
+        }
+
+        private void InitializeForm()
+        {
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
-            this.label1.Text = "Chỉnh Sửa Giảng Viên";
-            this.txtId.Enabled = false;
-            this.txtMaGV.Enabled = false;
+            try
+            {
+                if (kn.cnn == null || kn.cnn.State != ConnectionState.Open)
+                {
+                    kn.KetNoi_Dulieu();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi kết nối cơ sở dữ liệu: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected override void OnResize(EventArgs e)
@@ -58,13 +69,21 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
         }
 
-        public void Bang_KhoaVien()
+        private void Bang_KhoaVien()
         {
-            DataTable dta = new DataTable();
-            dta = kn.Lay_DulieuBang("SELECT * FROM Departments");
-            cboKhoaVien.DataSource = dta;
-            cboKhoaVien.DisplayMember = "Name";
-            cboKhoaVien.ValueMember = "DeptID";
+            try
+            {
+                DataTable dta = kn.Lay_DulieuBang("SELECT DeptID, Name FROM Departments ORDER BY Name");
+                cboDeptID.DataSource = dta;
+                cboDeptID.DisplayMember = "Name";
+                cboDeptID.ValueMember = "DeptID";
+                cboDeptID.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi load danh sách khoa/viện: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Load_DuLieuCanSua()
@@ -73,118 +92,211 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
             try
             {
-                string sql = "SELECT * FROM Lecturers WHERE LecturerID = " + _idGiangVien.Value;
+                if (kn.cnn.State != ConnectionState.Open)
+                    kn.KetNoi_Dulieu();
 
+                string sql = "SELECT * FROM Lecturers WHERE LecturerID = " + _idGiangVien.Value;
                 SqlCommand cmd = new SqlCommand(sql, kn.cnn);
                 SqlDataReader doc_dl = cmd.ExecuteReader();
 
-                if (doc_dl.Read() == true)
+                if (doc_dl.Read())
                 {
-                    // 7. Đổ dữ liệu vào TextBox
-                    txtId.Text = doc_dl["LecturerID"].ToString();
-                    txtMaGV.Text = doc_dl["LecturerCode"].ToString();
-                    txtTenGV.Text = doc_dl["FullName"].ToString();
+                    txtLecturerID.Text = doc_dl["LecturerID"].ToString();
+                    txtLecturerCode.Text = doc_dl["LecturerCode"].ToString();
+                    txtFullName.Text = doc_dl["FullName"].ToString();
                     txtEmail.Text = doc_dl["Email"].ToString();
-                    cboKhoaVien.SelectedValue = doc_dl["DeptID"];
+
+                    if (doc_dl["DeptID"] != DBNull.Value)
+                        cboDeptID.SelectedValue = doc_dl["DeptID"];
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy dữ liệu cho môn học này!");
+                    MessageBox.Show("Không tìm thấy dữ liệu cho giảng viên này!", "Thông báo",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.Close();
                 }
-
-                // 8. Phải tự đóng SqlDataReader (rất quan trọng)
                 doc_dl.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không thể tải dữ liệu. Lỗi: " + ex.Message);
+                MessageBox.Show($"Không thể tải dữ liệu. Lỗi: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
-        }
-        private void FrmGiangVien_ChinhSua_Load(object sender, EventArgs e)
-        {
-            Bang_KhoaVien();
-            Load_DuLieuCanSua();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn hủy bỏ thay đổi?",
+                                                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txtLecturerCode.Text))
+            {
+                MessageBox.Show("Vui lòng nhập mã giảng viên!", "Thông báo",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtLecturerCode.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtFullName.Text))
+            {
+                MessageBox.Show("Vui lòng nhập họ và tên!", "Thông báo",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFullName.Focus();
+                return false;
+            }
+
+            if (cboDeptID.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn khoa/viện!", "Thông báo",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboDeptID.Focus();
+                return false;
+            }
+
+            // Validate email format
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                if (!System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text, emailPattern))
+                {
+                    MessageBox.Show("Định dạng email không hợp lệ!", "Thông báo",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtEmail.Focus();
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (_idGiangVien == null)
-            {
-                // Thêm mới giảng viên
-                string strKtra = "Select LecturerCode from Lecturers where LecturerCode='" + txtMaGV.Text + "'";
-                SqlCommand cmd = new SqlCommand(strKtra, kn.cnn);
-                SqlDataReader doc_dl = cmd.ExecuteReader();
+            if (!ValidateInput()) return;
 
-                if (doc_dl.Read() == true)
+            try
+            {
+                if (_idGiangVien == null) // Thêm mới
                 {
-                    MessageBox.Show("Mã đã tồn tại, vui lòng nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMaGV.Focus();
+                    // Kiểm tra trùng mã giảng viên
+                    if (kn.cnn.State != ConnectionState.Open)
+                        kn.KetNoi_Dulieu();
+
+                    string strKtra = "SELECT LecturerCode FROM Lecturers WHERE LecturerCode=N'" + txtLecturerCode.Text + "'";
+                    SqlCommand cmd = new SqlCommand(strKtra, kn.cnn);
+                    SqlDataReader doc_dl = cmd.ExecuteReader();
+
+                    if (doc_dl.Read())
+                    {
+                        MessageBox.Show("Mã giảng viên đã tồn tại, vui lòng nhập mã khác!", "Thông báo",
+                                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtLecturerCode.Focus();
+                        doc_dl.Close();
+                        return;
+                    }
+                    doc_dl.Close();
+
+                    // Thêm giảng viên và lấy ID
+                    string sqlWithIdentity = $"INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID) " +
+                                           $"VALUES (N'{txtLecturerCode.Text}', N'{txtFullName.Text}', " +
+                                           $"N'{txtEmail.Text}', {cboDeptID.SelectedValue}); " +
+                                           $"SELECT SCOPE_IDENTITY();";
+
+                    if (kn.cnn.State != ConnectionState.Open)
+                        kn.KetNoi_Dulieu();
+
+                    SqlCommand cmdInsert = new SqlCommand(sqlWithIdentity, kn.cnn);
+                    object oid = cmdInsert.ExecuteScalar();
+
+                    if (oid != null)
+                    {
+                        int idGiangVienMoi = Convert.ToInt32(oid);
+                        string username = txtLecturerCode.Text.Trim();
+                        string password = "123456"; // Hoặc có thể để rỗng hoặc tạo logic khác
+
+                        string sqlInsertUser = "INSERT INTO Users (Username, PasswordHash, Role, LinkedLecturerID) " +
+                                             $"VALUES (N'{username}', N'{password}', N'Giảng viên', {idGiangVienMoi})";
+                        SqlCommand cmdUser = new SqlCommand(sqlInsertUser, kn.cnn);
+                        cmdUser.ExecuteNonQuery();
+
+                        MessageBox.Show($"Lưu dữ liệu thành công!\n\n" +
+                                      $"👨‍🏫 Giảng viên: {txtFullName.Text}\n" +
+                                      $"👤 Tài khoản: {username}\n" +
+                                      $"🔑 Mật khẩu: {password}",
+                                      "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else // Cập nhật
+                {
+                    string sql_update = $"UPDATE Lecturers SET " +
+                                      $"FullName=N'{txtFullName.Text}', Email=N'{txtEmail.Text}', " +
+                                      $"DeptID={cboDeptID.SelectedValue} WHERE LecturerID={_idGiangVien.Value}";
+                    kn.ThucThiSQL(sql_update);
+                    MessageBox.Show("Cập nhật thông tin giảng viên thành công!", "Thông báo",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu dữ liệu: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (kn.cnn != null && kn.cnn.State == ConnectionState.Open)
+                {
+                    kn.NgatKetNoi();
+                }
+            }
+        }
+
+        private void FrmGiangVien_ChinhSua_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Bang_KhoaVien();
+
+                if (_idGiangVien == null)
+                {
+                    txtLecturerCode.Focus();
                 }
                 else
                 {
-                    doc_dl.Close();
-                    // 1. Thêm mới giảng viên
-                    kn.ThucThiSQL(
-                        "INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID) " +
-                        "VALUES ('" + txtMaGV.Text + "', N'" + txtTenGV.Text + "', '" + txtEmail.Text + "', " + cboKhoaVien.SelectedValue + ")"
-                    );
-
-                    // 2. Lấy LecturerID vừa thêm (bạn lấy theo mã giảng viên)
-                    string sqlGetId = "SELECT LecturerID FROM Lecturers WHERE LecturerCode = '" + txtMaGV.Text + "'";
-                    if (kn.cnn.State != ConnectionState.Open)
-                        kn.cnn.Open();
-                    SqlCommand cmdGetId = new SqlCommand(sqlGetId, kn.cnn);
-                    object oid = cmdGetId.ExecuteScalar();
-                    int idGiangVienMoi = -1;
-                    if (oid != null)
-                    {
-                        idGiangVienMoi = Convert.ToInt32(oid);
-
-                        // 3. Thêm user mới cho giảng viên
-                        string username = txtMaGV.Text.Trim();
-                        string password = txtMaGV.Text.Trim(); // Mật khẩu plain (nếu muốn hash thì gọi hàm hash)
-                        string hashPassword = password;
-
-                        string sqlInsertUser = "INSERT INTO Users (Username, PasswordHash, Role, LinkedLecturerID) " +
-                                               "VALUES ('" + username + "', '" + hashPassword + "', N'Giảng viên', " + idGiangVienMoi + ")";
-                        kn.ThucThiSQL(sqlInsertUser);
-                    }
-
-                    MessageBox.Show("Lưu dữ liệu thành công. Đã tạo tài khoản user cho giảng viên. \nTài khoản: " + txtMaGV.Text + " | Mật khẩu: " + txtMaGV.Text,
-                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Load_DuLieuCanSua();
+                    txtFullName.Focus();
                 }
-                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                // Cập nhật giảng viên (KHÔNG cập nhật lại user)
-                string sql_Sua = "UPDATE Lecturers SET " +
-                                 "LecturerCode = '" + txtMaGV.Text + "', " +
-                                 "FullName = N'" + txtTenGV.Text + "', " +
-                                 "Email = '" + txtEmail.Text + "', " +
-                                 "DeptID = " + cboKhoaVien.SelectedValue + " " +
-                                 "WHERE LecturerID = " + _idGiangVien.Value;
-                kn.ThucThiSQL(sql_Sua);
-                MessageBox.Show("Cập nhật giảng viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                MessageBox.Show($"Lỗi khởi tạo form: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        // Xử lý phím tắt
+        protected override bool ProcessDialogKey(Keys keyData)
         {
-
-        }
-
-        private void lblDanhMuc_Click(object sender, EventArgs e)
-        {
-
+            if (keyData == Keys.Escape)
+            {
+                btnHuy_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.S))
+            {
+                btnLuu_Click(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

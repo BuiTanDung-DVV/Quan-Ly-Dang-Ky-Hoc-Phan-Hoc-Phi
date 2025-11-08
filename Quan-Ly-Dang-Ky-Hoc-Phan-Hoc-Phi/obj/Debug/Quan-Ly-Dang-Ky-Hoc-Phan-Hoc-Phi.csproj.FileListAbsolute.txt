@@ -95,3 +95,4 @@ C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.pdb
 C:\Users\tandu\source\repos\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.exe.config
+D:\project\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\obj\Debug\Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi.FrmDoiMK.resources
