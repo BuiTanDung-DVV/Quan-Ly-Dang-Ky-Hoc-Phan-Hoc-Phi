@@ -1,38 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\",
+  "WorkspaceRootPath": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|d:\\github\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmlophocphan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmlophocphan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmhocphanhocphi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmhocphanhocphi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|d:\\github\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmnganhhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmnganhhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmhocphanhocphi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmhocphanhocphi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|d:\\github\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmnganhhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmnganhhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|d:\\project\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\rpthocphanhocphi.rpt||{C0EF7560-990E-4D61-B970-65A6096B6866}",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\rpthocphanhocphi.rpt||{C0EF7560-990E-4D61-B970-65A6096B6866}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|d:\\github\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmthanhtoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmthanhtoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|d:\\github\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmthanhtoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmthanhtoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\ketnoi_csdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\ketnoi_csdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|d:\\github\\quan-ly-dang-ky-hoc-phan-hoc-phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmlophocphan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmlophocphan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\quan-ly-dang-ky-hoc-phan-hoc-phi\\frmthanhtoan.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6154B589-427F-474D-BBDB-769298A857C2}|Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi.csproj|solutionrelative:quan-ly-dang-ky-hoc-phan-hoc-phi\\frmthanhtoan.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,20 +38,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 8,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FrmSinhVien.cs [Design]",
-              "DocumentMoniker": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs",
-              "ToolTip": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs [Design]",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T02:53:13.257Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
@@ -66,96 +57,93 @@
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "KETNOI_CSDL.cs",
+              "DocumentMoniker": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\KETNOI_CSDL.cs",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\KETNOI_CSDL.cs",
+              "ToolTip": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\KETNOI_CSDL.cs",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\KETNOI_CSDL.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T16:49:53.942Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmHocPhanHocPhi.cs [Design]",
+              "DocumentMoniker": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmHocPhanHocPhi.cs",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmHocPhanHocPhi.cs",
+              "ToolTip": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmHocPhanHocPhi.cs [Design]",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmHocPhanHocPhi.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T16:54:57.505Z",
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "rptHocPhanHocPhi.rpt",
+              "DocumentMoniker": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\rptHocPhanHocPhi.rpt",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\rptHocPhanHocPhi.rpt",
+              "ToolTip": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\rptHocPhanHocPhi.rpt",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\rptHocPhanHocPhi.rpt",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPESURBVDhPrZRLaFxVHMZ/59w7k8lkJpmZTDJ5m1pJ2iY0JoWA0aKFUK1dtF2I2ampoggiSHAjaHFVRBA3FXSjuJFaqDbFCl1Z00JNMkmahGIe5lHznplM7rxn7sNFHp1JuvQPH/f\u002Bz\u002BX73fP4OPB/lmVZIr9v6XjhzKs9736WP/akWpieHLz63eUP9o8DqPmNq9TjP9r6bGfbYT\u002BKIhEU/A\u002BAfzdijHgrqvVcNn37\u002BvdfxrYia/nflfymrrGp7flTr1w42VaL112Mx1WEz\u002B3Am6dYMkvWspWdfK6zfT0ciW6GNlaSCW1zlyHzgQACkEKQSOXYjKWJ7FMyo\u002BN22jlxrK645\u002BJHl9u7ul9zl/kCu/4DwL0SIJ4kYD2a5MbALFoyy9me9z7tPv9G367tAHB31xQhUOS2sjLN71Y/q2KJ\u002BoCbrpYaOo9W0dVaw6G68uKSkmLHrr8AKIRASoFg\u002BymlJC5jPLDGuBm/zg9b3zIpBgn4SqjakcthQ5GPMfuAIHemKIQgYoSYNv5mSjzkYXKCX\u002BPX\u002BCX\u002BMxO5UeTO7IUoTIJUnJUOxVlZqjgrPcJe5jQtiWFapK0EwXSQgdQAhpKlyCzCMAxua7e4Ev6KSC6EJYwDQLX63NWXwGwD/KLS0Ta9YhGJ5ehP3GQmM4OOQTQVJbapoRs6mBAMD/H\u002BSi9fH7\u002BCoLgQ\u002BM2Hx52ZXM4T1nLVsysZ7\u002Bh8lks/hVA9TYQDc0QDQSyXiTQU0mMZMktpGqob6Xv9YyodFUREvAAo9djClBlf/LPOHbvTeVidaWlwsBzOMjvl59FYK\u002BH5p0mqcaQuMZZ02tUOLh57mxcrTuGyuQ4sWYnqZRvB0cl5IVhorPVWHGkoOe2wq8yuGYRXKxBZP3ZviOTWMk\u002Bl63mzs5e3unsRYvtAVsNxgsPDg2N/3bkFoMxO3GV24p6ZzNkSamnVM7XV5RdOd/hY2zLZ0EySIS/WP0ewe4J8/vInnGs7jyrlXrzWIilGgkODI/e3gXuxGb//G\u002BN3b2C3qZQU22muKaLBb8PpUPAWldN36BJNzlYsQMidiElQ5OOoFQDTCY1UYgshBaYliabAEJIyl4q3xI7fFkA17ZimubfcfB0AAugGbCZgcCbNUsRCURTq/ZLmgE5US7IcirO0EWNxXdtTKqsj84AF96GQiqZb9rnxxXSlXcXRWCFwq3rSXxQLLS5HE\u002BFNLYuRMjIpzcr3hdaXF3bfC4A1PsfI2RO\u002BLzI5/Z14It28Fc\u002BytBYfnZze\u002BHFqbm0opxuPHtzr14b/uJbL9\u002BXXf8LCnE6KaQGDAAAAAElFTkSuQmCC",
+              "WhenOpened": "2025-11-09T17:25:04.789Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FrmMonHoc.cs",
-              "DocumentMoniker": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmMonHoc.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmMonHoc.cs",
-              "ToolTip": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmMonHoc.cs",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmMonHoc.cs",
-              "ViewState": "AgIAAEUBAAAAAAAAAAAawFoBAABOAAAAAAAAAA==",
+              "Title": "FrmThanhToan.cs [Design]",
+              "DocumentMoniker": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs",
+              "ToolTip": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs [Design]",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T14:12:46.765Z",
+              "WhenOpened": "2025-11-09T16:42:48.16Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmHocPhanHocPhi.cs",
+              "DocumentMoniker": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmHocPhanHocPhi.cs",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmHocPhanHocPhi.cs",
+              "ToolTip": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmHocPhanHocPhi.cs",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmHocPhanHocPhi.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAgwDQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T16:56:06.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "FrmMonHoc.cs [Design]",
-              "DocumentMoniker": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmMonHoc.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmMonHoc.cs",
-              "ToolTip": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmMonHoc.cs [Design]",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmMonHoc.cs [Design]",
+              "Title": "FrmThanhToan.cs",
+              "DocumentMoniker": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs",
+              "ToolTip": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.cs",
+              "ViewState": "AgIAACYBAAAAAAAAAAAgwDIBAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T14:12:45.476Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FrmSinhVien.cs",
-              "DocumentMoniker": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs",
-              "ToolTip": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmSinhVien.cs",
-              "ViewState": "AgIAAHYBAAAAAAAAAAAcwNUBAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T08:20:46.087Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FrmNganhHoc.cs [Design]",
-              "DocumentMoniker": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmNganhHoc.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmNganhHoc.cs",
-              "ToolTip": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmNganhHoc.cs [Design]",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmNganhHoc.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T13:54:27.114Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmNganhHoc.cs",
-              "DocumentMoniker": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmNganhHoc.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmNganhHoc.cs",
-              "ToolTip": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmNganhHoc.cs",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmNganhHoc.cs",
-              "ViewState": "AgIAAJYBAAAAAAAAAAAQwKoBAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T13:54:29.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmLopHocPhan.cs",
-              "DocumentMoniker": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLopHocPhan.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLopHocPhan.cs",
-              "ToolTip": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLopHocPhan.cs",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLopHocPhan.cs",
-              "ViewState": "AgIAAKABAAAAAAAAAAAAwLgBAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T13:54:37.947Z",
+              "WhenOpened": "2025-11-09T16:48:44.77Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "FrmLopHocPhan.cs [Design]",
-              "DocumentMoniker": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLopHocPhan.cs",
-              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLopHocPhan.cs",
-              "ToolTip": "D:\\github\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLopHocPhan.cs [Design]",
-              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmLopHocPhan.cs [Design]",
+              "Title": "FrmThanhToan.Designer.cs",
+              "DocumentMoniker": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.Designer.cs",
+              "RelativeDocumentMoniker": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.Designer.cs",
+              "ToolTip": "D:\\project\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.Designer.cs",
+              "RelativeToolTip": "Quan-Ly-Dang-Ky-Hoc-Phan-Hoc-Phi\\FrmThanhToan.Designer.cs",
+              "ViewState": "AgIAACcBAAAAAAAAAAAqwC0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T13:54:14.538Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-09T16:14:22.77Z",
+              "EditorCaption": ""
             }
           ]
         }

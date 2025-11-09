@@ -35,6 +35,10 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="SunnyUI, Version=3.8.9.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb, processorArchitecture=MSIL">
       <HintPath>..\packages\SunnyUI.3.8.9\lib\net472\SunnyUI.dll</HintPath>
     </Reference>
@@ -47,6 +51,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -93,6 +98,12 @@
     </Compile>
     <Compile Include="FrmHocKi_ChinhSua.Designer.cs">
       <DependentUpon>FrmHocKi_ChinhSua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHocPhanHocPhi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHocPhanHocPhi.Designer.cs">
+      <DependentUpon>FrmHocPhanHocPhi.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmKhoaVien.cs">
       <SubType>Form</SubType>
@@ -187,6 +198,12 @@
     <Compile Include="KETNOI_CSDL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rptHocPhanHocPhi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptHocPhanHocPhi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="QLDKHPDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHocKi_ChinhSua.resx">
       <DependentUpon>FrmHocKi_ChinhSua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHocPhanHocPhi.resx">
+      <DependentUpon>FrmHocPhanHocPhi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKhoaVien.resx">
       <DependentUpon>FrmKhoaVien.cs</DependentUpon>
@@ -263,6 +283,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="rptHocPhanHocPhi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptHocPhanHocPhi.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -302,6 +326,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\3994424_cancel_close_delete_reject_remove_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
