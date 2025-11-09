@@ -19,147 +19,462 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             InitializeComponent();
         }
+        private void SetupDataGridView()
+        {
+            try
+            {
+                // Thiết lập các thuộc tính cho DataGridView
+                dataKQ.AutoGenerateColumns = true;
+                dataKQ.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataKQ.MultiSelect = false;
+                dataKQ.ReadOnly = true;
+                dataKQ.AllowUserToAddRows = false;
+                dataKQ.AllowUserToDeleteRows = false;
+                dataKQ.RowHeadersVisible = false;
+
+                // Thiết lập alternating row colors
+                dataKQ.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+                dataKQ.DefaultCellStyle.SelectionBackColor = Color.FromArgb(24, 79, 147);
+                dataKQ.DefaultCellStyle.SelectionForeColor = Color.White;
+
+                // Thiết lập font
+                dataKQ.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
+                dataKQ.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+                dataKQ.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(24, 79, 147);
+                dataKQ.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+                dataKQ.EnableHeadersVisualStyles = false;
+                dataKQ.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                dataKQ.ColumnHeadersHeight = 35;
+                dataKQ.RowTemplate.Height = 30;
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi thiết lập DataGridView: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+
 
         public void Bang_NganhHoc()
         {
-            DataTable dta = new DataTable();
-            dta = kn.Lay_DulieuBang("SELECT * FROM Majors");
-            dataKQ.DataSource = dta;
+            try
+            {
+                // 1. Hiển thị trạng thái tải
+                ShowLoading(true);
+
+                // 2. Truy vấn SQL cho bảng Ngành Học (Majors)
+                string sql = @"
+            SELECT 
+                m.MajorID,
+                m.Code AS [Mã Ngành],
+                m.Name AS [Tên Ngành],
+                d.Name AS [Thuộc Khoa/Viện]
+            FROM Majors m
+            LEFT JOIN Departments d ON m.DeptID = d.DeptID  -- Lấy tên Khoa/Viện liên quan
+            ORDER BY m.Code";
+
+                // 3. Thực thi truy vấn và gán vào DataGridView
+                DataTable dta = kn.Lay_DulieuBang(sql);
+                dataKQ.DataSource = dta;
+
+                // 4. Ẩn cột Khóa chính (MajorID)
+                // Cột này được dùng nội bộ nhưng không cần hiển thị
+                if (dataKQ.Columns["MajorID"] != null)
+                {
+                    dataKQ.Columns["MajorID"].Visible = false;
+                }
+
+                // 5. Thiết lập độ rộng cột (Cần có phương thức ConfigureColumnWidths() riêng cho bảng này)
+                ConfigureColumnWidths();
+
+                // 6. Cập nhật số lượng bản ghi
+                UpdateRecordCount();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                ShowMessage($"Lỗi tải dữ liệu ngành học: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Kết thúc trạng thái tải (luôn chạy)
+                ShowLoading(false);
+            }
+        }
+
+        private void ConfigureColumnWidths()
+        {
+            try
+            {
+                // Đảm bảo dataKQ đã có dữ liệu (có cột)
+                if (dataKQ.Columns.Count > 0)
+                {
+                    // Cho phép người dùng tự thay đổi kích thước cột
+                    dataKQ.AllowUserToResizeColumns = true;
+                    dataKQ.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+
+                    // Định nghĩa cấu hình mới cho các cột của bảng Ngành Học
+                    var columnConfig = new Dictionary<string, (int width, DataGridViewAutoSizeColumnMode mode, int minWidth)>
+                    {
+                        // Cột Khóa chính MajorID đã bị ẩn, không cần cấu hình ở đây
+
+                        ["Mã Ngành"] = (100, DataGridViewAutoSizeColumnMode.None, 80),
+                        ["Tên Ngành"] = (250, DataGridViewAutoSizeColumnMode.Fill, 150), // Dùng Fill để tự động mở rộng
+                        ["Thuộc Khoa/Viện"] = (200, DataGridViewAutoSizeColumnMode.None, 150)
+                    };
+
+                    // Lặp qua tất cả các cột để áp dụng cấu hình
+                    foreach (DataGridViewColumn column in dataKQ.Columns)
+                    {
+                        if (columnConfig.ContainsKey(column.Name))
+                        {
+                            var config = columnConfig[column.Name];
+                            column.Width = config.width;
+                            column.AutoSizeMode = config.mode;
+                            column.MinimumWidth = config.minWidth;
+                            column.Resizable = DataGridViewTriState.True; // Cho phép thay đổi kích thước
+                        }
+
+                        // Căn giữa nội dung cho các cột chứa mã số hoặc thông tin ngắn gọn
+                        if (column.Name == "Mã Ngành")
+                        {
+                            column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        }
+                        // Căn trái mặc định cho Tên Ngành và Khoa/Viện
+                    }
+
+                    // Gọi phương thức để thêm menu chuột phải (ContextMenu)
+                    AddColumnContextMenu();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                ShowMessage($"Lỗi thiết lập cột: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+
+        private void AddColumnContextMenu()
+        {
+            try
+            {
+                ContextMenuStrip columnMenu = new ContextMenuStrip();
+
+                ToolStripMenuItem autoFitItem = new ToolStripMenuItem("🔧 Tự động điều chỉnh độ rộng");
+                autoFitItem.Click += (s, e) => {
+                    foreach (DataGridViewColumn col in dataKQ.Columns)
+                    {
+                        if (col.Visible && col.Name != "MajorID")
+                        {
+                            col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        }
+                    }
+                };
+
+                ToolStripMenuItem resetItem = new ToolStripMenuItem("↺ Khôi phục kích thước mặc định");
+                resetItem.Click += (s, e) => ConfigureColumnWidths();
+
+                columnMenu.Items.Add(autoFitItem);
+                columnMenu.Items.Add(resetItem);
+
+                dataKQ.ColumnHeaderMouseClick += (s, e) => {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        columnMenu.Show(dataKQ, dataKQ.PointToClient(Cursor.Position));
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error adding context menu: {ex.Message}");
+            }
+        }
+
+        private void UpdateRecordCount()
+        {
+            try
+            {
+                int count = dataKQ.Rows.Count;
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi cập nhật số lượng: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+
+        private void ShowLoading(bool show)
+        {
+            try
+            {
+                if (show)
+                {
+                    this.Cursor = Cursors.WaitCursor;
+                    // Disable buttons
+                    if (btnToaMoi != null) btnToaMoi.Enabled = false;
+                    if (btnSua != null) btnSua.Enabled = false;
+                    if (btnXoa != null) btnXoa.Enabled = false;
+                    if (btnTimKiem != null) btnTimKiem.Enabled = false;
+                }
+                else
+                {
+                    this.Cursor = Cursors.Default;
+                    // Enable buttons
+                    if (btnToaMoi != null) btnToaMoi.Enabled = true;
+                    if (btnSua != null) btnSua.Enabled = true;
+                    if (btnXoa != null) btnXoa.Enabled = true;
+                    if (btnTimKiem != null) btnTimKiem.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi hiển thị loading: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+
+        private void ShowMessage(string message, string title, MessageBoxIcon icon)
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
         }
 
         private void FrmNganh_Load(object sender, EventArgs e)
         {
-            Bang_NganhHoc();
+            try
+            {
+                // Khởi tạo kết nối database
+                if (kn.cnn == null || kn.cnn.State != ConnectionState.Open)
+                {
+                    kn.KetNoi_Dulieu();
+                }
+
+                if (dataKQ != null)
+                {
+                    SetupDataGridView();
+                }
+
+                Bang_NganhHoc();
+
+                if (txtTimKiem != null)
+                {
+                    txtTimKiem.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi khởi tạo form: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
         }
 
         private void btnToaMoi_Click(object sender, EventArgs e)
         {
-            FrmNganhHoc_ChinhSua f1 = new FrmNganhHoc_ChinhSua();
-
-            f1.ShowDialog();
-
-            Bang_NganhHoc();
+            try
+            {
+                FrmNganhHoc_ChinhSua f1 = new FrmNganhHoc_ChinhSua();
+                if (f1.ShowDialog() == DialogResult.OK)
+                {
+                    Bang_NganhHoc();
+                    ShowMessage("Thêm thành công!", "Thông báo", MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi mở form thêm mới: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            // 1. Kiểm tra xem đã chọn dòng nào chưa
-            if (dataKQ.CurrentRow != null)
+            try
             {
-                // 2. Lấy ID (MaMonHoc) từ dòng đang chọn
-                // (Thay "MaMonHoc" bằng TÊN CỘT ID trong DataGridView của bạn)
-                int idNganhHoc = Convert.ToInt32(dataKQ.CurrentRow.Cells["MajorID"].Value);
+                if (dataKQ.CurrentRow == null)
+                {
+                    ShowMessage("Vui lòng chọn cần chỉnh sửa!", "Thông báo", MessageBoxIcon.Warning);
+                    return;
+                }
 
-                // 3. Mở Form chỉnh sửa và "gửi" ID qua
-                FrmNganhHoc_ChinhSua frm = new FrmNganhHoc_ChinhSua(idNganhHoc);
-                frm.ShowDialog();
+                string idValue = dataKQ.CurrentRow.Cells["MajorID"].Value?.ToString();
 
-                // 4. Tải lại lưới sau khi Form chỉnh sửa đóng
-                Bang_NganhHoc();
+                if (string.IsNullOrEmpty(idValue) || !int.TryParse(idValue, out int idNganhHoc))
+                {
+                    ShowMessage("Không thể lấy thông tin!", "Lỗi", MessageBoxIcon.Error);
+                    return;
+                }
+
+                FrmNganhHoc_ChinhSua f1 = new FrmNganhHoc_ChinhSua(idNganhHoc);
+                if (f1.ShowDialog() == DialogResult.OK)
+                {
+                    Bang_NganhHoc();
+                    ShowMessage("Cập nhật thông tin thành công!", "Thông báo", MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng chọn một môn học để sửa!");
+                ShowMessage($"Lỗi mở form chỉnh sửa: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+        private void TimKiemNganhHoc()
+        {
+            try
+            {
+                // 1. Bật trạng thái tải
+                ShowLoading(true);
+
+                // 2. Lấy từ khóa tìm kiếm
+                string tuKhoa = txtTimKiem?.Text?.Trim() ?? "";
+
+                // 3. Nếu từ khóa rỗng, hiển thị lại toàn bộ bảng Ngành Học
+                if (string.IsNullOrEmpty(tuKhoa))
+                {
+                    Bang_NganhHoc(); // Phương thức tải toàn bộ bảng Ngành Học
+                    return;
+                }
+
+                // 4. Xây dựng truy vấn SQL tìm kiếm cho Ngành Học (Majors)
+                string sql = @"
+            SELECT 
+                m.MajorID,
+                m.Code AS [Mã Ngành],
+                m.Name AS [Tên Ngành],
+                d.Name AS [Thuộc Khoa/Viện]
+            FROM Majors m
+            LEFT JOIN Departments d ON m.DeptID = d.DeptID  -- Lấy tên Khoa/Viện
+            
+            -- Thêm điều kiện tìm kiếm WHERE
+            WHERE m.Code LIKE '%" + tuKhoa + "%' " +           // Tìm theo Mã Ngành
+                          "OR m.Name LIKE N'%" + tuKhoa + "%' " +       // Tìm theo Tên Ngành
+                          "OR d.Name LIKE N'%" + tuKhoa + "%' " +       // Tìm theo Tên Khoa/Viện
+                    "ORDER BY m.Code";
+
+                // 5. Thực thi truy vấn, gán dữ liệu và cấu hình giao diện
+                DataTable dta = kn.Lay_DulieuBang(sql);
+                dataKQ.DataSource = dta;
+
+                // Ẩn cột MajorID (Khóa chính)
+                if (dataKQ.Columns["MajorID"] != null)
+                {
+                    dataKQ.Columns["MajorID"].Visible = false;
+                }
+
+                ConfigureColumnWidths();
+                UpdateRecordCount();
+
+                // 6. Thông báo nếu không tìm thấy
+                if (dta.Rows.Count == 0)
+                {
+                    ShowMessage($"Không tìm thấy ngành học nào với từ khóa '{tuKhoa}'",
+                                "Thông báo", MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                ShowMessage($"Lỗi tìm kiếm: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Tắt trạng thái tải
+                ShowLoading(false);
             }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string tuKhoa = txtTimKiem.Text.Trim();
-
-            if (string.IsNullOrEmpty(tuKhoa))
-            {
-                // Nếu không nhập gì thì hiển thị toàn bộ danh sách
-                Bang_NganhHoc();
-            }
-            else
-            {
-                // Tìm kiếm trong bảng Lecturers theo tên hoặc mã giảng viên
-                string sql = "SELECT * FROM Majors WHERE Name LIKE N'%" + tuKhoa + "%' OR Code LIKE '%" + tuKhoa + "%'";
-
-                DataTable dta = kn.Lay_DulieuBang(sql);
-                dataKQ.DataSource = dta;
-            }
+            TimKiemNganhHoc();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dataKQ.CurrentRow == null)
-            {
-                MessageBox.Show("Vui lòng chọn ngành học cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string maNganh = dataKQ.CurrentRow.Cells["MajorID"].Value.ToString();
-
             try
             {
-                // ✅ Bước 1: Tìm các bảng có foreign key tham chiếu đến Majors(MajorID)
-                string sqlCheckFK = @"
-            SELECT 
-                fk_tab.name AS ReferencingTable
-            FROM sys.foreign_keys fk
-            INNER JOIN sys.foreign_key_columns fkc ON fkc.constraint_object_id = fk.object_id
-            INNER JOIN sys.tables fk_tab ON fk_tab.object_id = fk.parent_object_id
-            INNER JOIN sys.tables pk_tab ON pk_tab.object_id = fk.referenced_object_id
-            INNER JOIN sys.columns fk_col ON fkc.parent_object_id = fk_col.object_id AND fkc.parent_column_id = fk_col.column_id
-            INNER JOIN sys.columns pk_col ON fkc.referenced_object_id = pk_col.object_id AND fkc.referenced_column_id = pk_col.column_id
-            WHERE pk_tab.name = 'Majors' AND pk_col.name = 'MajorID';
-        ";
-
-                DataTable fkTables = kn.Lay_DulieuBang(sqlCheckFK);
-                List<string> bangLienQuan = new List<string>();
-
-                foreach (DataRow row in fkTables.Rows)
+                // 1. Kiểm tra xem người dùng đã chọn dòng nào chưa
+                if (dataKQ.CurrentRow == null)
                 {
-                    string tableName = row["ReferencingTable"].ToString();
-                    string sqlCount = $"SELECT COUNT(*) FROM {tableName} WHERE MajorID = {maNganh}";
-                    DataTable dtCount = kn.Lay_DulieuBang(sqlCount);
-
-                    if (dtCount.Rows.Count > 0 && Convert.ToInt32(dtCount.Rows[0][0]) > 0)
-                    {
-                        bangLienQuan.Add(tableName);
-                    }
+                    ShowMessage("Vui lòng chọn ngành học cần xóa.", "Thông báo", MessageBoxIcon.Warning);
+                    return;
                 }
 
-                // ✅ Bước 2: Nếu có bảng liên quan, hỏi xác nhận
-                if (bangLienQuan.Count > 0)
-                {
-                    string danhSachBang = string.Join(", ", bangLienQuan);
-                    DialogResult confirmFK = MessageBox.Show(
-                        $"Ngành học này đang được tham chiếu trong các bảng sau: {danhSachBang}.\n" +
-                        "Nếu xóa, dữ liệu liên quan trong các bảng này có thể gây lỗi hoặc mất liên kết.\n\n" +
-                        "Bạn có chắc chắn muốn tiếp tục xóa không?",
-                        "Cảnh báo",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning
-                    );
+                // 2. Lấy thông tin cần thiết từ dòng được chọn
+                // Lấy MajorID (Khóa chính) để thực hiện thao tác DELETE
+                string majorID = dataKQ.CurrentRow.Cells["MajorID"].Value?.ToString();
+                string maNganh = dataKQ.CurrentRow.Cells["Mã Ngành"].Value?.ToString();
+                string tenNganh = dataKQ.CurrentRow.Cells["Tên Ngành"].Value?.ToString();
 
-                    if (confirmFK == DialogResult.No)
-                        return;
+                if (string.IsNullOrEmpty(majorID))
+                {
+                    ShowMessage("Không thể lấy thông tin ID Ngành Học!", "Lỗi", MessageBoxIcon.Error);
+                    return;
                 }
 
-                // ✅ Bước 3: Xác nhận xóa
-                DialogResult confirmDelete = MessageBox.Show(
-                    "Bạn có chắc muốn xóa ngành học này không?",
-                    "Xác nhận xóa",
+                // 3. Hiển thị hộp thoại xác nhận
+                DialogResult result = MessageBox.Show(
+                    $"Bạn có chắc muốn xóa ngành học này?\n\n" +
+                    $"🏷️ Mã Ngành: {maNganh}\n" +
+                    $"📚 Tên Ngành: {tenNganh}\n\n" +
+                    $"⚠️ Cảnh báo: Thao tác này có thể bị lỗi nếu còn sinh viên hoặc môn học thuộc ngành này!",
+                    "Xác nhận xóa Ngành Học",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
+                    MessageBoxIcon.Question);
 
-                if (confirmDelete == DialogResult.Yes)
+                if (result == DialogResult.Yes)
                 {
-                    string sqlDelete = $"DELETE FROM Majors WHERE MajorID = {maNganh}";
-                    kn.ThucThiSQL(sqlDelete);
-                    Bang_NganhHoc();
-                    MessageBox.Show("Xóa ngành học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowLoading(true);
+
+                    string sqlDeleteMajor = $"DELETE FROM Majors WHERE MajorID = {majorID}";
+                    kn.ThucThiSQL(sqlDeleteMajor);
+
+                    // Cập nhật lại danh sách trên giao diện
+                    Bang_NganhHoc(); // Giả sử đây là phương thức tải lại toàn bộ bảng Ngành Học
+                    ShowMessage("Xóa ngành học thành công!", "Thông báo", MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Thông báo lỗi chi tiết hơn nếu là lỗi Khóa ngoại (Foreign Key)
+                string errorMessage = ex.Message;
+                if (errorMessage.Contains("REFERENCE constraint") || errorMessage.Contains("foreign key"))
+                {
+                    ShowMessage($"Lỗi ràng buộc: Không thể xóa ngành học này vì vẫn còn dữ liệu (như sinh viên hoặc môn học) đang liên kết với nó. Vui lòng xóa hoặc gán lại các dữ liệu liên quan trước.", "Lỗi Ràng Buộc", MessageBoxIcon.Error);
+                }
+                else
+                {
+                    ShowMessage($"Lỗi khi xóa ngành học: {errorMessage}", "Lỗi", MessageBoxIcon.Error);
+                }
+            }
+            finally
+            {
+                ShowLoading(false);
             }
         }
 
+        private void txtTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                TimKiemNganhHoc();
+            }
+        }
+
+        private void dataKQ_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                btnSua_Click(sender, e);
+            }
+        }
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            try
+            {
+                if (kn?.cnn != null && kn.cnn.State == ConnectionState.Open)
+                {
+                    kn.NgatKetNoi();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error closing connection: {ex.Message}");
+            }
+
+            base.OnFormClosed(e);
+        }
     }
 }
