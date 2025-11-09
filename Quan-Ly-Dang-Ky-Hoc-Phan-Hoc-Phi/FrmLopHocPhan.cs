@@ -158,5 +158,16 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
         }
 
+        private void uiTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
