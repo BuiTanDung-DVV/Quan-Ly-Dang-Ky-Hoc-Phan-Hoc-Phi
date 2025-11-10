@@ -202,6 +202,23 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             // Auto size columns
             uiDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+        private void btnXuatPhieu_Click(object sender, EventArgs e)
+        {
+            if (uiDataGridView1.CurrentRow != null)
+            {
+                int studentID = Convert.ToInt32(currentStudentID);
+
+                FrmHocPhanHocPhi reportForm = new FrmHocPhanHocPhi();
+                reportForm.StudentID = studentID;
+                reportForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn sinh viên để xuất phiếu!");
+            }
+        }
+
+
 
         private void LoadTerms()
         {

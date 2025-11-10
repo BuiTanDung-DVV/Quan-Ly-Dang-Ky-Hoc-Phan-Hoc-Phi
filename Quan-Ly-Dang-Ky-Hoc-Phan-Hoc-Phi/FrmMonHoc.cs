@@ -5,181 +5,381 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 {
     public partial class FrmMonHoc : Form
     {
+        private KETNOI_CSDL kn = new KETNOI_CSDL();
 
         public FrmMonHoc()
         {
             InitializeComponent();
         }
 
-        KETNOI_CSDL kn = new KETNOI_CSDL();
+        private void SetupDataGridView()
+        {
+            try
+            {
+                dataKQ.AutoGenerateColumns = true;
+                dataKQ.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataKQ.MultiSelect = false;
+                dataKQ.ReadOnly = true;
+                dataKQ.AllowUserToAddRows = false;
+                dataKQ.AllowUserToDeleteRows = false;
+                dataKQ.RowHeadersVisible = false;
+
+                // Style
+                dataKQ.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+                dataKQ.DefaultCellStyle.SelectionBackColor = Color.FromArgb(24, 79, 147);
+                dataKQ.DefaultCellStyle.SelectionForeColor = Color.White;
+                dataKQ.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
+                dataKQ.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+                dataKQ.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(24, 79, 147);
+                dataKQ.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+                dataKQ.EnableHeadersVisualStyles = false;
+                dataKQ.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                dataKQ.ColumnHeadersHeight = 35;
+                dataKQ.RowTemplate.Height = 30;
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi thiết lập DataGridView: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
 
         public void Bang_MonHoc()
         {
-            DataTable dta = new DataTable();
-            dta = kn.Lay_DulieuBang("SELECT * FROM Courses");
-            dataKQ.DataSource = dta;
+            try
+            {
+                ShowLoading(true);
+
+                string sql = @"
+                    SELECT 
+                        c.CourseID,
+                        c.Code AS [Mã môn],
+                        c.Name AS [Tên môn học],
+                        c.Credits AS [Số tín chỉ],
+                        c.TuitionPerCredit AS [Học phí/tín chỉ],
+                        d.Name AS [Khoa/Viện]
+                    FROM Courses c
+                    LEFT JOIN Departments d ON c.DeptID = d.DeptID
+                    ORDER BY c.Code";
+
+                DataTable dta = kn.Lay_DulieuBang(sql);
+                dataKQ.DataSource = dta;
+
+                if (dataKQ.Columns["CourseID"] != null)
+                    dataKQ.Columns["CourseID"].Visible = false;
+
+                ConfigureColumnWidths();
+                UpdateRecordCount();
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi tải dữ liệu môn học: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ShowLoading(false);
+            }
         }
-        private void lblTenMon_Click(object sender, EventArgs e)
-        {
 
+        private void ConfigureColumnWidths()
+        {
+            try
+            {
+                if (dataKQ.Columns.Count > 0)
+                {
+                    dataKQ.AllowUserToResizeColumns = true;
+                    dataKQ.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+
+                    var columnConfig = new Dictionary<string, (int width, DataGridViewAutoSizeColumnMode mode, int minWidth)>
+                    {
+                        ["Mã môn"] = (80, DataGridViewAutoSizeColumnMode.None, 60),
+                        ["Tên môn học"] = (200, DataGridViewAutoSizeColumnMode.None, 100),
+                        ["Số tín chỉ"] = (90, DataGridViewAutoSizeColumnMode.None, 60),
+                        ["Học phí/tín chỉ"] = (120, DataGridViewAutoSizeColumnMode.None, 100),
+                        ["Khoa/Viện"] = (150, DataGridViewAutoSizeColumnMode.None, 100)
+                    };
+
+                    foreach (DataGridViewColumn column in dataKQ.Columns)
+                    {
+                        if (columnConfig.ContainsKey(column.Name))
+                        {
+                            var config = columnConfig[column.Name];
+                            column.Width = config.width;
+                            column.AutoSizeMode = config.mode;
+                            column.MinimumWidth = config.minWidth;
+                            column.Resizable = DataGridViewTriState.True;
+                        }
+
+                        if (column.Name == "Mã môn" || column.Name == "Số tín chỉ")
+                            column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+
+                    AddColumnContextMenu();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi thiết lập cột: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
         }
 
-        private void txtTenLop_TextChanged(object sender, EventArgs e)
+        private void AddColumnContextMenu()
         {
+            try
+            {
+                ContextMenuStrip columnMenu = new ContextMenuStrip();
 
+                var autoFitItem = new ToolStripMenuItem("🔧 Tự động điều chỉnh độ rộng");
+                autoFitItem.Click += (s, e) =>
+                {
+                    foreach (DataGridViewColumn col in dataKQ.Columns)
+                    {
+                        if (col.Visible && col.Name != "CourseID")
+                            col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    }
+                };
+
+                var resetItem = new ToolStripMenuItem("↺ Khôi phục kích thước mặc định");
+                resetItem.Click += (s, e) => ConfigureColumnWidths();
+
+                columnMenu.Items.Add(autoFitItem);
+                columnMenu.Items.Add(resetItem);
+
+                dataKQ.ColumnHeaderMouseClick += (s, e) =>
+                {
+                    if (e.Button == MouseButtons.Right)
+                        columnMenu.Show(dataKQ, dataKQ.PointToClient(Cursor.Position));
+                };
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error adding context menu: {ex.Message}");
+            }
+        }
+
+
+        private void UpdateRecordCount()
+        {
+            try
+            {
+                int count = dataKQ.Rows.Count;
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi cập nhật số lượng: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+
+        private void ShowLoading(bool show)
+        {
+            try
+            {
+                this.Cursor = show ? Cursors.WaitCursor : Cursors.Default;
+                if (btnToaMoi != null) btnToaMoi.Enabled = !show;
+                if (btnSua != null) btnSua.Enabled = !show;
+                if (btnXoa != null) btnXoa.Enabled = !show;
+                if (btnTimKiem != null) btnTimKiem.Enabled = !show;
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi hiển thị loading: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void ShowMessage(string message, string title, MessageBoxIcon icon)
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
         }
 
         private void FrmMonHoc_Load(object sender, EventArgs e)
         {
-            Bang_MonHoc();
+            try
+            {
+                if (kn.cnn == null || kn.cnn.State != ConnectionState.Open)
+                    kn.KetNoi_Dulieu();
+
+                if (dataKQ != null)
+                    SetupDataGridView();
+
+                Bang_MonHoc();
+
+                txtTimKiem?.Focus();
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi khởi tạo form: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
         }
 
         private void btnToaMoi_Click_1(object sender, EventArgs e)
         {
-            FrmMonHoc_ChinhSua f1 = new FrmMonHoc_ChinhSua();
-
-            f1.ShowDialog();
-
-            Bang_MonHoc();
+            try
+            {
+                FrmMonHoc_ChinhSua frm = new FrmMonHoc_ChinhSua();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    Bang_MonHoc();
+                    ShowMessage("Thêm môn học thành công!", "Thông báo", MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi mở form thêm mới: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click_1(object sender, EventArgs e)
         {
-            // 1. Kiểm tra xem đã chọn dòng nào chưa
-            if (dataKQ.CurrentRow != null)
+            try
             {
-                // 2. Lấy ID (MaMonHoc) từ dòng đang chọn
-                // (Thay "MaMonHoc" bằng TÊN CỘT ID trong DataGridView của bạn)
-                int idMonHoc = Convert.ToInt32(dataKQ.CurrentRow.Cells["CourseID"].Value);
+                if (dataKQ.CurrentRow == null)
+                {
+                    ShowMessage("Vui lòng chọn môn học cần chỉnh sửa!", "Thông báo", MessageBoxIcon.Warning);
+                    return;
+                }
 
-                // 3. Mở Form chỉnh sửa và "gửi" ID qua
+                string idValue = dataKQ.CurrentRow.Cells["CourseID"].Value?.ToString();
+
+                if (string.IsNullOrEmpty(idValue) || !int.TryParse(idValue, out int idMonHoc))
+                {
+                    ShowMessage("Không thể lấy thông tin môn học!", "Lỗi", MessageBoxIcon.Error);
+                    return;
+                }
+
                 FrmMonHoc_ChinhSua frm = new FrmMonHoc_ChinhSua(idMonHoc);
-                frm.ShowDialog();
-
-                // 4. Tải lại lưới sau khi Form chỉnh sửa đóng
-                Bang_MonHoc();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    Bang_MonHoc();
+                    ShowMessage("Cập nhật môn học thành công!", "Thông báo", MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng chọn một môn học để sửa!");
+                ShowMessage($"Lỗi mở form chỉnh sửa: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
             }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string tuKhoa = txtTimKiem.Text.Trim();
+            TimKiemMonHoc();
+        }
 
-            if (string.IsNullOrEmpty(tuKhoa))
+        private void TimKiemMonHoc()
+        {
+            try
             {
-                // Nếu không nhập gì thì hiển thị toàn bộ danh sách
-                Bang_MonHoc();
-            }
-            else
-            {
-                // Tìm kiếm trong bảng Lecturers theo tên hoặc mã giảng viên
-                string sql = "SELECT * FROM Courses WHERE Name LIKE N'%" + tuKhoa + "%' OR Code LIKE '%" + tuKhoa + "%'";
+                ShowLoading(true);
+                string tuKhoa = txtTimKiem?.Text?.Trim() ?? "";
+
+                string sql = @"
+                    SELECT 
+                        c.CourseID,
+                        c.Code AS [Mã môn],
+                        c.Name AS [Tên môn học],
+                        c.Credits AS [Số tín chỉ],
+                        c.TuitionPerCredit AS [Học phí/tín chỉ],
+                        d.Name AS [Khoa/Viện]
+                    FROM Courses c
+                    LEFT JOIN Departments d ON c.DeptID = d.DeptID
+                    WHERE c.Name LIKE N'%" + tuKhoa + "%' " +
+                          "OR c.Code LIKE '%" + tuKhoa + "%' " +
+                          "OR d.Name LIKE N'%" + tuKhoa + "%' " +
+                    "ORDER BY c.Code";
 
                 DataTable dta = kn.Lay_DulieuBang(sql);
                 dataKQ.DataSource = dta;
-            }
-        }
 
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            // Kiểm tra xem người dùng đã chọn dòng nào chưa
-            if (dataKQ.CurrentRow == null)
-            {
-                MessageBox.Show("Vui lòng chọn môn học cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                if (dataKQ.Columns["CourseID"] != null)
+                    dataKQ.Columns["CourseID"].Visible = false;
 
-            // Lấy mã môn học từ dòng được chọn
-            string maMon = dataKQ.CurrentRow.Cells["CourseID"].Value.ToString();
+                ConfigureColumnWidths();
+                UpdateRecordCount();
 
-            try
-            {
-                // ✅ Bước 1: Tìm các bảng có khóa ngoại trỏ tới Courses.CourseID
-                string sqlCheckFK = @"
-            SELECT 
-                fk_tab.name AS ReferencingTable
-            FROM sys.foreign_keys fk
-            INNER JOIN sys.foreign_key_columns fkc ON fkc.constraint_object_id = fk.object_id
-            INNER JOIN sys.tables fk_tab ON fk_tab.object_id = fk.parent_object_id
-            INNER JOIN sys.tables pk_tab ON pk_tab.object_id = fk.referenced_object_id
-            INNER JOIN sys.columns fk_col ON fkc.parent_object_id = fk_col.object_id AND fkc.parent_column_id = fk_col.column_id
-            INNER JOIN sys.columns pk_col ON fkc.referenced_object_id = pk_col.object_id AND fkc.referenced_column_id = pk_col.column_id
-            WHERE pk_tab.name = 'Courses' AND pk_col.name = 'CourseID';
-        ";
-
-                DataTable fkTables = kn.Lay_DulieuBang(sqlCheckFK);
-                List<string> bangLienQuan = new List<string>();
-
-                // ✅ Bước 2: Kiểm tra từng bảng có dữ liệu liên quan không
-                foreach (DataRow row in fkTables.Rows)
+                if (dta.Rows.Count == 0)
                 {
-                    string tableName = row["ReferencingTable"].ToString();
-
-                    // Kiểm tra xem bảng đó có dữ liệu tham chiếu tới môn này không
-                    string sqlCount = $"SELECT COUNT(*) FROM {tableName} WHERE CourseID = {maMon}";
-                    DataTable dtCount = kn.Lay_DulieuBang(sqlCount);
-
-                    if (dtCount.Rows.Count > 0 && Convert.ToInt32(dtCount.Rows[0][0]) > 0)
-                    {
-                        bangLienQuan.Add(tableName);
-                    }
-                }
-
-                // ✅ Bước 3: Nếu có bảng liên quan, hỏi người dùng
-                if (bangLienQuan.Count > 0)
-                {
-                    string danhSachBang = string.Join(", ", bangLienQuan);
-                    DialogResult confirmFK = MessageBox.Show(
-                        $"Môn học này đang được tham chiếu trong các bảng: {danhSachBang}.\n" +
-                        "Nếu bạn xóa, dữ liệu trong các bảng này có thể bị lỗi hoặc mất liên kết.\n\n" +
-                        "Bạn có muốn tiếp tục xóa không?",
-                        "Cảnh báo ràng buộc khóa ngoại",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning
-                    );
-
-                    if (confirmFK == DialogResult.No)
-                        return;
-                }
-
-                // ✅ Bước 4: Xác nhận xóa
-                DialogResult result = MessageBox.Show(
-                    "Bạn có chắc muốn xóa môn học này không?",
-                    "Xác nhận xóa",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (result == DialogResult.Yes)
-                {
-                    // Câu lệnh SQL để xóa
-                    string sql = $"DELETE FROM Courses WHERE CourseID = {maMon}";
-                    kn.ThucThiSQL(sql);
-
-                    // Cập nhật lại DataGridView
-                    Bang_MonHoc();
-
-                    MessageBox.Show("Xóa môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowMessage($"Không tìm thấy môn học nào với từ khóa '{tuKhoa}'",
+                        "Thông báo", MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowMessage($"Lỗi tìm kiếm: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ShowLoading(false);
             }
         }
 
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataKQ.CurrentRow == null)
+                {
+                    ShowMessage("Vui lòng chọn môn học cần xóa.", "Thông báo", MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string id = dataKQ.CurrentRow.Cells["CourseID"].Value?.ToString();
+                string tenMon = dataKQ.CurrentRow.Cells["Tên môn học"].Value?.ToString();
+
+                DialogResult result = MessageBox.Show(
+                    $"Bạn có chắc muốn xóa môn học này?\n\n📘 {tenMon}\n\n⚠️ Thao tác này không thể hoàn tác!",
+                    "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    string sqlDeleteClassSections = $"DELETE FROM ClassSections WHERE CourseID = {id}";
+                    kn.ThucThiSQL(sqlDeleteClassSections);
+
+                    string sql = $"DELETE FROM Courses WHERE CourseID = {id}";
+                    kn.ThucThiSQL(sql);
+
+                    Bang_MonHoc();
+                    ShowMessage("Xóa môn học thành công!", "Thông báo", MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi khi xóa môn học: {ex.Message}", "Lỗi", MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void txtTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                TimKiemMonHoc();
+        }
+
+        private void dataKQ_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+                btnSua_Click_1(sender, e);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            try
+            {
+                if (kn?.cnn != null && kn.cnn.State == ConnectionState.Open)
+                    kn.NgatKetNoi();
+            }
+            catch { }
+
+            base.OnFormClosed(e);
+        }
     }
 }
