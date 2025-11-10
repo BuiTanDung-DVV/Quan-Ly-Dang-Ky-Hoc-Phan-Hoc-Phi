@@ -436,15 +436,9 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 {
                     ShowLoading(true);
 
-                    // BƯỚC 1: Xóa dữ liệu ghi danh (Enrollments) liên quan trước
-                    // Đây là điều quan trọng để tránh lỗi Khóa ngoại (Foreign Key Constraint)
                     string sqlDeleteEnrollments = $"DELETE FROM Enrollments WHERE SectionID = {sectionID}";
                     kn.ThucThiSQL(sqlDeleteEnrollments);
 
-                    string sqlDeleteInvoices = $"DELETE FROM Invoices WHERE SectionID = {sectionID}";
-                    kn.ThucThiSQL(sqlDeleteInvoices);
-
-                    // BƯỚC 2: Xóa Lớp Học Phần
                     string sqlDeleteSection = $"DELETE FROM ClassSections WHERE SectionID = {sectionID}";
                     kn.ThucThiSQL(sqlDeleteSection);
 
