@@ -140,11 +140,11 @@
             this.lblMa.BackColor = System.Drawing.Color.Transparent;
             this.lblMa.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblMa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.lblMa.Location = new System.Drawing.Point(0, 22);
+            this.lblMa.Location = new System.Drawing.Point(95, 21);
             this.lblMa.Name = "lblMa";
-            this.lblMa.Size = new System.Drawing.Size(73, 19);
+            this.lblMa.Size = new System.Drawing.Size(41, 19);
             this.lblMa.TabIndex = 7;
-            this.lblMa.Text = "11236030";
+            this.lblMa.Text = "1234";
             this.lblMa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblName
@@ -153,11 +153,11 @@
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(0, 0);
+            this.lblName.Location = new System.Drawing.Point(81, -2);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(144, 20);
+            this.lblName.Size = new System.Drawing.Size(70, 20);
             this.lblName.TabIndex = 7;
-            this.lblName.Text = "Nguyễn Hoàng Sơn";
+            this.lblName.Text = "ABC DEF";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelChucNang
