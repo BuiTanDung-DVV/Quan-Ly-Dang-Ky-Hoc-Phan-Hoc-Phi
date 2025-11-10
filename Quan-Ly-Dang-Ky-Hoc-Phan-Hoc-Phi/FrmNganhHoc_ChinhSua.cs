@@ -25,7 +25,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             int nWidthEllipse,
             int nHeightEllipse);
 
-        public int CornerRadius { get; set; } = 30; // bán kính bo góc mặc định
+        public int CornerRadius { get; set; } = 15; // bán kính bo góc mặc định
 
         KETNOI_CSDL kn = new KETNOI_CSDL();
         public FrmNganhHoc_ChinhSua()
@@ -33,25 +33,42 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             InitializeComponent();
             _idNganhHoc = null;
 
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
+            InitializeForm();
 
-            this.label1.Text = "Thêm Mới Ngành Học";
-            this.txtId.Enabled = false;
+            this.label1.Text = "🎓 THÊM MỚI NGÀNH HỌC";
+            this.txtMajorID.Enabled = false;
         }
 
         public FrmNganhHoc_ChinhSua(int idNganhHoc)
         {
             InitializeComponent();
             _idNganhHoc = idNganhHoc;
+            InitializeForm();
+
+            this.label1.Text = "✏️ CHỈNH SỬA NGÀNH HỌC";
+            this.txtMajorID.Enabled = false;
+            this.txtCode.Enabled = false;
+        }
+
+        private void InitializeForm()
+        {
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, CornerRadius, CornerRadius));
 
-            this.label1.Text = "Chỉnh Sửa Ngành Học";
-            this.txtId.Enabled = false;
-            this.txtMaNganh.Enabled = false;
+            // Đảm bảo kết nối database
+            try
+            {
+                if (kn.cnn == null || kn.cnn.State != ConnectionState.Open)
+                {
+                    kn.KetNoi_Dulieu();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi kết nối cơ sở dữ liệu: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         protected override void OnResize(EventArgs e)
         {
@@ -63,15 +80,33 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
         {
             DataTable dta = new DataTable();
             dta = kn.Lay_DulieuBang("SELECT * FROM Departments");
-            cboKhoaVien.DataSource = dta;
-            cboKhoaVien.DisplayMember = "Name";
-            cboKhoaVien.ValueMember = "DeptID";
+            cboDeptID.DataSource = dta;
+            cboDeptID.DisplayMember = "Name";
+            cboDeptID.ValueMember = "DeptID";
         }
 
         private void FrmNganhHoc_ChinhSua_Load(object sender, EventArgs e)
         {
-            Bang_KhoaVien();
-            Load_DuLieuCanSua();
+            try
+            {
+                Bang_KhoaVien();
+                Load_DuLieuCanSua();
+                if (_idNganhHoc == null)
+                {
+                    txtCode.Focus();
+                }
+                else
+                {
+                    Load_DuLieuCanSua();
+                    txtName.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khởi tạo form: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void Load_DuLieuCanSua()
         {
@@ -79,6 +114,9 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
 
             try
             {
+                if (kn.cnn.State != ConnectionState.Open)
+                    kn.KetNoi_Dulieu();
+
                 string sql = "SELECT * FROM Majors WHERE MajorID = " + _idNganhHoc.Value;
 
                 SqlCommand cmd = new SqlCommand(sql, kn.cnn);
@@ -87,10 +125,10 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 if (doc_dl.Read() == true)
                 {
                     // 7. Đổ dữ liệu vào TextBox
-                    txtId.Text = doc_dl["MajorID"].ToString();
-                    txtMaNganh.Text = doc_dl["Code"].ToString();
-                    txtTenNganh.Text = doc_dl["Name"].ToString();
-                    cboKhoaVien.SelectedValue = doc_dl["DeptID"];
+                    txtMajorID.Text = doc_dl["MajorID"].ToString();
+                    txtCode.Text = doc_dl["Code"].ToString();
+                    txtName.Text = doc_dl["Name"].ToString();
+                    cboDeptID.SelectedValue = doc_dl["DeptID"];
                 }
                 else
                 {
@@ -108,42 +146,116 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
 
         }
+        private bool ValidateInput()
+        {
+            // 1. Kiểm tra Mã Ngành (Code)
+            if (string.IsNullOrWhiteSpace(txtCode.Text))
+            {
+                MessageBox.Show("Vui lòng nhập mã ngành!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCode.Focus();
+                return false;
+            }
+
+            // 2. Kiểm tra Tên Ngành (Name)
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên ngành học!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
+                return false;
+            }
+
+            // 3. Kiểm tra ID Khoa/Viện (DeptID)
+            // Giả sử SelectedValue của ComboBox là DeptID (INT)
+            if (cboDeptID.SelectedValue == null || (int)cboDeptID.SelectedValue <= 0)
+            {
+                MessageBox.Show("Vui lòng chọn Khoa/Viện quản lý ngành này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboDeptID.Focus();
+                return false;
+            }
+
+            // Nếu tất cả kiểm tra đều thành công
+            return true;
+        }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn hủy bỏ thay đổi?",
+                                                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (_idNganhHoc == null)
-            {
-                // Thêm mới môn học
-                string strKtra = "Select Code from Majors where Code='" + txtMaNganh.Text + "'";
-                SqlCommand cmd = new SqlCommand(strKtra, kn.cnn);
-                SqlDataReader doc_dl = cmd.ExecuteReader();
+            if (!ValidateInput())
+                return;
+            //nút lưu
 
-                if (doc_dl.Read() == true)
+            try
+            {
+                if (_idNganhHoc == null)
                 {
-                    MessageBox.Show("Mã đã tồn tại, vui lòng nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMaNganh.Focus();
+                    // Thêm mới môn học
+                    string strKtra = "Select Code from Majors where Code='" + txtCode.Text + "'";
+                    SqlCommand cmd = new SqlCommand(strKtra, kn.cnn);
+                    SqlDataReader doc_dl = cmd.ExecuteReader();
+
+                    if (doc_dl.Read() == true)
+                    {
+                        MessageBox.Show("Mã đã tồn tại, vui lòng nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtCode.Focus();
+                    }
+                    else
+                    {
+                        kn.ThucThiSQL("INSERT INTO Majors (Code, Name, DeptID) VALUES ('" + txtCode.Text + "',N'" + txtName.Text + "'," + cboDeptID.SelectedValue + ")");
+                        MessageBox.Show("Lưu dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                 }
                 else
                 {
-                    kn.ThucThiSQL("INSERT INTO Majors (Code, Name, DeptID) VALUES ('" + txtMaNganh.Text + "',N'" + txtTenNganh.Text + "'," + cboKhoaVien.SelectedValue + ")");
-                    MessageBox.Show("Lưu dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Cập nhật môn học
+                    string sql_Sua = "UPDATE Majors SET Name=N'" + txtName.Text + "', DeptID=" + cboDeptID.SelectedValue + " WHERE MajorID=" + _idNganhHoc.Value;
+                    kn.ThucThiSQL(sql_Sua);
+                    MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
-    
-            }
-            else
-            {
-                // Cập nhật môn học
-                string sql_Sua = "UPDATE Majors SET Name=N'" + txtTenNganh.Text + "', DeptID=" + cboKhoaVien.SelectedValue + " WHERE MajorID=" + _idNganhHoc.Value;
-                kn.ThucThiSQL(sql_Sua);
-                MessageBox.Show("Cập nhật môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (kn.cnn != null && kn.cnn.State == ConnectionState.Open)
+                {
+                    kn.NgatKetNoi();
+                }
+            }
+        }
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                btnHuy_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.S))
+            {
+                btnLuu_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessDialogKey(keyData);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
     }
