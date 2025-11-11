@@ -186,6 +186,144 @@ INSERT INTO Users (Username, PasswordHash, Role, LinkedStudentID, LinkedLecturer
 ('gv_hoa', '123456', N'Giảng viên', NULL, 1),
 ('admin', 'admin123', N'Quản trị', NULL, NULL);
 
+-- THÊM 20 DỮ LIỆU VÀO BẢNG Departments
+INSERT INTO Departments (Code, Name, Office) VALUES
+('CNTT2', N'Công nghệ thông tin 2', N'Tòa A2-101'),
+('KT',   N'Kế toán',                  N'Tòa B1-101'),
+('TMDT', N'Thương mại điện tử',       N'Tòa D1-103'),
+('SP',   N'Sư phạm',                  N'Tòa E3-205'),
+('VL',   N'Vật lý',                   N'Tòa F2-102'),
+('H',    N'Hóa học',                  N'Tòa G1-301'),
+('S',    N'Sinh học',                 N'Tòa H2-201'),
+('DS',   N'Dược sĩ',                  N'Tòa I2-207'),
+('YL',   N'Y học lâm sàng',           N'Tòa J1-105'),
+('TQ',   N'Tiếng Trung',              N'Tòa K3-309'),
+('L',    N'Luật',                     N'Tòa L2-203'),
+('MKT',  N'Marketing',                N'Tòa M1-401'),
+('NNA2', N'Ngôn ngữ Anh 2',           N'Tòa C3-304'),
+('QTKD2',N'Quản trị kinh doanh 2',    N'Tòa B2-203'),
+('KDL',  N'Kinh doanh quốc tế',       N'Tòa N2-104'),
+('XDDD', N'Xây dựng dân dụng',        N'Tòa O2-208'),
+('DT',   N'Điện tử',                  N'Tòa P1-101'),
+('TTTV', N'Thư viện',                 N'Tòa Q1-101'),
+('SPTD', N'Sư phạm thể dục',          N'Tòa R2-107'),
+('NHKS', N'Nhà hàng khách sạn',       N'Tòa S3-305');
+
+-- THÊM 20 DỮ LIỆU VÀO BẢNG Lecturers (giả sử DeptID từ 1-20 tồn tại)
+INSERT INTO Lecturers (LecturerCode, FullName, Email, DeptID) VALUES
+('GV004', N'Trần Phúc Nguyên',     'nguyen.tran@univ.edu.vn',  4),
+('GV005', N'Bùi Thanh Bình',       'binh.bui@univ.edu.vn',     5),
+('GV006', N'Doãn Thị Lệ',         'le.doan@univ.edu.vn',      6),
+('GV007', N'Tạ Minh Tùng',         'tung.ta@univ.edu.vn',      7),
+('GV008', N'Ngô Đức Vinh',         'vinh.ngo@univ.edu.vn',     8),
+('GV009', N'Hoàng Hồng Đăng',      'dang.hoang@univ.edu.vn',   9),
+('GV010', N'Nguyễn Đình Tài',      'tai.nguyen@univ.edu.vn',  10),
+('GV011', N'Lý Thùy Dương',        'duong.ly@univ.edu.vn',    11),
+('GV012', N'Vũ Quang Huy',         'huy.vu@univ.edu.vn',      12),
+('GV013', N'Lê Thị Thảo',          'thao.le@univ.edu.vn',     13),
+('GV014', N'Phạm Hồng Sơn',        'son.pham@univ.edu.vn',    14),
+('GV015', N'Huỳnh Văn Minh',       'minh.huynh@univ.edu.vn',  15),
+('GV016', N'Đặng Thị Hoa',         'hoa.dang@univ.edu.vn',    16),
+('GV017', N'Bùi Văn Thắng',        'thang.bui@univ.edu.vn',   17),
+('GV018', N'Ngô Văn Đồng',         'dong.ngo@univ.edu.vn',    18),
+('GV019', N'Trịnh Đức Anh',        'anh.trinh@univ.edu.vn',   19),
+('GV020', N'Phạm Thùy My',         'my.pham@univ.edu.vn',     1),
+('GV021', N'Dương Quang Đạt',      'dat.duong@univ.edu.vn',   2),
+('GV022', N'Lê Minh Phát',         'phat.le@univ.edu.vn',     3),
+('GV023', N'Nguyễn Thu Trang',     'trang.nguyen@univ.edu.vn',4);
+
+-- THÊM 20 DỮ LIỆU VÀO BẢNG Students (DeptID từ 1-20)
+INSERT INTO Students (StudentCode, FullName, Gender, DateOfBirth, Email, Phone, Address, DeptID, AdmissionYear) VALUES
+('SV004', N'Vũ Hoàng Hà', N'Nam', '2001-05-20', 'ha.vu@stu.edu.vn', '0982000001', N'Hà Nội',     4, 2019),
+('SV005', N'Lê Thu Huyền', N'Nữ', '2002-01-19', 'huyen.le@stu.edu.vn', '0982000002', N'Hải Dương', 5, 2020),
+('SV006', N'Lê Hoàng Anh', N'Nam', '2003-03-18', 'anh.le@stu.edu.vn', '0982000003', N'Quảng Ninh', 6, 2021),
+('SV007', N'Phan Lan Chi', N'Nữ', '2001-06-25', 'chi.phan@stu.edu.vn', '0982000004', N'Nam Định',    7, 2019),
+('SV008', N'Đỗ Đức Mạnh', N'Nam', '2002-09-15', 'manh.do@stu.edu.vn', '0982000005', N'Bắc Giang',   8, 2020),
+('SV009', N'Lý Thị Mai', N'Nữ', '2003-10-01', 'mai.ly@stu.edu.vn', '0982000006', N'Lào Cai',        9, 2021),
+('SV010', N'Ngô Minh Quân', N'Nam', '2002-12-03', 'quan.ngo@stu.edu.vn', '0982000007', N'Bắc Ninh', 10, 2020),
+('SV011', N'Dương Quang Dũng', N'Nam', '2001-02-14', 'dung.duong@stu.edu.vn', '0982000008', N'Hưng Yên', 11, 2019),
+('SV012', N'Hoàng Văn Phúc', N'Nam', '2003-07-16', 'phuc.hoang@stu.edu.vn', '0982000009', N'Nghệ An', 12, 2021),
+('SV013', N'Phan Thị Thu', N'Nữ', '2002-05-23', 'thu.phan@stu.edu.vn', '0982000010', N'Thanh Hóa', 13, 2020),
+('SV014', N'Lưu Kiều Trang', N'Nữ', '2002-10-11', 'trang.luu@stu.edu.vn', '0982000011', N'Hà Tĩnh', 14, 2020),
+('SV015', N'Lê Quang Vinh', N'Nam', '2003-08-17', 'vinh.le@stu.edu.vn', '0982000012', N'Quảng Trị', 15, 2021),
+('SV016', N'Đặng Văn Bảo', N'Nam', '2001-03-09', 'bao.dang@stu.edu.vn', '0982000013', N'Bình Thuận', 16, 2019),
+('SV017', N'Nguyễn Thị Kim', N'Nữ', '2001-10-21', 'kim.nguyen@stu.edu.vn', '0982000014', N'Bến Tre', 17, 2019),
+('SV018', N'Doãn Xuân Phú', N'Nam', '2002-12-14', 'phu.doan@stu.edu.vn', '0982000015', N'Bạc Liêu', 18, 2020),
+('SV019', N'Lý Xuân Hạnh', N'Nữ', '2003-06-22', 'hanh.ly@stu.edu.vn', '0982000016', N'An Giang', 19, 2021),
+('SV020', N'Vũ Tiến Đạt', N'Nam', '2001-07-10', 'dat.vu@stu.edu.vn', '0982000017', N'Tây Ninh', 20, 2019),
+('SV021', N'Phạm Kiều Oanh', N'Nữ', '2002-02-12', 'oanh.pham@stu.edu.vn', '0982000018', N'Đồng Tháp', 2, 2020),
+('SV022', N'Ngô Tấn Minh', N'Nam', '2003-11-01', 'minh.ngo@stu.edu.vn', '0982000019', N'Quảng Nam', 3, 2021),
+('SV023', N'Lê Thị Bích', N'Nữ', '2002-05-30', 'bich.le@stu.edu.vn', '0982000020', N'Sóc Trăng', 4, 2020);
+
+-- THÊM 20 DỮ LIỆU VÀO BẢNG AcademicTerms
+INSERT INTO AcademicTerms (Code, Name, StartDate, EndDate, IsCurrent) VALUES
+('HK233', N'Học kỳ phụ 2023-2024', '2024-07-01', '2024-08-15', 0),
+('HK241', N'Học kỳ 1 - Năm học 2024-2025', '2024-09-01', '2025-01-15', 1),
+('HK242', N'Học kỳ 2 - Năm học 2024-2025', '2025-02-15', '2025-06-30', 0),
+('HK243', N'Học kỳ phụ 2024-2025', '2025-07-01', '2025-08-15', 0),
+('HK251', N'Học kỳ 1 - Năm học 2025-2026', '2025-09-01', '2026-01-15', 0),
+('HK252', N'Học kỳ 2 - Năm học 2025-2026', '2026-02-15', '2026-06-30', 0),
+('HK253', N'Học kỳ phụ 2025-2026', '2026-07-01', '2026-08-15', 0),
+('HK261', N'Học kỳ 1 - Năm học 2026-2027', '2026-09-01', '2027-01-15', 0),
+('HK262', N'Học kỳ 2 - Năm học 2026-2027', '2027-02-15', '2027-06-30', 0),
+('HK263', N'Học kỳ phụ 2026-2027', '2027-07-01', '2027-08-15', 0),
+('HK271', N'Học kỳ 1 - Năm học 2027-2028', '2027-09-01', '2028-01-15', 0),
+('HK272', N'Học kỳ 2 - Năm học 2027-2028', '2028-02-15', '2028-06-30', 0),
+('HK273', N'Học kỳ phụ 2027-2028', '2028-07-01', '2028-08-15', 0),
+('HK281', N'Học kỳ 1 - Năm học 2028-2029', '2028-09-01', '2029-01-15', 0),
+('HK282', N'Học kỳ 2 - Năm học 2028-2029', '2029-02-15', '2029-06-30', 0),
+('HK283', N'Học kỳ phụ 2028-2029', '2029-07-01', '2029-08-15', 0),
+('HK291', N'Học kỳ 1 - Năm học 2029-2030', '2029-09-01', '2030-01-15', 0),
+('HK292', N'Học kỳ 2 - Năm học 2029-2030', '2030-02-15', '2030-06-30', 0),
+('HK293', N'Học kỳ phụ 2029-2030', '2030-07-01', '2030-08-15', 0),
+('HK201', N'Học kỳ hè 2020',             '2020-06-15', '2020-08-01', 0);
+
+-- THÊM 20 DỮ LIỆU VÀO BẢNG Courses (DeptID lấy từ 1-20)
+INSERT INTO Courses (Code, Name, Credits, TuitionPerCredit, DeptID) VALUES
+('CT102', N'Lập trình nâng cao',   3, 500000, 1),
+('DT101', N'Điện tử cơ bản',       4, 520000, 2),
+('KT102', N'Kế toán tài chính',    3, 410000, 3),
+('SP101', N'Tâm lý học giáo dục',  2, 430000, 4),
+('VL101', N'Vật lý đại cương',     3, 400000, 5),
+('H101',  N'Hóa đại cương',        3, 410000, 6),
+('S101',  N'Sinh học cơ bản',      2, 420000, 7),
+('DS101', N'Dược lý đại cương',    4, 600000, 8),
+('YL101', N'Lâm sàng cơ bản',      3, 700000, 9),
+('TQ101', N'Tiếng Trung sơ cấp',   2, 400000,10),
+('L101',  N'Luật đại cương',       3, 410000,11),
+('MKT101',N'Marketing căn bản',    3, 430000,12),
+('NNA101',N'Ngữ pháp tiếng Anh',   2, 400000,13),
+('QTKD101',N'Nguyên lý QTKD',      3, 420000,14),
+('KDL101',N'Kinh doanh quốc tế',   3, 600000,15),
+('XDDD101',N'Kết cấu công trình',  4, 450000,16),
+('DT102', N'Điện tử nâng cao',     3, 580000,17),
+('TTTV101',N'Quản lý thư viện',    2, 350000,18),
+('SPTD101',N'Giáo dục thể chất',   2, 340000,19),
+('NHKS101',N'Quản trị NHKS',       3, 500000,20);
+
+-- THÊM 20 DỮ LIỆU VÀO BẢNG ClassSections 
+INSERT INTO ClassSections (SectionCode, CourseID, TermID, LecturerID, Schedule, Room, MaxStudents) VALUES
+('CT102-L01', 5, 1, 4, N'Thứ 2 - Tiết 1,2,3', N'A1-301', 60),
+('DT101-L01', 6, 2, 5, N'Thứ 3 - Tiết 2,3,4', N'B1-301', 60),
+('KT102-L01', 7, 3, 6, N'Thứ 4 - Tiết 1,2,3', N'C1-301', 60),
+('SP101-L01', 8, 4, 7, N'Thứ 5 - Tiết 1,2',   N'D1-301', 50),
+('VL101-L01', 9, 5, 8, N'Thứ 6 - Tiết 3,4',   N'E1-301', 50),
+('H101-L01', 10, 6, 9, N'Thứ 2 - Tiết 1,2,3', N'G1-302', 60),
+('S101-L01', 11, 7, 10,N'Thứ 3 - Tiết 5,6,7', N'H2-101', 40),
+('DS101-L01',12, 8, 11,N'Thứ 5 - Tiết 2,3',   N'I2-218', 60),
+('YL101-L01',13, 9, 12,N'Thứ 2 - Tiết 1,2',   N'J1-102', 55),
+('TQ101-L01',14,10, 13,N'Thứ 3 - Tiết 1,2',   N'K3-310', 60),
+('L101-L01', 15,11, 14,N'Thứ 4 - Tiết 1,2,3', N'L2-204', 50),
+('MKT101-L01',16,12,15,N'Thứ 5 - Tiết 3,4',   N'M1-402', 55),
+('NNA101-L01',17,13,16,N'Thứ 2 - Tiết 1,2,3', N'C3-305', 40),
+('QTKD101-L01',18,14,17,N'Thứ 3 - Tiết 2,3,4',N'B2-203', 53),
+('KDL101-L01',19,15,18,N'Thứ 5 - Tiết 1,2',   N'N2-105', 58),
+('XDDD101-L01',20,16,19,N'Thứ 6 - Tiết 3,4',  N'O2-209', 49),
+('DT102-L01', 1,17, 20,N'Thứ 2 - Tiết 1,2,3', N'P1-102', 60),
+('TTTV101-L01',2,18, 1, N'Thứ 3 - Tiết 5,6,7',N'Q1-102', 39),
+('SPTD101-L01',3,19, 2, N'Thứ 4 - Tiết 1,2,3',N'R2-108', 45),
+('NHKS101-L01',4,20, 3, N'Thứ 5 - Tiết 3,4',  N'S3-306', 50);
+
 -- ==================================================================
 -- TRIGGER TỰ ĐỘNG CẬP NHẬT HÓA ĐƠN (HOÀN CHỈNH)
 -- ==================================================================
