@@ -324,6 +324,33 @@ INSERT INTO ClassSections (SectionCode, CourseID, TermID, LecturerID, Schedule, 
 ('SPTD101-L01',3,19, 2, N'Thứ 4 - Tiết 1,2,3',N'R2-108', 45),
 ('NHKS101-L01',4,20, 3, N'Thứ 5 - Tiết 3,4',  N'S3-306', 50);
 
+-- Thêm 20 bản ghi vào bảng Users (liên kết khớp với Students và Lecturers đã có)
+-- Chạy đoạn này sau khi đã chạy phần tạo bảng và chèn dữ liệu mẫu trong QLDKHP.sql
+
+INSERT INTO Users (Username, PasswordHash, Role, LinkedStudentID, LinkedLecturerID) VALUES
+-- 15 tài khoản Sinh viên (liên kết với StudentID 3..17)
+('sv_003','123456', N'Sinh viên', 3, NULL),
+('sv_004','123456', N'Sinh viên', 4, NULL),
+('sv_005','123456', N'Sinh viên', 5, NULL),
+('sv_006','123456', N'Sinh viên', 6, NULL),
+('sv_007','123456', N'Sinh viên', 7, NULL),
+('sv_008','123456', N'Sinh viên', 8, NULL),
+('sv_009','123456', N'Sinh viên', 9, NULL),
+('sv_010','123456', N'Sinh viên', 10, NULL),
+('sv_011','123456', N'Sinh viên', 11, NULL),
+('sv_012','123456', N'Sinh viên', 12, NULL),
+('sv_013','123456', N'Sinh viên', 13, NULL),
+('sv_014','123456', N'Sinh viên', 14, NULL),
+('sv_015','123456', N'Sinh viên', 15, NULL),
+('sv_016','123456', N'Sinh viên', 16, NULL),
+('sv_017','123456', N'Sinh viên', 17, NULL),
+
+-- 5 tài khoản Giảng viên (liên kết với LecturerID 4..8)
+('gv_004','123456', N'Giảng viên', NULL, 4),
+('gv_005','123456', N'Giảng viên', NULL, 5),
+('gv_006','123456', N'Giảng viên', NULL, 6),
+('gv_007','123456', N'Giảng viên', NULL, 7),
+('gv_008','123456', N'Giảng viên', NULL, 8);
 -- ==================================================================
 -- TRIGGER TỰ ĐỘNG CẬP NHẬT HÓA ĐƠN (HOÀN CHỈNH)
 -- ==================================================================
