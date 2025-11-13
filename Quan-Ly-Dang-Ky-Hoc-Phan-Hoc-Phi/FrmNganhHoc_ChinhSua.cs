@@ -165,7 +165,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
 
             // 3. Kiểm tra ID Khoa/Viện (DeptID)
-            // Giả sử SelectedValue của ComboBox là DeptID (INT)
             if (cboDeptID.SelectedValue == null || (int)cboDeptID.SelectedValue <= 0)
             {
                 MessageBox.Show("Vui lòng chọn Khoa/Viện quản lý ngành này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

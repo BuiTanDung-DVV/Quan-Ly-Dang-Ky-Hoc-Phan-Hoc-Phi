@@ -152,7 +152,6 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             }
 
             // 2. Kiểm tra Khóa học
-            // Giả sử SelectedValue của ComboBox là CourseID (INT)
             if (cboCourseID.SelectedValue == null || (int)cboCourseID.SelectedValue <= 0)
             {
                 MessageBox.Show("Vui lòng chọn môn học/khóa học cho lớp này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

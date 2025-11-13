@@ -422,7 +422,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                     kn.ThucThiSQL(sqlDeleteMajor);
 
                     // Cập nhật lại danh sách trên giao diện
-                    Bang_NganhHoc(); // Giả sử đây là phương thức tải lại toàn bộ bảng Ngành Học
+                    Bang_NganhHoc();
                     ShowMessage("Xóa ngành học thành công!", "Thông báo", MessageBoxIcon.Information);
                 }
             }

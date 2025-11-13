@@ -303,7 +303,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                 // 3. Nếu từ khóa rỗng, hiển thị lại toàn bộ bảng
                 if (string.IsNullOrEmpty(tuKhoa))
                 {
-                    Bang_LopHocPhan(); // Giả sử đây là phương thức tải toàn bộ Lớp Học Phần
+                    Bang_LopHocPhan();
                     return;
                 }
 
@@ -443,7 +443,7 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
                     kn.ThucThiSQL(sqlDeleteSection);
 
                     // Cập nhật lại danh sách trên giao diện
-                    Bang_LopHocPhan(); // Giả sử đây là phương thức tải lại toàn bộ bảng Lớp Học Phần
+                    Bang_LopHocPhan();
                     ShowMessage("Xóa lớp học phần thành công!", "Thông báo", MessageBoxIcon.Information);
                 }
             }
