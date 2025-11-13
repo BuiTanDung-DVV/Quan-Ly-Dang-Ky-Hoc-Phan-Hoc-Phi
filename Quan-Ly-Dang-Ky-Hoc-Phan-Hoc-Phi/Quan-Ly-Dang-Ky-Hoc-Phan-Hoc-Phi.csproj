@@ -264,6 +264,9 @@
     <EmbeddedResource Include="FrmDoiMK.resx">
       <DependentUpon>FrmDoiMK.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmQuenMK.resx">
+      <DependentUpon>FrmQuenMK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSinhVien.resx">
       <DependentUpon>FrmSinhVien.cs</DependentUpon>
     </EmbeddedResource>

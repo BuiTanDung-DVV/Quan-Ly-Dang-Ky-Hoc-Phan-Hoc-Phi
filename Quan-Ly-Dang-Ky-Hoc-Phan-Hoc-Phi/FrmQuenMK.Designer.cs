@@ -71,9 +71,9 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(280, 15);
+            this.lblTitle.Location = new System.Drawing.Point(377, 23);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(328, 32);
+            this.lblTitle.Size = new System.Drawing.Size(323, 32);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "🔓 KHÔI PHỤC MẬT KHẨU";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,7 +114,7 @@
             this.groupBoxPassword.FillColor = System.Drawing.Color.White;
             this.groupBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.groupBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(79)))), ((int)(((byte)(147)))));
-            this.groupBoxPassword.Location = new System.Drawing.Point(50, 50);
+            this.groupBoxPassword.Location = new System.Drawing.Point(150, 26);
             this.groupBoxPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxPassword.MinimumSize = new System.Drawing.Size(1, 1);
             this.groupBoxPassword.Name = "groupBoxPassword";
@@ -271,7 +271,7 @@
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblUsername.Location = new System.Drawing.Point(30, 80);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(143, 21);
+            this.lblUsername.Size = new System.Drawing.Size(140, 21);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "👤 Tên đăng nhập:";
             // 
@@ -280,7 +280,7 @@
             this.pnlButtons.BackColor = System.Drawing.Color.Transparent;
             this.pnlButtons.Controls.Add(this.btnCancel);
             this.pnlButtons.Controls.Add(this.btnResetPassword);
-            this.pnlButtons.Location = new System.Drawing.Point(50, 390);
+            this.pnlButtons.Location = new System.Drawing.Point(150, 366);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(700, 60);
             this.pnlButtons.TabIndex = 2;
@@ -335,7 +335,7 @@
             this.pnlProgress.Controls.Add(this.lblProgress);
             this.pnlProgress.FillColor = System.Drawing.Color.Transparent;
             this.pnlProgress.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.pnlProgress.Location = new System.Drawing.Point(50, 470);
+            this.pnlProgress.Location = new System.Drawing.Point(150, 446);
             this.pnlProgress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlProgress.MinimumSize = new System.Drawing.Size(1, 1);
             this.pnlProgress.Name = "pnlProgress";

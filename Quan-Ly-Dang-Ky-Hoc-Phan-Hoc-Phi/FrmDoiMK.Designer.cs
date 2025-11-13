@@ -69,7 +69,7 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1035, 60);
+            this.pnlTop.Size = new System.Drawing.Size(805, 60);
             this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
@@ -103,10 +103,11 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Radius = 0;
             this.pnlMain.RectColor = System.Drawing.Color.Transparent;
-            this.pnlMain.Size = new System.Drawing.Size(1035, 610);
+            this.pnlMain.Size = new System.Drawing.Size(805, 610);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.Text = null;
             this.pnlMain.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pnlMain.Click += new System.EventHandler(this.pnlMain_Click);
             // 
             // groupBoxInfo
             // 
@@ -466,7 +467,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1035, 670);
+            this.ClientSize = new System.Drawing.Size(805, 670);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlTop);
             this.Font = new System.Drawing.Font("Segoe UI", 10F);

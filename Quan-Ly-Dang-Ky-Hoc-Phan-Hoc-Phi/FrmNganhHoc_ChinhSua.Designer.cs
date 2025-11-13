@@ -71,7 +71,7 @@
             this.label1.Location = new System.Drawing.Point(315, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(320, 45);
+            this.label1.Size = new System.Drawing.Size(218, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "THÊM NGÀNH HỌC";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -113,36 +113,36 @@
             this.cboDeptID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDeptID.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cboDeptID.FormattingEnabled = true;
-            this.cboDeptID.Location = new System.Drawing.Point(180, 270);
+            this.cboDeptID.Location = new System.Drawing.Point(180, 216);
             this.cboDeptID.Name = "cboDeptID";
-            this.cboDeptID.Size = new System.Drawing.Size(560, 38);
+            this.cboDeptID.Size = new System.Drawing.Size(560, 28);
             this.cboDeptID.TabIndex = 3;
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtName.Location = new System.Drawing.Point(180, 204);
+            this.txtName.Location = new System.Drawing.Point(180, 150);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(560, 37);
+            this.txtName.Size = new System.Drawing.Size(560, 27);
             this.txtName.TabIndex = 5;
             // 
             // txtCode
             // 
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtCode.Location = new System.Drawing.Point(180, 133);
+            this.txtCode.Location = new System.Drawing.Point(540, 91);
             this.txtCode.MaxLength = 20;
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(200, 37);
+            this.txtCode.Size = new System.Drawing.Size(200, 27);
             this.txtCode.TabIndex = 1;
             // 
             // txtMajorID
             // 
             this.txtMajorID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtMajorID.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtMajorID.Location = new System.Drawing.Point(180, 60);
+            this.txtMajorID.Location = new System.Drawing.Point(180, 91);
             this.txtMajorID.Name = "txtMajorID";
             this.txtMajorID.ReadOnly = true;
-            this.txtMajorID.Size = new System.Drawing.Size(200, 37);
+            this.txtMajorID.Size = new System.Drawing.Size(200, 27);
             this.txtMajorID.TabIndex = 0;
             // 
             // label5
@@ -150,9 +150,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(30, 273);
+            this.label5.Location = new System.Drawing.Point(30, 219);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 30);
+            this.label5.Size = new System.Drawing.Size(77, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Khoa viện:";
             // 
@@ -161,9 +161,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(30, 207);
+            this.label4.Location = new System.Drawing.Point(30, 153);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(154, 30);
+            this.label4.Size = new System.Drawing.Size(105, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Tên ngành học";
             // 
@@ -172,9 +172,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(30, 136);
+            this.label3.Location = new System.Drawing.Point(396, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 30);
+            this.label3.Size = new System.Drawing.Size(106, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Mã ngành học:";
             // 
@@ -183,9 +183,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(30, 63);
+            this.label2.Location = new System.Drawing.Point(30, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 30);
+            this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "ID ngành học:";
             // 
@@ -243,7 +243,7 @@
             // 
             // FrmNganhHoc_ChinhSua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(800, 600);
