@@ -106,8 +106,6 @@
             this.pnlMain.Size = new System.Drawing.Size(805, 610);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.Text = null;
-            this.pnlMain.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.pnlMain.Click += new System.EventHandler(this.pnlMain_Click);
             // 
             // groupBoxInfo
             // 
