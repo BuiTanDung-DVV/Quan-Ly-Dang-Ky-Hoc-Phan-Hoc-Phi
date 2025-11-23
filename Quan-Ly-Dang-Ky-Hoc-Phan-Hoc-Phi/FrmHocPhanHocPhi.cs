@@ -47,9 +47,15 @@ namespace Quan_Ly_Dang_Ky_Hoc_Phan_Hoc_Phi
             ORDER BY i.CreatedDate, c.Name";
 
                 DataTable dt = kn.Lay_DulieuBang(sql);
+                // Tạo mới instance report
+                rptHocPhanHocPhi rpt = new rptHocPhanHocPhi();
+                rpt.SetDataSource(dt);
 
-                rptHocPhanHocPhi1.SetDataSource(dt);  // Set nguồn dữ liệu cho Crystal Report
+                // Gán cho viewer
+                crystalReportViewer1.ReportSource = null;
+                rptHocPhanHocPhi1.SetDataSource(dt);
                 crystalReportViewer1.ReportSource = rptHocPhanHocPhi1;
+                crystalReportViewer1.Refresh();
             }
             catch (Exception ex)
             {
